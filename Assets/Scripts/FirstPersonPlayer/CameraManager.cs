@@ -10,7 +10,7 @@ namespace FirstPersonPlayer
         private PlayerLook _playerLook;
 
         [Header("Mouse control")]
-        public float _mouseSensitivity;
+        [SerializeField] private float _mouseSensitivity;
         [Header("FOV variables")]
         [SerializeField] private float _defaultFOV;
 

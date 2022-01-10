@@ -12,7 +12,7 @@ namespace FirstPersonPlayer
         private PlayerMovement _playerMovement;
         private CameraManager _cameraManager;
 
-        private void Awake()
+        public void Construct()
         {
             _playerTransform = gameObject.GetComponent<Transform>();
 

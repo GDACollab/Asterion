@@ -9,9 +9,9 @@ namespace FirstPersonPlayer
     public class PlayerMovement : MonoBehaviour
     {
         // External references
-        private CharacterController characterController;
-        private Transform playerTransform;
-        private CameraManager cameraManager;
+        private CharacterController _characterController;
+        private Transform _playerTransform;
+        private CameraManager _cameraManager;
 
         [Header("Horizontal movement variables")]
         [Tooltip("Acceleration per second")]
@@ -20,7 +20,7 @@ namespace FirstPersonPlayer
         [SerializeField] private float maxWalkSpeed;
         [Tooltip("Rate of deceleration if no horizontal movement input")]
         [Range(0, 1)]
-        [SerializeField] private float groundHorizontalSlowdown;
+        [SerializeField] private float horizontalSlowdown;
         [Tooltip("Speed threshold where player's velocity is set to 0")]
         [SerializeField] private float stopSpeed;
 
@@ -28,6 +28,8 @@ namespace FirstPersonPlayer
         private Vector2 _inputVector;
         private float _mouseInputX;
         private Vector3 _horizontalVelocity;
+
+        private bool _movementEnabled = false;
 
         public void Construct(Transform playerTransform
             , CharacterController characterController
@@ -46,37 +48,42 @@ namespace FirstPersonPlayer
                 throw new ArgumentNullException(nameof(cameraManager));
             }
 
-            this.playerTransform = playerTransform;
-            this.characterController = characterController;
-            this.cameraManager = cameraManager;
+            _playerTransform = playerTransform;
+            _characterController = characterController;
+            _cameraManager = cameraManager;
+
+            _movementEnabled = true;
         }
 
         private void Update()
         {
-            _inputVector = new Vector2(Input.GetAxis("Horizontal"),
-                Input.GetAxis("Vertical"));
-            _inputVector.Normalize();
+            if (_movementEnabled)
+            {
+                _inputVector = new Vector2(Input.GetAxis("Horizontal"),
+                    Input.GetAxis("Vertical"));
+                _inputVector.Normalize();
 
-            RotatePlayer();
+                RotatePlayer();
 
-            Move();
+                Move();
+            }
         }
 
         private void Move()
         {
-            Vector3 newMovement = playerTransform.right * _inputVector.x
-                + playerTransform.forward * _inputVector.y;
+            Vector3 newMovement = _playerTransform.right * _inputVector.x
+                + _playerTransform.forward * _inputVector.y;
 
             if (newMovement.magnitude == 0)
             {
-                _horizontalVelocity *= groundHorizontalSlowdown;
+                _horizontalVelocity *= horizontalSlowdown;
             }
             else
             {
                 NewHorizontalMove(newMovement, walkAccel, maxWalkSpeed);
             }
             // Perform actual movement
-            characterController.Move(_horizontalVelocity * Time.deltaTime);
+            _characterController.Move(_horizontalVelocity * Time.deltaTime);
         }
 
         private void NewHorizontalMove(Vector3 vector, float accel, float maxSpeed)
@@ -97,8 +104,8 @@ namespace FirstPersonPlayer
         private void RotatePlayer()
         {
             _mouseInputX = Input.GetAxis("Mouse X") * Time.deltaTime;
-            playerTransform.Rotate(Vector3.up * _mouseInputX
-                * cameraManager.mouseSensitivity);
+            _playerTransform.Rotate(Vector3.up * _mouseInputX
+                * _cameraManager.mouseSensitivity);
         }
     }
 }
