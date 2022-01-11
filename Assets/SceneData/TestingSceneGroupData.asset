@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: TestingSceneGroupData
   m_EditorClassIdentifier: 
   sceneDataList:
-  - {fileID: 11400000, guid: 009cad72a07c744b49fdf23ff2d4c19a, type: 2}
   - {fileID: 11400000, guid: e67aa6370cf6c46f8a51e0315ac9ad5f, type: 2}
-  - {fileID: 11400000, guid: 644f5be1bd54444b88246bd112b6a3c1, type: 2}

@@ -14,14 +14,14 @@ namespace FirstPersonPlayer
 
         public void Construct()
         {
-            _playerTransform = gameObject.GetComponent<Transform>();
+            _playerTransform = GetComponent<Transform>();
 
-            _characterController = gameObject.GetComponent<CharacterController>();
+            _characterController = GetComponent<CharacterController>();
 
-            _cameraManager = gameObject.GetComponentInChildren<CameraManager>();
+            _cameraManager = GetComponentInChildren<CameraManager>();
             _cameraManager.Construct();
 
-            _playerMovement = gameObject.GetComponent<PlayerMovement>();
+            _playerMovement = GetComponent<PlayerMovement>();
             _playerMovement.Construct(_playerTransform
                 , _characterController, _cameraManager);
         }

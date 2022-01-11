@@ -15,10 +15,10 @@ namespace Spacefighter
 
         // Exposed variables
         [SerializeField] private float _moveAccel;
+        [SerializeField] private float _maxSpeed;
         [SerializeField] private float _slowdownDecel;
         [SerializeField] private float _stopThreshold;
         [SerializeField] private float _rotateSpeed;
-        [SerializeField] private float _snapRotateThreshold;
 
         [SerializeField] private float _fireRate;
 
@@ -28,9 +28,16 @@ namespace Spacefighter
         private Vector2 _currentVelocity;
         private Vector2 _inputVector;
 
+        private bool _characterEnabled = false;
         private bool _canShoot = true;
 
-        private void Awake()
+        public bool characterEnabled
+        {
+            private set { characterEnabled = _characterEnabled; }
+            get { return _characterEnabled; }
+        }
+
+        public void Construct()
         {
             _playerTransform = GetComponent<Transform>();
             _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -40,32 +47,34 @@ namespace Spacefighter
 
         private void Update()
         {
-            // Mouse0 being pressed
-            GetInputVector();
-            if (Input.GetButton("Fire1"))
+            if(_characterEnabled)
             {
-                Move();
-                RotateToward();
-            }
-            // Mouse0 not being pressed
-            else
-            {
-                Slowdown();
-            }
-
-            if (Input.GetButton("Fire2"))
-            {
-                RotateToward();
-                if (_canShoot)
+                // Mouse0 being pressed
+                GetInputVector();
+                if (Input.GetButton("Fire1"))
                 {
-                    Shoot();
-                    _canShoot = false;
-                    StartCoroutine(ShootCooldown());
+                    Move();
+                    RotateToward();
                 }
+                // Mouse0 not being pressed
+                else
+                {
+                    Slowdown();
+                }
+
+                if (Input.GetButton("Fire2"))
+                {
+                    RotateToward();
+                    if (_canShoot)
+                    {
+                        Shoot();
+                        StartCoroutine(ShootCooldown());
+                    }
+                }
+
+                // Set velocity
+                _rigidbody2D.velocity = _currentVelocity;
             }
-            
-            // Set velocity
-            _rigidbody2D.velocity = _currentVelocity;
         }
 
         private void GetInputVector()
@@ -82,6 +91,8 @@ namespace Spacefighter
         {
             Vector2 newMove = _inputVector * _moveAccel * Time.deltaTime;
             _currentVelocity += newMove;
+
+            _currentVelocity = Vector2.ClampMagnitude(_currentVelocity, _maxSpeed);
         }
 
         private void Slowdown()
@@ -127,6 +138,7 @@ namespace Spacefighter
 
         private IEnumerator ShootCooldown()
         {
+            _canShoot = false;
             yield return new WaitForSeconds(_fireRate);
             _canShoot = true;
         }
@@ -141,6 +153,11 @@ namespace Spacefighter
                 , Quaternion.identity);
             thisBullet.GetComponent<PlayerBullet>()
                 .Construct(thisDirection);
+        }
+
+        public void ToggleCharacterEnable()
+        {
+            _characterEnabled = !_characterEnabled;
         }
     }
 }
