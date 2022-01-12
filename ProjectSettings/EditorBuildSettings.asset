@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CalexTesting.unity
+    guid: d26c3c9ffcdbd4c4c92787a6fdd4ea6c
   m_configObjects: {}
