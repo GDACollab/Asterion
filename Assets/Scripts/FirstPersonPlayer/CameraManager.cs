@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using Spacefighter;
+using Utility;
 
 namespace FirstPersonPlayer
 {
@@ -48,7 +49,11 @@ namespace FirstPersonPlayer
             {
                 _testArcadePlayer.ToggleCharacterEnable();
                 _cameraStateAnimator.Play("Arcade");
-                ToggleOrthographic();
+                float duration = _cameraStateAnimator
+                    .GetCurrentAnimatorStateInfo(0).length;
+
+                UtilityFunctions.WaitDoAction(this,
+                    ToggleOrthographic, duration);
             }
 
             if (Input.GetKeyDown(KeyCode.F))
@@ -57,7 +62,12 @@ namespace FirstPersonPlayer
                 ToggleOrthographic();
                 _cameraStateAnimator.Play("FirstPerson");
             }
+        }
 
+        private bool AnimatorIsPlaying(Animator animator)
+        {
+            return animator.GetCurrentAnimatorStateInfo(0).length >
+                   animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         }
 
         private void ToggleCursorLock()
