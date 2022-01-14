@@ -5,7 +5,7 @@ using SceneControl;
 using FirstPersonPlayer;
 using Spacefighter;
 
-public class GameManager : MonoBehaviour
+public class MultiSceneGameManager : MonoBehaviour
 {
     private PlayerManager _playerManager;
     private SceneManager _sceneManager;

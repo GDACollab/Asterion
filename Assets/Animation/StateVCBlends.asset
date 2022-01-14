@@ -16,7 +16,7 @@ MonoBehaviour:
   - m_From: FirstPersonVC
     m_To: ArcadeVC
     m_Blend:
-      m_Style: 1
+      m_Style: 2
       m_Time: 1
       m_CustomCurve:
         serializedVersion: 2
@@ -27,7 +27,7 @@ MonoBehaviour:
   - m_From: ArcadeVC
     m_To: FirstPersonVC
     m_Blend:
-      m_Style: 1
+      m_Style: 3
       m_Time: 1
       m_CustomCurve:
         serializedVersion: 2

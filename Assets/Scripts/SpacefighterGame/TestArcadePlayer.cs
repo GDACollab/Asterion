@@ -51,10 +51,10 @@ namespace Spacefighter
             {
                 // Mouse0 being pressed
                 GetInputVector();
+                RotateToward();
                 if (Input.GetButton("Fire1"))
                 {
                     Move();
-                    RotateToward();
                 }
                 // Mouse0 not being pressed
                 else
@@ -89,7 +89,7 @@ namespace Spacefighter
 
         private void Move()
         {
-            Vector2 newMove = _inputVector * _moveAccel * Time.deltaTime;
+            Vector2 newMove = _playerTransform.right * _moveAccel * Time.deltaTime;
             _currentVelocity += newMove;
 
             _currentVelocity = Vector2.ClampMagnitude(_currentVelocity, _maxSpeed);
@@ -158,6 +158,8 @@ namespace Spacefighter
         public void ToggleCharacterEnable()
         {
             _characterEnabled = !_characterEnabled;
+            _rigidbody2D.velocity = Vector2.zero;
+            _currentVelocity = Vector2.zero;
         }
     }
 }

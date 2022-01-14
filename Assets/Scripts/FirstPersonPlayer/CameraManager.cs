@@ -18,8 +18,15 @@ namespace FirstPersonPlayer
 
         [Header("Mouse control")]
         [SerializeField] private float _mouseSensitivity;
-        [Header("FOV variables")]
-        [SerializeField] private float _defaultFOV;
+
+        private enum CameraState
+        {
+            FirstPerson,
+            Asterion,
+            Astramori
+        }
+
+        private CameraState currentCameraState;
 
         public float mouseSensitivity
         {
@@ -30,7 +37,7 @@ namespace FirstPersonPlayer
         public void Construct()
         {
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = true;
+            currentCameraState = CameraState.FirstPerson;
 
             _playerCamera = GetComponent<Camera>();
             _playerLook = GetComponent<PlayerLook>();
@@ -45,50 +52,82 @@ namespace FirstPersonPlayer
                 ToggleCursorLock();
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (currentCameraState != CameraState.Asterion
+                && Input.GetKeyDown(KeyCode.E))
             {
-                _testArcadePlayer.ToggleCharacterEnable();
-                _cameraStateAnimator.Play("Arcade");
-                float duration = _cameraStateAnimator
-                    .GetCurrentAnimatorStateInfo(0).length;
-
-                UtilityFunctions.WaitDoAction(this,
-                    ToggleOrthographic, duration);
+                SwitchCameraState(CameraState.Asterion);
             }
 
-            if (Input.GetKeyDown(KeyCode.F))
+            if (currentCameraState != CameraState.FirstPerson
+                && Input.GetKeyDown(KeyCode.F))
             {
-                _testArcadePlayer.ToggleCharacterEnable();
-                ToggleOrthographic();
-                _cameraStateAnimator.Play("FirstPerson");
+                SwitchCameraState(CameraState.FirstPerson);
             }
         }
 
-        private bool AnimatorIsPlaying(Animator animator)
+        
+        private void SwitchCameraState(CameraState state)
         {
-            return animator.GetCurrentAnimatorStateInfo(0).length >
-                   animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+            // Switch statements bad becuase poor scalibility
+            // but fine if only ever size 3?
+            switch (state)
+            {
+                case CameraState.FirstPerson:
+                    StartCoroutine(SetFirstPersonVC());
+                    break;
+                case CameraState.Asterion:
+                    StartCoroutine(SetAsterionVC());
+                    break;
+                case CameraState.Astramori:
+                    Debug.LogError("Astramori CurrentCameraState no supported");
+                    break;
+            }
+        }
+
+        private IEnumerator SetFirstPersonVC()
+        {
+            _testArcadePlayer.ToggleCharacterEnable();
+            ToggleOrthographic(false);
+            ToggleCursorLock();
+            _cameraStateAnimator.Play("FirstPerson");
+
+            float duration = _cameraStateAnimator
+                .GetCurrentAnimatorStateInfo(0).length;
+
+            yield return new WaitForSeconds(duration);
+
+            currentCameraState = CameraState.FirstPerson;
+        }
+
+        private IEnumerator SetAsterionVC()
+        {
+            ToggleCursorLock();
+            _cameraStateAnimator.Play("Arcade");
+            float duration = _cameraStateAnimator
+                .GetCurrentAnimatorStateInfo(0).length;
+
+            yield return new WaitForSeconds(duration);
+
+            currentCameraState = CameraState.Asterion;
+            _testArcadePlayer.ToggleCharacterEnable();
+            ToggleOrthographic(true);
         }
 
         private void ToggleCursorLock()
         {
             if (Cursor.lockState != CursorLockMode.Locked)
             {
-                //Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
-                //Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.Confined;
             }
         }
 
-        private void ToggleOrthographic()
+        private void ToggleOrthographic(bool setOrtho)
         {
-            bool arcadeEnabled = _testArcadePlayer.characterEnabled;
-
-            if (arcadeEnabled)
+            if (setOrtho)
             {
                 _playerCamera.orthographic = true;
                 _playerCamera.orthographicSize = 5;
@@ -96,6 +135,7 @@ namespace FirstPersonPlayer
             else
             {
                 _playerCamera.orthographic = false;
+
             }
         }
     }
