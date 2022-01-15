@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Cinemachine;
 using Spacefighter;
 using Utility;
+using Interactable;
 
 namespace FirstPersonPlayer
 {
     public class CameraManager : MonoBehaviour
     {
+        private InteractListManager _interactListManager;
+        private PlayerManager _playerManager;
+
         private Camera _playerCamera;
         [SerializeField] private CinemachineVirtualCamera _firstPersonVC;
         [SerializeField] private TestArcadePlayer _testArcadePlayer;
@@ -18,15 +23,19 @@ namespace FirstPersonPlayer
 
         [Header("Mouse control")]
         [SerializeField] private float _mouseSensitivity;
+        [SerializeField] private LayerMask _interactableLayerMask;
+        [SerializeField] private float _interactRange;
 
-        private enum CameraState
+        // TODO refactor interact and camera state change to child classes
+
+        public enum CameraState
         {
             FirstPerson,
             Asterion,
             Astramori
         }
 
-        private CameraState currentCameraState;
+        public CameraState currentCameraState;
 
         public float mouseSensitivity
         {
@@ -34,8 +43,13 @@ namespace FirstPersonPlayer
             get { return _mouseSensitivity; }
         }
 
-        public void Construct()
+        public UnityEvent<CameraState> OnChangeCameraState;
+
+        public void Construct(PlayerManager playerManager, InteractListManager interactListManager)
         {
+            _playerManager = playerManager;
+            _interactListManager = interactListManager;
+
             Cursor.lockState = CursorLockMode.Locked;
             currentCameraState = CameraState.FirstPerson;
 
@@ -43,33 +57,51 @@ namespace FirstPersonPlayer
             _playerLook = GetComponent<PlayerLook>();
 
             _playerLook.Construct(this, _firstPersonVC);
+
+            OnChangeCameraState.AddListener(OnChangeCameraStateCallback);
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                ToggleCursorLock();
-            }
+            MouseInteract();
+        }
 
-            if (currentCameraState != CameraState.Asterion
-                && Input.GetKeyDown(KeyCode.E))
+        private void MouseInteract()
+        {
+            RaycastHit hit;
+            // Does the ray intersect any objects excluding the player layer
+            if (Physics.Raycast(transform.position
+                ,transform.TransformDirection(Vector3.forward), out hit
+                , _interactRange, _interactableLayerMask))
             {
-                SwitchCameraState(CameraState.Asterion);
-            }
+                InteractableManager thisInteractable;
+                hit.transform.gameObject.TryGetComponent(out thisInteractable);
 
-            if (currentCameraState != CameraState.FirstPerson
-                && Input.GetKeyDown(KeyCode.F))
-            {
-                SwitchCameraState(CameraState.FirstPerson);
+                if(thisInteractable != null)
+                {
+                    if (Input.GetButtonDown("Fire1"))
+                    {
+                        thisInteractable.OnInteract.Invoke();
+                    }
+                }
             }
         }
 
-        
+        private void OnChangeCameraStateCallback(CameraState state)
+        {
+            SwitchCameraState(state);
+        }
+
         private void SwitchCameraState(CameraState state)
         {
             // Switch statements bad becuase poor scalibility
             // but fine if only ever size 3?
+
+            if(state != CameraState.FirstPerson)
+            {
+                _playerManager.playerMovement.SetMovementEnabled(false);
+            }
+
             switch (state)
             {
                 case CameraState.FirstPerson:
@@ -79,14 +111,14 @@ namespace FirstPersonPlayer
                     StartCoroutine(SetAsterionVC());
                     break;
                 case CameraState.Astramori:
-                    Debug.LogError("Astramori CurrentCameraState no supported");
+                    Debug.LogError("Astramori CurrentCameraState not supported");
                     break;
             }
         }
 
         private IEnumerator SetFirstPersonVC()
         {
-            _testArcadePlayer.ToggleCharacterEnable();
+            _testArcadePlayer.ToggleCharacterEnable(false);
             ToggleOrthographic(false);
             ToggleCursorLock();
             _cameraStateAnimator.Play("FirstPerson");
@@ -96,6 +128,7 @@ namespace FirstPersonPlayer
 
             yield return new WaitForSeconds(duration);
 
+            _playerManager.playerMovement.SetMovementEnabled(true);
             currentCameraState = CameraState.FirstPerson;
         }
 
@@ -109,7 +142,7 @@ namespace FirstPersonPlayer
             yield return new WaitForSeconds(duration);
 
             currentCameraState = CameraState.Asterion;
-            _testArcadePlayer.ToggleCharacterEnable();
+            _testArcadePlayer.ToggleCharacterEnable(true);
             ToggleOrthographic(true);
         }
 

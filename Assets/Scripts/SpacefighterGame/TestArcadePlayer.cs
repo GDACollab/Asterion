@@ -155,9 +155,9 @@ namespace Spacefighter
                 .Construct(thisDirection);
         }
 
-        public void ToggleCharacterEnable()
+        public void ToggleCharacterEnable(bool enabled)
         {
-            _characterEnabled = !_characterEnabled;
+            _characterEnabled = enabled;
             _rigidbody2D.velocity = Vector2.zero;
             _currentVelocity = Vector2.zero;
         }

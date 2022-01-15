@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Interactable;
+
 namespace FirstPersonPlayer
 {
     public class PlayerManager : MonoBehaviour
     {
         private Transform _playerTransform;
         private CharacterController _characterController;
-        private PlayerMovement _playerMovement;
-        private CameraManager _cameraManager;
+        public PlayerMovement playerMovement { get; private set; }
+        public CameraManager cameraManager { get; private set; }
+        private InteractListManager _interactListManager;
 
         public void Construct()
         {
@@ -18,12 +21,15 @@ namespace FirstPersonPlayer
 
             _characterController = GetComponent<CharacterController>();
 
-            _cameraManager = GetComponentInChildren<CameraManager>();
-            _cameraManager.Construct();
+            _interactListManager = FindObjectOfType<InteractListManager>();
+            _interactListManager.Construct();
 
-            _playerMovement = GetComponent<PlayerMovement>();
-            _playerMovement.Construct(_playerTransform
-                , _characterController, _cameraManager);
+            cameraManager = GetComponentInChildren<CameraManager>();
+            cameraManager.Construct(this, _interactListManager);
+
+            playerMovement = GetComponent<PlayerMovement>();
+            playerMovement.Construct(_playerTransform
+                , _characterController, cameraManager);
         }
     }
 }

@@ -52,7 +52,7 @@ namespace FirstPersonPlayer
             _characterController = characterController;
             _cameraManager = cameraManager;
 
-            _movementEnabled = true;
+            SetMovementEnabled(true);
         }
 
         private void Update()
@@ -106,6 +106,12 @@ namespace FirstPersonPlayer
             _mouseInputX = Input.GetAxis("Mouse X") * Time.deltaTime;
             _playerTransform.Rotate(Vector3.up * _mouseInputX
                 * _cameraManager.mouseSensitivity);
+        }
+
+        public void SetMovementEnabled(bool toSet)
+        {
+            _movementEnabled = toSet;
+            _horizontalVelocity = Vector3.zero;
         }
     }
 }

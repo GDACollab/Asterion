@@ -23,7 +23,7 @@ public class MultiSceneGameManager : MonoBehaviour
             _playerManager.Construct();
 
             _spacefighterGameManager = FindObjectOfType<SpacefighterGameManager>();
-            _spacefighterGameManager.Construct(_playerManager);
+            _spacefighterGameManager.Construct(_playerManager, _playerManager.cameraManager);
         });
     }
 }
