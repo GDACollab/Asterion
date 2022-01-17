@@ -13,6 +13,12 @@ namespace Interactable
         private CameraManager _cameraManager;
         private InteractableBehaviour _interactable;
         private TextMeshPro _textMeshPro;
+        [SerializeField] private string _interactText;
+        public string interactText
+        {
+            get { return _interactText; }
+            private set { interactText = _interactText; }
+        }
 
         public UnityEvent OnInteract;
         public UnityEvent OnStopInteract;
@@ -31,15 +37,16 @@ namespace Interactable
             OnStopInteract.AddListener(OnStopInteractCallback);
         }
 
-        private void OnMouseOver()
-        {
-            OnShowText.Invoke(true);
-        }
+        // Temporary easy 3D text toggling
+        //private void OnMouseOver()
+        //{
+        //    OnShowText.Invoke(true);
+        //}
 
-        private void OnMouseExit()
-        {
-            OnShowText.Invoke(false);
-        }
+        //private void OnMouseExit()
+        //{
+        //    OnShowText.Invoke(false);
+        //}
 
         private void OnInteractCallback()
         {

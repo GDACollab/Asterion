@@ -9,15 +9,17 @@ namespace FirstPersonPlayer
 {
     public class PlayerManager : MonoBehaviour
     {
-        private Transform _playerTransform;
-        private CharacterController _characterController;
+        public FirstPersonUIManager firstPersonUIManager { get; private set; }
+        public Transform playerTransform { get; private set; }
+        public CharacterController _characterController { get; private set; }
         public PlayerMovement playerMovement { get; private set; }
         public CameraManager cameraManager { get; private set; }
-        private InteractListManager _interactListManager;
+        public InteractListManager _interactListManager { get; private set; }
 
-        public void Construct()
+        public void Construct(FirstPersonUIManager firstPersonUIManager)
         {
-            _playerTransform = GetComponent<Transform>();
+            this.firstPersonUIManager = firstPersonUIManager;
+            playerTransform = GetComponent<Transform>();
 
             _characterController = GetComponent<CharacterController>();
 
@@ -28,7 +30,7 @@ namespace FirstPersonPlayer
             cameraManager.Construct(this, _interactListManager);
 
             playerMovement = GetComponent<PlayerMovement>();
-            playerMovement.Construct(_playerTransform
+            playerMovement.Construct(playerTransform
                 , _characterController, cameraManager);
         }
     }

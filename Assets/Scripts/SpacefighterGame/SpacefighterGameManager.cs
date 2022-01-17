@@ -22,7 +22,7 @@ namespace Spacefighter
             _testArcadePlayer = GetComponentInChildren<TestArcadePlayer>();
             _testArcadePlayer.Construct();
         }
-
+        
         private void Update()
         {
             // TODO This is messy, only the CameraManager

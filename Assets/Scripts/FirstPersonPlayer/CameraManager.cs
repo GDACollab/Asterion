@@ -13,6 +13,7 @@ namespace FirstPersonPlayer
     {
         private InteractListManager _interactListManager;
         private PlayerManager _playerManager;
+        private InteractTextManager _interactTextManager;
 
         private Camera _playerCamera;
         [SerializeField] private CinemachineVirtualCamera _firstPersonVC;
@@ -49,6 +50,8 @@ namespace FirstPersonPlayer
         {
             _playerManager = playerManager;
             _interactListManager = interactListManager;
+            _interactTextManager = _playerManager
+                .firstPersonUIManager.interactTextManager;
 
             Cursor.lockState = CursorLockMode.Locked;
             currentCameraState = CameraState.FirstPerson;
@@ -68,23 +71,28 @@ namespace FirstPersonPlayer
 
         private void MouseInteract()
         {
+            // Inefficient setting & getting every frame, but works
             RaycastHit hit;
-            // Does the ray intersect any objects excluding the player layer
             if (Physics.Raycast(transform.position
                 ,transform.TransformDirection(Vector3.forward), out hit
                 , _interactRange, _interactableLayerMask))
             {
-                InteractableManager thisInteractable;
-                hit.transform.gameObject.TryGetComponent(out thisInteractable);
-
-                if(thisInteractable != null)
+                if (hit.transform.gameObject.TryGetComponent
+                    (out InteractableManager thisInteractable))
                 {
+                    _interactTextManager.SetTextEnable(true);
+                    _interactTextManager.SetTextString(thisInteractable.interactText);
+
                     if (Input.GetButtonDown("Fire1"))
                     {
                         thisInteractable.OnInteract.Invoke();
+                        _interactTextManager.SetTextEnable(false);
                     }
+                    return;
                 }
             }
+            // Not looking at an interactable
+            _interactTextManager.SetTextEnable(false);
         }
 
         private void OnChangeCameraStateCallback(CameraState state)
@@ -120,7 +128,7 @@ namespace FirstPersonPlayer
         {
             _testArcadePlayer.ToggleCharacterEnable(false);
             ToggleOrthographic(false);
-            ToggleCursorLock();
+            ToggleCursorLock(true);
             _cameraStateAnimator.Play("FirstPerson");
 
             float duration = _cameraStateAnimator
@@ -128,13 +136,14 @@ namespace FirstPersonPlayer
 
             yield return new WaitForSeconds(duration);
 
+            _firstPersonVC.transform.rotation = _playerManager.playerTransform.rotation;
             _playerManager.playerMovement.SetMovementEnabled(true);
             currentCameraState = CameraState.FirstPerson;
         }
 
         private IEnumerator SetAsterionVC()
         {
-            ToggleCursorLock();
+            ToggleCursorLock(false);
             _cameraStateAnimator.Play("Arcade");
             float duration = _cameraStateAnimator
                 .GetCurrentAnimatorStateInfo(0).length;
@@ -146,9 +155,9 @@ namespace FirstPersonPlayer
             ToggleOrthographic(true);
         }
 
-        private void ToggleCursorLock()
+        private void ToggleCursorLock(bool isLock)
         {
-            if (Cursor.lockState != CursorLockMode.Locked)
+            if (isLock)
             {
                 Cursor.lockState = CursorLockMode.Locked;
             }
