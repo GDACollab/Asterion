@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - 2DBoundary
+  - 2DPlayer
+  - 2DPlayerProjectile
+  - 2DEnemy
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1958682409
+    locked: 0
+  - name: UI
+    uniqueID: 3627422605
     locked: 0

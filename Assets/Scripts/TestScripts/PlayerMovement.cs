@@ -25,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         MovementCheck();
+        ShootCheck();
+    }
+
+    void ShootCheck()
+    {
+
     }
 
     void MovementCheck()
