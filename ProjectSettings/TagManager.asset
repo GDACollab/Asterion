@@ -15,8 +15,8 @@ TagManager:
   - 2DPlayer
   - 2DPlayerProjectile
   - 2DEnemy
-  - 
-  - 
+  - 3DCamera
+  - 2DCamera
   - 
   - 
   - 
