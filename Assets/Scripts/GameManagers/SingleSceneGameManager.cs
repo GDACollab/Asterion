@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using SceneControl;
 using FirstPersonPlayer;
-using Spacefighter;
+using AsterionArcade;
 
 public class SingleSceneGameManager : MonoBehaviour
 {
     private PlayerManager _playerManager;
-    private SpacefighterGameManager _spacefighterGameManager;
-
     private FirstPersonUIManager _firstPersonUIManager;
+
+    private AsterionManager _asterionManager;
 
     private void Awake()
     {
@@ -20,7 +21,7 @@ public class SingleSceneGameManager : MonoBehaviour
         _playerManager = FindObjectOfType<PlayerManager>();
         _playerManager.Construct(_firstPersonUIManager);
 
-        _spacefighterGameManager = FindObjectOfType<SpacefighterGameManager>();
-        _spacefighterGameManager.Construct(_playerManager, _playerManager.cameraManager);
+        _asterionManager = FindObjectOfType<AsterionManager>();
+        _asterionManager.Construct(_playerManager.cameraManager);
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CustomBlends:
   - m_From: FirstPersonVC
-    m_To: ArcadeVC
+    m_To: AsterionVC
     m_Blend:
       m_Style: 2
       m_Time: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: ArcadeVC
+  - m_From: AsterionVC
     m_To: FirstPersonVC
     m_Blend:
       m_Style: 3

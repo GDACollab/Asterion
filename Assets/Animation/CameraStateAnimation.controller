@@ -37,10 +37,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -2459093920393015183}
-    m_Position: {x: 261.37198, y: 40.496628, z: 0}
+    m_Position: {x: 260, y: 40, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 163435890128534529}
-    m_Position: {x: 260, y: 170, z: 0}
+    m_State: {fileID: 2629737209244119690}
+    m_Position: {x: 250, y: 270, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -73,14 +73,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &163435890128534529
+--- !u!1102 &2629737209244119690
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Arcade
+  m_Name: AsterionArcade
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
