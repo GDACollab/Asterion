@@ -12,8 +12,13 @@ TagManager:
   - Water
   - UI
   - Interactable
+<<<<<<< Updated upstream
   - Asterion
   - 
+=======
+  - 3DCamera
+  - 2DCamera
+>>>>>>> Stashed changes
   - 
   - 
   - 
