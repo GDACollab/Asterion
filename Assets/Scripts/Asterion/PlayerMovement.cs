@@ -7,8 +7,24 @@ namespace AsterionArcade
     public class PlayerMovement : MonoBehaviour
     {
         public Rigidbody2D rb;
-        public float moveSpeed;
-        public float maxSpeed;
+        
+        // Base speeds
+        public float baseMoveSpeed = 5;
+        public float baseMaxSpeed = 5;
+
+        // Actual speeds after the thrusters have been accounted for
+        private float moveSpeed;
+        private float maxSpeed;
+
+        /// Power up levels
+        // Shields
+        public int shieldLevel;
+        // Guns
+        public int gunLevel;
+        // Thrusters
+        public int thrusterLevel;
+        // Range
+        public int rangeLevel;
 
         public Vector2 playerVelocity;
         public Vector3 mousePos;
@@ -33,6 +49,9 @@ namespace AsterionArcade
             {
                 rb = GetComponent<Rigidbody2D>();
             }
+            // Sets the movement speed
+            moveSpeed = baseMoveSpeed * (1 + (0.25f * thrusterLevel));
+            maxSpeed = baseMaxSpeed * (1 + (0.25f * thrusterLevel));
         }
 
         // Update is called once per frame
@@ -40,6 +59,11 @@ namespace AsterionArcade
         {
             if(inputEnabled)
             {
+                // Debug
+                moveSpeed = baseMoveSpeed * (1 + (0.25f * thrusterLevel));
+                maxSpeed = baseMaxSpeed * (1 + (0.25f * thrusterLevel));
+                // End debug
+                
                 MovementCheck();
                 ShootCheck();
             }
@@ -107,35 +131,7 @@ namespace AsterionArcade
 
         public void NonRelativeForceMovement()
         {
-            if (Input.GetKey(KeyCode.A))
-            {
-                playerVelocity.x = -moveSpeed;
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                playerVelocity.x = moveSpeed;
-            }
-
-            if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)))
-            {
-                playerVelocity.x = 0;
-            }
-
-            if (Input.GetKey(KeyCode.W))
-            {
-                playerVelocity.y = moveSpeed;
-            }
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                playerVelocity.y = -moveSpeed;
-            }
-
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) || (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)))
-            {
-                playerVelocity.y = 0;
-            }
+            setPlayerMovement();
 
             rb.AddForce(playerVelocity);
 
@@ -147,49 +143,49 @@ namespace AsterionArcade
         }
         public void NonRelativeMovement()
         {
-            if (Input.GetKey(KeyCode.A))
-            {
-                playerVelocity.x = -moveSpeed;
-            }
-
-            if (Input.GetKey(KeyCode.D))
-            {
-                playerVelocity.x = moveSpeed;
-            }
-
-            if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)))
-            {
-                playerVelocity.x = 0;
-            }
-
-            if (Input.GetKey(KeyCode.W))
-            {
-                playerVelocity.y = moveSpeed;
-            }
-
-            if (Input.GetKey(KeyCode.S))
-            {
-                playerVelocity.y = -moveSpeed;
-            }
-
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) || (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)))
-            {
-                playerVelocity.y = 0;
-            }
-
+            setPlayerMovement();
 
             rb.velocity = playerVelocity;
-
-
-
-
 
             if (rb.velocity.magnitude > maxSpeed)
             {
                 rb.velocity = rb.velocity.normalized * maxSpeed;
             }
+        }
 
+        // Sets the velocity of the player
+        private void setPlayerMovement() {
+            // Horizonal movement
+            if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)) {
+                if(!Input.GetKey(KeyCode.A)) {
+                    // Right
+                    playerVelocity.x = moveSpeed;
+                } else if (!Input.GetKey(KeyCode.D)) {
+                    // Left
+                    playerVelocity.x = -moveSpeed;
+                } else {
+                    // Both are pressed
+                    playerVelocity.x = 0;
+                }
+            } else {
+                playerVelocity.x = 0;
+            }
 
+            // Vertical movement
+            if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) {
+                if(!Input.GetKey(KeyCode.W)) {
+                    // Down
+                    playerVelocity.y = -moveSpeed;
+                } else if (!Input.GetKey(KeyCode.S)) {
+                    // Up
+                    playerVelocity.y = moveSpeed;
+                } else {
+                    // Both are pressed
+                    playerVelocity.y = 0;
+                }
+            } else {
+                playerVelocity.y = 0;
+            }
         }
     }
 }
