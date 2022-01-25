@@ -11,16 +11,16 @@ TagManager:
   - 
   - Water
   - UI
+  - Interactable
 <<<<<<< Updated upstream
-  - 
+  - Asterion
   - 
 =======
-  - Interactable
-  - Asterion
-  - 2DBoundaries
+  - 3DCamera
+  - 2DCamera
 >>>>>>> Stashed changes
   - 
-  - Astramori
+  - 
   - 
   - 
   - 
@@ -45,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 1958682409
+    locked: 0
+  - name: UI
+    uniqueID: 3627422605
     locked: 0

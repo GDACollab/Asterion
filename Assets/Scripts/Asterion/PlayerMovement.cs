@@ -7,17 +7,12 @@ namespace AsterionArcade
     public class PlayerMovement : MonoBehaviour
     {
         public Rigidbody2D rb;
-        public GameObject playerBulletPrefab;
-        public Transform playerBarrel;
-        [Header("Player Stats")]
         public float moveSpeed;
         public float maxSpeed;
 
-        [Header("Movement")]
         public Vector2 playerVelocity;
         public Vector3 mousePos;
 
-        [Header("Player State")]
         public bool inputEnabled = false;
 
         private void OnEnable()
@@ -52,14 +47,9 @@ namespace AsterionArcade
 
         void ShootCheck()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                var newBullet = Instantiate(playerBulletPrefab, playerBarrel.position, Quaternion.identity);
-                newBullet.GetComponent<AsterionPlayerBullet>().rb.AddForce(transform.up * 5, ForceMode2D.Impulse);
-            }
+        
         }
 
-        //checks and performs movement based on mouse position + keyboard inputs
         void MovementCheck()
         {
             mousePos = Input.mousePosition;

@@ -11,7 +11,6 @@ namespace FirstPersonPlayer
         private CinemachineVirtualCamera _firstPersonVC;
         private CameraManager _cameraManager;
         private Transform _cameraTransform;
-        public bool _rotateEnabled;
 
         private float _xRotation;
         private float _yRotation;
@@ -36,7 +35,7 @@ namespace FirstPersonPlayer
 
         private void Update()
         {
-            if(_firstPersonVC != null && _firstPersonVC.enabled && _rotateEnabled)
+            if(_firstPersonVC != null && _firstPersonVC.enabled)
             {
                 RotateCam();
             }

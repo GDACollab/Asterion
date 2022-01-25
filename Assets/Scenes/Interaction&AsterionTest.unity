@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -749,7 +749,7 @@ Transform:
   m_GameObject: {fileID: 634294090}
   m_LocalRotation: {x: 0.58639205, y: -0, z: -0, w: 0.8100275}
   m_LocalPosition: {x: 0, y: 1.252, z: 0.171}
-  m_LocalScale: {x: 0.04931993, y: 0.1, z: 0.04298998}
+  m_LocalScale: {x: 0.045926, y: 0.1, z: 0.04298998}
   m_Children: []
   m_Father: {fileID: 1295787343}
   m_RootOrder: 1
@@ -898,36 +898,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 655280336}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &680688230
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 680688231}
-  m_Layer: 7
-  m_Name: PlayerBarrel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &680688231
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680688230}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.52, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 690837004}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &690837003
 GameObject:
   m_ObjectHideFlags: 0
@@ -958,8 +928,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 680688231}
+  m_Children: []
   m_Father: {fileID: 1868742462}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1023,8 +992,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  playerBulletPrefab: {fileID: 2610094112412468131, guid: b58012a21a7db134bbb6f64ff5c94ab6, type: 3}
-  playerBarrel: {fileID: 680688231}
   moveSpeed: 10
   maxSpeed: 5
   playerVelocity: {x: 0, y: 0}
@@ -1221,8 +1188,8 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
-  m_Intensity: 0.8
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1280,7 +1247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948421172}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 2.712, y: 3.723, z: 0.245}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 358930549}
@@ -2279,7 +2246,7 @@ GameObject:
   - component: {fileID: 2099303920}
   - component: {fileID: 2099303918}
   - component: {fileID: 2099303919}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: GameBoundries
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2873,7 +2840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93a002e278b894ed29b73e186a07ffe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotateEnabled: 1
 --- !u!114 &6046343952270876186
 MonoBehaviour:
   m_ObjectHideFlags: 0
