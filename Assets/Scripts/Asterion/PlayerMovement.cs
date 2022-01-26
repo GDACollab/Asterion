@@ -7,14 +7,20 @@ namespace AsterionArcade
     public class PlayerMovement : MonoBehaviour
     {
         public Rigidbody2D rb;
-        
+
+        // General parameters for the player
         // Base speeds
         public float baseMoveSpeed = 5;
         public float baseMaxSpeed = 5;
 
-        // Actual speeds after the thrusters have been accounted for
-        private float moveSpeed;
-        private float maxSpeed;
+        // Starting health
+        public int health = 1;
+
+        // Base gun damage
+        public int baseDamage = 1;
+
+        // Initial bullet damage
+        public int fireDamage = 1;
 
         /// Power up levels
         // Shields
@@ -25,6 +31,27 @@ namespace AsterionArcade
         public int thrusterLevel;
         // Range
         public int rangeLevel;
+
+        // Variables for how much power ups change the player
+        // How much extra health each shield provides
+        public int shieldHealth = 1;
+
+        // How much extra damage every gun upgrade provides
+        public int gunPower = 1;
+
+        // How much each thruster level will increase the movement speed
+        public float thrusterIncrease = 0.25f;
+
+        // Varaibles to store data after upgrade levels have been set
+        // Actual health of player after shields have been added
+        private int hitPoints;
+
+        // Actual amout of damage the player does to enemies
+        private int damagePoints;
+
+        // Actual speeds after the thrusters have been accounted for
+        private float moveSpeed;
+        private float maxSpeed;
 
         public Vector2 playerVelocity;
         public Vector3 mousePos;
@@ -49,9 +76,12 @@ namespace AsterionArcade
             {
                 rb = GetComponent<Rigidbody2D>();
             }
-            // Sets the movement speed
-            moveSpeed = baseMoveSpeed * (1 + (0.25f * thrusterLevel));
-            maxSpeed = baseMaxSpeed * (1 + (0.25f * thrusterLevel));
+
+            // Initialization of local upgrade variables
+            hitPoints = health + (shieldHealth * shieldLevel);
+            damagePoints = baseDamage + (gunPower * gunLevel);
+            moveSpeed = baseMoveSpeed * (1 + (thrusterIncrease * thrusterLevel));
+            maxSpeed = baseMoveSpeed * (1 + (thrusterIncrease * thrusterLevel));
         }
 
         // Update is called once per frame
