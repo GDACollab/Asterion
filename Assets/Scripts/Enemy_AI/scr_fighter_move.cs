@@ -12,11 +12,23 @@ public class scr_fighter_move : MonoBehaviour
 
     public int Ai_Type;
 
+    public GameObject Player;
+
     private Rigidbody2D m_Rigidbody;
+    private Collider2D m_Collider;
     
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
+        m_Collider = GetComponent<Collider2D>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Physics2D.IgnoreCollision(Player.GetComponent<Collider2D>(), m_Collider);
+        }
     }
 
     // Update is called once per frame

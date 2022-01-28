@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6753158818963465612}
   - component: {fileID: 3713004275483948174}
   - component: {fileID: 7453058126079426298}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: obj_Fighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f54e60093509b409d2a121799f2661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FindPlayer_Fighter: {fileID: 1466273014437817486, guid: 5c69c712474006848a58abbc0ee93225, type: 3}
-  speed: 15
+  speed: 5
+  Ai_Type: 0
 --- !u!114 &6753158818963465612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,10 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05447633076fcb44906ba797aa0a7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletObject: {fileID: 758243255397651644, guid: d12bc7b2e1cf3f44ca56992e512dc95d, type: 3}
   shotDelay_Low: 5
   shotDelay_High: 7
   bulletSpeed: 50
-  bulletObject: {fileID: 758243255397651644, guid: d12bc7b2e1cf3f44ca56992e512dc95d, type: 3}
+  Ai_Type: 0
 --- !u!50 &3713004275483948174
 Rigidbody2D:
   serializedVersion: 4

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1466075362977472426}
   - component: {fileID: 1466075362977472427}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: obj_Find_Player_AI_Core
   m_TagString: Untagged
   m_Icon: {fileID: 2800000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
