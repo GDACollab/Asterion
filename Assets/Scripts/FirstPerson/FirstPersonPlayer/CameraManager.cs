@@ -129,7 +129,7 @@ namespace FirstPersonPlayer
                 .GetCurrentAnimatorStateInfo(0).length;
 
             yield return new WaitForSeconds(duration);
-
+            _playerLook._rotateEnabled = true;
             _firstPersonVC.transform.rotation = _playerManager.playerTransform.rotation;
             _playerManager.playerMovement.SetMovementEnabled(true);
             currentCameraState = CameraState.FirstPerson;
@@ -138,6 +138,7 @@ namespace FirstPersonPlayer
         private IEnumerator SetAsterionVC()
         {
             ToggleCursorLock(false);
+            _playerLook._rotateEnabled = false;
             _cameraStateAnimator.Play("AsterionArcade");
             float duration = _cameraStateAnimator
                 .GetCurrentAnimatorStateInfo(0).length;
