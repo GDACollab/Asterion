@@ -12,6 +12,7 @@ public class ShipStats : MonoBehaviour
     public int range;
 
     // Start is called before the first frame update
+    // keep start or awake?
     void Start()
     {
         thruster = 0;
@@ -25,8 +26,7 @@ public class ShipStats : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this;
-            
+            instance = this; 
         }
 
         Debug.Log(instance);
