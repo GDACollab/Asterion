@@ -49,6 +49,11 @@ public class scr_find_player : MonoBehaviour
         }
     }
 
+    public void UpdateAITargets()
+    {
+
+    }
+
     IEnumerator UpdatePosition(int Ai_Type)
     {
         yield return new WaitForSeconds(m_All_AI_Type_Delays[Ai_Type]);

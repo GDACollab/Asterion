@@ -114,7 +114,7 @@ namespace FirstPersonPlayer
                     StartCoroutine(SetAsterionVC());
                     break;
                 case CameraState.Astramori:
-                    Debug.LogError("Astramori CurrentCameraState not supported");
+                    StartCoroutine(SetAstramoriVC());
                     break;
             }
         }
@@ -146,6 +146,20 @@ namespace FirstPersonPlayer
             yield return new WaitForSeconds(duration);
 
             currentCameraState = CameraState.Asterion;
+            //ToggleOrthographic(true);
+        }
+
+        private IEnumerator SetAstramoriVC()
+        {
+            ToggleCursorLock(false);
+            _playerLook._rotateEnabled = false;
+            _cameraStateAnimator.Play("AstramoriArcade");
+            float duration = _cameraStateAnimator
+                .GetCurrentAnimatorStateInfo(0).length;
+
+            yield return new WaitForSeconds(duration);
+
+            currentCameraState = CameraState.Astramori;
             //ToggleOrthographic(true);
         }
 

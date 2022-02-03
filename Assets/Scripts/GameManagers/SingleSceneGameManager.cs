@@ -12,6 +12,7 @@ public class SingleSceneGameManager : MonoBehaviour
     private FirstPersonUIManager _firstPersonUIManager;
 
     private AsterionManager _asterionManager;
+    private AstramoriManager _astramoriManager;
 
     private void Awake()
     {
@@ -23,5 +24,8 @@ public class SingleSceneGameManager : MonoBehaviour
 
         _asterionManager = FindObjectOfType<AsterionManager>();
         _asterionManager.Construct(_playerManager.cameraManager);
+
+        _astramoriManager = FindObjectOfType<AstramoriManager>();
+        _astramoriManager.Construct(_playerManager.cameraManager);
     }
 }

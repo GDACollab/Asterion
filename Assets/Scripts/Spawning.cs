@@ -58,7 +58,8 @@ public class Spawning : MonoBehaviour
     void UpdateSpawn()
     {
         // Preview Spawn
-        preview.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) * Vector2.one;
+        preview.position = (Camera.main.ScreenToWorldPoint(Input.mousePosition) * Vector2.one) + (Vector2)transform.position;
+        preview.position = new Vector3(preview.position.x, preview.position.y, 0);
         preview.GetComponent<SpriteRenderer>().color *= new Color(1, 1, 1, 0);
         preview.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, CanPlace() ? previewAlpha : previewInvalidAlpha);
 
@@ -80,6 +81,7 @@ public class Spawning : MonoBehaviour
     void SpawnShip(int shipID, Vector3 position)
     {
         GameObject ship = Instantiate(shipPrefabs[shipID - 1], ships);
+        ship.layer = 12;
         ship.transform.position = position * Vector2.one;
         if (ship.TryGetComponent<Ship1>(out Ship1 ship1))
         {

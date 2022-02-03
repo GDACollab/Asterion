@@ -7,11 +7,13 @@ using Interactable;
 
 namespace AsterionArcade
 {
-    public class AsterionManager : InteractableBehaviour
+    public class AstramoriManager : InteractableBehaviour
     {
         private CameraManager _cameraManager;
-        public PlayerMovement _playerMovement { get; private set; }
+        public Spawning _playerMovement { get; private set; }
+
         public scr_find_player _aiCore;
+
         public GameObject player;
 
         public new void Construct(CameraManager cameraManager)
@@ -20,7 +22,7 @@ namespace AsterionArcade
 
             _cameraManager = cameraManager;
 
-            _playerMovement = GetComponentInChildren<PlayerMovement>();
+            _playerMovement = GetComponentInChildren<Spawning>();
 
             if (_playerMovement == null)
             {
@@ -36,7 +38,7 @@ namespace AsterionArcade
             // TODO This is messy, only the CameraManager
             // should have input that effect it
             if (_cameraManager.currentCameraState
-                == CameraManager.CameraState.Asterion
+                == CameraManager.CameraState.Astramori
                 && Input.GetKeyDown(KeyCode.Escape))
             {
                 _interactableManager.OnStopInteract.Invoke();
@@ -49,7 +51,7 @@ namespace AsterionArcade
             _interactableManager.gameObject.SetActive(false);
 
             _cameraManager.OnChangeCameraState
-                .Invoke(CameraManager.CameraState.Asterion);
+                .Invoke(CameraManager.CameraState.Astramori);
 
             _aiCore.enabled = true;
             _aiCore.m_Player = player;
