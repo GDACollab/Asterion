@@ -64,6 +64,8 @@ public class Starfighter : MonoBehaviour
             if (difference.magnitude < shortestDistance) shortestDistance = difference.magnitude;
         }
 
+        
+
         // Filters out any ships within a certain distance
         float distanceTreshold = shortestDistance * distanceTresholdFactor;
         for (int i = 0; i < shipInfos.Count; i++)

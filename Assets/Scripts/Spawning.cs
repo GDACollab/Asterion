@@ -14,6 +14,7 @@ public class Spawning : MonoBehaviour
     [SerializeField] bool ship1Active;
     [SerializeField] int selectedShip = 1;
     [SerializeField] float invalidRange = 1;
+    [SerializeField] float selectionSens = 0.5f;
 
     [Header("Preview Controls")]
     [SerializeField] float previewAlpha = 0.25f;
@@ -58,8 +59,12 @@ public class Spawning : MonoBehaviour
     void UpdateSpawn()
     {
         // Preview Spawn
-        preview.position = (Camera.main.ScreenToWorldPoint(Input.mousePosition) * Vector2.one) + (Vector2)transform.position;
-        preview.position = new Vector3(preview.position.x, preview.position.y, 0);
+        preview.localPosition = (Input.mousePosition) * Vector2.one;
+        Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, 0);
+        preview.localPosition -= center;
+        preview.localPosition *= selectionSens;
+        Debug.Log(preview.localPosition);
+        preview.localPosition = new Vector3(preview.localPosition.x, preview.localPosition.y, 0);
         preview.GetComponent<SpriteRenderer>().color *= new Color(1, 1, 1, 0);
         preview.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, CanPlace() ? previewAlpha : previewInvalidAlpha);
 
@@ -83,10 +88,10 @@ public class Spawning : MonoBehaviour
         GameObject ship = Instantiate(shipPrefabs[shipID - 1], ships);
         ship.layer = 12;
         ship.transform.position = position * Vector2.one;
-        if (ship.TryGetComponent<Ship1>(out Ship1 ship1))
+        if (ship.TryGetComponent<scr_fighter_move>(out scr_fighter_move ship1))
         {
-            ship1.SetStarfighter(starfighter);
-            ship1.Activate(ship1Active);
+            
+            ship1.seeking = true;
         }
     }
 

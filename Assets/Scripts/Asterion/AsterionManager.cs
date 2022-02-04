@@ -14,6 +14,9 @@ namespace AsterionArcade
         public scr_find_player _aiCore;
         public GameObject player;
 
+        public GameObject asterionCanvas;
+        
+
         public new void Construct(CameraManager cameraManager)
         {
             base.Construct(cameraManager);
