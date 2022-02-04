@@ -72,5 +72,7 @@ namespace AsterionArcade
             //astramoriCanvas.SetActive(false);
 
         }
+
+       
     }
 }

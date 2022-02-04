@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
 public class VirtualCanvasCursor : MonoBehaviour
 {
@@ -15,11 +14,8 @@ public class VirtualCanvasCursor : MonoBehaviour
     public Camera cam;
     public FakeCursor fc;
 
-    public GraphicRaycaster gr;
-    List<RaycastResult> results;
     void Start()
     {
-        gr = GetComponent<GraphicRaycaster>();
         canvasSize = new Vector2(gameCanvas.rect.width, gameCanvas.rect.height);
         //m_EventSystem = GetComponent<EventSystem>();
 

@@ -94,7 +94,7 @@ public class Spawning : MonoBehaviour
 
     void SpawnShip(int shipID, Vector3 position)
     {
-        GameObject ship = Instantiate(shipPrefabs[shipID - 1], ships);
+        GameObject ship = Instantiate(GameManager.Instance.alienShipPrefabs[shipID - 1], ships);
         ship.layer = 12;
         ship.transform.position = position * Vector2.one;
         if (ship.TryGetComponent<scr_fighter_move>(out scr_fighter_move ship1))

@@ -36,4 +36,12 @@ public class ShipStats : MonoBehaviour
         shield = 0;
         range = 0;
     }
+
+    public void ResetAllStats()
+    {
+        thruster = 0;
+        attack = 0;
+        shield = 0;
+        range = 0;
+    }
 }

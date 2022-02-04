@@ -7,6 +7,9 @@ TagManager:
   - Ai_GameBoundry
   - RenderTexturePlane
   - CanvasButton
+  - AlienBullet
+  - StarshipBullet
+  - AlienShip
   layers:
   - Default
   - TransparentFX

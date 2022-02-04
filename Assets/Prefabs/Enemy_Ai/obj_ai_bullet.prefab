@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1386256724552702290}
   - component: {fileID: 5612347914663999230}
   - component: {fileID: -3415252817363364817}
+  - component: {fileID: 8920906816550093288}
   m_Layer: 7
   m_Name: obj_ai_bullet
   m_TagString: AlienBullet
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 758243255397651644}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.53, y: 1.56, z: 2.8673909}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -134,3 +135,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d143e63a541949e499a89cb471064ed6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8920906816550093288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758243255397651644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35080b4baca336f41b5fec636c31e020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  isAlien: 1
+  lifetime: 10

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3713004275483948172}
+  - component: {fileID: 3952765820263384265}
   - component: {fileID: 3713004275483948175}
   - component: {fileID: 3713004275483948145}
   - component: {fileID: 6753158818963465612}
@@ -16,7 +17,7 @@ GameObject:
   - component: {fileID: 7453058126079426298}
   m_Layer: 7
   m_Name: obj_Fighter
-  m_TagString: Untagged
+  m_TagString: AlienShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,11 +31,27 @@ Transform:
   m_GameObject: {fileID: 3713004275483948173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3952765820263384265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3713004275483948173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3876c2551ac52c54ba0ce325e89d000c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  baseHealth: 1
+  isAlien: 1
+  rb: {fileID: 0}
 --- !u!212 &3713004275483948175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98,8 +115,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f54e60093509b409d2a121799f2661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   Ai_Type: 0
+  seeking: 0
+  Player: {fileID: 0}
 --- !u!114 &6753158818963465612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +134,7 @@ MonoBehaviour:
   bulletObject: {fileID: 758243255397651644, guid: d12bc7b2e1cf3f44ca56992e512dc95d, type: 3}
   shotDelay_Low: 5
   shotDelay_High: 7
-  bulletSpeed: 50
+  bulletSpeed: 7
   Ai_Type: 0
 --- !u!50 &3713004275483948174
 Rigidbody2D:

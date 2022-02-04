@@ -22,13 +22,16 @@ public class scr_fighter_move : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Collider = GetComponent<Collider2D>();
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
-            Physics2D.IgnoreCollision(Player.GetComponent<Collider2D>(), m_Collider);
+            //damage player and destroy alien ship on collision with player
+            collision.gameObject.GetComponent<BasicDamageable>().TakeDamage(1);
+            Destroy(this.gameObject);
         }
     }
 

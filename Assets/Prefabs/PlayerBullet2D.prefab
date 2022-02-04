@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2610094112412468191}
   - component: {fileID: 2610094112412468190}
   - component: {fileID: 2610094112412468184}
+  - component: {fileID: -8054969025297896764}
   m_Layer: 7
   m_Name: PlayerBullet2D
   m_TagString: StarshipBullet
@@ -41,7 +42,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2610094112412468131}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be63a47caa3d5df438159b740cb90e5a, type: 3}
   m_Name: 
@@ -114,7 +115,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.1
 --- !u!50 &2610094112412468184
 Rigidbody2D:
   serializedVersion: 4
@@ -136,3 +137,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8054969025297896764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2610094112412468131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09793581d44cd344da72dec126dbb320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  isAlien: 0
+  lifetime: 10

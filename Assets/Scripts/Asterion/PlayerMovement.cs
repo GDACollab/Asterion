@@ -8,10 +8,16 @@ namespace AsterionArcade
     {
         public Rigidbody2D rb;
         public GameObject playerBulletPrefab;
+        [Header("Base Player Stats")]
+        public float baseSpeed;
+        public float baseMaxSpeed;
+        public int baseDamage;
         [Header("Player Stats")]
         public float moveSpeed;
         public float maxSpeed;
         public float projectileSpeed;
+        public int damage;
+        
 
         [Header("Player Movement")]
         public Vector2 playerVelocity;
@@ -38,6 +44,9 @@ namespace AsterionArcade
             {
                 rb = GetComponent<Rigidbody2D>();
             }
+            maxSpeed = baseMaxSpeed;
+            moveSpeed = baseSpeed;
+
         }
 
         // Update is called once per frame
