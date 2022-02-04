@@ -9,6 +9,8 @@ public class Spawning : MonoBehaviour
     [SerializeField] Transform ships;
     [SerializeField] Transform preview;
     [SerializeField] Transform starfighter;
+    [SerializeField] FakeCursor fc;
+    [SerializeField] Camera astramoriCamera;
 
     [Header("Main Controls")]
     [SerializeField] bool ship1Active;
@@ -19,6 +21,7 @@ public class Spawning : MonoBehaviour
     [Header("Preview Controls")]
     [SerializeField] float previewAlpha = 0.25f;
     [SerializeField] float previewInvalidAlpha = 0.1f;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -59,17 +62,23 @@ public class Spawning : MonoBehaviour
     void UpdateSpawn()
     {
         // Preview Spawn
+        /*
         preview.localPosition = (Input.mousePosition) * Vector2.one;
         Vector3 center = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         preview.localPosition -= center;
         preview.localPosition *= selectionSens;
-        Debug.Log(preview.localPosition);
+        */
+
+        preview.position = (fc.transform.GetComponent<RectTransform>().transform.position);
+        
+
+        //Debug.Log(preview.localPosition);
         preview.localPosition = new Vector3(preview.localPosition.x, preview.localPosition.y, 0);
         preview.GetComponent<SpriteRenderer>().color *= new Color(1, 1, 1, 0);
         preview.GetComponent<SpriteRenderer>().color += new Color(0, 0, 0, CanPlace() ? previewAlpha : previewInvalidAlpha);
 
         // Spawn Ship
-        if (CanPlace() && Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && CanPlace() && fc.collidingObjects.Count <= 0)
         {
             Vector3 position = preview.position;
             SpawnShip(selectedShip, position);

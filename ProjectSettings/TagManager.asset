@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ai_GameBoundry
+  - RenderTexturePlane
+  - CanvasButton
   layers:
   - Default
   - TransparentFX

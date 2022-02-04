@@ -11,10 +11,18 @@ namespace AsterionArcade
     {
         private CameraManager _cameraManager;
         public PlayerMovement _playerMovement { get; private set; }
-        public scr_find_player _aiCore;
-        public GameObject player;
 
-        public GameObject asterionCanvas;
+        [Header("Objects")]
+        [SerializeField] scr_find_player _aiCore;
+        [SerializeField] GameObject player;
+        [SerializeField] GameObject asterionCanvas;
+        [SerializeField] GameObject mainMenu;
+        [SerializeField] GameObject upgradeMenu;
+
+        public enum GameState {Disabled, MainMenu, Upgrades, Gameplay};
+        public GameState currentGameState;
+
+        
         
 
         public new void Construct(CameraManager cameraManager)
@@ -44,6 +52,8 @@ namespace AsterionArcade
             {
                 _interactableManager.OnStopInteract.Invoke();
             }
+
+
         }
 
         public override void InteractAction()
@@ -56,6 +66,9 @@ namespace AsterionArcade
 
             _aiCore.enabled = true;
             _aiCore.m_Player = player;
+            currentGameState = GameState.MainMenu;
+            mainMenu.SetActive(true);
+            upgradeMenu.SetActive(true);
         }
 
         public override void StopInteractAction()
@@ -67,6 +80,21 @@ namespace AsterionArcade
                 .Invoke(CameraManager.CameraState.FirstPerson);
 
             _aiCore.enabled = false;
+            currentGameState = GameState.Disabled;
+            mainMenu.SetActive(true);
+            upgradeMenu.SetActive(true);
         }
+
+        public void CloseMainMenu()
+        {
+            mainMenu.SetActive(false);
+        }
+
+        public void CloseUpgradeScreen()
+        {
+            upgradeMenu.SetActive(false);
+        }
+
+
     }
 }

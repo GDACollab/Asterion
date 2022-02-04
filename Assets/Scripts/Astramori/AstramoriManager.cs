@@ -15,7 +15,7 @@ namespace AsterionArcade
         public scr_find_player _aiCore;
 
         public GameObject player;
-        public GameObject astramoriCanvas;
+        //public GameObject astramoriCanvas;
 
         public new void Construct(CameraManager cameraManager)
         {
@@ -56,7 +56,7 @@ namespace AsterionArcade
 
             _aiCore.enabled = true;
             _aiCore.m_Player = player;
-            astramoriCanvas.SetActive(true);
+            //astramoriCanvas.SetActive(true);
 
         }
 
@@ -69,7 +69,7 @@ namespace AsterionArcade
                 .Invoke(CameraManager.CameraState.FirstPerson);
 
             _aiCore.enabled = false;
-            astramoriCanvas.SetActive(false);
+            //astramoriCanvas.SetActive(false);
 
         }
     }
