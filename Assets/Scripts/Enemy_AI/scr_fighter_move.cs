@@ -33,6 +33,12 @@ public class scr_fighter_move : MonoBehaviour
             collision.gameObject.GetComponent<BasicDamageable>().TakeDamage(1);
             Destroy(this.gameObject);
         }
+
+        if (collision.gameObject.tag == "Ai_GameBoundry")
+        {
+            //damage player and destroy alien ship on collision with player
+            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.collider);
+        }
     }
 
     // Update is called once per frame

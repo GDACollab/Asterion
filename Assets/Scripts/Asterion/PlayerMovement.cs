@@ -44,8 +44,6 @@ namespace AsterionArcade
             {
                 rb = GetComponent<Rigidbody2D>();
             }
-            maxSpeed = baseMaxSpeed;
-            moveSpeed = baseSpeed;
 
         }
 

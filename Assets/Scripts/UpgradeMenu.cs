@@ -7,16 +7,16 @@ using TMPro;
 public class UpgradeMenu : MonoBehaviour
 {
     [SerializeField]
-    private Text shield;
+    private TextMeshProUGUI shield;
 
     [SerializeField]
-    private Text attack;
+    private TextMeshProUGUI attack;
 
     [SerializeField]
-    private Text thruster;
+    private TextMeshProUGUI thruster;
 
     [SerializeField]
-    private Text range;
+    private TextMeshProUGUI range;
 
     private ShipStats stats;
 

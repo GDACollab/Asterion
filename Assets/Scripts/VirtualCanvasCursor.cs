@@ -9,6 +9,7 @@ public class VirtualCanvasCursor : MonoBehaviour
 
     public bool cursorEnabled;
     public RectTransform cursor;
+    private Image sr;
     public RectTransform gameCanvas;
     public Vector2 canvasSize;
     public Camera cam;
@@ -17,8 +18,21 @@ public class VirtualCanvasCursor : MonoBehaviour
     void Start()
     {
         canvasSize = new Vector2(gameCanvas.rect.width, gameCanvas.rect.height);
+        sr = cursor.transform.GetComponent<Image>();
         //m_EventSystem = GetComponent<EventSystem>();
 
+    }
+
+    public void EnableVirtualCursor()
+    {
+        cursorEnabled = true;
+        sr.enabled = true;
+    }
+
+    public void DisableVirtualCursor()
+    {
+        cursorEnabled = false;
+        sr.enabled = false;
     }
 
     // Update is called once per frame
@@ -52,7 +66,7 @@ public class VirtualCanvasCursor : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-               foreach(Button b in fc.collidingObjects)
+               foreach(Button b in fc.collidingObjects.ToArray())
                 {
                     b.onClick.Invoke();
                 }

@@ -21,6 +21,8 @@ namespace AsterionArcade
         [SerializeField] GameObject mainMenu;
         [SerializeField] GameObject upgradeMenu;
         [SerializeField] GameObject lossMenu;
+        [SerializeField] AsterionLossScreen lossScreen;
+        [SerializeField] VirtualCanvasCursor cursor;
         [SerializeField] Transform enemies;
         
 
@@ -29,7 +31,10 @@ namespace AsterionArcade
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
         [Header("Current Game State Info")]
         public GameState currentGameState;
+        public bool isLost;
+        public List<int> baseEnemyQueue;
         public List<int> enemyQueue;
+ 
 
         [Header("Asterion Spawning Rate/Range")]
         public float spawnRate;
@@ -60,7 +65,7 @@ namespace AsterionArcade
             // should have input that effect it
             if (_cameraManager.currentCameraState
                 == CameraManager.CameraState.Asterion
-                && Input.GetKeyDown(KeyCode.Escape))
+                && Input.GetKeyDown(KeyCode.Escape) && currentGameState == GameState.MainMenu)
             {
                 _interactableManager.OnStopInteract.Invoke();
             }
@@ -76,42 +81,49 @@ namespace AsterionArcade
             _cameraManager.OnChangeCameraState
                 .Invoke(CameraManager.CameraState.Asterion);
 
-            _aiCore.enabled = true;
-            _aiCore.m_Player = player;
-            currentGameState = GameState.MainMenu;
-            mainMenu.SetActive(true);
-            upgradeMenu.SetActive(true);
-            lossMenu.SetActive(false);
-            GameManager.Instance.shipStats.ResetAllStats();
+            StartFreshGame();
 
         }
 
         public override void StopInteractAction()
         {
             _playerMovement.enabled = false;
-            _interactableManager.gameObject.SetActive(true);
+            
 
-            _cameraManager.OnChangeCameraState
-                .Invoke(CameraManager.CameraState.FirstPerson);
+            
 
+            cursor.DisableVirtualCursor();
             _aiCore.enabled = false;
             currentGameState = GameState.Disabled;
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(true);
             lossMenu.SetActive(false);
             StopCoroutine(CombatRoutine());
+
+            _cameraManager.OnChangeCameraState
+                .Invoke(CameraManager.CameraState.FirstPerson);
+            _interactableManager.gameObject.SetActive(true);
         }
 
         public void CloseMainMenu()
         {
-            mainMenu.SetActive(false);
-            currentGameState = GameState.Upgrades;
+            if(GameManager.Instance.coinCount > 0)
+            {
+                GameManager.Instance.AlterCoins(-1);
+                mainMenu.SetActive(false);
+                currentGameState = GameState.Upgrades;
+            }
+            else
+            {
+
+            }
+            
         }
 
         public void CloseUpgradeScreen()
         {
             player.transform.position = spawnPosition.position;
-            ResetStats();
+            //ResetStats();
             ApplyBonusStats();
             upgradeMenu.SetActive(false);
             currentGameState = GameState.Gameplay;
@@ -119,24 +131,78 @@ namespace AsterionArcade
             
             StartCoroutine(CombatRoutine());
 
+            //GameManager.Instance.AlterCoins(-1);
+        }
+
+        public void StartFreshGame()
+        {
+            isLost = false;
+            enemyQueue = new List<int>(baseEnemyQueue);
+            cursor.EnableVirtualCursor();
+            _aiCore.enabled = true;
+            _aiCore.m_Player = player;
+            currentGameState = GameState.MainMenu;
+            mainMenu.SetActive(true);
+            upgradeMenu.SetActive(true);
+            lossMenu.SetActive(false);
+            GameManager.Instance.shipStats.ResetAllStats();
+            lossScreen.insufficientFundsText.enabled = false;
+        }
+
+        public void ContinueCurrentGame()
+        {
+            isLost = false;
+            _aiCore.enabled = true;
+            _aiCore.m_Player = player;
+            mainMenu.SetActive(false);
+            upgradeMenu.SetActive(false);
+            lossMenu.SetActive(false);
+            lossScreen.insufficientFundsText.enabled = false;
+            player.transform.position = spawnPosition.position;
+            ApplyBonusStats();
+            currentGameState = GameState.Gameplay;
+            _playerMovement.enabled = true;
+
+            StartCoroutine(CombatRoutine());
             GameManager.Instance.AlterCoins(-1);
         }
 
         public void GameConcluded(bool isWin)
         {
+            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+
             if (isWin)
             {
+                lossScreen.gameStateText.text = "You Win!";
+                cursor.EnableVirtualCursor();
+                lossScreen.continueButtonText.text = "Start Again? (1 Quarter)";
+                lossMenu.SetActive(true);
+                _aiCore.enabled = false;
                 _playerMovement.enabled = false;
+                foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+                {
+                    bd.Death();
+                }
+                isLost = false;
             }
             else
             {
+                lossScreen.gameStateText.text = "You Lost!";
+                cursor.EnableVirtualCursor();
                 lossMenu.SetActive(true);
+                lossScreen.continueButtonText.text = "Continue? (1 Quarter)";
                 _playerMovement.enabled = false;
                 StopAllCoroutines();
                 _aiCore.enabled = false;
+                foreach(BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+                {
+                    bd.Death();
+                }
+                isLost = true;
             }
         }
 
+        //sets fighter stats to base + chosen upgrades
         public void ApplyBonusStats()
         {
             player.GetComponent<PlayerMovement>().moveSpeed = player.GetComponent<PlayerMovement>().baseSpeed + GameManager.Instance.shipStats.thruster;
@@ -145,6 +211,7 @@ namespace AsterionArcade
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
         }
 
+        //sets fighter stats to default
         public void ResetStats()
         {
             player.GetComponent<PlayerMovement>().moveSpeed = player.GetComponent<PlayerMovement>().baseSpeed;
@@ -153,8 +220,10 @@ namespace AsterionArcade
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth;
         }
 
+        // placeholder enemy spawning system
         IEnumerator CombatRoutine()
         {
+            cursor.DisableVirtualCursor();
             yield return new WaitForSeconds(1);
 
             while (enemyQueue.Count > 0)
@@ -175,10 +244,45 @@ namespace AsterionArcade
 
             }
 
+            yield return new WaitUntil(() => enemies.childCount <= 0);
+
             GameConcluded(true);
 
             yield return null;
         }
+
+        //continue current round
+        public void Continue()
+        {
+            if(GameManager.Instance.coinCount > 0)
+            {
+                if (isLost)
+                {
+                    ContinueCurrentGame();
+                }
+                else
+                {
+                    StartFreshGame();
+                }
+            }
+            else
+            {
+                lossScreen.insufficientFundsText.enabled = true;
+            }
+            
+        }
+
+        public void ExitMachine()
+        {
+            cursor.DisableVirtualCursor();
+            if (_cameraManager.currentCameraState == CameraManager.CameraState.Asterion)
+            {
+                _interactableManager.OnStopInteract.Invoke();
+            }
+            
+            //StopInteractAction();
+        }
+
 
 
     }

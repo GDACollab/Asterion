@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
     public void AlterCoins(int diff)
     {
         coinCount += diff;
-        if(diff < 0)
+        if(coinCount < 0)
         {
             coinCount = 0;
         }
