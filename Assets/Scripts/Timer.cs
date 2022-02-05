@@ -3,23 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Timer : MonoBehaviour
+namespace AsterionArcade
 {
-    TextMeshProUGUI timer;
-    [SerializeField] float startingTime;
-    float time;
-
-    // Start is called before the first frame update
-    void Start()
+    public class Timer : MonoBehaviour
     {
-        timer = GetComponent<TextMeshProUGUI>();
-        time = startingTime;
-    }
+        TextMeshProUGUI timer;
+        bool isRunning;
+        public float startingTime;
+        public float time;
+        [SerializeField] AstramoriManager astramoriManager;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (time > 0) time -= Time.deltaTime;
-        timer.text = Mathf.FloorToInt(time) + 1 + "";
+        // Start is called before the first frame update
+        void Start()
+        {
+            timer = GetComponent<TextMeshProUGUI>();
+            time = startingTime;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (isRunning)
+            {
+                if (time > 0) time -= Time.deltaTime;
+                timer.text = Mathf.FloorToInt(time) + 1 + "";
+
+                if(isRunning && time <= 0)
+                {
+                    isRunning = false;
+                    astramoriManager.GameConcluded(false);
+
+                }
+            }
+            
+        }
+
+        
+
+        public void StartTimer()
+        {
+            time = startingTime;
+            isRunning = true;
+        }
+
+        public void StopTimer()
+        {
+            isRunning = false;
+        }
+
+
+
+        
+
+
     }
 }

@@ -66,7 +66,7 @@ public class VirtualCanvasCursor : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-               foreach(Button b in fc.collidingObjects.ToArray())
+                foreach (Button b in fc.collidingObjects.ToArray())
                 {
                     b.onClick.Invoke();
                 }
@@ -74,7 +74,7 @@ public class VirtualCanvasCursor : MonoBehaviour
         }
 
 
-       
+
     }
 
 

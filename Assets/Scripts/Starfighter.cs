@@ -123,4 +123,14 @@ public class Starfighter : MonoBehaviour
     {
         //SceneManager.LoadScene(0);
     }
+
+    public void SetActive()
+    {
+        active = true;
+    }
+
+    public void Deactivate()
+    {
+        active = false;
+    }
 }

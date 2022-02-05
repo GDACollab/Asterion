@@ -26,6 +26,7 @@ namespace AsterionArcade {
         [Header("Preview Controls")]
         [SerializeField] float previewAlpha = 0.25f;
         [SerializeField] float previewInvalidAlpha = 0.1f;
+        public bool isActive;
 
 
         // Start is called before the first frame update
@@ -39,8 +40,12 @@ namespace AsterionArcade {
         {
             if (Input.GetKeyDown(KeyCode.F1)) ActivateShip1();
 
-            UpdateHotKeys();
-            UpdateSpawn();
+            if (isActive)
+            {
+                UpdateHotKeys();
+                UpdateSpawn();
+            }
+            
         }
 
         // Changes selected ship based on Hot Keys

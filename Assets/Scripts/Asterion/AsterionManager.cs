@@ -24,6 +24,7 @@ namespace AsterionArcade
         [SerializeField] AsterionLossScreen lossScreen;
         [SerializeField] VirtualCanvasCursor cursor;
         [SerializeField] Transform enemies;
+        [SerializeField] AstramoriManager astramoriManager;
         
 
 
@@ -147,6 +148,7 @@ namespace AsterionArcade
             lossMenu.SetActive(false);
             GameManager.Instance.shipStats.ResetAllStats();
             lossScreen.insufficientFundsText.enabled = false;
+            baseEnemyQueue = new List<int>(astramoriManager.enemyQueue);
         }
 
         public void ContinueCurrentGame()
