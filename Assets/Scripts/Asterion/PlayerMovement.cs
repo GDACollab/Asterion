@@ -7,12 +7,23 @@ namespace AsterionArcade
     public class PlayerMovement : MonoBehaviour
     {
         public Rigidbody2D rb;
+        public GameObject playerBulletPrefab;
+        [Header("Base Player Stats")]
+        public float baseSpeed;
+        public float baseMaxSpeed;
+        public int baseDamage;
+        [Header("Player Stats")]
         public float moveSpeed;
         public float maxSpeed;
+        public float projectileSpeed;
+        public int damage;
+        
 
+        [Header("Player Movement")]
         public Vector2 playerVelocity;
         public Vector3 mousePos;
 
+        [Header("Player State")]
         public bool inputEnabled = false;
 
         private void OnEnable()
@@ -33,6 +44,7 @@ namespace AsterionArcade
             {
                 rb = GetComponent<Rigidbody2D>();
             }
+
         }
 
         // Update is called once per frame
@@ -47,7 +59,11 @@ namespace AsterionArcade
 
         void ShootCheck()
         {
-        
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                var bullet = Instantiate(playerBulletPrefab, transform.position, Quaternion.identity);
+                bullet.GetComponent<AsterionPlayerBullet>().rb.AddForce(transform.up * projectileSpeed, ForceMode2D.Impulse);
+            }
         }
 
         void MovementCheck()

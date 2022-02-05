@@ -81,7 +81,7 @@ namespace FirstPersonPlayer
                     _interactTextManager.SetTextEnable(true);
                     _interactTextManager.SetTextString(thisInteractable.interactText);
 
-                    if (Input.GetButtonDown("Fire1"))
+                    if (Input.GetButtonDown("Fire1") && currentCameraState == CameraState.FirstPerson)
                     {
                         thisInteractable.OnInteract.Invoke();
                         _interactTextManager.SetTextEnable(false);
@@ -114,7 +114,7 @@ namespace FirstPersonPlayer
                     StartCoroutine(SetAsterionVC());
                     break;
                 case CameraState.Astramori:
-                    Debug.LogError("Astramori CurrentCameraState not supported");
+                    StartCoroutine(SetAstramoriVC());
                     break;
             }
         }
@@ -129,7 +129,7 @@ namespace FirstPersonPlayer
                 .GetCurrentAnimatorStateInfo(0).length;
 
             yield return new WaitForSeconds(duration);
-
+            _playerLook._rotateEnabled = true;
             _firstPersonVC.transform.rotation = _playerManager.playerTransform.rotation;
             _playerManager.playerMovement.SetMovementEnabled(true);
             currentCameraState = CameraState.FirstPerson;
@@ -138,6 +138,7 @@ namespace FirstPersonPlayer
         private IEnumerator SetAsterionVC()
         {
             ToggleCursorLock(false);
+            _playerLook._rotateEnabled = false;
             _cameraStateAnimator.Play("AsterionArcade");
             float duration = _cameraStateAnimator
                 .GetCurrentAnimatorStateInfo(0).length;
@@ -145,6 +146,20 @@ namespace FirstPersonPlayer
             yield return new WaitForSeconds(duration);
 
             currentCameraState = CameraState.Asterion;
+            //ToggleOrthographic(true);
+        }
+
+        private IEnumerator SetAstramoriVC()
+        {
+            ToggleCursorLock(false);
+            _playerLook._rotateEnabled = false;
+            _cameraStateAnimator.Play("AstramoriArcade");
+            float duration = _cameraStateAnimator
+                .GetCurrentAnimatorStateInfo(0).length;
+
+            yield return new WaitForSeconds(duration);
+
+            currentCameraState = CameraState.Astramori;
             //ToggleOrthographic(true);
         }
 
