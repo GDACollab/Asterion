@@ -138,7 +138,7 @@ namespace AsterionArcade
         public void StartFreshGame()
         {
             isLost = false;
-
+            GameManager.Instance.shipStats.ResetAllStats();
             enemyQueue = new List<int>(baseEnemyQueue);
             cursor.EnableVirtualCursor();
             _aiCore.enabled = true;
@@ -147,7 +147,7 @@ namespace AsterionArcade
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(true);
             lossMenu.SetActive(false);
-            GameManager.Instance.shipStats.ResetAllStats();
+            
             lossScreen.insufficientFundsText.enabled = false;
             
         }

@@ -166,7 +166,7 @@ namespace AsterionArcade
             {
                 lossScreen.gameStateText.text = "You Win!";
                 cursor.EnableVirtualCursor();
-                lossScreen.fundsRewardedText.text = "" + (int)(((timer.time / timer.startingTime) * maxCoinRewardBonus)) + 1;
+                lossScreen.fundsRewardedText.text = "Quarters Recieved: " + ((((int)(timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
                 GameManager.Instance.AlterCoins( (((int)(timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
                 lossScreen.fundsRewardedText.enabled = true;
                 lossMenu.SetActive(true);
