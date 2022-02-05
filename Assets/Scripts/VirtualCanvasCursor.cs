@@ -63,7 +63,6 @@ public class VirtualCanvasCursor : MonoBehaviour
 
             }
 
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 foreach (Button b in fc.collidingObjects.ToArray())
@@ -71,6 +70,7 @@ public class VirtualCanvasCursor : MonoBehaviour
                     b.onClick.Invoke();
                 }
             }
+
         }
 
 

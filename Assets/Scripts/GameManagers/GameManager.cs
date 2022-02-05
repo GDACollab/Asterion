@@ -3,51 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class GameManager : MonoBehaviour
+namespace AsterionArcade
 {
-    public static GameManager Instance;
-    public List<GameObject> alienShipPrefabs;
-    public ShipStats shipStats;
-    [SerializeField] TextMeshProUGUI coinText;
-    public int coinCount;
-
-    void Awake()
+    public class GameManager : MonoBehaviour
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+        public static GameManager Instance;
+        public List<GameObject> alienShipPrefabs;
+        public ShipStats shipStats;
+        [SerializeField] TextMeshProUGUI coinText;
+        public AsterionManager asterionManager;
+        public AstramoriManager astramoriManager;
+        public int coinCount;
 
-        }
-        else
+        void Awake()
         {
-            if (Instance != this)
+            if (Instance == null)
             {
-                Destroy(this.gameObject);
+                Instance = this;
+                DontDestroyOnLoad(this.gameObject);
+
+            }
+            else
+            {
+                if (Instance != this)
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
-    }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        coinText.text = "" +coinCount;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void AlterCoins(int diff)
-    {
-        coinCount += diff;
-        if(coinCount < 0)
+        // Start is called before the first frame update
+        void Start()
         {
-            coinCount = 0;
+            coinText.text = "" + coinCount;
         }
 
-        coinText.text = "" + coinCount;
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        public void AlterCoins(int diff)
+        {
+            coinCount += diff;
+            if (coinCount < 0)
+            {
+                coinCount = 0;
+            }
+
+            coinText.text = "" + coinCount;
+        }
     }
 }

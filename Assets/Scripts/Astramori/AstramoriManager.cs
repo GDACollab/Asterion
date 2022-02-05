@@ -167,7 +167,7 @@ namespace AsterionArcade
                 lossScreen.gameStateText.text = "You Win!";
                 cursor.EnableVirtualCursor();
                 lossScreen.fundsRewardedText.text = "" + (int)(((timer.time / timer.startingTime) * maxCoinRewardBonus)) + 1;
-                GameManager.Instance.AlterCoins((int)(((timer.time / timer.startingTime) * maxCoinRewardBonus)) + 1);
+                GameManager.Instance.AlterCoins( (((int)(timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
                 lossScreen.fundsRewardedText.enabled = true;
                 lossMenu.SetActive(true);
                 _aiCore.enabled = false;
@@ -177,6 +177,7 @@ namespace AsterionArcade
                     bd.Death();
                 }
                 isLost = false;
+                GameManager.Instance.asterionManager.baseEnemyQueue = new List<int>(enemyQueue);
             }
             else
             {

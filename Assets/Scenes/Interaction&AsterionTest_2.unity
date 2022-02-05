@@ -1680,15 +1680,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250182380}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 1.75, y: 0, z: 3}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -19.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1603018005}
   - {fileID: 178686040}
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &264005723
 GameObject:
   m_ObjectHideFlags: 0
@@ -3872,14 +3872,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600925929}
-  m_LocalRotation: {x: 0.1564345, y: 0, z: 0, w: 0.98768836}
-  m_LocalPosition: {x: 1.75, y: 1.32, z: 2.528}
+  m_LocalRotation: {x: 0, y: 0.98768836, z: -0.1564345, w: 0}
+  m_LocalPosition: {x: 0, y: 1.32, z: -19.379}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1982340646}
   m_Father: {fileID: 7695716852012465083}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 18, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 18, y: 180, z: 0}
 --- !u!1 &634294090
 GameObject:
   m_ObjectHideFlags: 0
@@ -13046,6 +13046,8 @@ MonoBehaviour:
   - {fileID: 5012098618912345058, guid: 2fca9c3026799e844900d77a0ca3200d, type: 3}
   shipStats: {fileID: 1165492952}
   coinText: {fileID: 1118877086}
+  asterionManager: {fileID: 1868742463}
+  astramoriManager: {fileID: 1067671938}
   coinCount: 1
 --- !u!1 &1682260366
 GameObject:
@@ -14770,7 +14772,6 @@ MonoBehaviour:
   lossScreen: {fileID: 271141717}
   cursor: {fileID: 1274144968}
   enemies: {fileID: 736331832}
-  astramoriManager: {fileID: 0}
   currentGameState: 0
   isLost: 0
   baseEnemyQueue: 010000000100000001000000010000000100000001000000
