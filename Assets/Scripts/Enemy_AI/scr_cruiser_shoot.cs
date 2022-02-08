@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class scr_cruiser_shoot : scr_fighter_shoot
+{
+    
+    void Start()
+    {
+        StartCoroutine(reload());
+    }
+
+    private void FixedUpdate()
+    {
+        if (readyToShoot)
+        {
+            Vector2 playerPosCrui = scr_find_player.Get_Player_Pos(Ai_Type);
+            Vector2 playerPosFrig = scr_find_player.Get_Player_Pos(1);
+
+            // Only shoot when nearby player and not at players position.
+            if (Vector2.Distance(playerPosCrui,(Vector2) transform.position) < 14f && Vector2.Distance(playerPosCrui, (Vector2)transform.position) != 0f)
+            {
+                GameObject bulletCreated;
+                bulletCreated = GameObject.Instantiate(bulletObject, transform.position, transform.rotation);
+                bulletCreated.GetComponent<Rigidbody2D>().velocity = (playerPosCrui - (Vector2)transform.position).normalized * bulletSpeed;
+                Destroy(bulletCreated, 5f);
+
+                GameObject bulletFrigate;
+                bulletFrigate = GameObject.Instantiate(bulletObject, transform.position, transform.rotation);
+                bulletFrigate.GetComponent<Rigidbody2D>().velocity = (playerPosFrig - (Vector2)transform.position).normalized * bulletSpeed;
+                Destroy(bulletFrigate, 5f);
+
+                GameObject bulletOppFrig;
+                bulletOppFrig = GameObject.Instantiate(bulletObject, transform.position, transform.rotation);
+                bulletOppFrig.GetComponent<Rigidbody2D>().velocity = (playerPosCrui - (playerPosCrui - playerPosFrig) - (Vector2)transform.position).normalized * bulletSpeed;
+                Destroy(bulletOppFrig, 5f);
+
+                readyToShoot = false;
+
+                StartCoroutine(reload());
+            }
+        }
+    }
+    IEnumerator reload()
+    {
+        yield return new WaitForSeconds(Random.Range(shotDelay_Low, shotDelay_High));
+        readyToShoot = true;
+    }
+}

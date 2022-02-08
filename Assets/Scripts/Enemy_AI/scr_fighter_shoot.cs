@@ -16,7 +16,7 @@ public class scr_fighter_shoot : MonoBehaviour
 
     public int Ai_Type;
 
-    private bool readyToShoot = false;
+    protected bool readyToShoot = false;
 
     void Start()
     {
@@ -39,7 +39,7 @@ public class scr_fighter_shoot : MonoBehaviour
 
                 readyToShoot = false;
 
-                StartCoroutine(reload());
+                //StartCoroutine(reload());
             }
         }
     }
