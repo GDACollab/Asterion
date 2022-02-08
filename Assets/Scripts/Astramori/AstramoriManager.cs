@@ -133,7 +133,7 @@ namespace AsterionArcade
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(true);
             lossMenu.SetActive(false);
-            GameManager.Instance.shipStats.ResetAllStats();
+            //GameManager.Instance.shipStats.ResetAllStats();
             lossScreen.fundsRewardedText.enabled = false;
         }
 

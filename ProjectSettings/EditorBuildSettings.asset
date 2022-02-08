@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Interaction&AsterionTest_2.unity
+    guid: 6c98a6e5abdc16541a14f84b91288b6b
   m_configObjects: {}

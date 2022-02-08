@@ -8,6 +8,7 @@ namespace AsterionArcade
     {
         public Rigidbody2D rb;
         public GameObject playerBulletPrefab;
+        [SerializeField] GameObject playerBarrel;
         [Header("Base Player Stats")]
         public float baseSpeed;
         public float baseMaxSpeed;
@@ -17,7 +18,8 @@ namespace AsterionArcade
         public float maxSpeed;
         public float projectileSpeed;
         public int damage;
-        
+        public float shootCooldown;
+        float currentCooldown;
 
         [Header("Player Movement")]
         public Vector2 playerVelocity;
@@ -59,10 +61,16 @@ namespace AsterionArcade
 
         void ShootCheck()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if(currentCooldown > 0)
             {
-                var bullet = Instantiate(playerBulletPrefab, transform.position, Quaternion.identity);
+                currentCooldown -= Time.deltaTime;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Mouse0) && currentCooldown <= 0)
+            {
+                var bullet = Instantiate(playerBulletPrefab, playerBarrel.transform.position, Quaternion.identity);
                 bullet.GetComponent<AsterionPlayerBullet>().rb.AddForce(transform.up * projectileSpeed, ForceMode2D.Impulse);
+                currentCooldown = shootCooldown;
             }
         }
 

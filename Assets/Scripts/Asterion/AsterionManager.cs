@@ -165,7 +165,7 @@ namespace AsterionArcade
             ApplyBonusStats();
             currentGameState = GameState.Gameplay;
             _playerMovement.enabled = true;
-
+            
             StartCoroutine(CombatRoutine());
             GameManager.Instance.AlterCoins(-1);
         }
