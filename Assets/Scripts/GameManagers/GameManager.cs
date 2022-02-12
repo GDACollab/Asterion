@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using TMPro;
 
 namespace AsterionArcade
@@ -11,10 +13,13 @@ namespace AsterionArcade
         public List<GameObject> alienShipPrefabs;
         public ShipStats shipStats;
         [SerializeField] TextMeshProUGUI coinText;
+        [SerializeField] Volume postProcessingVolume;
+        [SerializeField] Vignette vignette;
         public AsterionManager asterionManager;
         public AstramoriManager astramoriManager;
+        public SanityManager sanityManager;
         public int coinCount;
-        public int sanity;
+
 
         //acts as a singleton which can be easily referenced with GameManager.Instance
 
@@ -39,13 +44,13 @@ namespace AsterionArcade
         void Start()
         {
             coinText.text = "" + coinCount;
-            sanity = 100;
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-
+            
         }
 
         public void AlterCoins(int diff)

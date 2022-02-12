@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using FirstPersonPlayer;
 using Interactable;
 
@@ -14,7 +13,7 @@ namespace AsterionArcade
 
         public int maxCoinRewardBonus;
         // public scr_find_player _aiCore;
-
+        
         //public GameObject player;
         [Header("Objects")]
         [SerializeField] scr_find_player _aiCore;
@@ -26,7 +25,7 @@ namespace AsterionArcade
         [SerializeField] GameObject mainMenu;
         [SerializeField] GameObject upgradeMenu;
         [SerializeField] GameObject lossMenu;
-        [SerializeField] Transform enemies;
+        public Transform enemies;
         [SerializeField] AstramoriLossScreen lossScreen;
         [SerializeField] VirtualCanvasCursor cursor;
         [SerializeField] AstramoriStarfighterHealth astramoriStarfighterHealth;
@@ -36,9 +35,11 @@ namespace AsterionArcade
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
         [Header("Current Game State Info")]
-        public GameState currentGameState;
+        protected GameState currentGameState;
         public bool isLost;
         public List<int> enemyQueue;
+
+        [SerializeField] float sanityLoss;
 
 
         public new void Construct(CameraManager cameraManager)
@@ -103,6 +104,7 @@ namespace AsterionArcade
         public void CloseMainMenu()
         {
             mainMenu.SetActive(false);
+            Debug.Log("closing main menu on atramori");
             currentGameState = GameState.Upgrades;
         }
 
@@ -192,6 +194,7 @@ namespace AsterionArcade
                 {
                     bd.Death();
                 }
+                GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
             }
         }

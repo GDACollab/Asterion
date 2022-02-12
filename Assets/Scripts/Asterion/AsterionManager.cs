@@ -24,6 +24,7 @@ namespace AsterionArcade
         [SerializeField] AsterionLossScreen lossScreen;
         [SerializeField] VirtualCanvasCursor cursor;
         [SerializeField] Transform enemies;
+      
    
         
 
@@ -31,7 +32,7 @@ namespace AsterionArcade
 
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
         [Header("Current Game State Info")]
-        public GameState currentGameState;
+        protected GameState currentGameState;
         public bool isLost;
         public List<int> baseEnemyQueue;
         public List<int> enemyQueue;
@@ -41,6 +42,7 @@ namespace AsterionArcade
         public float spawnRate;
         public float minSpawnRange;
         public float maxSpawnRange;
+        [SerializeField] float sanityLoss;
 
 
         public new void Construct(CameraManager cameraManager)
@@ -201,6 +203,7 @@ namespace AsterionArcade
                 {
                     bd.Death();
                 }
+                GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
             }
         }
