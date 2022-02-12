@@ -24,10 +24,12 @@ public class PowerManager : MonoBehaviour
     private float barLength;
     private float currentRate;
 
-    [Header("Other Shit I haven't sorted yet. Sorry :(")]
+    [Header("Other Shit I haven't sorted yet")]
     // For the battery cells or stm
-    private RawImage[] batteryCells;
     [SerializeField] float powerLevel;
+    [SerializeField] Color[] batteryStatusColors;
+    [SerializeField] float[] batteryStatus; // Can't think of a better name :(
+    private RawImage[] batteryCells;
 
     // Start is called before the first frame update
     void Awake()
@@ -59,10 +61,23 @@ public class PowerManager : MonoBehaviour
     // Updates the Battery Indicator
     private void BatteryIndicator(float power)
     {
+        Color batteryColor = batteryStatusColors[0];
+        for (int i = 0; i < batteryStatusColors.Length; i++)
+        {
+            if (power < batteryStatus[i]) 
+            {
+                batteryColor = batteryStatusColors[i];
+            }
+            else
+            {
+                break;
+            }
+        }
+
         for (int i = 0; i < numSegments; i++)
         {
             float alpha = (power - (maxPowerLevel / numSegments) * i) / 10;
-            batteryCells[i].color = new Color(1, 1, 1, alpha);
+            batteryCells[i].color = new Color(batteryColor.r, batteryColor.g, batteryColor.b, alpha);
         }
     }
 }
