@@ -12,11 +12,14 @@ public class scr_fighter_move : MonoBehaviour
 
     public int Ai_Type;
     public bool seeking;
+    public float rotate_speed;
 
     public GameObject Player;
 
     private Rigidbody2D m_Rigidbody;
     private Collider2D m_Collider;
+
+
     
     private void Start()
     {
@@ -52,7 +55,14 @@ public class scr_fighter_move : MonoBehaviour
             // Move and rotate towards player
             m_Rigidbody.MovePosition(Vector2.MoveTowards(m_Rigidbody.position, playerPos, Time.deltaTime * speed));
 
-            m_Rigidbody.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            if (Ai_Type == 0)
+            {
+                m_Rigidbody.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            }
+            else
+            {
+                m_Rigidbody.rotation = Mathf.Lerp(m_Rigidbody.rotation, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, rotate_speed);
+            }
         }
 
         
