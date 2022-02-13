@@ -43,19 +43,27 @@ public class PowerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        powerLevel -= Time.deltaTime / 60f * currentRate;
+        float depletionAmount = Time.deltaTime / 60f * currentRate;
+        powerLevel -= depletionAmount;
         BatteryIndicator(powerLevel);
+
+        if((int) (powerLevel / numSegments) < (int) ((powerLevel + depletionAmount) / numSegments)) {
+            // Play 'PowerDepletion' sound
+            Debug.Log("Battery Level dropped");
+            // Perform sanity mechanic stuff
+        }
     }
 
     public void GainPower()
     {
         powerLevel += winRate;
         currentRate = initialRate;
+        // Play 'PowerGain' sound cue
     }
 
     public void IncreaseRate()
     {
-        currentRate *= 1.5f;
+        currentRate *= rateMultiplier;
     }
 
     // Updates the Battery Indicator
