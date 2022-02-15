@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3586597810674997912, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
       propertyPath: m_Name
-      value: obj_missile_frigate (1)
+      value: obj_missile_frigate
       objectReference: {fileID: 0}
     - target: {fileID: 3586597810674997913, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
       propertyPath: m_RootOrder
@@ -148,11 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3586597810674997913, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.69
+      value: -14.6
       objectReference: {fileID: 0}
     - target: {fileID: 3586597810674997913, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -42.99
+      value: -48.4
       objectReference: {fileID: 0}
     - target: {fileID: 3586597810674997913, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8333,11 +8333,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3586597810674997913, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.14
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 3586597810674997913, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -43.01
+      value: -48.8
       objectReference: {fileID: 0}
     - target: {fileID: 3586597810674997913, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
       propertyPath: m_LocalPosition.z

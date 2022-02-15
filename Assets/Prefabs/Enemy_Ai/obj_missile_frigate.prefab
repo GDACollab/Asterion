@@ -119,6 +119,7 @@ MonoBehaviour:
   Ai_Type: 1
   seeking: 1
   rotate_speed: 0.1
+  overlap_other_enemies: 0
   Player: {fileID: 0}
 --- !u!114 &6915576471433841561
 MonoBehaviour:

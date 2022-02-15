@@ -20,17 +20,17 @@ public class scr_fighter_move : MonoBehaviour
     private Collider2D m_Collider;
 
 
-    
+
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Collider = GetComponent<Collider2D>();
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             //damage player and destroy alien ship on collision with player
             collision.gameObject.GetComponent<BasicDamageable>().TakeDamage(1);
@@ -40,7 +40,13 @@ public class scr_fighter_move : MonoBehaviour
         if (collision.gameObject.tag == "Ai_GameBoundry")
         {
             //damage player and destroy alien ship on collision with player
-            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.collider);
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+        }
+
+        // Enemies will only collide with their cousins 
+        if (collision.gameObject.tag == "AlienShip" && collision.gameObject.name != gameObject.name)
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
         }
     }
 
@@ -65,6 +71,6 @@ public class scr_fighter_move : MonoBehaviour
             }
         }
 
-        
+
     }
 }
