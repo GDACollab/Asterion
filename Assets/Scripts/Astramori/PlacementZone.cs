@@ -17,7 +17,7 @@ public class PlacementZone : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = player.transform.position;
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
         isContact = true;
     }
 
