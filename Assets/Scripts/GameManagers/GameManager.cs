@@ -14,6 +14,9 @@ namespace AsterionArcade
         public AsterionManager asterionManager;
         public AstramoriManager astramoriManager;
         public int coinCount;
+        public int sanity;
+
+        //acts as a singleton which can be easily referenced with GameManager.Instance
 
         void Awake()
         {
@@ -36,6 +39,7 @@ namespace AsterionArcade
         void Start()
         {
             coinText.text = "" + coinCount;
+            sanity = 100;
         }
 
         // Update is called once per frame

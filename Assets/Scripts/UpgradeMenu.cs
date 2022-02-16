@@ -18,7 +18,7 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI range;
 
-    private ShipStats stats;
+    public ShipStats stats;
 
     void Start()
     {
@@ -26,7 +26,12 @@ public class UpgradeMenu : MonoBehaviour
         Debug.Log(stats);
         UpdateValues();
     }
-    
+
+    private void FixedUpdate()
+    {
+        UpdateValues();
+    }
+
     // call when we enable the upgrade menu
     void UpdateValues()
     {
