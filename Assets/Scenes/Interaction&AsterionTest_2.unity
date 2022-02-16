@@ -13183,6 +13183,7 @@ MonoBehaviour:
   asterionManager: {fileID: 1868742463}
   astramoriManager: {fileID: 1067671938}
   coinCount: 1
+  sanity: 0
 --- !u!114 &1669733569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14908,7 +14909,7 @@ MonoBehaviour:
   enemies: {fileID: 736331832}
   currentGameState: 0
   isLost: 0
-  baseEnemyQueue: 010000000100000001000000010000000100000001000000
+  baseEnemyQueue: 010000000200000003000000010000000200000003000000
   enemyQueue: 010000000100000001000000010000000100000001000000
   spawnRate: 3
   minSpawnRange: 6
