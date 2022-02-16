@@ -39,7 +39,7 @@ namespace AsterionArcade
         [Header("Current Game State Info")]
         protected GameState currentGameState;
         public bool isLost;
-        public List<int> enemyQueue;
+        public List<Vector2> enemyQueue;
 
         [SerializeField] float sanityLoss;
 
@@ -170,8 +170,9 @@ namespace AsterionArcade
             {
                 lossScreen.gameStateText.text = "You Win!";
                 cursor.EnableVirtualCursor();
-                lossScreen.fundsRewardedText.text = "Quarters Recieved: " + ((((int)(timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
-                GameManager.Instance.AlterCoins( (((int)(timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
+                int quarters = ((int)(((timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
+                lossScreen.fundsRewardedText.text = "Quarters Recieved: " + quarters;
+                GameManager.Instance.AlterCoins(quarters);
                 lossScreen.fundsRewardedText.enabled = true;
                 lossMenu.SetActive(true);
                 _aiCore.enabled = false;
@@ -181,7 +182,7 @@ namespace AsterionArcade
                     bd.Death();
                 }
                 isLost = false;
-                GameManager.Instance.asterionManager.baseEnemyQueue = new List<int>(enemyQueue);
+                GameManager.Instance.asterionManager.baseEnemyQueue = new List<Vector2>(enemyQueue);
             }
             else
             {

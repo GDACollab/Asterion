@@ -36,8 +36,8 @@ namespace AsterionArcade
         [Header("Current Game State Info")]
         protected GameState currentGameState;
         public bool isLost;
-        public List<int> baseEnemyQueue;
-        public List<int> enemyQueue;
+        public List<Vector2> baseEnemyQueue;
+        public List<Vector2> enemyQueue;
  
 
         [Header("Asterion Spawning Rate/Range")]
@@ -143,7 +143,7 @@ namespace AsterionArcade
         {
             isLost = false;
             GameManager.Instance.shipStats.ResetAllStats();
-            enemyQueue = new List<int>(baseEnemyQueue);
+            enemyQueue = new List<Vector2>(baseEnemyQueue);
             cursor.EnableVirtualCursor();
             _aiCore.enabled = true;
             _aiCore.m_Player = player;
@@ -243,7 +243,8 @@ namespace AsterionArcade
 
             while (enemyQueue.Count > 0)
             {
-                GameObject ship = Instantiate(GameManager.Instance.alienShipPrefabs[enemyQueue[0] - 1], enemies);
+                yield return new WaitForSeconds(enemyQueue[0].y);
+                GameObject ship = Instantiate(GameManager.Instance.alienShipPrefabs[(int)enemyQueue[0].x - 1], enemies);
                 ship.layer = 7;
                 Vector2 randomVector = Random.insideUnitCircle;
                 randomVector.Normalize();
@@ -253,7 +254,7 @@ namespace AsterionArcade
                     ship1.seeking = true;
                 }
                 enemyQueue.RemoveAt(0);
-                yield return new WaitForSeconds(spawnRate);
+                
 
                 
 

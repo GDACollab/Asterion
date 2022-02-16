@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6320418976445625077}
   - component: {fileID: 4902838623317178008}
   - component: {fileID: 6900319957064285874}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: obj_cruiser
-  m_TagString: Untagged
+  m_TagString: AlienShip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,11 +131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f2c3aed92444ed88a00c08d25fbd14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletObject: {fileID: 0}
+  isAstramori: 0
+  bulletObject: {fileID: 758243255397651644, guid: d12bc7b2e1cf3f44ca56992e512dc95d, type: 3}
   shotDelay_Low: 9
   shotDelay_High: 12
   bulletSpeed: 9
   Ai_Type: 2
+  readyToShoot: 0
 --- !u!50 &4902838623317178008
 Rigidbody2D:
   serializedVersion: 4

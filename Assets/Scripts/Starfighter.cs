@@ -16,6 +16,7 @@ namespace AsterionArcade
         [SerializeField] Transform ships;
         [SerializeField] Transform bullets;
         [SerializeField] AstramoriManager astramoriManager;
+        [SerializeField] Transform enemyBullets;
         [SerializeField] GameObject bullet;
         int layerMask;
 
@@ -148,7 +149,7 @@ namespace AsterionArcade
                 if (difference.magnitude < shortestDistance) shortestDistance = difference.magnitude;
             }
 
-            foreach (Transform ship in bullets)
+            foreach (Transform ship in enemyBullets)
             {
                 Vector2 difference = ship.transform.position - transform.position;
                 float angle = Vector2.Angle(difference.y < 0 ? Vector2.left : Vector2.right, difference) + (difference.y < 0 ? 180 : 0);

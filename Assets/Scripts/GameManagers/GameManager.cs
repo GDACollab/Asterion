@@ -15,6 +15,7 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI coinText;
         [SerializeField] Volume postProcessingVolume;
         [SerializeField] Vignette vignette;
+        public Transform astramoriEnemyBullets;
         public AsterionManager asterionManager;
         public AstramoriManager astramoriManager;
         public SanityManager sanityManager;
