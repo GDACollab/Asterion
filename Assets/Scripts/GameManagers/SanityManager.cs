@@ -13,6 +13,7 @@ public class SanityManager : MonoBehaviour
     [SerializeField] int sanityStage2Sanity;
     [SerializeField] Volume volume;
     [SerializeField] Vignette vignette;
+    [SerializeField] PowerManager powerManager;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,8 @@ public class SanityManager : MonoBehaviour
     {
         if(sanity > 0)
         {
-            sanity -= sanityRate;
+
+            sanity -= (sanityRate * ((100 - powerManager.powerLevel)/100));
         }
         
         if(sanity < sanityStage1Sanity && sanityStage == 0)

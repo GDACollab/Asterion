@@ -16,7 +16,7 @@ public class scr_fighter_shoot : MonoBehaviour
 
     public int Ai_Type;
 
-    private bool readyToShoot = false;
+    public bool readyToShoot = false;
 
     void Start()
     {

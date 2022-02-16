@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 using FirstPersonPlayer;
 using Interactable;
 
@@ -31,6 +32,7 @@ namespace AsterionArcade
         [SerializeField] AstramoriStarfighterHealth astramoriStarfighterHealth;
         [SerializeField] Timer timer;
         [SerializeField] Spawning spawningSystem;
+        [SerializeField] CinemachineVirtualCamera virtualCamera;
         //public GameObject astramoriCanvas;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
@@ -202,22 +204,21 @@ namespace AsterionArcade
         //sets fighter stats to base + chosen upgrades
         public void ApplyBonusStats()
         {
-            /*
-            player.GetComponent<PlayerMovement>().moveSpeed = player.GetComponent<PlayerMovement>().baseSpeed + GameManager.Instance.shipStats.thruster;
-            player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed + GameManager.Instance.shipStats.thruster;
-            player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage + GameManager.Instance.shipStats.attack;
-            */
+            
+            player.GetComponent<Starfighter>().speed = player.GetComponent<Starfighter>().baseSpeed + GameManager.Instance.shipStats.thruster;
+            player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage + GameManager.Instance.shipStats.attack;
+            
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            virtualCamera.m_Lens.OrthographicSize = 7 + GameManager.Instance.shipStats.range;
         }
 
         //sets fighter stats to default
         public void ResetStats()
         {
-            /*
-            player.GetComponent<PlayerMovement>().moveSpeed = player.GetComponent<PlayerMovement>().baseSpeed;
-            player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed;
-            player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage;
-            */
+            
+            player.GetComponent<Starfighter>().speed = player.GetComponent<Starfighter>().baseSpeed;
+            player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage;
+            virtualCamera.m_Lens.OrthographicSize = 7;
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth;
 
         }

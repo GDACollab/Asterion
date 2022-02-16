@@ -16,6 +16,11 @@ public class fighter_enemy_bullet : BasicBullet
     {
         
     }
+    private void OnBecameInvisible()
+    {
+
+        Destroy(this.gameObject);
+    }
 
 
 }

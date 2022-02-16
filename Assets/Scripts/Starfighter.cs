@@ -25,7 +25,10 @@ namespace AsterionArcade
         public List<Vector2> shipInfos = new List<Vector2>();
 
         [Header("AI Movement")]
-        [SerializeField] float speed = 1;
+        public float speed = 1;
+        public float baseSpeed;
+        public float damage;
+        public float baseDamage;
         [SerializeField] float scanFrequency = 0.25f;
         [SerializeField] float distanceTresholdFactor = 1.3f;
         [SerializeField] float wallMultiplier = 1.0f;
@@ -123,9 +126,9 @@ namespace AsterionArcade
             {
                 if (hit.collider != null)
                 {
-                    Debug.Log(hit.distance);
+                    //Debug.Log(hit.distance);
 
-                    Vector2 difference = new Vector3(hit.point.x, hit.point.y, 0) - transform.position;
+                    Vector2 difference = (new Vector3(hit.point.x, hit.point.y, 0) - transform.position) * wallMultiplier;
                     float angle = Vector2.Angle(difference.y < 0 ? Vector2.left : Vector2.right, difference) + (difference.y < 0 ? 180 : 0);
                     // ship.GetChild(0).GetComponent<TextMeshPro>().text = "" + angle;
                     shipInfos.Add(new Vector2(angle, difference.magnitude));

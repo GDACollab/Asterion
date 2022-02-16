@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 using FirstPersonPlayer;
 using Interactable;
 
@@ -24,9 +24,11 @@ namespace AsterionArcade
         [SerializeField] AsterionLossScreen lossScreen;
         [SerializeField] VirtualCanvasCursor cursor;
         [SerializeField] Transform enemies;
-      
-   
-        
+        [SerializeField] CinemachineVirtualCamera virtualCamera;
+        [SerializeField] PowerManager powerManager;
+
+
+
 
 
 
@@ -178,6 +180,8 @@ namespace AsterionArcade
 
             if (isWin)
             {
+                powerManager.isDraining = true;
+                powerManager.GainPower();
                 lossScreen.gameStateText.text = "You Win!";
                 cursor.EnableVirtualCursor();
                 lossScreen.continueButtonText.text = "Start Again? (1 Quarter)";
@@ -192,6 +196,7 @@ namespace AsterionArcade
             }
             else
             {
+                powerManager.isDraining = true;
                 lossScreen.gameStateText.text = "You Lost!";
                 cursor.EnableVirtualCursor();
                 lossMenu.SetActive(true);
@@ -215,6 +220,7 @@ namespace AsterionArcade
             player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed + GameManager.Instance.shipStats.thruster;
             player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage + GameManager.Instance.shipStats.attack;
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            virtualCamera.m_Lens.OrthographicSize = 5 + GameManager.Instance.shipStats.range;
         }
 
         //sets fighter stats to default
@@ -224,6 +230,7 @@ namespace AsterionArcade
             player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed;
             player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage;
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth;
+            virtualCamera.m_Lens.OrthographicSize = 5;
         }
 
         // placeholder enemy spawning system
@@ -231,6 +238,8 @@ namespace AsterionArcade
         {
             cursor.DisableVirtualCursor();
             yield return new WaitForSeconds(1);
+
+            powerManager.isDraining = false;
 
             while (enemyQueue.Count > 0)
             {

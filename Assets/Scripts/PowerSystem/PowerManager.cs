@@ -26,7 +26,8 @@ public class PowerManager : MonoBehaviour
 
     [Header("Other Shit I haven't sorted yet")]
     // For the battery cells or stm
-    [SerializeField] float powerLevel;
+    public float powerLevel;
+    public bool isDraining = true;
     [SerializeField] Color[] batteryStatusColors;
     [SerializeField] float[] batteryStatus; // Can't think of a better name :(
     private RawImage[] batteryCells;
@@ -43,13 +44,22 @@ public class PowerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        powerLevel -= Time.deltaTime / 60f * currentRate;
+        if (isDraining)
+        {
+            powerLevel -= Time.deltaTime / 60f * currentRate;
+        }
+        
         BatteryIndicator(powerLevel);
     }
 
     public void GainPower()
     {
+        
         powerLevel += winRate;
+        if(powerLevel > 100)
+        {
+            powerLevel = 100;
+        }
         currentRate = initialRate;
     }
 

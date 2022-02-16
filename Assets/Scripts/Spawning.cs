@@ -16,6 +16,7 @@ namespace AsterionArcade {
         [SerializeField] FakeCursor fc;
         [SerializeField] Camera astramoriCamera;
         [SerializeField] AstramoriManager astramoriManager;
+        [SerializeField] PlacementZone pz;
 
         [Header("Main Controls")]
         [SerializeField] bool ship1Active;
@@ -127,7 +128,7 @@ namespace AsterionArcade {
 
         bool CanPlace()
         {
-            return (preview.position - starfighter.position).magnitude > invalidRange;
+            return pz.isContact;
         }
     }
 }

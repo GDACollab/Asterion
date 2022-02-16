@@ -10,6 +10,7 @@ TagManager:
   - AlienBullet
   - StarshipBullet
   - AlienShip
+  - AstramoriPlacementZone
   layers:
   - Default
   - TransparentFX

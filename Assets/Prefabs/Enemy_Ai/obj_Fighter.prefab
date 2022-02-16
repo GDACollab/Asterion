@@ -132,9 +132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletObject: {fileID: 758243255397651644, guid: d12bc7b2e1cf3f44ca56992e512dc95d, type: 3}
-  shotDelay_Low: 5
-  shotDelay_High: 7
-  bulletSpeed: 7
+  shotDelay_Low: 4
+  shotDelay_High: 6
+  bulletSpeed: 6
   Ai_Type: 0
 --- !u!50 &3713004275483948174
 Rigidbody2D:
