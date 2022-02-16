@@ -13,7 +13,6 @@ public class scr_crusier_shoot : MonoBehaviour
     public GameObject bulletObject;
     public float shotDelay_Low;
     public float shotDelay_High;
-    public float bulletSpeed;
 
     public int Ai_Type;
 
@@ -44,14 +43,15 @@ public class scr_crusier_shoot : MonoBehaviour
 
     IEnumerator shot(Vector2 playerPos)
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
 
         if (ammo > 0)
         {
             GameObject bulletCreated;
             bulletCreated = GameObject.Instantiate(bulletObject, transform.position, transform.rotation);
+            playerPos = scr_find_player.Get_Player_Pos(Ai_Type);
             bulletCreated.GetComponent<scr_missile_move>().playerPos = playerPos;
-            //bulletCreated.GetComponent<Rigidbody2D>().velocity = (playerPos - (Vector2)transform.position).normalized * bulletSpeed;
+
             Destroy(bulletCreated, 5f);
 
             ammo -= 1;

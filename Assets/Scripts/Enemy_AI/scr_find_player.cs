@@ -67,7 +67,6 @@ public class scr_find_player : MonoBehaviour
     {
         return m_FindPlayer[Ai_Type];
     }
-
 }
 
 

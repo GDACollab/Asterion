@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5119677696433224549}
   - component: {fileID: 4770482436848098262}
   - component: {fileID: 8284865883237687491}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: obj_missile
   m_TagString: AlienBullet
   m_Icon: {fileID: 0}
@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693220522525983608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14744008, y: -33.577885, z: -1.3856373}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalPosition: {x: 0.14744008, y: -33.577885, z: 2.867391}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   isAlien: 1
-  lifetime: 10
+  lifetime: 3
 --- !u!114 &8284865883237687491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,4 +163,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6402b9fc6da58448f89e853de2fe54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPos: {x: 0, y: 0}
+  playerPos: {x: 0, y: 0, z: 0}
+  bulletSpeed: 8
