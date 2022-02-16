@@ -25,6 +25,7 @@ namespace AsterionArcade
                     GameObject bulletCreated;
                     bulletCreated = GameObject.Instantiate(bulletObject, transform.position, transform.rotation);
                     bulletCreated.GetComponent<Rigidbody2D>().velocity = (playerPosReal - (Vector2)transform.position).normalized * bulletSpeed;
+                    bulletCreated.transform.eulerAngles = (playerPosReal - (Vector2)transform.position).normalized;
                     if (isAstramori)
                     {
                         bulletCreated.transform.parent = GameManager.Instance.astramoriEnemyBullets;
@@ -38,6 +39,7 @@ namespace AsterionArcade
                     {
                         bulletFrigate.transform.parent = GameManager.Instance.astramoriEnemyBullets;
                     }
+                    bulletCreated.transform.eulerAngles = (playerPosFrig - (Vector2)transform.position).normalized;
                     Destroy(bulletFrigate, 5f);
 
                     GameObject bulletOppFrig;
@@ -49,6 +51,7 @@ namespace AsterionArcade
                     {
                         bulletOppFrig.transform.parent = GameManager.Instance.astramoriEnemyBullets;
                     }
+                    bulletCreated.transform.eulerAngles = (playerPosReal + cruiFrigPosFlip - (Vector2)transform.position).normalized;
                     Destroy(bulletOppFrig, 5f);
 
                     readyToShoot = false;

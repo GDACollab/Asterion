@@ -16435,8 +16435,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alienShipPrefabs:
   - {fileID: 3713004275483948173, guid: 5fa492a90d1a9984ba5bd6c1ae3b7115, type: 3}
+  - {fileID: 3586597810674997912, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
   - {fileID: 419958047552857102, guid: bc0a4865ce7fe44e392a805bca5dc57a, type: 3}
-  - {fileID: 2512291920753439414, guid: f06a28f26b9fa814dadeb426e3546a15, type: 3}
   - {fileID: 5012098618912345058, guid: 2fca9c3026799e844900d77a0ca3200d, type: 3}
   shipStats: {fileID: 1669733569}
   coinText: {fileID: 1118877086}
@@ -18398,8 +18398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefabs:
   - {fileID: 3713004275483948173, guid: 5fa492a90d1a9984ba5bd6c1ae3b7115, type: 3}
-  - {fileID: 5544287345094443870, guid: 9b8cc411966d44247827748018af11bc, type: 3}
-  - {fileID: 2512291920753439414, guid: f06a28f26b9fa814dadeb426e3546a15, type: 3}
+  - {fileID: 3586597810674997912, guid: 35d31eadb8592a143af0869a3678a0f0, type: 3}
+  - {fileID: 419958047552857102, guid: bc0a4865ce7fe44e392a805bca5dc57a, type: 3}
   - {fileID: 5012098618912345058, guid: 2fca9c3026799e844900d77a0ca3200d, type: 3}
   ships: {fileID: 202290968}
   preview: {fileID: 2066107695}

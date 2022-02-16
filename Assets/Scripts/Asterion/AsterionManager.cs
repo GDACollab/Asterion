@@ -241,9 +241,26 @@ namespace AsterionArcade
 
             powerManager.isDraining = false;
 
+            int numFighters = 3;
+
             while (enemyQueue.Count > 0)
             {
-                yield return new WaitForSeconds(enemyQueue[0].y);
+
+                if(enemyQueue[0].x == 1 && numFighters > 0)
+                {
+                    numFighters--;
+                    yield return new WaitForSeconds(0.2f);
+                }
+                else
+                {
+                    if(numFighters <= 0)
+                    {
+                        numFighters = 3;
+                    }
+                    yield return new WaitForSeconds(6f);
+                }
+
+                //yield return new WaitForSeconds(enemyQueue[0].y);
                 GameObject ship = Instantiate(GameManager.Instance.alienShipPrefabs[(int)enemyQueue[0].x - 1], enemies);
                 ship.layer = 7;
                 Vector2 randomVector = Random.insideUnitCircle;
