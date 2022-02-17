@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_All_AI_Type_Delays:
   - 0
-  - 1
+  - 2
   - 5
   m_Player: {fileID: 0}

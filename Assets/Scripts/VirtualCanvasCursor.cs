@@ -26,12 +26,14 @@ public class VirtualCanvasCursor : MonoBehaviour
     public void EnableVirtualCursor()
     {
         cursorEnabled = true;
+        fc.enabled = true;
         sr.enabled = true;
     }
 
     public void DisableVirtualCursor()
     {
         cursorEnabled = false;
+        fc.enabled = false;
         sr.enabled = false;
     }
 

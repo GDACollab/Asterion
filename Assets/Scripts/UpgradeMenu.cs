@@ -6,6 +6,7 @@ using TMPro;
 
 public class UpgradeMenu : MonoBehaviour
 {
+
     [SerializeField]
     private TextMeshProUGUI shield;
 
@@ -39,6 +40,8 @@ public class UpgradeMenu : MonoBehaviour
         attack.text = stats.attack.ToString();
         thruster.text = stats.thruster.ToString();
         range.text = stats.range.ToString();
+
+
     }
 
     public void UpgradeShield()

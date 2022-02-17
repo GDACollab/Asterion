@@ -12,22 +12,25 @@ public class scr_fighter_move : MonoBehaviour
 
     public int Ai_Type;
     public bool seeking;
+    public float rotate_speed;
 
     public GameObject Player;
 
     private Rigidbody2D m_Rigidbody;
     private Collider2D m_Collider;
-    
+
+
+
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_Collider = GetComponent<Collider2D>();
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             //damage player and destroy alien ship on collision with player
             collision.gameObject.GetComponent<BasicDamageable>().TakeDamage(1);
@@ -37,7 +40,13 @@ public class scr_fighter_move : MonoBehaviour
         if (collision.gameObject.tag == "Ai_GameBoundry")
         {
             //damage player and destroy alien ship on collision with player
-            Physics2D.IgnoreCollision(GetComponent<CircleCollider2D>(), collision.collider);
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
+        }
+
+        // Enemies will only collide with their cousins 
+        if (collision.gameObject.tag == "AlienShip" && collision.gameObject.name != gameObject.name)
+        {
+            Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision.collider);
         }
     }
 
@@ -52,9 +61,16 @@ public class scr_fighter_move : MonoBehaviour
             // Move and rotate towards player
             m_Rigidbody.MovePosition(Vector2.MoveTowards(m_Rigidbody.position, playerPos, Time.deltaTime * speed));
 
-            m_Rigidbody.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            if (Ai_Type == 0)
+            {
+                m_Rigidbody.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            }
+            else
+            {
+                m_Rigidbody.rotation = Mathf.Lerp(m_Rigidbody.rotation, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg, rotate_speed);
+            }
         }
 
-        
+
     }
 }

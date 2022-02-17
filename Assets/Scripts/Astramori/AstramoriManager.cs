@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 using FirstPersonPlayer;
 using Interactable;
 
@@ -14,7 +14,7 @@ namespace AsterionArcade
 
         public int maxCoinRewardBonus;
         // public scr_find_player _aiCore;
-
+        
         //public GameObject player;
         [Header("Objects")]
         [SerializeField] scr_find_player _aiCore;
@@ -26,19 +26,24 @@ namespace AsterionArcade
         [SerializeField] GameObject mainMenu;
         [SerializeField] GameObject upgradeMenu;
         [SerializeField] GameObject lossMenu;
-        [SerializeField] Transform enemies;
+        public Transform enemies;
         [SerializeField] AstramoriLossScreen lossScreen;
         [SerializeField] VirtualCanvasCursor cursor;
         [SerializeField] AstramoriStarfighterHealth astramoriStarfighterHealth;
         [SerializeField] Timer timer;
         [SerializeField] Spawning spawningSystem;
+        [SerializeField] CinemachineVirtualCamera virtualCamera;
+        [SerializeField] UpgradeDisplay upgradeDisplay;
+        bool canReward;
         //public GameObject astramoriCanvas;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
         [Header("Current Game State Info")]
-        public GameState currentGameState;
+        private GameState currentGameState;
         public bool isLost;
-        public List<int> enemyQueue;
+        public List<Vector2> enemyQueue;
+
+        [SerializeField] float sanityLoss;
 
 
         public new void Construct(CameraManager cameraManager)
@@ -79,6 +84,8 @@ namespace AsterionArcade
             _cameraManager.OnChangeCameraState
                 .Invoke(CameraManager.CameraState.Astramori);
 
+            GameManager.Instance.isPlayingArcade = true;
+
             StartFreshGame();
 
         }
@@ -90,6 +97,7 @@ namespace AsterionArcade
             cursor.DisableVirtualCursor();
             _aiCore.enabled = false;
             currentGameState = GameState.Disabled;
+            GameManager.Instance.isPlayingArcade = false;
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(true);
             lossMenu.SetActive(false);
@@ -103,6 +111,7 @@ namespace AsterionArcade
         public void CloseMainMenu()
         {
             mainMenu.SetActive(false);
+            Debug.Log("closing main menu on astramori");
             currentGameState = GameState.Upgrades;
         }
 
@@ -166,8 +175,14 @@ namespace AsterionArcade
             {
                 lossScreen.gameStateText.text = "You Win!";
                 cursor.EnableVirtualCursor();
-                lossScreen.fundsRewardedText.text = "Quarters Recieved: " + ((((int)(timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
-                GameManager.Instance.AlterCoins( (((int)(timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
+                int quarters = ((int)(((timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
+                lossScreen.fundsRewardedText.text = "Quarters Recieved: " + quarters;
+                if (canReward)
+                {
+                    GameManager.Instance.AlterCoins(quarters);
+                }
+                
+                canReward = false;
                 lossScreen.fundsRewardedText.enabled = true;
                 lossMenu.SetActive(true);
                 _aiCore.enabled = false;
@@ -177,7 +192,7 @@ namespace AsterionArcade
                     bd.Death();
                 }
                 isLost = false;
-                GameManager.Instance.asterionManager.baseEnemyQueue = new List<int>(enemyQueue);
+                GameManager.Instance.asterionManager.baseEnemyQueue = new List<Vector2>(enemyQueue);
             }
             else
             {
@@ -192,6 +207,7 @@ namespace AsterionArcade
                 {
                     bd.Death();
                 }
+                GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
             }
         }
@@ -199,22 +215,21 @@ namespace AsterionArcade
         //sets fighter stats to base + chosen upgrades
         public void ApplyBonusStats()
         {
-            /*
-            player.GetComponent<PlayerMovement>().moveSpeed = player.GetComponent<PlayerMovement>().baseSpeed + GameManager.Instance.shipStats.thruster;
-            player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed + GameManager.Instance.shipStats.thruster;
-            player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage + GameManager.Instance.shipStats.attack;
-            */
+            
+            player.GetComponent<Starfighter>().speed = player.GetComponent<Starfighter>().baseSpeed + GameManager.Instance.shipStats.thruster;
+            player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage + GameManager.Instance.shipStats.attack;
+            
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            virtualCamera.m_Lens.OrthographicSize = 7 + GameManager.Instance.shipStats.range;
         }
 
         //sets fighter stats to default
         public void ResetStats()
         {
-            /*
-            player.GetComponent<PlayerMovement>().moveSpeed = player.GetComponent<PlayerMovement>().baseSpeed;
-            player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed;
-            player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage;
-            */
+            
+            player.GetComponent<Starfighter>().speed = player.GetComponent<Starfighter>().baseSpeed;
+            player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage;
+            virtualCamera.m_Lens.OrthographicSize = 7;
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth;
 
         }
@@ -226,6 +241,7 @@ namespace AsterionArcade
             starfighterAI.SetActive();
             //cursor.DisableVirtualCursor();
             timer.StartTimer();
+            canReward = true;
             yield return new WaitForSeconds(1);
 
 
