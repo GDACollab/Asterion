@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -656,7 +656,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20408
+  m_Name: pb_Mesh47402
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2211,6 +2211,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 250182381}
+  - component: {fileID: 250182382}
   m_Layer: 0
   m_Name: AstramoriArcade
   m_TagString: Untagged
@@ -2234,6 +2235,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &250182382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250182380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -169841482
+      Data2: 1089316096
+      Data3: -1884266870
+      Data4: -1945093820
+    Path: event:/Music/Demo Astramori Music
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &264005723
 GameObject:
   m_ObjectHideFlags: 0
@@ -11548,7 +11579,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20682
+  m_Name: pb_Mesh47676
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15383,7 +15414,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh21142
+  m_Name: pb_Mesh48136
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -15604,6 +15635,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arcadeMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
 --- !u!4 &1603018005 stripped
@@ -15658,6 +15693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623424158}
+  - component: {fileID: 1623424159}
   m_Layer: 0
   m_Name: AsterionArcade
   m_TagString: Untagged
@@ -15681,6 +15717,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1623424159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623424157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -796493211
+      Data2: 1262880839
+      Data3: -309666430
+      Data4: 1675459651
+    Path: event:/Music/Demo Asterion Music
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1655714814
 GameObject:
   m_ObjectHideFlags: 0
@@ -19746,12 +19812,13 @@ GameObject:
   m_Component:
   - component: {fileID: 871319841874289074}
   - component: {fileID: 5148467592495966218}
-  - component: {fileID: 410338507840327700}
   - component: {fileID: 5849499323536188101}
   - component: {fileID: 6583653702185318053}
   - component: {fileID: 2717559552032389404}
   - component: {fileID: 261537445608738551}
   - component: {fileID: 261537445608738552}
+  - component: {fileID: 261537445608738553}
+  - component: {fileID: 261537445608738554}
   m_Layer: 9
   m_Name: Camera
   m_TagString: MainCamera
@@ -19809,14 +19876,50 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 356169d877f990043be2b6285b1536b2, type: 2}
---- !u!81 &410338507840327700
-AudioListener:
+--- !u!114 &261537445608738553
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
+  ListenerNumber: -1
+--- !u!114 &261537445608738554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261537445608738550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -1471918111
+      Data2: 1255829398
+      Data3: 2069599418
+      Data4: 1811596756
+    Path: event:/Ambience/Demo Ambience
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!114 &557494387394823235
 MonoBehaviour:
   m_ObjectHideFlags: 3
