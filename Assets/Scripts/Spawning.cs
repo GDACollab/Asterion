@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AsterionArcade {
 
@@ -16,12 +17,17 @@ namespace AsterionArcade {
         [SerializeField] FakeCursor fc;
         [SerializeField] Camera astramoriCamera;
         [SerializeField] AstramoriManager astramoriManager;
+        [SerializeField] PlacementZone pz;
+        [SerializeField] float[] spawnCooldowns;
+        float[] currentSpawnCooldown = new float[4];
+        [SerializeField] Image[] spawnOverlays;
 
         [Header("Main Controls")]
         [SerializeField] bool ship1Active;
         [SerializeField] int selectedShip = 1;
         [SerializeField] float invalidRange = 1;
         [SerializeField] float selectionSens = 0.5f;
+        public float spawnDelay;
 
         [Header("Preview Controls")]
         [SerializeField] float previewAlpha = 0.25f;
@@ -35,6 +41,25 @@ namespace AsterionArcade {
             SelectShip(1);
         }
 
+        private void FixedUpdate()
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                if(currentSpawnCooldown[i] > 0)
+                {
+                    currentSpawnCooldown[i] -= Time.deltaTime;
+                    float scale = (currentSpawnCooldown[i] / spawnCooldowns[i]) * 1.575f;
+                    if(scale < 0)
+                    {
+                        scale = 0;
+                    }
+                    spawnOverlays[i].rectTransform.localScale = new Vector3(1.575f, scale, 1.575f);
+                }
+
+
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -44,7 +69,12 @@ namespace AsterionArcade {
             {
                 UpdateHotKeys();
                 UpdateSpawn();
+                spawnDelay += Time.deltaTime;
             }
+
+
+
+            
             
         }
 
@@ -112,8 +142,13 @@ namespace AsterionArcade {
 
                 ship1.seeking = true;
             }
+            ship.GetComponent<scr_fighter_shoot>().isAstramori = true;
 
-            astramoriManager.enemyQueue.Add(shipID);
+            astramoriManager.enemyQueue.Add(new Vector2(shipID, spawnDelay + 0.15f));
+
+            spawnDelay = 0;
+
+            currentSpawnCooldown[shipID - 1] = spawnCooldowns[shipID - 1];
         }
 
         void ActivateShip1()
@@ -127,7 +162,7 @@ namespace AsterionArcade {
 
         bool CanPlace()
         {
-            return (preview.position - starfighter.position).magnitude > invalidRange;
+            return (pz.isContact && (currentSpawnCooldown[selectedShip-1] <= 0));
         }
     }
 }

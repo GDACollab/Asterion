@@ -25,6 +25,12 @@ namespace AsterionArcade
             
         }
 
+        private void OnBecameInvisible()
+        {
+
+            Destroy(this.gameObject);
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
 

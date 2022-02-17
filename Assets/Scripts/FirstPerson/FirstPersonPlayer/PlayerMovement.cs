@@ -23,13 +23,14 @@ namespace FirstPersonPlayer
         [SerializeField] private float horizontalSlowdown;
         [Tooltip("Speed threshold where player's velocity is set to 0")]
         [SerializeField] private float stopSpeed;
+        [SerializeField] float gravity;
 
         // Internal references
         private Vector2 _inputVector;
         private float _mouseInputX;
         private Vector3 _horizontalVelocity;
 
-        private bool _movementEnabled = false;
+        public bool _movementEnabled = false;
 
         public void Construct(Transform playerTransform
             , CharacterController characterController
@@ -64,8 +65,13 @@ namespace FirstPersonPlayer
                 _inputVector.Normalize();
 
                 RotatePlayer();
-
+                
                 Move();
+            }
+
+            if (!_characterController.isGrounded)
+            {
+                _horizontalVelocity += new Vector3(0, -gravity, 0);
             }
         }
 
