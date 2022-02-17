@@ -81,7 +81,7 @@ namespace FirstPersonPlayer
                     _interactTextManager.SetTextEnable(true);
                     _interactTextManager.SetTextString(thisInteractable.interactText);
 
-                    if (Input.GetButtonDown("Fire1") && currentCameraState == CameraState.FirstPerson)
+                    if (Input.GetButtonDown("Fire1") && currentCameraState == CameraState.FirstPerson && !GameManager.Instance.isPaused)
                     {
                         thisInteractable.OnInteract.Invoke();
                         _interactTextManager.SetTextEnable(false);

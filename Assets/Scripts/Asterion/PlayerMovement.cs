@@ -66,7 +66,7 @@ namespace AsterionArcade
                 currentCooldown -= Time.deltaTime;
             }
 
-            if (Input.GetKeyDown(KeyCode.Mouse0) && currentCooldown <= 0)
+            if (Input.GetKey(KeyCode.Mouse0) && currentCooldown <= 0)
             {
                 var bullet = Instantiate(playerBulletPrefab, playerBarrel.transform.position, Quaternion.identity);
                 bullet.GetComponent<AsterionPlayerBullet>().rb.AddForce(transform.up * projectileSpeed, ForceMode2D.Impulse);

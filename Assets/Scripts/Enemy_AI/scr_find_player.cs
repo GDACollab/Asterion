@@ -17,7 +17,7 @@ public class scr_find_player : MonoBehaviour
 
     // Players position, according to last update
 
-    private static List<Vector3> m_FindPlayer = new List<Vector3>();
+    public static List<Vector3> m_FindPlayer = new List<Vector3>();
 
     public GameObject m_Player;
 
@@ -67,7 +67,6 @@ public class scr_find_player : MonoBehaviour
     {
         return m_FindPlayer[Ai_Type];
     }
-
 }
 
 

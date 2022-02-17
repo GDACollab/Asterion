@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 using FirstPersonPlayer;
 using Interactable;
 
@@ -24,23 +24,27 @@ namespace AsterionArcade
         [SerializeField] AsterionLossScreen lossScreen;
         [SerializeField] VirtualCanvasCursor cursor;
         [SerializeField] Transform enemies;
-   
-        
+        [SerializeField] CinemachineVirtualCamera virtualCamera;
+        [SerializeField] PowerManager powerManager;
+
+
+
 
 
 
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
         [Header("Current Game State Info")]
-        public GameState currentGameState;
+        private GameState currentGameState;
         public bool isLost;
-        public List<int> baseEnemyQueue;
-        public List<int> enemyQueue;
+        public List<Vector2> baseEnemyQueue;
+        public List<Vector2> enemyQueue;
  
 
         [Header("Asterion Spawning Rate/Range")]
         public float spawnRate;
         public float minSpawnRange;
         public float maxSpawnRange;
+        [SerializeField] float sanityLoss;
 
 
         public new void Construct(CameraManager cameraManager)
@@ -82,6 +86,8 @@ namespace AsterionArcade
             _cameraManager.OnChangeCameraState
                 .Invoke(CameraManager.CameraState.Asterion);
 
+            GameManager.Instance.isPlayingArcade = true;
+
             StartFreshGame();
 
         }
@@ -96,6 +102,7 @@ namespace AsterionArcade
             cursor.DisableVirtualCursor();
             _aiCore.enabled = false;
             currentGameState = GameState.Disabled;
+            GameManager.Instance.isPlayingArcade = false;
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(true);
             lossMenu.SetActive(false);
@@ -139,7 +146,7 @@ namespace AsterionArcade
         {
             isLost = false;
             GameManager.Instance.shipStats.ResetAllStats();
-            enemyQueue = new List<int>(baseEnemyQueue);
+            enemyQueue = new List<Vector2>(baseEnemyQueue);
             cursor.EnableVirtualCursor();
             _aiCore.enabled = true;
             _aiCore.m_Player = player;
@@ -176,6 +183,8 @@ namespace AsterionArcade
 
             if (isWin)
             {
+                powerManager.isDraining = true;
+                powerManager.GainPower();
                 lossScreen.gameStateText.text = "You Win!";
                 cursor.EnableVirtualCursor();
                 lossScreen.continueButtonText.text = "Start Again? (1 Quarter)";
@@ -190,6 +199,7 @@ namespace AsterionArcade
             }
             else
             {
+                powerManager.isDraining = true;
                 lossScreen.gameStateText.text = "You Lost!";
                 cursor.EnableVirtualCursor();
                 lossMenu.SetActive(true);
@@ -201,6 +211,7 @@ namespace AsterionArcade
                 {
                     bd.Death();
                 }
+                GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
             }
         }
@@ -212,6 +223,7 @@ namespace AsterionArcade
             player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed + GameManager.Instance.shipStats.thruster;
             player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage + GameManager.Instance.shipStats.attack;
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            virtualCamera.m_Lens.OrthographicSize = 5 + GameManager.Instance.shipStats.range;
         }
 
         //sets fighter stats to default
@@ -221,6 +233,7 @@ namespace AsterionArcade
             player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed;
             player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage;
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth;
+            virtualCamera.m_Lens.OrthographicSize = 5;
         }
 
         // placeholder enemy spawning system
@@ -229,9 +242,29 @@ namespace AsterionArcade
             cursor.DisableVirtualCursor();
             yield return new WaitForSeconds(1);
 
+            powerManager.isDraining = false;
+
+            int numFighters = 3;
+
             while (enemyQueue.Count > 0)
             {
-                GameObject ship = Instantiate(GameManager.Instance.alienShipPrefabs[enemyQueue[0] - 1], enemies);
+
+                if(enemyQueue[0].x == 1 && numFighters > 0)
+                {
+                    numFighters--;
+                    yield return new WaitForSeconds(0.2f);
+                }
+                else
+                {
+                    if(numFighters <= 0)
+                    {
+                        numFighters = 3;
+                    }
+                    yield return new WaitForSeconds(3f);
+                }
+
+                //yield return new WaitForSeconds(enemyQueue[0].y);
+                GameObject ship = Instantiate(GameManager.Instance.alienShipPrefabs[(int)enemyQueue[0].x - 1], enemies);
                 ship.layer = 7;
                 Vector2 randomVector = Random.insideUnitCircle;
                 randomVector.Normalize();
@@ -241,7 +274,7 @@ namespace AsterionArcade
                     ship1.seeking = true;
                 }
                 enemyQueue.RemoveAt(0);
-                yield return new WaitForSeconds(spawnRate);
+                
 
                 
 

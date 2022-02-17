@@ -561,9 +561,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomPositionConstraints: {x: 8.4, y: 4.5}
   ships: {fileID: 202290968}
+  bullets: {fileID: 0}
+  astramoriManager: {fileID: 0}
+  enemyBullets: {fileID: 0}
+  bullet: {fileID: 0}
+  shotDelay: 0
+  shotSpeed: 0
+  shipInfos: []
   speed: 6
+  baseSpeed: 0
+  damage: 0
+  baseDamage: 0
   scanFrequency: 0.25
   distanceTresholdFactor: 1.5
+  wallMultiplier: 1
   angleFactor: 0.05
   angleExpBase: 2
   distanceFactor: 1
@@ -10180,9 +10191,16 @@ MonoBehaviour:
   astramoriStarfighterHealth: {fileID: 42027148}
   timer: {fileID: 226638549}
   spawningSystem: {fileID: 1854180382}
-  currentGameState: 0
+  virtualCamera: {fileID: 0}
   isLost: 0
-  enemyQueue: 010000000100000001000000010000000100000001000000
+  enemyQueue:
+  - {x: -904.3164, y: 6.74e-43}
+  - {x: 4.5014e-41, y: 0}
+  - {x: -2.8150943e-38, y: 6.75e-43}
+  - {x: 4.6e-44, y: 0}
+  - {x: -904.3164, y: 6.74e-43}
+  - {x: -3547.6016, y: 6.74e-43}
+  sanityLoss: 0
 --- !u!1 &1074676103
 GameObject:
   m_ObjectHideFlags: 0
@@ -16157,10 +16175,13 @@ MonoBehaviour:
   - {fileID: 5012098618912345058, guid: 2fca9c3026799e844900d77a0ca3200d, type: 3}
   shipStats: {fileID: 1669733569}
   coinText: {fileID: 1118877086}
+  postProcessingVolume: {fileID: 0}
+  vignette: {fileID: 0}
+  astramoriEnemyBullets: {fileID: 0}
   asterionManager: {fileID: 1868742463}
   astramoriManager: {fileID: 1067671938}
+  sanityManager: {fileID: 0}
   coinCount: 1
-  sanity: 0
 --- !u!114 &1669733569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17812,10 +17833,14 @@ MonoBehaviour:
   fc: {fileID: 1811384913}
   astramoriCamera: {fileID: 546691096}
   astramoriManager: {fileID: 1067671938}
+  pz: {fileID: 0}
+  spawnCooldowns: []
+  spawnOverlays: []
   ship1Active: 0
   selectedShip: 1
   invalidRange: 3
   selectionSens: 0.05
+  spawnDelay: 0
   previewAlpha: 0.5
   previewInvalidAlpha: 0.15
   isActive: 0
@@ -17884,13 +17909,27 @@ MonoBehaviour:
   lossScreen: {fileID: 271141717}
   cursor: {fileID: 1274144968}
   enemies: {fileID: 736331832}
-  currentGameState: 0
+  virtualCamera: {fileID: 0}
+  powerManager: {fileID: 0}
   isLost: 0
-  baseEnemyQueue: 010000000100000001000000010000000100000001000000
-  enemyQueue: 010000000100000001000000010000000100000001000000
+  baseEnemyQueue:
+  - {x: -904.3164, y: 6.74e-43}
+  - {x: 2.7488423e+26, y: 1.8175243e+31}
+  - {x: -2.8150943e-38, y: 6.75e-43}
+  - {x: 4.6e-44, y: 0}
+  - {x: -904.3164, y: 6.74e-43}
+  - {x: -3547.6016, y: 6.74e-43}
+  enemyQueue:
+  - {x: -904.3164, y: 6.74e-43}
+  - {x: 2.7488423e+26, y: 1.8175243e+31}
+  - {x: -2.8150943e-38, y: 6.75e-43}
+  - {x: 4.6e-44, y: 0}
+  - {x: -904.3164, y: 6.74e-43}
+  - {x: -3547.6016, y: 6.74e-43}
   spawnRate: 3
   minSpawnRange: 6
   maxSpawnRange: 8
+  sanityLoss: 0
 --- !u!1 &1900838324
 GameObject:
   m_ObjectHideFlags: 0
@@ -19852,7 +19891,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.00000035762787, y: -21.9012, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}
@@ -20218,9 +20257,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.01
-  far clip plane: 1000
-  field of view: 90
+  near clip plane: 0.001
+  far clip plane: 5000
+  field of view: 40
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
