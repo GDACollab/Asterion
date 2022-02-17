@@ -34,7 +34,7 @@ namespace AsterionArcade
 
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
         [Header("Current Game State Info")]
-        protected GameState currentGameState;
+        private GameState currentGameState;
         public bool isLost;
         public List<Vector2> baseEnemyQueue;
         public List<Vector2> enemyQueue;
@@ -86,6 +86,8 @@ namespace AsterionArcade
             _cameraManager.OnChangeCameraState
                 .Invoke(CameraManager.CameraState.Asterion);
 
+            GameManager.Instance.isPlayingArcade = true;
+
             StartFreshGame();
 
         }
@@ -100,6 +102,7 @@ namespace AsterionArcade
             cursor.DisableVirtualCursor();
             _aiCore.enabled = false;
             currentGameState = GameState.Disabled;
+            GameManager.Instance.isPlayingArcade = false;
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(true);
             lossMenu.SetActive(false);

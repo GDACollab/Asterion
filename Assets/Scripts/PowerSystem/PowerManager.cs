@@ -30,6 +30,7 @@ public class PowerManager : MonoBehaviour
     public bool isDraining = true;
     [SerializeField] Color[] batteryStatusColors;
     [SerializeField] float[] batteryStatus; // Can't think of a better name :(
+    [SerializeField] SanityManager sanityManager;
     private RawImage[] batteryCells;
 
     // Start is called before the first frame update
@@ -50,6 +51,10 @@ public class PowerManager : MonoBehaviour
         }
         
         BatteryIndicator(powerLevel);
+        if(powerLevel <= 0)
+        {
+            sanityManager.sanity = 0;
+        }
     }
 
     public void GainPower()

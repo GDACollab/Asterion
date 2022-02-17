@@ -5,6 +5,8 @@ using UnityEngine;
 public class ShipStats : MonoBehaviour
 {
     public static ShipStats instance;
+    public List<UpgradeDisplay> upgradeDisplays;
+
 
     public int thruster;
     public int attack;
@@ -35,6 +37,22 @@ public class ShipStats : MonoBehaviour
         attack = 0;
         shield = 0;
         range = 0;
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateUpgradeDisplayUI();
+    }
+
+    void UpdateUpgradeDisplayUI()
+    {
+        foreach(UpgradeDisplay upgradeDisplay in upgradeDisplays)
+        {
+            upgradeDisplay.upgradeTicks[0].SetTicks(shield);
+            upgradeDisplay.upgradeTicks[1].SetTicks(attack);
+            upgradeDisplay.upgradeTicks[2].SetTicks(thruster);
+            upgradeDisplay.upgradeTicks[3].SetTicks(range);
+        }
     }
 
     public void ResetAllStats()
