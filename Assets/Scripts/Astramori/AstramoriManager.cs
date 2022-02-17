@@ -34,6 +34,7 @@ namespace AsterionArcade
         [SerializeField] Spawning spawningSystem;
         [SerializeField] CinemachineVirtualCamera virtualCamera;
         [SerializeField] UpgradeDisplay upgradeDisplay;
+        bool canReward;
         //public GameObject astramoriCanvas;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
@@ -110,7 +111,7 @@ namespace AsterionArcade
         public void CloseMainMenu()
         {
             mainMenu.SetActive(false);
-            Debug.Log("closing main menu on atramori");
+            Debug.Log("closing main menu on astramori");
             currentGameState = GameState.Upgrades;
         }
 
@@ -176,7 +177,12 @@ namespace AsterionArcade
                 cursor.EnableVirtualCursor();
                 int quarters = ((int)(((timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
                 lossScreen.fundsRewardedText.text = "Quarters Recieved: " + quarters;
-                GameManager.Instance.AlterCoins(quarters);
+                if (canReward)
+                {
+                    GameManager.Instance.AlterCoins(quarters);
+                }
+                
+                canReward = false;
                 lossScreen.fundsRewardedText.enabled = true;
                 lossMenu.SetActive(true);
                 _aiCore.enabled = false;
@@ -235,6 +241,7 @@ namespace AsterionArcade
             starfighterAI.SetActive();
             //cursor.DisableVirtualCursor();
             timer.StartTimer();
+            canReward = true;
             yield return new WaitForSeconds(1);
 
 

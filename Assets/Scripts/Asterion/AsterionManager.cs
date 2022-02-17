@@ -260,7 +260,7 @@ namespace AsterionArcade
                     {
                         numFighters = 3;
                     }
-                    yield return new WaitForSeconds(6f);
+                    yield return new WaitForSeconds(3f);
                 }
 
                 //yield return new WaitForSeconds(enemyQueue[0].y);
