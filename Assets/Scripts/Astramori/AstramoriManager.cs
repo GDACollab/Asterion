@@ -175,7 +175,7 @@ namespace AsterionArcade
             {
                 lossScreen.gameStateText.text = "You Win!";
                 cursor.EnableVirtualCursor();
-                int quarters = ((int)(((timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
+                int quarters = (int)((timer.time / timer.startingTime) * maxCoinRewardBonus) + 1;
                 lossScreen.fundsRewardedText.text = "Quarters Recieved: " + quarters;
                 if (canReward)
                 {
@@ -256,19 +256,14 @@ namespace AsterionArcade
         //continue current round
         public void Continue()
         {
-            if (GameManager.Instance.coinCount > 0)
+            if (isLost)
             {
-                if (isLost)
-                {
-                    ContinueCurrentGame();
-                }
-                else
-                {
-                    StartFreshGame();
-                }
+                ContinueCurrentGame();
             }
-
-
+            else
+            {
+                StartFreshGame();
+            }
         }
 
         //exit this arcade machine and return to first person view
