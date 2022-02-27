@@ -86,6 +86,8 @@ namespace AsterionArcade
             mousePos = gameCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.nearClipPlane));
             Vector3 difference = mousePos - transform.position;
             difference.Normalize();
+
+            // Rotates the ship to face the mouse
             float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
 
             // Line Test
