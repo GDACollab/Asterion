@@ -24,6 +24,7 @@ namespace AsterionArcade
         [Header("Player Movement")]
         public Vector2 playerVelocity;
         public Vector3 mousePos;
+        public Vector3 playerPos;
         public Camera gameCamera;
         public LineRenderer testLine;
 
@@ -78,21 +79,22 @@ namespace AsterionArcade
 
         void MovementCheck()
         {
-            /*mousePos = Input.mousePosition;
-            mousePos.x -= Screen.width / 2;
-            mousePos.y -= Screen.height / 2;*/
+            mousePos = Input.mousePosition;
+            mousePos.x /= Screen.width;
+            mousePos.x -= 0.5f;
+            mousePos.y /= Screen.height;
+            mousePos.y -= 0.5f;
 
-            // Calculates the difference between the mouse point and the player
-            mousePos = gameCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, gameCamera.nearClipPlane));
-            Vector3 difference = mousePos - transform.position;
+            playerPos = gameCamera.WorldToViewportPoint(transform.position);
+            playerPos.x -= 0.5f;
+            playerPos.y -= 0.5f;
+
+            // Calculates the distance between the mouse point and the player
+            Vector3 difference = mousePos - playerPos;
             difference.Normalize();
 
             // Rotates the ship to face the mouse
             float rotation = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-
-            // Line Test
-            testLine.SetPosition(0, new Vector3(transform.position.x, transform.position.y, testLine.GetPosition(0).z));
-            testLine.SetPosition(1, new Vector3(mousePos.x, mousePos.y, testLine.GetPosition(1).z));
 
             transform.rotation = Quaternion.Euler(0f, 0f, rotation - 90);
             //transform.localEulerAngles = new Vector3(0, 0, (Mathf.Atan2(mousePos.y - transform.position.y, mousePos.x - transform.position.x) * Mathf.Rad2Deg) - 90);
