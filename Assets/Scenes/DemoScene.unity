@@ -12390,7 +12390,9 @@ MonoBehaviour:
   shootCooldown: 0.5
   playerVelocity: {x: 0, y: 0}
   mousePos: {x: 0, y: 0, z: 0}
+  playerPos: {x: 0, y: 0, z: 0}
   gameCamera: {fileID: 1944878421}
+  gameCanvas: {fileID: 1274144964}
   testLine: {fileID: 2071295705}
   inputEnabled: 0
 --- !u!212 &690837008

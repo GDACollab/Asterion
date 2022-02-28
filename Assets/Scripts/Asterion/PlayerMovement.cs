@@ -26,6 +26,7 @@ namespace AsterionArcade
         public Vector3 mousePos;
         public Vector3 playerPos;
         public Camera gameCamera;
+        public RectTransform gameCanvas;
         public LineRenderer testLine;
 
         [Header("Player State")]
@@ -79,15 +80,29 @@ namespace AsterionArcade
 
         void MovementCheck()
         {
-            mousePos = Input.mousePosition;
-            mousePos.x /= Screen.width;
-            mousePos.x -= 0.5f;
-            mousePos.y /= Screen.height;
-            mousePos.y -= 0.5f;
+            /*mousePos = Input.mousePosition;
+            mousePos.x -= Screen.width / 2;
+            mousePos.y -= Screen.height / 2;*/
 
-            playerPos = gameCamera.WorldToViewportPoint(transform.position);
-            playerPos.x -= 0.5f;
-            playerPos.y -= 0.5f;
+            // Determines mouse position on the game canvas
+            RaycastHit hit;
+
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit, 100))
+            {
+                if (hit.transform.tag == "RenderTexturePlane")
+                {
+                    Vector2 hitPos = hit.textureCoord * gameCanvas.rect.size;
+                    Vector2 center = new Vector2(gameCanvas.rect.width / 2, gameCanvas.rect.height / 2);
+                    hitPos -= center;
+
+                    mousePos = hitPos;
+                }
+            }
+
+            playerPos = gameCamera.WorldToScreenPoint(transform.position);
+            playerPos.x -= gameCanvas.rect.width / 2;
+            playerPos.y -= gameCanvas.rect.height / 2;
 
             // Calculates the distance between the mouse point and the player
             Vector3 difference = mousePos - playerPos;
