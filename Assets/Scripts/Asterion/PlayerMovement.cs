@@ -8,6 +8,7 @@ namespace AsterionArcade
     {
         public Rigidbody2D rb;
         public GameObject playerBulletPrefab;
+        public FakeCursor asterionFakeCursor;
         [SerializeField] GameObject playerBarrel;
         [Header("Base Player Stats")]
         public float baseSpeed;
@@ -70,6 +71,8 @@ namespace AsterionArcade
             {
                 var bullet = Instantiate(playerBulletPrefab, playerBarrel.transform.position, Quaternion.identity);
                 bullet.GetComponent<AsterionPlayerBullet>().rb.AddForce(transform.up * projectileSpeed, ForceMode2D.Impulse);
+                bullet.transform.parent = GameManager.Instance.asterionEnemyBullets;
+                bullet.GetComponent<BasicBullet>().damage = damage;
                 currentCooldown = shootCooldown;
             }
         }
@@ -80,7 +83,10 @@ namespace AsterionArcade
             mousePos.x -= Screen.width / 2;
             mousePos.y -= Screen.height / 2;
 
-            transform.localEulerAngles = new Vector3(0, 0, (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) - 90);
+            //turns ship towards position of asterion's fake cursor
+            Vector2 testMousePos = (asterionFakeCursor.transform.GetComponent<RectTransform>().transform.position);
+            transform.right = (Vector2)transform.position - testMousePos;
+            transform.localEulerAngles += new Vector3(0, 0, 90);
 
 
             NonRelativeForceMovement();

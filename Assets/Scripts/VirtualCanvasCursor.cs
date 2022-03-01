@@ -69,6 +69,7 @@ public class VirtualCanvasCursor : MonoBehaviour
             {
                 foreach (Button b in fc.collidingObjects.ToArray())
                 {
+                    
                     b.onClick.Invoke();
                 }
             }

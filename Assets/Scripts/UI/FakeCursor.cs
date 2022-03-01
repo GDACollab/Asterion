@@ -10,9 +10,13 @@ public class FakeCursor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "CanvasButton")
+        if(collision.tag == "CanvasButton" && collision.gameObject.activeInHierarchy)
         {
-            collidingObjects.Add(collision.transform.GetComponent<Button>());
+            
+            
+                collidingObjects.Add(collision.transform.GetComponent<Button>());
+            
+            
         }
     }
 
@@ -20,10 +24,15 @@ public class FakeCursor : MonoBehaviour
     {
         if (collision.tag == "CanvasButton")
         {
+            
             collidingObjects.Remove(collision.transform.GetComponent<Button>());
         }
     }
 
+    private void LateUpdate()
+    {
+        
+    }
 
 
 }
