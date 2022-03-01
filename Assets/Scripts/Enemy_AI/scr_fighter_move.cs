@@ -8,11 +8,11 @@ using UnityEngine;
 
 public class scr_fighter_move : MonoBehaviour
 {
-    public float speed;
+    public float speed; //forwarded movementSpeed
 
     public int Ai_Type;
-    public bool seeking;
-    public float rotate_speed;
+    public bool seeking; // public bool lookingForPlayer;
+    public float rotate_speed; //forward turnSpeed
 
     public GameObject Player;
 

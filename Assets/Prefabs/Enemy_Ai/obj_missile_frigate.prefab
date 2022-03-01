@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3586597810674997913}
+  - component: {fileID: 6581877177680064256}
   - component: {fileID: 3790361353904646876}
   - component: {fileID: 3586597810674997914}
-  - component: {fileID: 3586597810674997860}
-  - component: {fileID: -3517360281657806531}
   - component: {fileID: 3586597810674997915}
   - component: {fileID: 1138334277600097863}
   m_Layer: 7
@@ -36,6 +35,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6581877177680064256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3586597810674997912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57586e48fd7536943a07884b267e5e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ai_Type: 1
+  isAstramori: 0
+  movementSpeed: 2
+  turnSpeed: 0.05
+  bulletPrefab: {fileID: 1693220522525983608, guid: ee76188ca6400ee4891e7d4e0563b651, type: 3}
+  bulletSpeed: 0
+  reloadSpeed: 10
+  weaponRange: 14
+  lookingForPlayer: 0
 --- !u!114 &3790361353904646876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,39 +123,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3586597810674997860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3586597810674997912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f54e60093509b409d2a121799f2661, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  Ai_Type: 1
-  seeking: 1
-  rotate_speed: 0.05
-  Player: {fileID: 0}
---- !u!114 &-3517360281657806531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3586597810674997912}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bacb82c0d9d6124098f4152dee1e10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletObject: {fileID: 1693220522525983608, guid: ee76188ca6400ee4891e7d4e0563b651, type: 3}
-  shotDelay_Low: 10
-  shotDelay_High: 15
-  Ai_Type: 1
 --- !u!50 &3586597810674997915
 Rigidbody2D:
   serializedVersion: 4

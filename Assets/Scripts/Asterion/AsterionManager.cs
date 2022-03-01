@@ -269,9 +269,9 @@ namespace AsterionArcade
                 Vector2 randomVector = Random.insideUnitCircle;
                 randomVector.Normalize();
                 ship.transform.position = (Vector2)player.transform.position + (randomVector * Random.Range(minSpawnRange, maxSpawnRange));
-                if (ship.TryGetComponent<scr_fighter_move>(out scr_fighter_move ship1))
+                if (ship.TryGetComponent<Enemy>(out Enemy ship1))
                 {
-                    ship1.seeking = true;
+                    ship1.lookingForPlayer = true;
                 }
                 enemyQueue.RemoveAt(0);
                 
