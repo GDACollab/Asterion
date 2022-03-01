@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Vignette vignette;
     public GameObject pauseUI;
     public Transform astramoriEnemyBullets;
+    public Transform asterionEnemyBullets;
     public AsterionManager asterionManager;
     public AstramoriManager astramoriManager;
     public SanityManager sanityManager;
