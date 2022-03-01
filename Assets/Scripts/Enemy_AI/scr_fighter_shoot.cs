@@ -36,9 +36,15 @@ namespace AsterionArcade {
                     GameObject bulletCreated;
                     bulletCreated = GameObject.Instantiate(bulletObject, transform.position, transform.rotation);
                     bulletCreated.GetComponent<Rigidbody2D>().velocity = (playerPos - (Vector2)transform.position).normalized * bulletSpeed;
+
+                    //set parent of new bullet to respective arcade machine's gameobject
                     if (isAstramori)
                     {
                         bulletCreated.transform.parent = GameManager.Instance.astramoriEnemyBullets;
+                    }
+                    else
+                    {
+                        bulletCreated.transform.parent = GameManager.Instance.asterionEnemyBullets;
                     }
                     Destroy(bulletCreated, 5f);
 

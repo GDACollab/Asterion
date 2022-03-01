@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using FirstPersonPlayer;
 using Interactable;
+using TMPro;
 
 namespace AsterionArcade
 {
@@ -26,6 +27,7 @@ namespace AsterionArcade
         [SerializeField] Transform enemies;
         [SerializeField] CinemachineVirtualCamera virtualCamera;
         [SerializeField] PowerManager powerManager;
+        [SerializeField] TextMeshProUGUI insufficientFundsText;
 
 
 
@@ -104,8 +106,9 @@ namespace AsterionArcade
             currentGameState = GameState.Disabled;
             GameManager.Instance.isPlayingArcade = false;
             mainMenu.SetActive(true);
-            upgradeMenu.SetActive(true);
+            upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
+            insufficientFundsText.enabled = false;
             StopCoroutine(CombatRoutine());
 
             _cameraManager.OnChangeCameraState
@@ -115,15 +118,19 @@ namespace AsterionArcade
 
         public void CloseMainMenu()
         {
+            Debug.Log("closing main menu asterion");
+
             if(GameManager.Instance.coinCount > 0)
             {
                 GameManager.Instance.AlterCoins(-1);
                 mainMenu.SetActive(false);
+                upgradeMenu.SetActive(true);
                 currentGameState = GameState.Upgrades;
+                insufficientFundsText.enabled = false;
             }
             else
             {
-
+                insufficientFundsText.enabled = true;
             }
             
         }
@@ -136,7 +143,7 @@ namespace AsterionArcade
             upgradeMenu.SetActive(false);
             currentGameState = GameState.Gameplay;
             _playerMovement.enabled = true;
-            
+            Debug.Log("closing upgrade screen for asterion, starting game!");
             StartCoroutine(CombatRoutine());
 
             //GameManager.Instance.AlterCoins(-1);
@@ -152,9 +159,10 @@ namespace AsterionArcade
             _aiCore.m_Player = player;
             currentGameState = GameState.MainMenu;
             mainMenu.SetActive(true);
-            upgradeMenu.SetActive(true);
+            upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
-            
+            insufficientFundsText.enabled = false;
+
             lossScreen.insufficientFundsText.enabled = false;
             
         }
@@ -191,10 +199,20 @@ namespace AsterionArcade
                 lossMenu.SetActive(true);
                 _aiCore.enabled = false;
                 _playerMovement.enabled = false;
+
+                
+
+
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                 {
                     bd.Death();
                 }
+
+                foreach (Transform bullet in GameManager.Instance.asterionEnemyBullets)
+                {
+                    Destroy(bullet.gameObject);
+                }
+
                 isLost = false;
             }
             else
@@ -207,10 +225,22 @@ namespace AsterionArcade
                 _playerMovement.enabled = false;
                 StopAllCoroutines();
                 _aiCore.enabled = false;
-                foreach(BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+
+                foreach (scr_fighter_move fighterMove in enemies.GetComponentsInChildren<scr_fighter_move>())
+                {
+                    enemyQueue.Add(new Vector2(fighterMove.Ai_Type + 1, 3));
+                }
+
+                foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                 {
                     bd.Death();
                 }
+
+                foreach (Transform bullet in GameManager.Instance.asterionEnemyBullets)
+                {
+                    Destroy(bullet.gameObject);
+                }
+
                 GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
             }
@@ -239,7 +269,7 @@ namespace AsterionArcade
         // placeholder enemy spawning system
         IEnumerator CombatRoutine()
         {
-            cursor.DisableVirtualCursor();
+            //cursor.DisableVirtualCursor();
             yield return new WaitForSeconds(1);
 
             powerManager.isDraining = false;
@@ -311,6 +341,7 @@ namespace AsterionArcade
         public void ExitMachine()
         {
             cursor.DisableVirtualCursor();
+            insufficientFundsText.enabled = false;
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Asterion)
             {
                 _interactableManager.OnStopInteract.Invoke();

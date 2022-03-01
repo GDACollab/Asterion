@@ -99,7 +99,7 @@ namespace AsterionArcade
             currentGameState = GameState.Disabled;
             GameManager.Instance.isPlayingArcade = false;
             mainMenu.SetActive(true);
-            upgradeMenu.SetActive(true);
+            upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
             StopCoroutine(CombatRoutine());
 
@@ -111,6 +111,7 @@ namespace AsterionArcade
         public void CloseMainMenu()
         {
             mainMenu.SetActive(false);
+            upgradeMenu.SetActive(true);
             Debug.Log("closing main menu on astramori");
             currentGameState = GameState.Upgrades;
         }
@@ -140,7 +141,7 @@ namespace AsterionArcade
             _aiCore.m_Player = player;
             currentGameState = GameState.MainMenu;
             mainMenu.SetActive(true);
-            upgradeMenu.SetActive(true);
+            upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
             //GameManager.Instance.shipStats.ResetAllStats();
             lossScreen.fundsRewardedText.enabled = false;
