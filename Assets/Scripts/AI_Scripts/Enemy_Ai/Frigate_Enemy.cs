@@ -18,7 +18,7 @@ namespace AsterionArcade
         public override void enemyShoot()
         {
             numOfMissiles = 3;
-            Vector2 playerPos = scr_find_player.Get_Player_Pos(Ai_Type);
+            Vector2 playerPos = knownPlayerPos;
             StartCoroutine(shot(playerPos));
 
             readyToShoot = false;
@@ -33,8 +33,8 @@ namespace AsterionArcade
                 GameObject bulletCreated;
 
                 bulletCreated = GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);
-                playerPos = scr_find_player.Get_Player_Pos(Ai_Type);
-                bulletCreated.GetComponent<scr_missile_move>().playerPos = playerPos;
+                bulletCreated.GetComponent<scr_missile_move>().playerPos = knownPlayerPos;
+                bulletCreated.GetComponent<scr_missile_move>().player = player;
 
                 if (isAstramori)
                 {

@@ -15,7 +15,7 @@ namespace AsterionArcade
         public override void enemyShoot()
         {
             GameObject bulletCreated;
-            Vector2 playerPos = scr_find_player.Get_Player_Pos(Ai_Type);
+            Vector2 playerPos = knownPlayerPos;
 
             // Create Bullet
 

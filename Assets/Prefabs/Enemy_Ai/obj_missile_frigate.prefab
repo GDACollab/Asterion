@@ -47,14 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57586e48fd7536943a07884b267e5e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ai_Type: 1
-  isAstramori: 0
   movementSpeed: 2
+  timeTillNextFP: 5
   turnSpeed: 0.05
   bulletPrefab: {fileID: 1693220522525983608, guid: ee76188ca6400ee4891e7d4e0563b651, type: 3}
   bulletSpeed: 0
   reloadSpeed: 10
   weaponRange: 14
+  isAstramori: 0
   lookingForPlayer: 0
 --- !u!114 &3790361353904646876
 MonoBehaviour:

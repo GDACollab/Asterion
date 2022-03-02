@@ -14,13 +14,14 @@ namespace AsterionArcade
     {
 
         // Inspector Vars
-        public int Ai_Type;
-        public bool isAstramori;
 
         [Header("Movement")]
         public float movementSpeed;
+        [Tooltip("How many seconds till the next FindPlayer Update. (0 is instant)")]
+        public int timeTillNextFP;
         [Tooltip("How fast the enemy turns towards the new FP. (0 is instant)")]
         public float turnSpeed;
+
 
         [Header("Bullet Stats")]
         public GameObject bulletPrefab;
@@ -29,25 +30,38 @@ namespace AsterionArcade
         [Header("Shooting Stats")]
         public float reloadSpeed;
         public float weaponRange;
+        
+        [HideInInspector]
+        public bool isAstramori;
         [HideInInspector]
         public bool lookingForPlayer;
 
         // Private Vars
 
-        private GameObject player;
+        protected GameObject player;
         private Rigidbody2D rigidBody;
+        protected Vector2 knownPlayerPos;
         protected bool readyToShoot;
-
 
         // Start is called before the first frame update
         void Start()
         {
+            player = FindClosestGameObjecctWithTag("Player");
+            knownPlayerPos = player.transform.position;
+
             rigidBody = GetComponent<Rigidbody2D>();
             StartCoroutine(reload());
+
+            if (timeTillNextFP != 0)
+            {
+                StartCoroutine(updateFP(timeTillNextFP));
+            }
         }
 
         void FixedUpdate()
         {
+            if (timeTillNextFP == 0) { knownPlayerPos = player.transform.position; }
+
             if (lookingForPlayer) { enemyMovement(); }
 
             if (readyToShoot && checkDistanceToPlayer())
@@ -62,13 +76,12 @@ namespace AsterionArcade
         private void enemyMovement()
         {
 
-            Vector2 playerPos = scr_find_player.Get_Player_Pos(Ai_Type);
-            Vector2 dir = playerPos - rigidBody.position;
+            Vector2 dir = knownPlayerPos - rigidBody.position;
 
             // Move and rotate towards player
-            rigidBody.MovePosition(Vector2.MoveTowards(rigidBody.position, playerPos, Time.deltaTime * movementSpeed));
+            rigidBody.MovePosition(Vector2.MoveTowards(rigidBody.position, knownPlayerPos, Time.deltaTime * movementSpeed));
 
-            if (Ai_Type == 0)
+            if (turnSpeed == 0)
             {
                 rigidBody.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             }
@@ -81,12 +94,11 @@ namespace AsterionArcade
         // Checks if the player is in range
         private bool checkDistanceToPlayer()
         {
-            Vector2 playerPos = scr_find_player.Get_Player_Pos(Ai_Type);
             Vector2 currentPos = transform.position;
-            float distanceToPlayer = Vector2.Distance(playerPos, currentPos);
+            float distanceToPlayer = Vector2.Distance(knownPlayerPos, knownPlayerPos);
 
             // Only shoot when nearby player and not at players position.
-            return (distanceToPlayer < weaponRange) && (Vector2.Distance(playerPos, currentPos) != 0f);
+            return (distanceToPlayer < weaponRange) && (Vector2.Distance(knownPlayerPos, currentPos) != 0f);
         }
 
         // Handle Enemy collisions
@@ -116,6 +128,36 @@ namespace AsterionArcade
         {
             yield return new WaitForSeconds(reloadSpeed);
             readyToShoot = true;
+        }
+
+        protected IEnumerator updateFP(float time)
+        {
+            yield return new WaitForSeconds(time);
+            knownPlayerPos = player.transform.position;
+            StartCoroutine(updateFP(timeTillNextFP));
+        }
+        private GameObject FindClosestGameObjecctWithTag(string tag)
+        {
+            GameObject[] players = GameObject.FindGameObjectsWithTag(tag);
+            float currentCloseDist = 10000000;
+            int indexOfClose = 0;
+
+            for (int i = 0; i < players.Length; i++)
+            {
+                float distance = Vector2.Distance(transform.position, players[i].transform.position);
+                if (distance < currentCloseDist)
+                {
+                    currentCloseDist = distance;
+                    indexOfClose = i;
+                }
+            }
+
+            return players[indexOfClose];
+        }
+
+        public Vector2 getKnownPlayerPos()
+        {
+            return knownPlayerPos;
         }
 
     }

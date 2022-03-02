@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7147001854833689203}
+  - component: {fileID: -2810522728194324952}
   - component: {fileID: 3472095937016577195}
   - component: {fileID: 6118345354699944974}
-  - component: {fileID: 7907595459618418981}
-  - component: {fileID: 6320418976445625077}
   - component: {fileID: 4902838623317178008}
   - component: {fileID: 6900319957064285874}
   m_Layer: 7
@@ -36,6 +35,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2810522728194324952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 419958047552857102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e222ae61f63304d84794b9284fac75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 1
+  timeTillNextFP: 2
+  turnSpeed: 0.05
+  bulletPrefab: {fileID: 758243255397651644, guid: d12bc7b2e1cf3f44ca56992e512dc95d, type: 3}
+  bulletSpeed: 9
+  reloadSpeed: 10
+  weaponRange: 14
+  isAstramori: 0
+  lookingForPlayer: 0
 --- !u!114 &3472095937016577195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,41 +123,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7907595459618418981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419958047552857102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f54e60093509b409d2a121799f2661, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  Ai_Type: 2
-  seeking: 0
-  Player: {fileID: 0}
---- !u!114 &6320418976445625077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419958047552857102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55f2c3aed92444ed88a00c08d25fbd14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAstramori: 0
-  bulletObject: {fileID: 758243255397651644, guid: d12bc7b2e1cf3f44ca56992e512dc95d, type: 3}
-  shotDelay_Low: 9
-  shotDelay_High: 12
-  bulletSpeed: 9
-  Ai_Type: 2
-  readyToShoot: 0
 --- !u!50 &4902838623317178008
 Rigidbody2D:
   serializedVersion: 4
