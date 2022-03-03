@@ -28,6 +28,8 @@ public class PowerManager : MonoBehaviour
     // For the battery cells or stm
     public float powerLevel;
     public bool isDraining = true;
+    [SerializeField] GameObject tempMonster;
+    Vector3 baseMonsterPos;
     [SerializeField] Color[] batteryStatusColors;
     [SerializeField] float[] batteryStatus; // Can't think of a better name :(
     [SerializeField] SanityManager sanityManager;
@@ -40,6 +42,7 @@ public class PowerManager : MonoBehaviour
         currentRate = initialRate;
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
         numSegments = batteryCells.Length;
+        baseMonsterPos = tempMonster.transform.position;
     }
 
     // Update is called once per frame
@@ -51,10 +54,16 @@ public class PowerManager : MonoBehaviour
         }
         
         BatteryIndicator(powerLevel);
+        SetMonsterPosition();
         if(powerLevel <= 0)
         {
             sanityManager.sanity = 0;
         }
+    }
+
+    public void SetMonsterPosition()
+    {
+        tempMonster.transform.position = baseMonsterPos - new Vector3(0, 0, ((100 -powerLevel) / 100) * 7);
     }
 
     public void GainPower()

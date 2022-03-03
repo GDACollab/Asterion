@@ -7435,6 +7435,7 @@ MonoBehaviour:
   currentRate: 0
   powerLevel: 0
   isDraining: 1
+  tempMonster: {fileID: 839680698}
   batteryStatusColors:
   - {r: 0, g: 1, b: 0.009580135, a: 0}
   - {r: 0.9827336, g: 1, b: 0, a: 0}
@@ -17954,7 +17955,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839680698}
   m_LocalRotation: {x: 0, y: -0.70710677, z: 0.70710677, w: 0}
-  m_LocalPosition: {x: -0.12, y: 1.275, z: 14.82}
+  m_LocalPosition: {x: -0.12, y: 1.275, z: 13.65}
   m_LocalScale: {x: 0.14575, y: 0.14575, z: 0.28686}
   m_Children: []
   m_Father: {fileID: 358930549}
@@ -31342,7 +31343,7 @@ MonoBehaviour:
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
-  m_SelectedVertices: 360000002b000000
+  m_SelectedVertices: 
 --- !u!1 &1559708822
 GameObject:
   m_ObjectHideFlags: 0
