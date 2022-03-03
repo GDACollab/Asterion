@@ -53,10 +53,10 @@ namespace AsterionArcade
         {
 
 
-
-            if (Input.GetKeyDown(KeyCode.Space)) RandomizePosition();
-            if (Input.GetKeyDown(KeyCode.S)) ScanForClearing();
-            if (Input.GetKeyDown(KeyCode.F)) active = !active;
+            //dev cheats
+            //if (Input.GetKeyDown(KeyCode.Space)) RandomizePosition();
+            //if (Input.GetKeyDown(KeyCode.S)) ScanForClearing();
+            //if (Input.GetKeyDown(KeyCode.F)) active = !active;
 
             if (active)
             {
