@@ -38,6 +38,7 @@ namespace AsterionArcade
         [SerializeField] UpgradeDisplay upgradeDisplay;
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
+        [SerializeField] TextMeshProUGUI timeText;
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
@@ -190,10 +191,12 @@ namespace AsterionArcade
 
             if (isWin)
             {
-                lossScreen.gameStateText.text = "You Win!";
+                lossScreen.gameStateText.text = "Victory";
                 cursor.EnableVirtualCursor();
                 int quarters = ((int)(((timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
                 lossScreen.fundsRewardedText.text = "Quarters Recieved: " + quarters;
+                timeText.enabled = true;
+                timeText.text = "Time Remaining:\n" + (int)(timer.time) + "s";
                 if (canReward)
                 {
                     GameManager.Instance.AlterCoins(quarters);
@@ -213,10 +216,11 @@ namespace AsterionArcade
             }
             else
             {
-                lossScreen.gameStateText.text = "You Lost!";
+                lossScreen.gameStateText.text = "Game Over";
                 cursor.EnableVirtualCursor();
                 lossMenu.SetActive(true);
                 lossScreen.fundsRewardedText.enabled = false;
+                timeText.enabled = false;
                 _playerMovement.enabled = false;
                 StopAllCoroutines();
                 _aiCore.enabled = false;
@@ -254,6 +258,8 @@ namespace AsterionArcade
         // placeholder enemy spawning system
         IEnumerator CombatRoutine()
         {
+            player.transform.position = spawnPosition.position;
+            shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
             yield return new WaitForSeconds(1f);
             pretexts[0].enabled = true;
 

@@ -31,7 +31,7 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI insufficientFundsText;
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
-
+        [SerializeField] MyDoorController asterionDoor;
 
 
 
@@ -239,6 +239,11 @@ namespace AsterionArcade
                 }
 
                 isLost = false;
+
+                if (!asterionDoor.doorOpen)
+                {
+                    asterionDoor.PlayAnimation();
+                }
             }
             else
             {
@@ -269,6 +274,11 @@ namespace AsterionArcade
 
                 GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
+
+                if (!asterionDoor.doorOpen)
+                {
+                    asterionDoor.PlayAnimation();
+                }
             }
         }
 
