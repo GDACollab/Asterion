@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using Cinemachine;
 using Utility;
 using Interactable;
+
 
 namespace FirstPersonPlayer
 {
@@ -24,6 +26,7 @@ namespace FirstPersonPlayer
         [SerializeField] private float _mouseSensitivity;
         [SerializeField] private LayerMask _interactableLayerMask;
         [SerializeField] private float _interactRange;
+        [SerializeField] private Slider sensSlider;
 
         // TODO refactor interact and camera state change to child classes
 
@@ -60,6 +63,11 @@ namespace FirstPersonPlayer
             _playerLook.Construct(this, _firstPersonVC);
 
             OnChangeCameraState.AddListener(OnChangeCameraStateCallback);
+        }
+
+        public void UpdateSens()
+        {
+            _mouseSensitivity = sensSlider.value;
         }
 
         private void Update()

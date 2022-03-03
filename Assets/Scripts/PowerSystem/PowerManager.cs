@@ -22,7 +22,7 @@ public class PowerManager : MonoBehaviour
 
     // Private values used to modify the power during runtime
     private float barLength;
-    private float currentRate;
+    public float currentRate;
 
     [Header("Other Shit I haven't sorted yet")]
     // For the battery cells or stm

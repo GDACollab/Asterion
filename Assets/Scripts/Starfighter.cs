@@ -28,8 +28,8 @@ namespace AsterionArcade
         [Header("AI Movement")]
         public float speed = 1;
         public float baseSpeed;
-        public float damage;
-        public float baseDamage;
+        public int damage;
+        public int baseDamage;
         [SerializeField] float scanFrequency = 0.25f;
         [SerializeField] float distanceTresholdFactor = 1.3f;
         [SerializeField] float wallMultiplier = 1.0f;
@@ -101,6 +101,7 @@ namespace AsterionArcade
                 transform.up = (Vector2)target.transform.position - (Vector2)transform.position;
                 firedBullet.GetComponent<Rigidbody2D>().velocity = ((Vector2)target.transform.position - (Vector2)transform.position).normalized * shotSpeed;
                 firedBullet.transform.parent = bullets;
+                firedBullet.GetComponent<BasicBullet>().damage = damage;
                 Debug.Log(firedBullet.transform.position);
             }
         }

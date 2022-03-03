@@ -7,22 +7,19 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EyeballMat
-  m_Shader: {fileID: -6465566751694194690, guid: 4ba643a22f229f847b01698b8824cf6f, type: 3}
-  m_ShaderKeywords: 
+  m_Name: ArcadeOutline
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2000
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_7cb6e2df17b84ab689b4f51bd4598324:
-        m_Texture: {fileID: 2800000, guid: 9c50daafc51d11a44ac88d0c55c252e0, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -106,21 +103,13 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _vectorOffset: 0
-    - _vectorOffset2: 0
     m_Colors:
-    - Color_7199ffc5ae1b44f1aa8118cb84b8959c: {r: 785404, g: 785404, b: 785404, a: 1}
-    - Vector3_bccf8c367c5d4b6591034d0f801690a9: {r: 0, g: 0, b: 0, a: 0}
-    - Vector3_d201bfd5488945af84c0d9b90e18a2a9: {r: 0, g: 0.3, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 5.992157, g: 0.09411765, b: 1.7882353, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _vectorOffset: {r: 0, g: 0, b: 0, a: 0}
-    - _vectorOffset_1: {r: 0, g: 0.31, b: 0, a: 0}
-    - _vectorOffset_2: {r: 0, g: 0.31, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &4128857248922264722
+--- !u!114 &5699106582489460730
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

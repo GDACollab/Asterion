@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using FirstPersonPlayer;
 using Interactable;
+using TMPro;
 
 namespace AsterionArcade
 {
@@ -24,6 +25,7 @@ namespace AsterionArcade
         [SerializeField] GameObject gameBounds;
         [SerializeField] GameObject astramoriCanvas;
         [SerializeField] GameObject mainMenu;
+        [SerializeField] GameObject tutorialMenu;
         [SerializeField] GameObject upgradeMenu;
         [SerializeField] GameObject lossMenu;
         public Transform enemies;
@@ -34,7 +36,10 @@ namespace AsterionArcade
         [SerializeField] Spawning spawningSystem;
         [SerializeField] CinemachineVirtualCamera virtualCamera;
         [SerializeField] UpgradeDisplay upgradeDisplay;
+        [SerializeField] TextMeshProUGUI shipStatusText;
+        [SerializeField] List<TextMeshProUGUI> pretexts;
         bool canReward;
+        public int shipsDeployed;
         //public GameObject astramoriCanvas;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
@@ -165,6 +170,17 @@ namespace AsterionArcade
 
         }
 
+        public void OpenTutorial()
+        {
+            mainMenu.SetActive(false);
+            tutorialMenu.SetActive(true);
+        }
+
+        public void CloseTutorial()
+        {
+            mainMenu.SetActive(true);
+            tutorialMenu.SetActive(false);
+        }
         public void GameConcluded(bool isWin)
         {
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -238,14 +254,32 @@ namespace AsterionArcade
         // placeholder enemy spawning system
         IEnumerator CombatRoutine()
         {
+            yield return new WaitForSeconds(1f);
+            pretexts[0].enabled = true;
+
+            yield return new WaitForSeconds(2f);
+
+            pretexts[1].enabled = true;
+
+            yield return new WaitForSeconds(2f);
+
+            pretexts[0].enabled = false;
+            pretexts[1].enabled = false;
+
+            shipsDeployed = 0;
             spawningSystem.isActive = true;
+
             starfighterAI.SetActive();
             //cursor.DisableVirtualCursor();
             timer.StartTimer();
             canReward = true;
             yield return new WaitForSeconds(1);
 
-
+            while(astramoriStarfighterHealth.health > 0)
+            {
+                shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
+                yield return new WaitForSeconds(0.5f);
+            }
 
             yield return new WaitUntil(() => astramoriStarfighterHealth.health <= 0);
 
