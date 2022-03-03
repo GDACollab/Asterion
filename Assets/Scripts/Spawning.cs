@@ -165,7 +165,7 @@ namespace AsterionArcade {
 
         bool CanPlace()
         {
-            return (pz.isContact && outerBoundry.isContact && (currentSpawnCooldown[selectedShip-1] <= 0));
+            return (pz.isContact && (currentSpawnCooldown[selectedShip-1] <= 0));
         }
     }
 }

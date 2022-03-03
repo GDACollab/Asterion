@@ -22,6 +22,7 @@ namespace AsterionArcade
         [SerializeField] GameObject player;
         private Starfighter starfighterAI;
         [SerializeField] Transform spawnPosition;
+        [SerializeField] Transform cameraSpawnPosition;
         [SerializeField] GameObject gameBounds;
         [SerializeField] GameObject astramoriCanvas;
         [SerializeField] GameObject mainMenu;
@@ -259,6 +260,7 @@ namespace AsterionArcade
         IEnumerator CombatRoutine()
         {
             player.transform.position = spawnPosition.position;
+            virtualCamera.transform.position = cameraSpawnPosition.position;
             shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
             yield return new WaitForSeconds(1f);
             pretexts[0].enabled = true;

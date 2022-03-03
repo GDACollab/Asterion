@@ -16,6 +16,7 @@ namespace AsterionArcade
         [Header("Objects")]
         [SerializeField] scr_find_player _aiCore;
         [SerializeField] GameObject player;
+        [SerializeField] Transform cameraSpawnPosition;
         [SerializeField] Transform spawnPosition;
         [SerializeField] GameObject gameBounds;
         [SerializeField] GameObject asterionCanvas;
@@ -306,7 +307,7 @@ namespace AsterionArcade
         IEnumerator CombatRoutine()
         {
             //cursor.DisableVirtualCursor();
-
+            virtualCamera.transform.position = cameraSpawnPosition.position;
             yield return new WaitForSeconds(1f);
             
             if(timesWon == 0)
