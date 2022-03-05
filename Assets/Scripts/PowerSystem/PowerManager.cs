@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 // Manager for the power system used in the game
 public class PowerManager : MonoBehaviour
@@ -34,6 +35,7 @@ public class PowerManager : MonoBehaviour
     [SerializeField] float[] batteryStatus; // Can't think of a better name :(
     [SerializeField] SanityManager sanityManager;
     private RawImage[] batteryCells;
+    [SerializeField] TextMeshProUGUI batteryFPUIText;
 
     // Start is called before the first frame update
     void Awake()
@@ -51,6 +53,7 @@ public class PowerManager : MonoBehaviour
         if (isDraining)
         {
             powerLevel -= Time.deltaTime / 60f * currentRate;
+            batteryFPUIText.text = (int)powerLevel + "%";
         }
         
         BatteryIndicator(powerLevel);
