@@ -23,14 +23,9 @@ namespace AsterionArcade
 
             rb.velocity = Vector2.zero;
 
-            if (GetComponent<scr_fighter_move>() != null)
+            if (GetComponent<Enemy>() != null)
             {
-                GetComponent<scr_fighter_move>().enabled = false;
-            }
-
-            if (GetComponent<scr_fighter_shoot>() != null)
-            {
-                GetComponent<scr_fighter_shoot>().enabled = false;
+                GetComponent<Enemy>().enabled = false;
             }
         }
     }
