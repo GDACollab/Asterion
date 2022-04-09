@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
             playerMovement._movementEnabled = true;
             playerLook._rotateEnabled = true;
             Cursor.lockState = CursorLockMode.Locked;
+            // Time resume
+            Time.timeScale = 1;
         }
         else
         {
@@ -85,6 +87,8 @@ public class GameManager : MonoBehaviour
             playerMovement._movementEnabled = false;
             playerLook._rotateEnabled = false;
             Cursor.lockState = CursorLockMode.Confined;
+            // Added time stop so game is 100% paused while pause menu active
+            Time.timeScale = 0;
         }
     }
 
