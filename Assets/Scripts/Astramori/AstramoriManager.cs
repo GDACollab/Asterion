@@ -127,6 +127,8 @@ namespace AsterionArcade
         {
             
             player.transform.position = spawnPosition.position;
+            virtualCamera.transform.position = spawnPosition.position;
+            virtualCamera.ForceCameraPosition(spawnPosition.position, Quaternion.identity);
             //ResetStats();
             ApplyBonusStats();
             upgradeMenu.SetActive(false);
@@ -242,7 +244,7 @@ namespace AsterionArcade
             player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage + GameManager.Instance.shipStats.attack;
             
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
-            virtualCamera.m_Lens.OrthographicSize = 7 + GameManager.Instance.shipStats.range;
+            virtualCamera.m_Lens.OrthographicSize = 7 + (GameManager.Instance.shipStats.range / 2.3f);
         }
 
         //sets fighter stats to default
@@ -260,7 +262,7 @@ namespace AsterionArcade
         IEnumerator CombatRoutine()
         {
             player.transform.position = spawnPosition.position;
-            virtualCamera.transform.position = cameraSpawnPosition.position;
+            virtualCamera.transform.position = spawnPosition.position;
             shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
             yield return new WaitForSeconds(1f);
             pretexts[0].enabled = true;

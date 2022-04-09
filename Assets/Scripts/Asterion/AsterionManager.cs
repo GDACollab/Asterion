@@ -33,6 +33,7 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] MyDoorController asterionDoor;
+        [SerializeField] FMODUnity.StudioEventEmitter coinSFXEmitter;
 
 
 
@@ -132,6 +133,7 @@ namespace AsterionArcade
             {
                 mainMenu.SetActive(false);
                 GameManager.Instance.AlterCoins(-1);
+                coinSFXEmitter.Play();
                 
                 upgradeMenu.SetActive(true);
                 currentGameState = GameState.Upgrades;
@@ -290,7 +292,7 @@ namespace AsterionArcade
             player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed + GameManager.Instance.shipStats.thruster;
             player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage + GameManager.Instance.shipStats.attack;
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
-            virtualCamera.m_Lens.OrthographicSize = 5 + GameManager.Instance.shipStats.range;
+            virtualCamera.m_Lens.OrthographicSize = 5 + (GameManager.Instance.shipStats.range / 2.3f);
         }
 
         //sets fighter stats to default
