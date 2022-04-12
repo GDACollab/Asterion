@@ -15,8 +15,10 @@ public class GameManager : MonoBehaviour
     public List<GameObject> alienShipPrefabs;
 
     [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] Volume postProcessingVolume;
     [SerializeField] Vignette vignette;
+    [SerializeField] private GameObject FPupgradesDisplay;
     public GameObject pauseUI;
     public Transform astramoriEnemyBullets;
     public Transform asterionEnemyBullets;
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
     public bool isPaused;
     public bool isPlayingArcade;
     public int coinCount;
+    public float gameTime;
 
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
@@ -56,6 +59,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         coinText.text = "" + coinCount;
+        gameTime = 0;
 
     }
 
@@ -66,6 +70,34 @@ public class GameManager : MonoBehaviour
         {
             TogglePause();
         }
+
+        gameTime += Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        if (!isPlayingArcade)
+        {
+            FPupgradesDisplay.SetActive(true);
+        }
+        else
+        {
+            FPupgradesDisplay.SetActive(false);
+        }
+
+        int minutes = (int)(gameTime / 60);
+        int seconds = (int)(gameTime % 60);
+
+        string time = "";
+
+        if (minutes < 10) time += 0;
+        time += minutes + ":";
+
+        if (seconds < 10) time += 0;
+        time += seconds;
+
+        timeText.text = time;
+
     }
 
     public void TogglePause()
@@ -79,6 +111,12 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             // Time resume
             Time.timeScale = 1;
+
+            FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            foreach (FMODUnity.StudioEventEmitter a in sounds)
+            {
+                a.EventInstance.setPaused(false);
+            }
         }
         else
         {
@@ -89,6 +127,12 @@ public class GameManager : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             // Added time stop so game is 100% paused while pause menu active
             Time.timeScale = 0;
+            FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            foreach(FMODUnity.StudioEventEmitter a in sounds)
+            {
+                a.EventInstance.setPaused(true);
+            }
+
         }
     }
 

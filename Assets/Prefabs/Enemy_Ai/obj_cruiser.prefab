@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1
-  timeTillNextFP: 0
+  timeTillNextFP: 5
   turnSpeed: 0
   bulletPrefab: {fileID: 758243255397651644, guid: d12bc7b2e1cf3f44ca56992e512dc95d, type: 3}
   bulletSpeed: 9

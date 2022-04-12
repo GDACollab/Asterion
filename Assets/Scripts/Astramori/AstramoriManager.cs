@@ -39,6 +39,7 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] TextMeshProUGUI timeText;
+        [SerializeField] TextMeshProUGUI fpShipCountText;
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
@@ -215,6 +216,9 @@ namespace AsterionArcade
                 }
                 isLost = false;
                 GameManager.Instance.asterionManager.baseEnemyQueue = new List<Vector2>(enemyQueue);
+                fpShipCountText.text = "Ships: " + shipsDeployed;
+                
+                
             }
             else
             {
