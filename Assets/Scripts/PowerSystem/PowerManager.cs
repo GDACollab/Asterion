@@ -60,6 +60,8 @@ public class PowerManager : MonoBehaviour
         SetMonsterPosition();
         if(powerLevel <= 0)
         {
+            isDraining = false;
+            powerLevel = 0;
             sanityManager.sanity = 0;
         }
     }
