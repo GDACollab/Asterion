@@ -18,7 +18,6 @@ namespace AsterionArcade
         
         //public GameObject player;
         [Header("Objects")]
-        [SerializeField] scr_find_player _aiCore;
         [SerializeField] GameObject player;
         private Starfighter starfighterAI;
         [SerializeField] Transform spawnPosition;
@@ -102,7 +101,7 @@ namespace AsterionArcade
             _playerMovement.enabled = false;
 
             cursor.DisableVirtualCursor();
-            _aiCore.enabled = false;
+            //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
             GameManager.Instance.isPlayingArcade = false;
             mainMenu.SetActive(true);
@@ -146,8 +145,8 @@ namespace AsterionArcade
             isLost = false;
             enemyQueue.Clear();
             cursor.EnableVirtualCursor();
-            _aiCore.enabled = true;
-            _aiCore.m_Player = player;
+           // _aiCore.enabled = true;
+            //_aiCore.m_Player = player;
             currentGameState = GameState.MainMenu;
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(false);
@@ -159,8 +158,8 @@ namespace AsterionArcade
         public void ContinueCurrentGame()
         {
             isLost = false;
-            _aiCore.enabled = true;
-            _aiCore.m_Player = player;
+            //_aiCore.enabled = true;
+            //_aiCore.m_Player = player;
             mainMenu.SetActive(false);
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
@@ -208,7 +207,7 @@ namespace AsterionArcade
                 canReward = false;
                 lossScreen.fundsRewardedText.enabled = true;
                 lossMenu.SetActive(true);
-                _aiCore.enabled = false;
+                //_aiCore.enabled = false;
                 _playerMovement.enabled = false;
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                 {
@@ -226,7 +225,7 @@ namespace AsterionArcade
                 timeText.enabled = false;
                 _playerMovement.enabled = false;
                 StopAllCoroutines();
-                _aiCore.enabled = false;
+               // _aiCore.enabled = false;
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                 {
                     bd.Death();

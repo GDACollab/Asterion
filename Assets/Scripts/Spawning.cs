@@ -139,12 +139,12 @@ namespace AsterionArcade {
             GameObject ship = Instantiate(GameManager.Instance.alienShipPrefabs[shipID - 1], ships);
             ship.layer = 12;
             ship.transform.position = position * Vector2.one;
-            if (ship.TryGetComponent<scr_fighter_move>(out scr_fighter_move ship1))
+            if (ship.TryGetComponent<Enemy>(out Enemy ship1))
             {
 
-                ship1.seeking = true;
+                ship1.lookingForPlayer = true;
             }
-            ship.GetComponent<scr_fighter_shoot>().isAstramori = true;
+            ship.GetComponent<Enemy>().isAstramori = true;
 
             astramoriManager.enemyQueue.Add(new Vector2(shipID, spawnDelay + 0.15f));
 

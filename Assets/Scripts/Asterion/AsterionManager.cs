@@ -14,7 +14,7 @@ namespace AsterionArcade
         public PlayerMovement _playerMovement { get; private set; }
 
         [Header("Objects")]
-        [SerializeField] scr_find_player _aiCore;
+        //[SerializeField] scr_find_player _aiCore;
         [SerializeField] GameObject player;
         [SerializeField] Transform cameraSpawnPosition;
         [SerializeField] Transform spawnPosition;
@@ -106,7 +106,7 @@ namespace AsterionArcade
             
 
             
-            _aiCore.enabled = false;
+            //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
             GameManager.Instance.isPlayingArcade = false;
             
@@ -169,8 +169,8 @@ namespace AsterionArcade
             GameManager.Instance.shipStats.ResetAllStats();
             enemyQueue = new List<Vector2>(baseEnemyQueue);
             cursor.EnableVirtualCursor();
-            _aiCore.enabled = true;
-            _aiCore.m_Player = player;
+            //_aiCore.enabled = true;
+            //_aiCore.m_Player = player;
             currentGameState = GameState.MainMenu;
             
             upgradeMenu.SetActive(false);
@@ -196,8 +196,8 @@ namespace AsterionArcade
         public void ContinueCurrentGame()
         {
             isLost = false;
-            _aiCore.enabled = true;
-            _aiCore.m_Player = player;
+            //_aiCore.enabled = true;
+            //_aiCore.m_Player = player;
             
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
@@ -225,7 +225,7 @@ namespace AsterionArcade
                 cursor.EnableVirtualCursor();
                 lossScreen.continueButtonText.text = "Start Again? (1 Quarter)";
                 lossMenu.SetActive(true);
-                _aiCore.enabled = false;
+                //_aiCore.enabled = false;
                 _playerMovement.enabled = false;
 
                 
@@ -258,11 +258,11 @@ namespace AsterionArcade
                 lossScreen.continueButtonText.text = "Continue? (1 Quarter)";
                 _playerMovement.enabled = false;
                 StopAllCoroutines();
-                _aiCore.enabled = false;
+                //_aiCore.enabled = false;
 
-                foreach (scr_fighter_move fighterMove in enemies.GetComponentsInChildren<scr_fighter_move>())
+                foreach (Enemy fighterMove in enemies.GetComponentsInChildren<Enemy>())
                 {
-                    enemyQueue.Add(new Vector2(fighterMove.Ai_Type + 1, 3));
+                    enemyQueue.Add(new Vector2(0, 3));
                 }
 
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
@@ -366,9 +366,9 @@ namespace AsterionArcade
                 Vector2 randomVector = Random.insideUnitCircle;
                 randomVector.Normalize();
                 ship.transform.position = (Vector2)player.transform.position + (randomVector * Random.Range(minSpawnRange, maxSpawnRange));
-                if (ship.TryGetComponent<scr_fighter_move>(out scr_fighter_move ship1))
+                if (ship.TryGetComponent<Enemy>(out Enemy ship1))
                 {
-                    ship1.seeking = true;
+                    ship1.lookingForPlayer = true;
                 }
                 enemyQueue.RemoveAt(0);
                 shipStatusText.text = "Ships Remaining\nto be deployed: (" + enemyQueue.Count + "/" + totalShips + ")";
