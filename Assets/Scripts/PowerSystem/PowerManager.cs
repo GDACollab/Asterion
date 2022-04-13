@@ -28,6 +28,7 @@ public class PowerManager : MonoBehaviour
     [Header("Other Shit I haven't sorted yet")]
     // For the battery cells or stm
     public float powerLevel;
+    
     public bool isDraining = true;
     [SerializeField] GameObject tempMonster;
     Vector3 baseMonsterPos;
@@ -37,6 +38,10 @@ public class PowerManager : MonoBehaviour
     private RawImage[] batteryCells;
     [SerializeField] TextMeshProUGUI batteryFPUIText;
 
+    [Header("Tied Lighting Systems")]
+    [SerializeField] private LightingGroup asterionLighting;
+    [SerializeField] private LightingGroup astramoriLighting;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,11 +50,14 @@ public class PowerManager : MonoBehaviour
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
+        StartCoroutine(DimRoutine());
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+
         if (isDraining)
         {
             powerLevel -= Time.deltaTime / 60f * currentRate;
@@ -63,7 +71,30 @@ public class PowerManager : MonoBehaviour
             isDraining = false;
             powerLevel = 0;
             sanityManager.sanity = 0;
+            StartCoroutine(GameManager.Instance.LoseRoutine());
         }
+    }
+
+    private IEnumerator DimRoutine()
+    {
+        while (true)
+        {
+            asterionLighting.UpdateLights(powerLevel / 100);
+            astramoriLighting.UpdateLights(powerLevel / 100);
+
+            yield return new WaitForSeconds(3f);
+
+            if (powerLevel < 50 && Random.Range(0, 8 * (powerLevel/50)) == 0)
+            {
+                StartCoroutine(asterionLighting.FlickerRoutine());
+                StartCoroutine(astramoriLighting.FlickerRoutine());
+            }
+
+            yield return new WaitForSeconds(0.5f);
+
+
+        }
+        
     }
 
     public void SetMonsterPosition()

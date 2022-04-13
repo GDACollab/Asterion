@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Volume postProcessingVolume;
     [SerializeField] Vignette vignette;
     [SerializeField] private GameObject FPupgradesDisplay;
+    [SerializeField] private Animator tempLoseAnim;
     public GameObject pauseUI;
     public Transform astramoriEnemyBullets;
     public Transform asterionEnemyBullets;
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
     public ShipStats shipStats;
     public bool isPaused;
     public bool isPlayingArcade;
+    public bool gameLost;
     public int coinCount;
     public float gameTime;
 
@@ -85,6 +87,27 @@ public class GameManager : MonoBehaviour
             FPupgradesDisplay.SetActive(false);
         }
 
+        UpdateTimeDisplay();
+
+
+    }
+
+    public IEnumerator LoseRoutine()
+    {
+        gameLost = true;
+        tempLoseAnim.Play("tempLoseAnim");
+        Time.timeScale = 0;
+        FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+        foreach (FMODUnity.StudioEventEmitter a in sounds)
+        {
+            a.EventInstance.setPaused(true);
+        }
+        Cursor.lockState = CursorLockMode.Confined;
+        yield return new WaitForSeconds(1);
+    }
+
+    public void UpdateTimeDisplay()
+    {
         int minutes = (int)(gameTime / 60);
         int seconds = (int)(gameTime % 60);
 
@@ -97,7 +120,6 @@ public class GameManager : MonoBehaviour
         time += seconds;
 
         timeText.text = time;
-
     }
 
     public void TogglePause()
@@ -138,6 +160,8 @@ public class GameManager : MonoBehaviour
 
     public void ReloadLevel()
     {
+        Time.timeScale = 1;
+        
         SceneManager.LoadScene(0);
     }
 
