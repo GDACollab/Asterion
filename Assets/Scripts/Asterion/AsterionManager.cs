@@ -33,7 +33,12 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] MyDoorController asterionDoor;
+
+        [Header("SFX Emitters")]
         [SerializeField] FMODUnity.StudioEventEmitter coinSFXEmitter;
+        [SerializeField] FMODUnity.StudioEventEmitter spaceshipShootSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
+        [SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
+        [Header("---")]
 
 
 
