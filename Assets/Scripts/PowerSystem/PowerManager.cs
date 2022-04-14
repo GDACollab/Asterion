@@ -82,15 +82,15 @@ public class PowerManager : MonoBehaviour
             asterionLighting.UpdateLights(powerLevel / 100);
             astramoriLighting.UpdateLights(powerLevel / 100);
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
 
-            if (powerLevel < 50 && Random.Range(0, 8 * (powerLevel/50)) == 0)
+            if (powerLevel < 50 && Random.Range(0, 6 * (powerLevel/50)) < 1)
             {
                 StartCoroutine(asterionLighting.FlickerRoutine());
                 StartCoroutine(astramoriLighting.FlickerRoutine());
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
 
 
         }
