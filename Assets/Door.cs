@@ -17,12 +17,13 @@ public class Door : MonoBehaviour
     void Start() {
         doorOpen = false;
         doorAnimator = GetComponent<Animator>();
-        Debug.Log("Start" + doorAnimator);
     }
 
     // Trigger handling stuff
     void OnTriggerEnter(Collider doorSensor) {
-        openDoor();
+        if(doorSensor.gameObject.tag == "Player") {
+            openDoor();
+        }
     }
 
     void OnTriggerExit(Collider doorSensor) {
