@@ -34,16 +34,6 @@ namespace AsterionArcade
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] MyDoorController asterionDoor;
 
-        [Header("SFX Emitters")]
-        [SerializeField] FMODUnity.StudioEventEmitter coinSFXEmitter;
-        [SerializeField] FMODUnity.StudioEventEmitter spaceshipShootSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
-        [SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
-        [Header("---")]
-
-
-
-
-
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
         [Header("Current Game State Info")]
         private GameState currentGameState;
@@ -58,6 +48,12 @@ namespace AsterionArcade
         public float minSpawnRange;
         public float maxSpawnRange;
         [SerializeField] float sanityLoss;
+
+
+        [Header("SFX Emitters")]
+        [SerializeField] FMODUnity.StudioEventEmitter coinSFXEmitter;
+        //[SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
+
 
 
         public new void Construct(CameraManager cameraManager)

@@ -362,8 +362,9 @@ MonoBehaviour:
   - Master
   Banks:
   - Ambience
+  - Asterion SFX
+  - Misc SFX
   - Music
-  - SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

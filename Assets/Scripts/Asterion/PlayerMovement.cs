@@ -29,6 +29,12 @@ namespace AsterionArcade
         [Header("Player State")]
         public bool inputEnabled = false;
 
+        [Header("SFX Events")]
+        [SerializeField] FMODUnity.EventReference spaceshipShootSFX; // SFX reference for shooting bullets
+
+
+
+
         private void OnEnable()
         {
             inputEnabled = true;
@@ -74,6 +80,9 @@ namespace AsterionArcade
                 bullet.transform.parent = GameManager.Instance.asterionEnemyBullets;
                 bullet.GetComponent<BasicBullet>().damage = damage;
                 currentCooldown = shootCooldown;
+
+                FMODUnity.RuntimeManager.PlayOneShot(spaceshipShootSFX);
+
             }
         }
 

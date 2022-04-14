@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1932121279}
-  m_IndirectSpecularColor: {r: 0.17596942, g: 0.21030098, b: 0.26123416, a: 1}
+  m_IndirectSpecularColor: {r: 0.17596892, g: 0.21030018, b: 0.26123366, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12276,7 +12276,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546691090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -66.6, y: 14.598801, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 131170314}
@@ -12407,7 +12407,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -17586,6 +17586,13 @@ MonoBehaviour:
   playerVelocity: {x: 0, y: 0}
   mousePos: {x: 0, y: 0, z: 0}
   inputEnabled: 0
+  spaceshipShootSFX:
+    Guid:
+      Data1: 1442095557
+      Data2: 1281697345
+      Data3: 883294603
+      Data4: -1250039907
+    Path: event:/Asterion SFX/Spaceship Shoot
 --- !u!212 &690837008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30588,6 +30595,7 @@ MonoBehaviour:
   maxBrightness: 6
   minBrightness: 2
   flickerInterval: 0.1
+  flickering: 0
   updateTime: 1
 --- !u!1 &1414904112
 GameObject:
@@ -36209,6 +36217,7 @@ GameObject:
   - component: {fileID: 1623424159}
   - component: {fileID: 1623424160}
   - component: {fileID: 1623424161}
+  - component: {fileID: 1623424162}
   m_Layer: 0
   m_Name: AsterionArcadeMachine
   m_TagString: Untagged
@@ -36294,7 +36303,7 @@ MonoBehaviour:
       Data2: 1074874192
       Data3: -1946709830
       Data4: -1446064737
-    Path: event:/SFX/Coin Insert
+    Path: event:/Misc SFX/Coin Insert
   Event: 
   PlayEvent: 0
   StopEvent: 2
@@ -36305,6 +36314,38 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 15
+--- !u!114 &1623424162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623424157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1442095557
+      Data2: 1281697345
+      Data3: 883294603
+      Data4: -1250039907
+    Path: event:/Asterion SFX/Spaceship Shoot
+  Event: 
+  PlayEvent: 0
+  StopEvent: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params:
+  - Name: AstramoriMix
+    Value: 0
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1624566923
 GameObject:
   m_ObjectHideFlags: 0
@@ -42991,7 +43032,6 @@ MonoBehaviour:
   - {fileID: 1208280117}
   - {fileID: 2085928526}
   asterionDoor: {fileID: 1016208302}
-  coinSFXEmitter: {fileID: 1623424161}
   isLost: 0
   baseEnemyQueue:
   - {x: 1, y: 3}
@@ -43012,6 +43052,7 @@ MonoBehaviour:
   minSpawnRange: 7
   maxSpawnRange: 9
   sanityLoss: 5
+  coinSFXEmitter: {fileID: 1623424161}
 --- !u!1 &1875788153
 GameObject:
   m_ObjectHideFlags: 0
@@ -46895,6 +46936,7 @@ MonoBehaviour:
   maxBrightness: 6
   minBrightness: 2
   flickerInterval: 0.1
+  flickering: 0
   updateTime: 1
 --- !u!1 &2055373454
 GameObject:

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Bank" id="{506bda26-d9f0-4b7b-a711-4add69515ecd}">
 		<property name="name">
-			<value>SFX</value>
+			<value>Misc SFX</value>
 		</property>
 		<relationship name="folder">
 			<destination>{ffd30d89-a46f-4e0f-9f8f-5d1c1ae3f052}</destination>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{f579ced4-ed24-4d15-b285-24501ec9a560}">
+		<property name="name">
+			<value>AstramoriMix</value>
+		</property>
+		<relationship name="folder">
+			<destination>{df57b1e3-a143-4748-80a8-b27bf6191661}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{40ff523e-2dbf-4d2c-b47a-bc1747669bcd}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{40ff523e-2dbf-4d2c-b47a-bc1747669bcd}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="isHeld">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>
