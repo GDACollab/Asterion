@@ -363,6 +363,7 @@ MonoBehaviour:
   Banks:
   - Ambience
   - Asterion SFX
+  - Astramori SFX
   - Misc SFX
   - Music
   BanksToLoad: []
