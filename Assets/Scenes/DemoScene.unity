@@ -36223,8 +36223,6 @@ GameObject:
   - component: {fileID: 1623424158}
   - component: {fileID: 1623424159}
   - component: {fileID: 1623424160}
-  - component: {fileID: 1623424161}
-  - component: {fileID: 1623424162}
   m_Layer: 0
   m_Name: AsterionArcadeMachine
   m_TagString: Untagged
@@ -36291,68 +36289,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.65, y: 1.6582062, z: 0.34514213}
   m_Center: {x: -0, y: 0.776474, z: -0.19783032}
---- !u!114 &1623424161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623424157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 972761583
-      Data2: 1074874192
-      Data3: -1946709830
-      Data4: -1446064737
-    Path: event:/Misc SFX/Coin Insert
-  Event: 
-  PlayEvent: 0
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 1
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 15
---- !u!114 &1623424162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623424157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1442095557
-      Data2: 1281697345
-      Data3: 883294603
-      Data4: -1250039907
-    Path: event:/Asterion SFX/Spaceship Shoot
-  Event: 
-  PlayEvent: 0
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params:
-  - Name: AstramoriMix
-    Value: 0
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1 &1624566923
 GameObject:
   m_ObjectHideFlags: 0
@@ -43059,7 +42995,13 @@ MonoBehaviour:
   minSpawnRange: 7
   maxSpawnRange: 9
   sanityLoss: 5
-  coinSFXEmitter: {fileID: 1623424161}
+  coinInsertSFX:
+    Guid:
+      Data1: 972761583
+      Data2: 1074874192
+      Data3: -1946709830
+      Data4: -1446064737
+    Path: event:/Misc SFX/Coin Insert
 --- !u!1 &1875788153
 GameObject:
   m_ObjectHideFlags: 0

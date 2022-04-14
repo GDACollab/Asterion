@@ -51,10 +51,17 @@ namespace AsterionArcade
 
 
         [Header("SFX Emitters")]
-        [SerializeField] FMODUnity.StudioEventEmitter coinSFXEmitter;
+        [SerializeField] FMODUnity.EventReference coinInsertSFX;
+        private FMOD.Studio.EventInstance coinInsertSFX_instance; 
         //[SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
 
 
+        void Start()
+        {
+            // SFX stuff
+            coinInsertSFX_instance = FMODUnity.RuntimeManager.CreateInstance(coinInsertSFX);
+
+        }
 
         public new void Construct(CameraManager cameraManager)
         {
@@ -134,7 +141,8 @@ namespace AsterionArcade
             {
                 mainMenu.SetActive(false);
                 GameManager.Instance.AlterCoins(-1);
-                coinSFXEmitter.Play();
+                
+                coinInsertSFX_instance.start();
                 
                 upgradeMenu.SetActive(true);
                 currentGameState = GameState.Upgrades;
@@ -199,6 +207,8 @@ namespace AsterionArcade
             isLost = false;
             //_aiCore.enabled = true;
             //_aiCore.m_Player = player;
+
+            coinInsertSFX_instance.start();
             
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
