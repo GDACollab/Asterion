@@ -40,6 +40,9 @@ namespace AsterionArcade
         [SerializeField] float distanceFactor = 1;
         [SerializeField] float distanceExpBase = 2;
 
+        [Header("SFX Events")]
+        [SerializeField] FMODUnity.EventReference spaceshipShootSFX; // SFX reference for shooting bullets
+
         float time;
         bool active;
 
@@ -103,6 +106,9 @@ namespace AsterionArcade
                 firedBullet.transform.parent = bullets;
                 firedBullet.GetComponent<BasicBullet>().damage = damage;
                 Debug.Log(firedBullet.transform.position);
+
+                FMODUnity.RuntimeManager.PlayOneShot(spaceshipShootSFX);
+
             }
         }
 

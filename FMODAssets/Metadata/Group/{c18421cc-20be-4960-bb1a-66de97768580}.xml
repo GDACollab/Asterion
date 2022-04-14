@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{c18421cc-20be-4960-bb1a-66de97768580}">
+		<property name="name">
+			<value>Astramori SFX</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{45b3321f-441e-43e8-9098-5010fb581f65}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{f5692359-71f7-468c-b890-07cd4dd92117}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{43b7f25e-deed-462f-9ca0-39619407bfab}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{45b3321f-441e-43e8-9098-5010fb581f65}">
+		<relationship name="effects">
+			<destination>{a0d9ac2e-7f35-43fa-aca6-79c199a9f9d6}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{f5692359-71f7-468c-b890-07cd4dd92117}" />
+	<object class="MixerBusFader" id="{a0d9ac2e-7f35-43fa-aca6-79c199a9f9d6}" />
+</objects>
