@@ -142,6 +142,7 @@ namespace AsterionArcade
                 mainMenu.SetActive(false);
                 GameManager.Instance.AlterCoins(-1);
                 
+                // SFX
                 coinInsertSFX_instance.start();
                 
                 upgradeMenu.SetActive(true);
@@ -208,6 +209,7 @@ namespace AsterionArcade
             //_aiCore.enabled = true;
             //_aiCore.m_Player = player;
 
+            // SFX
             coinInsertSFX_instance.start();
             
             upgradeMenu.SetActive(false);

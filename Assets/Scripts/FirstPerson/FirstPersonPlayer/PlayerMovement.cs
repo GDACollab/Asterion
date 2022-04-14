@@ -25,12 +25,27 @@ namespace FirstPersonPlayer
         [SerializeField] private float stopSpeed;
         [SerializeField] float gravity;
 
+
         // Internal references
         private Vector2 _inputVector;
         private float _mouseInputX;
         private Vector3 _horizontalVelocity;
 
         public bool _movementEnabled = false;
+
+
+        // SFX stuff
+        [Header("SFX Emitters")]
+        [SerializeField] FMODUnity.EventReference carpetFootstepsSFX;
+        private FMOD.Studio.EventInstance carpetFootstepsSFX_instance;
+        [SerializeField] FMODUnity.EventReference catwalkFootstepsSFX;
+        private FMOD.Studio.EventInstance catwalkFootstepsSFX_instance;
+        private float currentFootstepDelay = 0.0f;
+        private float timeBetweenStepsAugment;
+        public float timeBetweenSteps = 0.5f;
+        
+
+
 
         public void Construct(Transform playerTransform
             , CharacterController characterController
@@ -54,6 +69,15 @@ namespace FirstPersonPlayer
             _cameraManager = cameraManager;
 
             SetMovementEnabled(true);
+        }
+
+        void Start()
+        {
+            // SFX stuff
+            carpetFootstepsSFX_instance = FMODUnity.RuntimeManager.CreateInstance(carpetFootstepsSFX);
+            //carpetFootstepsSFX_instance.set3DAttributes(  what is the syntax for this?  );
+            catwalkFootstepsSFX_instance = FMODUnity.RuntimeManager.CreateInstance(catwalkFootstepsSFX);
+
         }
 
         private void Update()
@@ -87,6 +111,20 @@ namespace FirstPersonPlayer
             else
             {
                 NewHorizontalMove(newMovement, walkAccel, maxWalkSpeed);
+
+                // Walking SFX
+                
+                currentFootstepDelay += Time.deltaTime;
+                timeBetweenStepsAugment = (UnityEngine.Random.Range(-1,1))/10;
+                if (currentFootstepDelay >= (timeBetweenSteps + timeBetweenStepsAugment))
+                {    
+                    currentFootstepDelay = 0;
+                    // SFX
+                    carpetFootstepsSFX_instance.start();
+
+                }
+
+
             }
             // Perform actual movement
             _characterController.Move(_horizontalVelocity * Time.deltaTime);
