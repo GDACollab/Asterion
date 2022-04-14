@@ -241,10 +241,10 @@ namespace AsterionArcade
 
                 isLost = false;
 
-                if (!asterionDoor.doorOpen)
+                /*if (!asterionDoor.doorOpen)
                 {
                     asterionDoor.PlayAnimation();
-                }
+                }*/
             }
             else
             {
@@ -276,10 +276,10 @@ namespace AsterionArcade
                 GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
 
-                if (!asterionDoor.doorOpen)
+                /*if (!asterionDoor.doorOpen)
                 {
                     asterionDoor.PlayAnimation();
-                }
+                }*/
             }
         }
 
