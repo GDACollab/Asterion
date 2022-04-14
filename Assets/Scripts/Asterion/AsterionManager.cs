@@ -32,10 +32,7 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI insufficientFundsText;
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
-        [SerializeField] MyDoorController asterionDoor;
-
-
-
+        [SerializeField] Door asterionDoor;
 
 
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
@@ -240,11 +237,6 @@ namespace AsterionArcade
                 }
 
                 isLost = false;
-
-                /*if (!asterionDoor.doorOpen)
-                {
-                    asterionDoor.PlayAnimation();
-                }*/
             }
             else
             {
@@ -275,11 +267,6 @@ namespace AsterionArcade
 
                 GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
-
-                /*if (!asterionDoor.doorOpen)
-                {
-                    asterionDoor.PlayAnimation();
-                }*/
             }
         }
 
@@ -411,6 +398,13 @@ namespace AsterionArcade
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Asterion)
             {
                 _interactableManager.OnStopInteract.Invoke();
+            }
+            
+            // Unlocks and opens the Asterion door
+            // The only time this door should be locked is after the first playthrough
+            if(asterionDoor.locked) {
+                asterionDoor.locked = false;
+                asterionDoor.openDoor();
             }
             
             //StopInteractAction();

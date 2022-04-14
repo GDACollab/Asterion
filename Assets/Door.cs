@@ -12,7 +12,10 @@ public class Door : MonoBehaviour
     Animator doorAnimator;
 
     // Whether or not the door is open
-    bool doorOpen;
+    bool doorOpen = false;
+
+    // Whether or not the door is locked shut
+    public bool locked;
 
     void Start() {
         doorOpen = false;
@@ -32,7 +35,7 @@ public class Door : MonoBehaviour
 
     // Animates the door movement
     public void openDoor() {
-        if(!doorOpen) {
+        if(!doorOpen && !locked) {
             doorOpen = true;
             doorAnimator.SetTrigger(openName);
         }
