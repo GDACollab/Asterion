@@ -68,16 +68,18 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isPlayingArcade && Input.GetKeyDown(KeyCode.P))
+        if (!isPlayingArcade && Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
         }
+
 
         gameTime += Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
+        
         if (!isPlayingArcade)
         {
             FPupgradesDisplay.SetActive(true);

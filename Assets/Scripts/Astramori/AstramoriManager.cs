@@ -100,7 +100,7 @@ namespace AsterionArcade
         public override void StopInteractAction()
         {
             _playerMovement.enabled = false;
-
+            
             cursor.DisableVirtualCursor();
             //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
@@ -113,6 +113,8 @@ namespace AsterionArcade
             _cameraManager.OnChangeCameraState
                 .Invoke(CameraManager.CameraState.FirstPerson);
             _interactableManager.gameObject.SetActive(true);
+
+            
         }
 
         public void CloseMainMenu()
