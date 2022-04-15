@@ -279,7 +279,7 @@ namespace AsterionArcade
 
                 foreach (Enemy fighterMove in enemies.GetComponentsInChildren<Enemy>())
                 {
-                    enemyQueue.Add(new Vector2(0, 3));
+                    enemyQueue.Add(new Vector2(fighterMove.AIType, 3));
                 }
 
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())

@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 2
   timeTillNextFP: 2
+  AIType: 2
   turnSpeed: 0
   bulletPrefab: {fileID: 1693220522525983608, guid: ee76188ca6400ee4891e7d4e0563b651, type: 3}
   bulletSpeed: 0

@@ -115,7 +115,7 @@ public class PowerManager : MonoBehaviour
 
     public void IncreaseRate()
     {
-        currentRate *= 1.5f;
+        currentRate *= rateMultiplier;
     }
 
     // Updates the Battery Indicator
