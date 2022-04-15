@@ -33,11 +33,6 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] MyDoorController asterionDoor;
-        [SerializeField] FMODUnity.StudioEventEmitter coinSFXEmitter;
-
-
-
-
 
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
         [Header("Current Game State Info")]
@@ -54,6 +49,19 @@ namespace AsterionArcade
         public float maxSpawnRange;
         [SerializeField] float sanityLoss;
 
+
+        [Header("SFX Emitters")]
+        [SerializeField] FMODUnity.EventReference coinInsertSFX;
+        private FMOD.Studio.EventInstance coinInsertSFX_instance; 
+        //[SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
+
+
+        void Start()
+        {
+            // SFX stuff
+            coinInsertSFX_instance = FMODUnity.RuntimeManager.CreateInstance(coinInsertSFX);
+
+        }
 
         public new void Construct(CameraManager cameraManager)
         {
@@ -133,7 +141,9 @@ namespace AsterionArcade
             {
                 mainMenu.SetActive(false);
                 GameManager.Instance.AlterCoins(-1);
-                coinSFXEmitter.Play();
+                
+                // SFX
+                coinInsertSFX_instance.start();
                 
                 upgradeMenu.SetActive(true);
                 currentGameState = GameState.Upgrades;
@@ -198,6 +208,9 @@ namespace AsterionArcade
             isLost = false;
             //_aiCore.enabled = true;
             //_aiCore.m_Player = player;
+
+            // SFX
+            coinInsertSFX_instance.start();
             
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);

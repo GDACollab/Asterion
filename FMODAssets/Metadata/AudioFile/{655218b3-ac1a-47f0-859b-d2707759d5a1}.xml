@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{bce0ecb6-2653-4d75-9254-4926a262e427}">
+	<object class="AudioFile" id="{655218b3-ac1a-47f0-859b-d2707759d5a1}">
 		<property name="assetPath">
-			<value>sfx_coinInsert.mp3</value>
+			<value>Arcade Game SFX/sfx_coinInsert.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

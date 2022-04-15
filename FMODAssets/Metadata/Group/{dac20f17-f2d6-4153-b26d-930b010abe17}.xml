@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{dac20f17-f2d6-4153-b26d-930b010abe17}">
+		<property name="name">
+			<value>Asterion SFX</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{02f6390a-8fa9-45be-8ed6-3fcc9b29d11b}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{4af9142d-66c0-4436-8bf3-1e6dfd0577a0}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{43b7f25e-deed-462f-9ca0-39619407bfab}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{02f6390a-8fa9-45be-8ed6-3fcc9b29d11b}">
+		<relationship name="effects">
+			<destination>{fcffbdcc-3d86-4b70-b8bc-49fe235b16b1}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{4af9142d-66c0-4436-8bf3-1e6dfd0577a0}" />
+	<object class="MixerBusFader" id="{fcffbdcc-3d86-4b70-b8bc-49fe235b16b1}" />
+</objects>

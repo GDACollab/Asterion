@@ -29,6 +29,13 @@ namespace AsterionArcade
         [Header("Player State")]
         public bool inputEnabled = false;
 
+        [Header("SFX Events")]
+        [SerializeField] FMODUnity.EventReference spaceshipShootSFX;    // SFX reference for shooting bullets
+        private FMOD.Studio.EventInstance spaceshipShootSFX_instance;   // SFX instance of the above event
+
+
+
+
         private void OnEnable()
         {
             inputEnabled = true;
@@ -47,6 +54,9 @@ namespace AsterionArcade
             {
                 rb = GetComponent<Rigidbody2D>();
             }
+
+            // SFX stuff
+            spaceshipShootSFX_instance = FMODUnity.RuntimeManager.CreateInstance(spaceshipShootSFX);
 
         }
 
@@ -74,6 +84,11 @@ namespace AsterionArcade
                 bullet.transform.parent = GameManager.Instance.asterionEnemyBullets;
                 bullet.GetComponent<BasicBullet>().damage = damage;
                 currentCooldown = shootCooldown;
+
+                spaceshipShootSFX_instance.setParameterByName("AstramoriMix", 0);
+                spaceshipShootSFX_instance.start();
+
+
             }
         }
 
