@@ -106,7 +106,7 @@ namespace AsterionArcade
             cursor.DisableVirtualCursor();
             //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
-            GameManager.Instance.isPlayingArcade = false;
+            
             GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(false);
