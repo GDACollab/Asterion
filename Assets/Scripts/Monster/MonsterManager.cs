@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
+    public enum Location {Asterion, Astramori, Hallway, MiddleHallway };
+    public Location playerPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,16 @@ public class MonsterManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void UpdatePlayerPos(int posIndex)
+    {
+        switch (posIndex)
+        {
+            case 0:
+                break;
+            default:
+                break;
+        }
     }
 }

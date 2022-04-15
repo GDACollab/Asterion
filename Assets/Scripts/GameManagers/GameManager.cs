@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] Volume postProcessingVolume;
     [SerializeField] Vignette vignette;
-    [SerializeField] private GameObject FPupgradesDisplay;
+    [SerializeField] private List<GameObject> FPDisplay;
     [SerializeField] private Animator tempLoseAnim;
     public GameObject pauseUI;
     public Transform astramoriEnemyBullets;
@@ -74,24 +74,32 @@ public class GameManager : MonoBehaviour
         }
 
 
+
         gameTime += Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
         
-        if (!isPlayingArcade)
-        {
-            FPupgradesDisplay.SetActive(true);
-        }
-        else
-        {
-            FPupgradesDisplay.SetActive(false);
-        }
+        
 
         UpdateTimeDisplay();
 
 
+    }
+
+    public void CheckPlayerIsPlayingArcadeStatus()
+    {
+        if (!isPlayingArcade)
+        {
+            foreach (GameObject g in FPDisplay)
+                g.SetActive(true);
+        }
+        else
+        {
+            foreach (GameObject g in FPDisplay)
+                g.SetActive(false);
+        }
     }
 
     public IEnumerator LoseRoutine()
@@ -159,6 +167,7 @@ public class GameManager : MonoBehaviour
 
         }
     }
+
 
     public void ReloadLevel()
     {

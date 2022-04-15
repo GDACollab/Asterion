@@ -103,6 +103,7 @@ namespace AsterionArcade
                 .Invoke(CameraManager.CameraState.Asterion);
 
             GameManager.Instance.isPlayingArcade = true;
+            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
 
             StartFreshGame();
 
@@ -117,7 +118,8 @@ namespace AsterionArcade
             //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
             GameManager.Instance.isPlayingArcade = false;
-            
+            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
+
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(false);
             
@@ -148,7 +150,8 @@ namespace AsterionArcade
                 upgradeMenu.SetActive(true);
                 currentGameState = GameState.Upgrades;
                 insufficientFundsText.enabled = false;
-                
+                GameManager.Instance.shipStats.ResetAllStats();
+
             }
             else
             {
@@ -176,7 +179,7 @@ namespace AsterionArcade
         {
             mainMenu.SetActive(true);
             isLost = false;
-            GameManager.Instance.shipStats.ResetAllStats();
+            
             enemyQueue = new List<Vector2>(baseEnemyQueue);
             cursor.EnableVirtualCursor();
             //_aiCore.enabled = true;
@@ -305,7 +308,7 @@ namespace AsterionArcade
             player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed + GameManager.Instance.shipStats.thruster;
             player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage + GameManager.Instance.shipStats.attack;
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
-            virtualCamera.m_Lens.OrthographicSize = 5 + (GameManager.Instance.shipStats.range / 2.3f);
+            virtualCamera.m_Lens.OrthographicSize = 6 + (GameManager.Instance.shipStats.range / 2.3f);
         }
 
         //sets fighter stats to default
@@ -315,7 +318,7 @@ namespace AsterionArcade
             player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed;
             player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage;
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth;
-            virtualCamera.m_Lens.OrthographicSize = 5;
+            virtualCamera.m_Lens.OrthographicSize = 6;
         }
 
         // placeholder enemy spawning system

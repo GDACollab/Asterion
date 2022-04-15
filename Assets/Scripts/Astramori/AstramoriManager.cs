@@ -40,6 +40,7 @@ namespace AsterionArcade
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] TextMeshProUGUI timeText;
         [SerializeField] TextMeshProUGUI fpShipCountText;
+        [SerializeField] TextMeshProUGUI tutorialText;
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
@@ -92,6 +93,7 @@ namespace AsterionArcade
                 .Invoke(CameraManager.CameraState.Astramori);
 
             GameManager.Instance.isPlayingArcade = true;
+            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
 
             StartFreshGame();
 
@@ -105,6 +107,7 @@ namespace AsterionArcade
             //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
             GameManager.Instance.isPlayingArcade = false;
+            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
@@ -180,6 +183,12 @@ namespace AsterionArcade
         {
             mainMenu.SetActive(false);
             tutorialMenu.SetActive(true);
+            tutorialText.text = "Select enemies to send against the starship\n\nSelect area outside border to spawn enemies\n\nContinue sending enemies until the starship is destroyed\n\nDestroying ships before time runs out earns quarters";
+        }
+
+        public void TutorialNext()
+        {
+            tutorialText.text = "Fighter: The fastest, smallest, and weakest of all enemy types.\n\nMissile Frigate: If the player is in range, they fire three heat-seeking missiles in sequence.\n\nCruiser: These capital ships are very slow, require five hits to destroy, and have three cannons";
         }
 
         public void CloseTutorial()
