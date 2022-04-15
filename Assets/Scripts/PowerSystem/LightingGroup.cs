@@ -33,7 +33,7 @@ public class LightingGroup : MonoBehaviour
 
     public IEnumerator WarningLightsRoutine()
     {
-        while (GameManager.Instance.astramoriGamesPlayed == 0)
+        while (tiedDoor.doorOpen)
         {
             LeanTween.value(gameObject, 0, 15, 0.4f).setOnUpdate((float val) =>
             {
