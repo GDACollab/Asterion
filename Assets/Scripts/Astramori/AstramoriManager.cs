@@ -219,6 +219,7 @@ namespace AsterionArcade
                 canReward = false;
                 lossScreen.fundsRewardedText.enabled = true;
                 lossMenu.SetActive(true);
+                GameManager.Instance.astramoriGamesPlayed++;
                 //_aiCore.enabled = false;
                 _playerMovement.enabled = false;
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
@@ -239,6 +240,7 @@ namespace AsterionArcade
                 lossScreen.fundsRewardedText.enabled = false;
                 timeText.enabled = false;
                 _playerMovement.enabled = false;
+                GameManager.Instance.astramoriGamesPlayed++;
                 StopAllCoroutines();
                // _aiCore.enabled = false;
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())

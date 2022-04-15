@@ -6,12 +6,15 @@ public class LightingGroup : MonoBehaviour
 {
 
     [SerializeField] private List<Light> lights;
+    [SerializeField] private Light emergencyLight;
+    [SerializeField] private Door tiedDoor;
     public float currentBrightness;
     public float maxBrightness;
     public float minBrightness;
     public float flickerInterval;
     public bool flickering;
     [SerializeField] private float updateTime;
+    
 
 
     public void SetAllLightsToDefault()
@@ -26,6 +29,31 @@ public class LightingGroup : MonoBehaviour
         {
             l.intensity = currentBrightness;
         }
+    }
+
+    public IEnumerator WarningLightsRoutine()
+    {
+        while (GameManager.Instance.astramoriGamesPlayed == 0)
+        {
+            LeanTween.value(gameObject, 0, 15, 0.4f).setOnUpdate((float val) =>
+            {
+                emergencyLight.intensity = val;
+
+            });
+            yield return new WaitForSeconds(0.4f);
+            LeanTween.value(gameObject, 15, 0, 0.4f).setOnUpdate((float val) =>
+            {
+                emergencyLight.intensity = val;
+
+            });
+            yield return new WaitForSeconds(0.4f);
+
+            yield return new WaitForSeconds(0.2f);
+        }
+        
+
+        
+
     }
 
     public void UpdateLights(float powerPercentage)

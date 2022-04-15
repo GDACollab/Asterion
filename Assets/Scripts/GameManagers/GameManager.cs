@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public AsterionManager asterionManager;
     public AstramoriManager astramoriManager;
     public SanityManager sanityManager;
+    public PowerManager powerManager;
     public FirstPersonPlayer.PlayerMovement playerMovement;
     [SerializeField] PlayerLook playerLook;
 
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     public bool gameLost;
     public int coinCount;
     public float gameTime;
+    public int asterionGamesPlayed;
+    public int astramoriGamesPlayed;
 
 
     //acts as a singleton which can be easily referenced with GameManager.Instance

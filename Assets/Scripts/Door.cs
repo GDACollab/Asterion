@@ -12,7 +12,7 @@ public class Door : MonoBehaviour
     Animator doorAnimator;
 
     // Whether or not the door is open
-    bool doorOpen = false;
+    public bool doorOpen = false;
 
     // Whether or not the door is locked shut
     public bool locked;

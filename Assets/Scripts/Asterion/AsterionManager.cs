@@ -32,7 +32,7 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI insufficientFundsText;
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
-        [SerializeField] MyDoorController asterionDoor;
+        [SerializeField] Door asterionDoor;
 
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
         [Header("Current Game State Info")]
@@ -244,8 +244,8 @@ namespace AsterionArcade
                 //_aiCore.enabled = false;
                 _playerMovement.enabled = false;
 
-                
 
+                GameManager.Instance.asterionGamesPlayed++;
 
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                 {
@@ -258,14 +258,15 @@ namespace AsterionArcade
                 }
 
                 isLost = false;
+                asterionDoor.locked = false;
+                asterionDoor.openDoor();
 
-                if (!asterionDoor.doorOpen)
-                {
-                    asterionDoor.PlayAnimation();
-                }
+
             }
             else
             {
+                GameManager.Instance.asterionGamesPlayed++;
+                
                 powerManager.isDraining = true;
                 powerManager.IncreaseRate();
                 lossScreen.gameStateText.text = "You Lost!";
@@ -293,11 +294,16 @@ namespace AsterionArcade
 
                 GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
+                asterionDoor.locked = false;
+                asterionDoor.openDoor();
 
-                if (!asterionDoor.doorOpen)
-                {
-                    asterionDoor.PlayAnimation();
-                }
+
+            }
+
+            if (GameManager.Instance.asterionGamesPlayed == 1)
+            {
+                StartCoroutine(GameManager.Instance.powerManager.asterionLighting.WarningLightsRoutine());
+
             }
         }
 

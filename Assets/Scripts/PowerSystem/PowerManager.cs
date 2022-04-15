@@ -39,8 +39,8 @@ public class PowerManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI batteryFPUIText;
 
     [Header("Tied Lighting Systems")]
-    [SerializeField] private LightingGroup asterionLighting;
-    [SerializeField] private LightingGroup astramoriLighting;
+    [SerializeField] public LightingGroup asterionLighting;
+    [SerializeField] public LightingGroup astramoriLighting;
 
     // Start is called before the first frame update
     void Awake()
