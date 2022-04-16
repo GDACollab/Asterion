@@ -139,6 +139,7 @@ namespace FirstPersonPlayer
             yield return new WaitForSeconds(duration);
             _playerLook._rotateEnabled = true;
             GameManager.Instance.isPlayingArcade = false;
+            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
             _firstPersonVC.transform.rotation = _playerManager.playerTransform.rotation;
             _playerManager.playerMovement.SetMovementEnabled(true);
             currentCameraState = CameraState.FirstPerson;

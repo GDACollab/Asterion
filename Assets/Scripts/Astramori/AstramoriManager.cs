@@ -93,7 +93,7 @@ namespace AsterionArcade
                 .Invoke(CameraManager.CameraState.Astramori);
 
             GameManager.Instance.isPlayingArcade = true;
-            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
+            
 
             StartFreshGame();
 
@@ -107,7 +107,7 @@ namespace AsterionArcade
             //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
             
-            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
+            
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
