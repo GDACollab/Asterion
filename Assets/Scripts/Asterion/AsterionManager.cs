@@ -332,6 +332,8 @@ namespace AsterionArcade
         {
             //cursor.DisableVirtualCursor();
             virtualCamera.transform.position = cameraSpawnPosition.position;
+            int totalShips = enemyQueue.Count;
+            shipStatusText.text = "Ships Remaining\nto be deployed: (" + totalShips + "/" + totalShips + ")";
             yield return new WaitForSeconds(1f);
             
             if(timesWon == 0)
@@ -355,7 +357,6 @@ namespace AsterionArcade
 
             _playerMovement.enabled = true;
 
-            int totalShips = enemyQueue.Count;
 
 
 

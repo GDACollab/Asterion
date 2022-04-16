@@ -93,7 +93,7 @@ namespace AsterionArcade
                 .Invoke(CameraManager.CameraState.Astramori);
 
             GameManager.Instance.isPlayingArcade = true;
-            
+            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
 
             StartFreshGame();
 
