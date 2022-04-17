@@ -38,6 +38,7 @@ namespace AsterionArcade
         [Header("Current Game State Info")]
         private GameState currentGameState;
         public bool isLost;
+        public bool isVictory;
         public List<Vector2> baseEnemyQueue;
         public List<Vector2> enemyQueue;
         public int timesWon;
@@ -179,6 +180,7 @@ namespace AsterionArcade
         {
             mainMenu.SetActive(true);
             isLost = false;
+            isVictory = false;
             
             enemyQueue = new List<Vector2>(baseEnemyQueue);
             cursor.EnableVirtualCursor();
@@ -231,6 +233,7 @@ namespace AsterionArcade
         public void GameConcluded(bool isWin)
         {
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            Debug.Log("games concluded");
 
             if (isWin)
             {
@@ -243,6 +246,7 @@ namespace AsterionArcade
                 lossMenu.SetActive(true);
                 //_aiCore.enabled = false;
                 _playerMovement.enabled = false;
+                isVictory = true;
 
 
                 GameManager.Instance.asterionGamesPlayed++;
