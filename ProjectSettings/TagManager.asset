@@ -11,6 +11,9 @@ TagManager:
   - StarshipBullet
   - AlienShip
   - AstramoriPlacementZone
+  - AstramoriRoom
+  - AsterionRoom
+  - Walkway
   layers:
   - Default
   - TransparentFX
