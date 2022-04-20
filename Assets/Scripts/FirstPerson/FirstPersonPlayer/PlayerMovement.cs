@@ -35,11 +35,13 @@ namespace FirstPersonPlayer
 
 
         // SFX stuff
-        [Header("SFX Emitters")]
+        [Header("SFX & SFX Emitters")]
         [SerializeField] FMODUnity.EventReference carpetFootstepsSFX;
         private FMOD.Studio.EventInstance carpetFootstepsSFX_instance;
         [SerializeField] FMODUnity.EventReference catwalkFootstepsSFX;
         private FMOD.Studio.EventInstance catwalkFootstepsSFX_instance;
+        [SerializeField] GameObject catwalkStepsHitbox;
+        private BoxCollider catwalkStepsHitbox_collider;
         private float currentFootstepDelay = 0.0f;
         private float timeBetweenStepsAugment;
         public float timeBetweenSteps = 0.5f;
@@ -77,6 +79,7 @@ namespace FirstPersonPlayer
             carpetFootstepsSFX_instance = FMODUnity.RuntimeManager.CreateInstance(carpetFootstepsSFX);
             //carpetFootstepsSFX_instance.set3DAttributes(  what is the syntax for this?  );
             catwalkFootstepsSFX_instance = FMODUnity.RuntimeManager.CreateInstance(catwalkFootstepsSFX);
+            catwalkStepsHitbox_collider = catwalkStepsHitbox.GetComponent<BoxCollider>();
 
         }
 
