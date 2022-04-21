@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3586597810674997914}
   - component: {fileID: 3586597810674997915}
   - component: {fileID: 1138334277600097863}
+  - component: {fileID: 2777727000140368973}
   m_Layer: 7
   m_Name: obj_missile_frigate
   m_TagString: AlienShip
@@ -160,3 +161,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0.01, y: -0.026743157}
   m_Size: {x: 3.99, y: 2.62}
   m_Direction: 1
+--- !u!114 &2777727000140368973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3586597810674997912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57586e48fd7536943a07884b267e5e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 2
+  timeTillNextFP: 2
+  AIType: 2
+  turnSpeed: 0
+  bulletPrefab: {fileID: 1693220522525983608, guid: ee76188ca6400ee4891e7d4e0563b651, type: 3}
+  bulletSpeed: 0
+  reloadSpeed: 8
+  weaponRange: 15
+  isAstramori: 0
+  lookingForPlayer: 0

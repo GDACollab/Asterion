@@ -15,14 +15,18 @@ public class GameManager : MonoBehaviour
     public List<GameObject> alienShipPrefabs;
 
     [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] TextMeshProUGUI timeText;
     [SerializeField] Volume postProcessingVolume;
     [SerializeField] Vignette vignette;
+    [SerializeField] private List<GameObject> FPDisplay;
+    [SerializeField] private Animator tempLoseAnim;
     public GameObject pauseUI;
     public Transform astramoriEnemyBullets;
     public Transform asterionEnemyBullets;
     public AsterionManager asterionManager;
     public AstramoriManager astramoriManager;
     public SanityManager sanityManager;
+    public PowerManager powerManager;
     public FirstPersonPlayer.PlayerMovement playerMovement;
     [SerializeField] PlayerLook playerLook;
 
@@ -30,7 +34,11 @@ public class GameManager : MonoBehaviour
     public ShipStats shipStats;
     public bool isPaused;
     public bool isPlayingArcade;
+    public bool gameLost;
     public int coinCount;
+    public float gameTime;
+    public int asterionGamesPlayed;
+    public int astramoriGamesPlayed;
 
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
@@ -56,16 +64,75 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         coinText.text = "" + coinCount;
+        gameTime = 0;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isPlayingArcade && Input.GetKeyDown(KeyCode.P))
+        if (!isPlayingArcade && Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
         }
+
+
+
+        gameTime += Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        
+        
+
+        UpdateTimeDisplay();
+
+
+    }
+
+    public void CheckPlayerIsPlayingArcadeStatus()
+    {
+        if (!isPlayingArcade)
+        {
+            foreach (GameObject g in FPDisplay)
+                g.SetActive(true);
+        }
+        else
+        {
+            foreach (GameObject g in FPDisplay)
+                g.SetActive(false);
+        }
+    }
+
+    public IEnumerator LoseRoutine()
+    {
+        gameLost = true;
+        tempLoseAnim.Play("tempLoseAnim");
+        Time.timeScale = 0;
+        FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+        foreach (FMODUnity.StudioEventEmitter a in sounds)
+        {
+            a.EventInstance.setPaused(true);
+        }
+        Cursor.lockState = CursorLockMode.Confined;
+        yield return new WaitForSeconds(1);
+    }
+
+    public void UpdateTimeDisplay()
+    {
+        int minutes = (int)(gameTime / 60);
+        int seconds = (int)(gameTime % 60);
+
+        string time = "";
+
+        if (minutes < 10) time += 0;
+        time += minutes + ":";
+
+        if (seconds < 10) time += 0;
+        time += seconds;
+
+        timeText.text = time;
     }
 
     public void TogglePause()
@@ -77,6 +144,14 @@ public class GameManager : MonoBehaviour
             playerMovement._movementEnabled = true;
             playerLook._rotateEnabled = true;
             Cursor.lockState = CursorLockMode.Locked;
+            // Time resume
+            Time.timeScale = 1;
+
+            FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            foreach (FMODUnity.StudioEventEmitter a in sounds)
+            {
+                a.EventInstance.setPaused(false);
+            }
         }
         else
         {
@@ -85,11 +160,22 @@ public class GameManager : MonoBehaviour
             playerMovement._movementEnabled = false;
             playerLook._rotateEnabled = false;
             Cursor.lockState = CursorLockMode.Confined;
+            // Added time stop so game is 100% paused while pause menu active
+            Time.timeScale = 0;
+            FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+            foreach(FMODUnity.StudioEventEmitter a in sounds)
+            {
+                a.EventInstance.setPaused(true);
+            }
+
         }
     }
 
+
     public void ReloadLevel()
     {
+        Time.timeScale = 1;
+        
         SceneManager.LoadScene(0);
     }
 

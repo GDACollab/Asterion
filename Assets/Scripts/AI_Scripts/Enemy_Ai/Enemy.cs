@@ -19,6 +19,7 @@ namespace AsterionArcade
         public float movementSpeed;
         [Tooltip("How many seconds till the next FindPlayer Update. (0 is instant)")]
         public int timeTillNextFP;
+        public int AIType;
         [Tooltip("How fast the enemy turns towards the new FP. (0 is instant)")]
         public float turnSpeed;
 

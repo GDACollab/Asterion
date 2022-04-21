@@ -19,6 +19,7 @@ namespace AsterionArcade {
         [SerializeField] AstramoriManager astramoriManager;
         [SerializeField] PlacementZone pz;
         [SerializeField] PlacementZone outerBoundry;
+        [SerializeField] List<PlacementZone> invalidPlacementZones;
         [SerializeField] float[] spawnCooldowns;
         float[] currentSpawnCooldown = new float[4];
         [SerializeField] Image[] spawnOverlays;
@@ -165,7 +166,14 @@ namespace AsterionArcade {
 
         bool CanPlace()
         {
-            return (pz.isContact && (currentSpawnCooldown[selectedShip-1] <= 0));
+            foreach(PlacementZone p in invalidPlacementZones)
+            {
+                if (p.isContact)
+                {
+                    return false;
+                }
+            }
+            return ((currentSpawnCooldown[selectedShip-1] <= 0));
         }
     }
 }

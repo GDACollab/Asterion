@@ -39,6 +39,8 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] TextMeshProUGUI timeText;
+        [SerializeField] TextMeshProUGUI fpShipCountText;
+        [SerializeField] TextMeshProUGUI tutorialText;
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
@@ -91,6 +93,7 @@ namespace AsterionArcade
                 .Invoke(CameraManager.CameraState.Astramori);
 
             GameManager.Instance.isPlayingArcade = true;
+            GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
 
             StartFreshGame();
 
@@ -99,11 +102,12 @@ namespace AsterionArcade
         public override void StopInteractAction()
         {
             _playerMovement.enabled = false;
-
+            
             cursor.DisableVirtualCursor();
             //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
-            GameManager.Instance.isPlayingArcade = false;
+            
+            
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
@@ -112,6 +116,8 @@ namespace AsterionArcade
             _cameraManager.OnChangeCameraState
                 .Invoke(CameraManager.CameraState.FirstPerson);
             _interactableManager.gameObject.SetActive(true);
+
+            
         }
 
         public void CloseMainMenu()
@@ -126,6 +132,8 @@ namespace AsterionArcade
         {
             
             player.transform.position = spawnPosition.position;
+            virtualCamera.transform.position = spawnPosition.position;
+            virtualCamera.ForceCameraPosition(spawnPosition.position, Quaternion.identity);
             //ResetStats();
             ApplyBonusStats();
             upgradeMenu.SetActive(false);
@@ -175,6 +183,12 @@ namespace AsterionArcade
         {
             mainMenu.SetActive(false);
             tutorialMenu.SetActive(true);
+            tutorialText.text = "Select enemies to send against the starship\n\nSelect area outside border to spawn enemies\n\nContinue sending enemies until the starship is destroyed\n\nDestroying ships before time runs out earns quarters";
+        }
+
+        public void TutorialNext()
+        {
+            tutorialText.text = "Fighter: The fastest, smallest, and weakest of all enemy types.\n\nMissile Frigate: If the player is in range, they fire three heat-seeking missiles in sequence.\n\nCruiser: These capital ships are very slow, require five hits to destroy, and have three cannons";
         }
 
         public void CloseTutorial()
@@ -205,6 +219,7 @@ namespace AsterionArcade
                 canReward = false;
                 lossScreen.fundsRewardedText.enabled = true;
                 lossMenu.SetActive(true);
+                GameManager.Instance.astramoriGamesPlayed++;
                 //_aiCore.enabled = false;
                 _playerMovement.enabled = false;
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
@@ -213,6 +228,9 @@ namespace AsterionArcade
                 }
                 isLost = false;
                 GameManager.Instance.asterionManager.baseEnemyQueue = new List<Vector2>(enemyQueue);
+                fpShipCountText.text = "Ships: " + shipsDeployed;
+                
+                
             }
             else
             {
@@ -222,6 +240,7 @@ namespace AsterionArcade
                 lossScreen.fundsRewardedText.enabled = false;
                 timeText.enabled = false;
                 _playerMovement.enabled = false;
+                GameManager.Instance.astramoriGamesPlayed++;
                 StopAllCoroutines();
                // _aiCore.enabled = false;
                 foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
@@ -241,7 +260,7 @@ namespace AsterionArcade
             player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage + GameManager.Instance.shipStats.attack;
             
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
-            virtualCamera.m_Lens.OrthographicSize = 7 + GameManager.Instance.shipStats.range;
+            virtualCamera.m_Lens.OrthographicSize = 7 + (GameManager.Instance.shipStats.range / 2.3f);
         }
 
         //sets fighter stats to default
@@ -259,7 +278,7 @@ namespace AsterionArcade
         IEnumerator CombatRoutine()
         {
             player.transform.position = spawnPosition.position;
-            virtualCamera.transform.position = cameraSpawnPosition.position;
+            virtualCamera.transform.position = spawnPosition.position;
             shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
             yield return new WaitForSeconds(1f);
             pretexts[0].enabled = true;

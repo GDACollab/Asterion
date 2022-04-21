@@ -40,6 +40,12 @@ namespace AsterionArcade
         [SerializeField] float distanceFactor = 1;
         [SerializeField] float distanceExpBase = 2;
 
+
+        [Header("SFX Events")]
+        [SerializeField] FMODUnity.EventReference spaceshipShootSFX;    // SFX reference for shooting bullets
+        private FMOD.Studio.EventInstance spaceshipShootSFX_instance;   // SFX instance of the above event
+
+
         float time;
         bool active;
 
@@ -47,6 +53,9 @@ namespace AsterionArcade
         {
             rb = GetComponent<Rigidbody2D>();
             layerMask = (LayerMask.GetMask("AsterionAI"));
+
+            // SFX stuff
+            spaceshipShootSFX_instance = FMODUnity.RuntimeManager.CreateInstance(spaceshipShootSFX);
         }
 
         void Update()
@@ -103,6 +112,10 @@ namespace AsterionArcade
                 firedBullet.transform.parent = bullets;
                 firedBullet.GetComponent<BasicBullet>().damage = damage;
                 Debug.Log(firedBullet.transform.position);
+
+                spaceshipShootSFX_instance.setParameterByName("AstramoriMix", Random.Range(69,96));
+                spaceshipShootSFX_instance.start();
+
             }
         }
 

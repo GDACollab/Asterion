@@ -6,6 +6,8 @@ public class PlacementZone : MonoBehaviour
 {
 
     [SerializeField] GameObject player;
+    [SerializeField] private Collider2D boxcollider;
+    [SerializeField] private Transform cursor;
     public bool isContact;
     public bool shouldntMove;
     
@@ -24,7 +26,16 @@ public class PlacementZone : MonoBehaviour
             
         }
 
-        isContact = true;
+        if (boxcollider.bounds.Contains(cursor.transform.position) )
+        {
+            isContact = true;
+        }
+        else
+        {
+            isContact = false;
+        }
+
+        
 
     }
 
@@ -39,7 +50,7 @@ public class PlacementZone : MonoBehaviour
     {
         if (collision.tag == "AstramoriPlacementZone")
         {
-            isContact = false;
+            //isContact = false;
         }
     }
 

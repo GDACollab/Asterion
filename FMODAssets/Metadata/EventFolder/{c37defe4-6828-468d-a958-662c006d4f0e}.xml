@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EventFolder" id="{c37defe4-6828-468d-a958-662c006d4f0e}">
+		<property name="name">
+			<value>Asterion SFX</value>
+		</property>
+		<relationship name="folder">
+			<destination>{30c6df37-8901-4fbb-8024-c6fc7c772493}</destination>
+		</relationship>
+	</object>
+</objects>

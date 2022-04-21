@@ -36,10 +36,10 @@ public class UpgradeMenu : MonoBehaviour
     // call when we enable the upgrade menu
     void UpdateValues()
     {
-        shield.text = stats.shield.ToString();
-        attack.text = stats.attack.ToString();
-        thruster.text = stats.thruster.ToString();
-        range.text = stats.range.ToString();
+        shield.text = (stats.shield + 1).ToString();
+        attack.text = (stats.attack + 1).ToString();
+        thruster.text = (stats.thruster + 1).ToString();
+        range.text = (stats.range + 1).ToString();
 
 
     }
