@@ -262,10 +262,6 @@ namespace AsterionArcade
                 }
 
                 isLost = false;
-                asterionDoor.locked = false;
-                asterionDoor.openDoor();
-
-
             }
             else
             {
@@ -298,11 +294,11 @@ namespace AsterionArcade
 
                 GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
-                asterionDoor.locked = false;
-                asterionDoor.openDoor();
-
-
             }
+
+            // Door Unlocking
+            asterionDoor.locked = false;
+            asterionDoor.openDoor();
 
             if (GameManager.Instance.asterionGamesPlayed == 1)
             {
