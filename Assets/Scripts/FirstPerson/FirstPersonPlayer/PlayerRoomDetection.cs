@@ -6,6 +6,7 @@ public class PlayerRoomDetection : MonoBehaviour
 {
     public enum Location {AsterionRoom, AstramoriRoom, Walkway};
     public Location playerLocation;
+    [SerializeField] private MonsterManager monsterManager;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,8 @@ public class PlayerRoomDetection : MonoBehaviour
         {
             playerLocation = Location.Walkway;
         }
+
+        monsterManager.UpdatedPlayerPos();
 
 
     }
