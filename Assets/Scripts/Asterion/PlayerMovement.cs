@@ -137,32 +137,32 @@ namespace AsterionArcade
 
         public void NonRelativeForceMovement()
         {
-            if (Input.GetKey(KeyCode.A))
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)))
             {
                 playerVelocity.x = -moveSpeed;
             }
 
-            if (Input.GetKey(KeyCode.D))
+            if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)))
             {
                 playerVelocity.x = moveSpeed;
             }
 
-            if ((Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) || (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)))
+            if (((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))) || (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow)))
             {
                 playerVelocity.x = 0;
             }
 
-            if (Input.GetKey(KeyCode.W))
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)))
             {
                 playerVelocity.y = moveSpeed;
             }
 
-            if (Input.GetKey(KeyCode.S))
+            if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)))
             {
                 playerVelocity.y = -moveSpeed;
             }
 
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S) || (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)))
+            if (((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))) || (!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow)))
             {
                 playerVelocity.y = 0;
             }

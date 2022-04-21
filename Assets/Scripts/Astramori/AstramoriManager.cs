@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using FirstPersonPlayer;
 using Interactable;
+using TMPro;
 
 namespace AsterionArcade
 {
@@ -20,9 +21,11 @@ namespace AsterionArcade
         [SerializeField] GameObject player;
         private Starfighter starfighterAI;
         [SerializeField] Transform spawnPosition;
+        [SerializeField] Transform cameraSpawnPosition;
         [SerializeField] GameObject gameBounds;
         [SerializeField] GameObject astramoriCanvas;
         [SerializeField] GameObject mainMenu;
+        [SerializeField] GameObject tutorialMenu;
         [SerializeField] GameObject upgradeMenu;
         [SerializeField] GameObject lossMenu;
         public Transform enemies;
@@ -33,7 +36,11 @@ namespace AsterionArcade
         [SerializeField] Spawning spawningSystem;
         [SerializeField] CinemachineVirtualCamera virtualCamera;
         [SerializeField] UpgradeDisplay upgradeDisplay;
+        [SerializeField] TextMeshProUGUI shipStatusText;
+        [SerializeField] List<TextMeshProUGUI> pretexts;
+        [SerializeField] TextMeshProUGUI timeText;
         bool canReward;
+        public int shipsDeployed;
         //public GameObject astramoriCanvas;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
@@ -164,6 +171,17 @@ namespace AsterionArcade
 
         }
 
+        public void OpenTutorial()
+        {
+            mainMenu.SetActive(false);
+            tutorialMenu.SetActive(true);
+        }
+
+        public void CloseTutorial()
+        {
+            mainMenu.SetActive(true);
+            tutorialMenu.SetActive(false);
+        }
         public void GameConcluded(bool isWin)
         {
             player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -173,10 +191,12 @@ namespace AsterionArcade
 
             if (isWin)
             {
-                lossScreen.gameStateText.text = "You Win!";
+                lossScreen.gameStateText.text = "Victory";
                 cursor.EnableVirtualCursor();
                 int quarters = ((int)(((timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
                 lossScreen.fundsRewardedText.text = "Quarters Recieved: " + quarters;
+                timeText.enabled = true;
+                timeText.text = "Time Remaining:\n" + (int)(timer.time) + "s";
                 if (canReward)
                 {
                     GameManager.Instance.AlterCoins(quarters);
@@ -196,10 +216,11 @@ namespace AsterionArcade
             }
             else
             {
-                lossScreen.gameStateText.text = "You Lost!";
+                lossScreen.gameStateText.text = "Game Over";
                 cursor.EnableVirtualCursor();
                 lossMenu.SetActive(true);
                 lossScreen.fundsRewardedText.enabled = false;
+                timeText.enabled = false;
                 _playerMovement.enabled = false;
                 StopAllCoroutines();
                // _aiCore.enabled = false;
@@ -237,14 +258,35 @@ namespace AsterionArcade
         // placeholder enemy spawning system
         IEnumerator CombatRoutine()
         {
+            player.transform.position = spawnPosition.position;
+            virtualCamera.transform.position = cameraSpawnPosition.position;
+            shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
+            yield return new WaitForSeconds(1f);
+            pretexts[0].enabled = true;
+
+            yield return new WaitForSeconds(2f);
+
+            pretexts[1].enabled = true;
+
+            yield return new WaitForSeconds(2f);
+
+            pretexts[0].enabled = false;
+            pretexts[1].enabled = false;
+
+            shipsDeployed = 0;
             spawningSystem.isActive = true;
+
             starfighterAI.SetActive();
             //cursor.DisableVirtualCursor();
             timer.StartTimer();
             canReward = true;
             yield return new WaitForSeconds(1);
 
-
+            while(astramoriStarfighterHealth.health > 0)
+            {
+                shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
+                yield return new WaitForSeconds(0.5f);
+            }
 
             yield return new WaitUntil(() => astramoriStarfighterHealth.health <= 0);
 

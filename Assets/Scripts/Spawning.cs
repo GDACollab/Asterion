@@ -18,6 +18,7 @@ namespace AsterionArcade {
         [SerializeField] Camera astramoriCamera;
         [SerializeField] AstramoriManager astramoriManager;
         [SerializeField] PlacementZone pz;
+        [SerializeField] PlacementZone outerBoundry;
         [SerializeField] float[] spawnCooldowns;
         float[] currentSpawnCooldown = new float[4];
         [SerializeField] Image[] spawnOverlays;
@@ -149,6 +150,8 @@ namespace AsterionArcade {
             spawnDelay = 0;
 
             currentSpawnCooldown[shipID - 1] = spawnCooldowns[shipID - 1];
+
+            astramoriManager.shipsDeployed++;
         }
 
         void ActivateShip1()

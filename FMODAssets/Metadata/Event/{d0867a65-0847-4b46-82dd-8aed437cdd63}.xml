@@ -63,6 +63,9 @@
 		<property name="dopplerScale">
 			<value>500</value>
 		</property>
+		<property name="maximumDistance">
+			<value>15</value>
+		</property>
 	</object>
 	<object class="MarkerTrack" id="{eccf9fad-6c4c-4245-8aea-4939a1a90f13}" />
 	<object class="GroupTrack" id="{3c60eb48-8743-4d7e-85d8-ae10a0d3a59b}">
@@ -261,7 +264,10 @@
 	<object class="MixerBusFader" id="{7991c924-f015-4028-83e5-db7d7df5ccf7}" />
 	<object class="SpatialiserEffect" id="{90621681-011d-4361-9d0e-2c65ca1ce94e}">
 		<property name="distanceRolloffType">
-			<value>2</value>
+			<value>3</value>
+		</property>
+		<property name="maximumDistance">
+			<value>15</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{391c6041-d580-4098-83c1-2748b580af34}">
