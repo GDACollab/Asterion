@@ -44,6 +44,8 @@ namespace AsterionArcade
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
+        [SerializeField] Door asterionDoor;
+        [SerializeField] Door astramoriDoor;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
         [Header("Current Game State Info")]
@@ -250,6 +252,11 @@ namespace AsterionArcade
                 GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
             }
+
+            // Door management stuff
+            astramoriDoor.locked = false;
+            asterionDoor.locked = false;
+            astramoriDoor.openDoor();
         }
 
         //sets fighter stats to base + chosen upgrades
