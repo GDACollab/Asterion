@@ -95,10 +95,13 @@ namespace AsterionArcade {
             {
                 SelectShip(3);
             }
+            /*
+             * Randy Le: Commented out to stop spawning this ship, not deleting in case of stretch goals
             if (Input.GetKeyDown(KeyCode.Alpha4))
             {
                 SelectShip(4);
             }
+            */
         }
 
         void UpdateSpawn()
