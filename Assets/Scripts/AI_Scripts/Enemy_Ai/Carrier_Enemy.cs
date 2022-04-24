@@ -62,7 +62,7 @@ namespace AsterionArcade
             return result;
         }
         
-        // Spawns a fighter as a chils of shipsTransform. Similar to the SpawnShip method in Spawning.cs .
+        // Spawns a fighter as a child of shipsTransform. Similar to the SpawnShip method in Spawning.cs .
         private void SpawnFighter(Vector3 position, Transform shipsTransform) {
             int fighterShipID = 0;
             GameObject newFighter = Instantiate(GameManager.Instance.alienShipPrefabs[fighterShipID], shipsTransform);
