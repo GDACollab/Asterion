@@ -9,7 +9,7 @@ Edit this object in the Unity UI at Assets/Prefabs/Enemy_Ai/obj_carrier.prefab
 Note: Might want to add a death animation in the future
 
 BUGS:
-Spawned fighters persist after Astramori finishes
+Spawned fighters' bullets may persist after Astramori finishes
 
 Created by:
 - SalilPT
