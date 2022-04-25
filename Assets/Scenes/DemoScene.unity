@@ -29059,6 +29059,8 @@ MonoBehaviour:
   fpShipCountText: {fileID: 992740350}
   tutorialText: {fileID: 604119414}
   shipsDeployed: 0
+  PlacementZone: {fileID: 1693478478}
+  zoneBaseSize: {x: 32.39028, y: 32.39028, z: 32.39028}
   isLost: 0
   enemyQueue:
   - {x: 1, y: 3}
