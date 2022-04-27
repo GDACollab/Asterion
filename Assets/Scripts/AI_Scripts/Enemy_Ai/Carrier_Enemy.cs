@@ -41,7 +41,7 @@ namespace AsterionArcade
 
         // Method to determine the spawn positions of the fighters that this object spawns
         // You can change this to create different spawn patterns
-        private List<Vector3> generateListOfSpawnPositions()
+        private List<Vector3> GenerateListOfSpawnPositions()
         {
             List<Vector3> result = new List<Vector3>();
             Vector3 myPos = (Vector3)transform.position;
@@ -49,14 +49,14 @@ namespace AsterionArcade
             Quaternion rotationQuat = transform.rotation;
             // Anonymous function which returns the provided point rotated about the center of this object (on the play area)
             // Adapted from the answer here: https://forum.unity.com/threads/rotate-a-point-around-a-second-point-using-a-quaternion.504996/
-            System.Func<Vector3, Vector3> generateRotatedPoint = (p) => {return (rotationQuat * (p - myPos) + myPos);};
+            System.Func<Vector3, Vector3> GenerateRotatedPoint = (p) => {return (rotationQuat * (p - myPos) + myPos);};
 
             // Spawn 1 fighter at the center of this object and 4 fighters equidistant to the center
             result.Add(myPos);
-            result.Add(generateRotatedPoint(myPos + new Vector3(-0.5f, -0.5f, 0)));
-            result.Add(generateRotatedPoint(myPos + new Vector3(-0.5f, 0.5f, 0)));
-            result.Add(generateRotatedPoint(myPos + new Vector3(0.5f, -0.5f, 0)));
-            result.Add(generateRotatedPoint(myPos + new Vector3(0.5f, 0.5f, 0)));
+            result.Add(GenerateRotatedPoint(myPos + new Vector3(-0.5f, -0.5f, 0)));
+            result.Add(GenerateRotatedPoint(myPos + new Vector3(-0.5f, 0.5f, 0)));
+            result.Add(GenerateRotatedPoint(myPos + new Vector3(0.5f, -0.5f, 0)));
+            result.Add(GenerateRotatedPoint(myPos + new Vector3(0.5f, 0.5f, 0)));
 
             // If numFightersToSpawn is greater than 5, spawn the remaining fighters randomly around this object
             for (int i = 5; i < numFightersToSpawn; i++) {
@@ -95,7 +95,7 @@ namespace AsterionArcade
                 return;
             }
 
-            List<Vector3> listOfSpawnPositions = generateListOfSpawnPositions();
+            List<Vector3> listOfSpawnPositions = GenerateListOfSpawnPositions();
             // Set the transform component that fighters will spawn as a child of to be the parent of this object
             Transform shipsTransform = transform.parent;
 
