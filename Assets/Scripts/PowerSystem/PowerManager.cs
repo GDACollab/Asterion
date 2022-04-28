@@ -42,6 +42,10 @@ public class PowerManager : MonoBehaviour
     [SerializeField] public LightingGroup asterionLighting;
     [SerializeField] public LightingGroup astramoriLighting;
 
+    [Header("SFX Emitters")]
+    [SerializeField] FMODUnity.EventReference powerUpSFX;
+    private FMOD.Studio.EventInstance powerUpSFX_instance;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -51,6 +55,7 @@ public class PowerManager : MonoBehaviour
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
         StartCoroutine(DimRoutine());
+        powerUpSFX_instance = FMODUnity.RuntimeManager.CreateInstance(powerUpSFX);
     }
 
     // Update is called once per frame
@@ -111,6 +116,8 @@ public class PowerManager : MonoBehaviour
             powerLevel = 100;
         }
         currentRate = initialRate;
+
+        powerUpSFX_instance.start();
     }
 
     public void IncreaseRate()
