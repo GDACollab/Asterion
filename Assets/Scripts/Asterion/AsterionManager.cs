@@ -33,7 +33,6 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] Door asterionDoor;
-        //[SerializeField] FMODUnity.EventReference doorOpenSFX;
 
         public enum GameState {Disabled, MainMenu, Upgrades, Gameplay, Invalid};
         [Header("Current Game State Info")]
