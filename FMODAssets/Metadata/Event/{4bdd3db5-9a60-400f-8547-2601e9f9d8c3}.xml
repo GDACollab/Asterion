@@ -82,7 +82,7 @@
 	</object>
 	<object class="EventMixerMaster" id="{90e2a12c-7123-4335-b731-f717fef613f5}">
 		<property name="volume">
-			<value>-4.5</value>
+			<value>-6.5</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{66973706-e293-469d-8831-08c94c4af4bb}</destination>
@@ -107,7 +107,6 @@
 		<property name="timelockedOffset">
 			<value>0.029999999999999999</value>
 		</property>
-		<property name="name" />
 		<relationship name="fadeOutCurve">
 			<destination>{09807310-b233-460e-9f98-7e4d302d8956}</destination>
 		</relationship>
@@ -125,7 +124,6 @@
 		<property name="timelockedOffset">
 			<value>1.03</value>
 		</property>
-		<property name="name" />
 		<relationship name="fadeInCurve">
 			<destination>{619b2415-0fb8-4274-aae6-5a86e7b6d6a5}</destination>
 		</relationship>

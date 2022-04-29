@@ -5,7 +5,7 @@
 			<value>Battery Charge Increase</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<relationship name="folder">
 			<destination>{7ffa03b2-f0dd-4164-9491-5ddbc0ede98f}</destination>
@@ -56,7 +56,11 @@
 			<destination>{5abf3e2a-804d-4463-a0df-ece61a126486}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{d21df6b2-d30f-499e-a7a4-f89cb9bf63bc}" />
+	<object class="EventAutomatableProperties" id="{d21df6b2-d30f-499e-a7a4-f89cb9bf63bc}">
+		<property name="maximumDistance">
+			<value>4.4000001</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{2c768b13-f252-4275-b6e7-748b1a5b0420}" />
 	<object class="GroupTrack" id="{b65cad89-00c4-467a-9cfd-b4f67a0c8273}">
 		<relationship name="modules">
@@ -75,6 +79,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{651b953c-622e-41ce-bb3c-95c194e8cdcc}">
+		<property name="volume">
+			<value>-8</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{f3f09ad8-52d2-48ec-ab97-1e227215cf56}</destination>
 		</relationship>
@@ -136,6 +143,7 @@
 	<object class="MixerBusEffectChain" id="{f3f09ad8-52d2-48ec-ab97-1e227215cf56}">
 		<relationship name="effects">
 			<destination>{a842fb53-a263-49b9-b563-0afba97a7aad}</destination>
+			<destination>{7042d18b-2727-4751-ab08-4d2c9ae7e080}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6137c4c0-2d8b-4d83-8e47-97a223621ead}" />
@@ -147,5 +155,10 @@
 	</object>
 	<object class="MixerBusPanner" id="{6da535dd-0dae-4701-8f0e-708b99ac91ef}" />
 	<object class="MixerBusFader" id="{a842fb53-a263-49b9-b563-0afba97a7aad}" />
+	<object class="SpatialiserEffect" id="{7042d18b-2727-4751-ab08-4d2c9ae7e080}">
+		<property name="maximumDistance">
+			<value>4.4000001</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{750536fd-2c3f-4e62-85f0-df411a40372f}" />
 </objects>
