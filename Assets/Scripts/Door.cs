@@ -17,9 +17,12 @@ public class Door : MonoBehaviour
     // Whether or not the door is locked shut
     public bool locked;
 
+
     void Start() {
         doorOpen = false;
         doorAnimator = GetComponent<Animator>();
+
+
     }
 
     // Trigger handling stuff
