@@ -22,7 +22,7 @@ public class Tutorial_Sequence : MonoBehaviour
 
     public void LockPlayerAndSlideDoor()
     {
-        StartCoroutine(EventOne());
+        //StartCoroutine(EventOne());
     }
 
     //  Work Around as something else renables player movement
