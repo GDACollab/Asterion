@@ -159,6 +159,7 @@ namespace AsterionArcade
                 if (firstTime)
                 {
                     CloseUpgradeScreen();
+                    firstTime = false;
                 }
                 else
                 {
@@ -223,6 +224,7 @@ namespace AsterionArcade
         public void ContinueCurrentGame()
         {
             isLost = false;
+            isPlaying = true;
             //_aiCore.enabled = true;
             //_aiCore.m_Player = player;
 
