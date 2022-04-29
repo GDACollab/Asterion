@@ -153,7 +153,7 @@ namespace FirstPersonPlayer
             float duration = _cameraStateAnimator
                 .GetCurrentAnimatorStateInfo(0).length;
 
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(duration); 
 
             currentCameraState = CameraState.Asterion;
             //ToggleOrthographic(true);

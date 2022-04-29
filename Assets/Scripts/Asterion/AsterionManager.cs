@@ -53,8 +53,11 @@ namespace AsterionArcade
 
         [Header("SFX Emitters")]
         [SerializeField] FMODUnity.EventReference coinInsertSFX;
-        private FMOD.Studio.EventInstance coinInsertSFX_instance; 
+        private FMOD.Studio.EventInstance coinInsertSFX_instance;
         //[SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
+
+        //Added Variable to skip Upgrades on first play
+        private bool firstTime = true;
 
 
         void Start()
@@ -152,6 +155,14 @@ namespace AsterionArcade
                 currentGameState = GameState.Upgrades;
                 insufficientFundsText.enabled = false;
                 GameManager.Instance.shipStats.ResetAllStats();
+                if (firstTime)
+                {
+                    CloseUpgradeScreen();
+                }
+                else
+                {
+                    firstTime = false;
+                }
 
             }
             else
@@ -440,6 +451,7 @@ namespace AsterionArcade
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Asterion)
             {
                 _interactableManager.OnStopInteract.Invoke();
+                GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().LockPlayerAndSlideDoor();
             }
             
             //StopInteractAction();
