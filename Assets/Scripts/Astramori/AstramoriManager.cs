@@ -44,6 +44,9 @@ namespace AsterionArcade
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
+        // Randy: Attempt at fixing Starfighter from leaving gray box, see ApplyBonusStats()
+        [SerializeField] GameObject PlacementZone;
+        public Vector3 zoneBaseSize;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
         [Header("Current Game State Info")]
@@ -260,6 +263,10 @@ namespace AsterionArcade
             player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage + GameManager.Instance.shipStats.attack;
             
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            // Randy: Scale Placement zone size to account for change in range upgrade applied to camera
+            PlacementZone.transform.localScale = zoneBaseSize + new Vector3((GameManager.Instance.shipStats.range * 2.56f),
+                                                                            (GameManager.Instance.shipStats.range * 2.56f),
+                                                                            (GameManager.Instance.shipStats.range * 2.56f));
             virtualCamera.m_Lens.OrthographicSize = 7 + (GameManager.Instance.shipStats.range / 2.3f);
         }
 
