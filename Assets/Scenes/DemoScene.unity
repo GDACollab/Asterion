@@ -4144,6 +4144,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorOpenSFX.Path
+      value: event:/Misc SFX/Sliding Door Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorCloseSFX.Path
+      value: event:/Misc SFX/Sliding Door Close
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorOpenSFX.Guid.Data1
+      value: -2002061844
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorOpenSFX.Guid.Data2
+      value: 1308056678
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorOpenSFX.Guid.Data3
+      value: 1894045614
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorOpenSFX.Guid.Data4
+      value: 398983085
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorCloseSFX.Guid.Data1
+      value: 1272790453
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorCloseSFX.Guid.Data2
+      value: 1074764384
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorCloseSFX.Guid.Data3
+      value: 19285893
+      objectReference: {fileID: 0}
+    - target: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+      propertyPath: doorCloseSFX.Guid.Data4
+      value: -1009190423
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
 --- !u!4 &153393839 stripped
@@ -8985,6 +9025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryIndicator: {fileID: 639027775}
   initialRate: 6
+  INSANEMode: 0
   rateMultiplier: 1.5
   winRate: 10
   currentRate: 0
@@ -9003,13 +9044,14 @@ MonoBehaviour:
   batteryFPUIText: {fileID: 1655630133}
   asterionLighting: {fileID: 2031556056}
   astramoriLighting: {fileID: 1407238923}
-  powerUpSFX:
+  batteryChargeSFX:
     Guid:
       Data1: 541893205
       Data2: 1214360360
       Data3: -852008052
       Data4: -476626137
     Path: event:/Misc SFX/Battery Charge Increase
+  batteryCube: {fileID: 136171081}
 --- !u!1 &354437707
 GameObject:
   m_ObjectHideFlags: 0
@@ -29037,6 +29079,13 @@ MonoBehaviour:
   - {x: 1, y: 3}
   - {x: 1, y: 3}
   sanityLoss: 5
+  coinDispenseManySFX:
+    Guid:
+      Data1: 1278580376
+      Data2: 1158757744
+      Data3: -1449002603
+      Data4: -1678603587
+    Path: event:/Misc SFX/Coin Dispense Many
 --- !u!1 &1074676103
 GameObject:
   m_ObjectHideFlags: 0
@@ -38140,6 +38189,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231585271}
     m_Modifications:
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorOpenSFX.Path
+      value: event:/Misc SFX/Sliding Door Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorCloseSFX.Path
+      value: event:/Misc SFX/Sliding Door Close
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorOpenSFX.Guid.Data1
+      value: -2002061844
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorOpenSFX.Guid.Data2
+      value: 1308056678
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorOpenSFX.Guid.Data3
+      value: 1894045614
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorOpenSFX.Guid.Data4
+      value: 398983085
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorCloseSFX.Guid.Data1
+      value: 1272790453
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorCloseSFX.Guid.Data2
+      value: 1074764384
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorCloseSFX.Guid.Data3
+      value: 19285893
+      objectReference: {fileID: 0}
+    - target: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+      propertyPath: doorCloseSFX.Guid.Data4
+      value: -1009190423
+      objectReference: {fileID: 0}
     - target: {fileID: 821308901905008270, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
       propertyPath: m_Name
       value: AstramoriDoor
@@ -52317,8 +52406,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
-  m_LocalPosition: {x: 0, y: 0.32000005, z: 0.67700016}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}
