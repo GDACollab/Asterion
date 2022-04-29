@@ -70,6 +70,18 @@ namespace FirstPersonPlayer
             _mouseSensitivity = sensSlider.value;
         }
 
+        public void ToggleCameraRotate(bool toSet)
+        {
+            if (toSet)
+            {
+                _mouseSensitivity = sensSlider.value;
+            }
+            else
+            {
+                _mouseSensitivity = 0;
+            }
+        }
+
         private void Update()
         {
             MouseInteract();

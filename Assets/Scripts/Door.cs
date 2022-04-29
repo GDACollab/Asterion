@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     // Names of the animation triggers used to open / close the door
     public string openName = "OpenTrigger";
     public string closeName = "CloseTrigger";
+    public bool isAsterion;
 
     // Animator that handles the door's animations
     Animator doorAnimator;
@@ -48,6 +49,11 @@ public class Door : MonoBehaviour
             doorOpen = true;
             FMODUnity.RuntimeManager.PlayOneShotAttached(doorOpenSFX.Guid, doorObject);
             doorAnimator.SetTrigger(openName);
+
+            if(GameManager.Instance.asterionGamesPlayed == 1 && !isAsterion)
+            {
+                Tutorial_Sequence.Instance.TonyBehindAstramori();
+            }
         }
     }
 
