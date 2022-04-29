@@ -42278,7 +42278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1781920335}
   - component: {fileID: 1781920336}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BoundriesVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
