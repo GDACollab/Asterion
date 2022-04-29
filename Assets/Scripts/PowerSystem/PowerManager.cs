@@ -42,6 +42,10 @@ public class PowerManager : MonoBehaviour
     [SerializeField] public LightingGroup asterionLighting;
     [SerializeField] public LightingGroup astramoriLighting;
 
+    //[Header("SFX References")]
+    //[SerializeField] FMODUnity.EventReference batteryChargeSFX;
+    //[SerializeField] GameObject batteryCube;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -106,6 +110,8 @@ public class PowerManager : MonoBehaviour
     {
         
         powerLevel += winRate;
+        //FMODUnity.RuntimeManager.PlayOneShotAttached(batteryChargeSFX.Guid, batteryCube);
+
         if(powerLevel > 100)
         {
             powerLevel = 100;
