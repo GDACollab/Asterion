@@ -17,6 +17,8 @@ public class PowerManager : MonoBehaviour
     public const float maxPowerLevel = 100.0f;
     // Measured in percentage of maximum power per 60 seconds
     [SerializeField] float initialRate = 4.0f;
+    [Tooltip("You DON'T wanna know what Insane Mode does.")]
+    [SerializeField] bool INSANEMode = false;
     [SerializeField] float rateMultiplier = 1.5f;
     // Percentage of maximum power regained following a win
     [SerializeField] float winRate = 10.0f;
@@ -42,20 +44,23 @@ public class PowerManager : MonoBehaviour
     [SerializeField] public LightingGroup asterionLighting;
     [SerializeField] public LightingGroup astramoriLighting;
 
-    [Header("SFX Emitters")]
-    [SerializeField] FMODUnity.EventReference powerUpSFX;
-    private FMOD.Studio.EventInstance powerUpSFX_instance;
+    [Header("SFX References")]
+    [SerializeField] FMODUnity.EventReference batteryChargeSFX;
+    [SerializeField] GameObject batteryCube;
 
     // Start is called before the first frame update
     void Awake()
     {
         powerLevel = maxPowerLevel;
+        if (INSANEMode == true)
+            {
+            initialRate = 500.0f;
+            }
         currentRate = initialRate;
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
         StartCoroutine(DimRoutine());
-        powerUpSFX_instance = FMODUnity.RuntimeManager.CreateInstance(powerUpSFX);
     }
 
     // Update is called once per frame
@@ -111,13 +116,13 @@ public class PowerManager : MonoBehaviour
     {
         
         powerLevel += winRate;
+        FMODUnity.RuntimeManager.PlayOneShotAttached(batteryChargeSFX.Guid, batteryCube);
+
         if(powerLevel > 100)
         {
             powerLevel = 100;
         }
         currentRate = initialRate;
-
-        powerUpSFX_instance.start();
     }
 
     public void IncreaseRate()
