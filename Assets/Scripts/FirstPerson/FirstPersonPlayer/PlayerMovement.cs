@@ -32,6 +32,7 @@ namespace FirstPersonPlayer
         private Vector3 _horizontalVelocity;
 
         public bool _movementEnabled = false;
+        public bool canRotate = true;
 
 
         // SFX stuff
@@ -155,15 +156,25 @@ namespace FirstPersonPlayer
 
         private void RotatePlayer()
         {
-            _mouseInputX = Input.GetAxis("Mouse X") * Time.deltaTime;
-            _playerTransform.Rotate(Vector3.up * _mouseInputX
-                * _cameraManager.mouseSensitivity);
+            if (canRotate)
+            {
+                _mouseInputX = Input.GetAxis("Mouse X") * Time.deltaTime;
+                _playerTransform.Rotate(Vector3.up * _mouseInputX
+                    * _cameraManager.mouseSensitivity);
+            }
+           
         }
 
         public void SetMovementEnabled(bool toSet)
         {
             _movementEnabled = toSet;
             _horizontalVelocity = Vector3.zero;
+        }
+
+        public void SetTurningEnabled(bool toSet)
+        {
+            canRotate = toSet;
+            _cameraManager.ToggleCameraRotate(toSet);
         }
     }
 }

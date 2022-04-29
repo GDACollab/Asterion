@@ -53,6 +53,24 @@ public class MonsterManager : MonoBehaviour
         }
     }
 
+    public void SpawnMonsterBehindAsterionMachine()
+    {
+        var monster = Instantiate(monsterPrefab, asterionMonsterLocations[0].position, Quaternion.identity);
+        monster.transform.eulerAngles = new Vector3(90, -180, 0);
+        monster.transform.parent = transform;
+        currentlyActiveMonsterSpawns.Add(monster);
+        StartCoroutine(DestroyMonstersRoutine(3));
+    }
+
+    public void SpawnMonsterBehindAstramoriMachine()
+    {
+        var monster = Instantiate(monsterPrefab, astramoriMonsterLocations[0].position, Quaternion.identity);
+        monster.transform.eulerAngles = new Vector3(90, -180, 180);
+        monster.transform.parent = transform;
+        currentlyActiveMonsterSpawns.Add(monster);
+        StartCoroutine(DestroyMonstersRoutine(3));
+    }
+
     public IEnumerator DestroyMonstersRoutine(float delayTime)
     {
         yield return new WaitForSeconds(delayTime);

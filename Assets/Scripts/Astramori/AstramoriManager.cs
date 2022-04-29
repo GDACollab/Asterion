@@ -56,6 +56,16 @@ namespace AsterionArcade
 
         [SerializeField] float sanityLoss;
 
+        [Header("SFX Emitters")]
+        [SerializeField] FMODUnity.EventReference coinDispenseManySFX;
+        private FMOD.Studio.EventInstance coinDispenseManySFX_instance;
+
+        void Start()
+        {
+            // SFX stuff
+            coinDispenseManySFX_instance = FMODUnity.RuntimeManager.CreateInstance(coinDispenseManySFX);
+
+        }
 
         public new void Construct(CameraManager cameraManager)
         {
@@ -217,6 +227,9 @@ namespace AsterionArcade
                 if (canReward)
                 {
                     GameManager.Instance.AlterCoins(quarters);
+
+                    // SFX
+                    coinDispenseManySFX_instance.start();
                 }
                 
                 canReward = false;
