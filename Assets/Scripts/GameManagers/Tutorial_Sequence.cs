@@ -36,7 +36,8 @@ public class Tutorial_Sequence : MonoBehaviour
     }
     IEnumerator EndEventOne()
     {
-        yield return new WaitForSeconds(6f);
+        // Delay Should Be Length of Sound
+        yield return new WaitForSeconds(2f); 
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
     }
 
