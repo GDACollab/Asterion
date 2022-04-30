@@ -10,5 +10,23 @@ public class AsterionLossScreen : MonoBehaviour
     public TextMeshProUGUI continueButtonText;
     public TextMeshProUGUI gameStateText;
     // Start is called before the first frame update
+    public GameObject resetButton;
+    public GameObject exitButton;
+    // Time in seconds
+    public float buttonDelay;
+
+    void OnEnable()
+    {
+        // Delay activation of buttons
+        resetButton.SetActive(false);
+        exitButton.SetActive(false);
+        Invoke("DelayButtons", buttonDelay);
+    }
+
+    void DelayButtons()
+    {
+        resetButton.SetActive(true);
+        exitButton.SetActive(true);
+    }
 
 }

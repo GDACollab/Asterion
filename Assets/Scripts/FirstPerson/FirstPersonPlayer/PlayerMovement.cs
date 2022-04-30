@@ -32,17 +32,21 @@ namespace FirstPersonPlayer
         private Vector3 _horizontalVelocity;
 
         public bool _movementEnabled = false;
+        public bool canRotate = true;
 
 
         // SFX stuff
-        [Header("SFX Emitters")]
+        [Header("SFX & SFX Emitters")]
         [SerializeField] FMODUnity.EventReference carpetFootstepsSFX;
         private FMOD.Studio.EventInstance carpetFootstepsSFX_instance;
         [SerializeField] FMODUnity.EventReference catwalkFootstepsSFX;
         private FMOD.Studio.EventInstance catwalkFootstepsSFX_instance;
+        private PlayerRoomDetection playerRoomDetection;
         private float currentFootstepDelay = 0.0f;
         private float timeBetweenStepsAugment;
+        [Tooltip("Time between footstep SFX in seconds")]
         public float timeBetweenSteps = 0.5f;
+        
         
 
 
@@ -77,6 +81,7 @@ namespace FirstPersonPlayer
             carpetFootstepsSFX_instance = FMODUnity.RuntimeManager.CreateInstance(carpetFootstepsSFX);
             //carpetFootstepsSFX_instance.set3DAttributes(  what is the syntax for this?  );
             catwalkFootstepsSFX_instance = FMODUnity.RuntimeManager.CreateInstance(catwalkFootstepsSFX);
+            playerRoomDetection = GetComponent<PlayerRoomDetection>();
 
         }
 
@@ -120,8 +125,12 @@ namespace FirstPersonPlayer
                 {    
                     currentFootstepDelay = 0;
                     // SFX
-                    carpetFootstepsSFX_instance.start();
-
+                    if (playerRoomDetection.playerLocation == PlayerRoomDetection.Location.Walkway)
+                    {
+                        catwalkFootstepsSFX_instance.start();
+                    }
+                    else carpetFootstepsSFX_instance.start();
+            
                 }
 
 
@@ -147,15 +156,25 @@ namespace FirstPersonPlayer
 
         private void RotatePlayer()
         {
-            _mouseInputX = Input.GetAxis("Mouse X") * Time.deltaTime;
-            _playerTransform.Rotate(Vector3.up * _mouseInputX
-                * _cameraManager.mouseSensitivity);
+            if (canRotate)
+            {
+                _mouseInputX = Input.GetAxis("Mouse X") * Time.deltaTime;
+                _playerTransform.Rotate(Vector3.up * _mouseInputX
+                    * _cameraManager.mouseSensitivity);
+            }
+           
         }
 
         public void SetMovementEnabled(bool toSet)
         {
             _movementEnabled = toSet;
             _horizontalVelocity = Vector3.zero;
+        }
+
+        public void SetTurningEnabled(bool toSet)
+        {
+            canRotate = toSet;
+            _cameraManager.ToggleCameraRotate(toSet);
         }
     }
 }

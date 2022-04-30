@@ -7,8 +7,6 @@ namespace AsterionArcade {
 
     public class Spawning : MonoBehaviour
     {
-
-
         [Header("Objects")]
         [SerializeField] GameObject[] shipPrefabs;
         [SerializeField] Transform ships;
@@ -36,7 +34,6 @@ namespace AsterionArcade {
         [SerializeField] float previewInvalidAlpha = 0.1f;
         public bool isActive;
 
-
         // Start is called before the first frame update
         void Start()
         {
@@ -57,8 +54,6 @@ namespace AsterionArcade {
                     }
                     spawnOverlays[i].rectTransform.localScale = new Vector3(1.575f, scale, 1.575f);
                 }
-
-
             }
         }
 
@@ -73,11 +68,6 @@ namespace AsterionArcade {
                 UpdateSpawn();
                 spawnDelay += Time.deltaTime;
             }
-
-
-
-            
-            
         }
 
         // Changes selected ship based on Hot Keys
@@ -113,7 +103,6 @@ namespace AsterionArcade {
 
             preview.position = (fc.transform.GetComponent<RectTransform>().transform.position);
 
-
             //Debug.Log(preview.localPosition);
             preview.localPosition = new Vector3(preview.localPosition.x, preview.localPosition.y, 0);
             preview.GetComponent<SpriteRenderer>().color *= new Color(1, 1, 1, 0);
@@ -141,7 +130,6 @@ namespace AsterionArcade {
             ship.transform.position = position * Vector2.one;
             if (ship.TryGetComponent<Enemy>(out Enemy ship1))
             {
-
                 ship1.lookingForPlayer = true;
             }
             ship.GetComponent<Enemy>().isAstramori = true;

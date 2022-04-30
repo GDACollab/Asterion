@@ -70,6 +70,18 @@ namespace FirstPersonPlayer
             _mouseSensitivity = sensSlider.value;
         }
 
+        public void ToggleCameraRotate(bool toSet)
+        {
+            if (toSet)
+            {
+                _mouseSensitivity = sensSlider.value;
+            }
+            else
+            {
+                _mouseSensitivity = 0;
+            }
+        }
+
         private void Update()
         {
             MouseInteract();
@@ -153,7 +165,7 @@ namespace FirstPersonPlayer
             float duration = _cameraStateAnimator
                 .GetCurrentAnimatorStateInfo(0).length;
 
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSeconds(duration); 
 
             currentCameraState = CameraState.Asterion;
             //ToggleOrthographic(true);

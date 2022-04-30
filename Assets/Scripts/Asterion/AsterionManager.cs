@@ -39,6 +39,7 @@ namespace AsterionArcade
         private GameState currentGameState;
         public bool isLost;
         public bool isVictory;
+        public bool isPlaying;
         public List<Vector2> baseEnemyQueue;
         public List<Vector2> enemyQueue;
         public int timesWon;
@@ -53,8 +54,11 @@ namespace AsterionArcade
 
         [Header("SFX Emitters")]
         [SerializeField] FMODUnity.EventReference coinInsertSFX;
-        private FMOD.Studio.EventInstance coinInsertSFX_instance; 
+        private FMOD.Studio.EventInstance coinInsertSFX_instance;
         //[SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
+
+        //Added Variable to skip Upgrades on first play
+        private bool firstTime = true;
 
 
         void Start()
@@ -152,6 +156,15 @@ namespace AsterionArcade
                 currentGameState = GameState.Upgrades;
                 insufficientFundsText.enabled = false;
                 GameManager.Instance.shipStats.ResetAllStats();
+                if (firstTime)
+                {
+                    CloseUpgradeScreen();
+                    firstTime = false;
+                }
+                else
+                {
+                    firstTime = false;
+                }
 
             }
             else
@@ -166,7 +179,7 @@ namespace AsterionArcade
             player.transform.position = spawnPosition.position;
             //ResetStats();
             ApplyBonusStats();
-            
+            isPlaying = true;
             currentGameState = GameState.Gameplay;
             
             Debug.Log("closing upgrade screen for asterion, starting game!");
@@ -211,6 +224,7 @@ namespace AsterionArcade
         public void ContinueCurrentGame()
         {
             isLost = false;
+            isPlaying = true;
             //_aiCore.enabled = true;
             //_aiCore.m_Player = player;
 
@@ -232,79 +246,83 @@ namespace AsterionArcade
 
         public void GameConcluded(bool isWin)
         {
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            Debug.Log("games concluded");
-
-            if (isWin)
+            if (isPlaying)
             {
-                timesWon++;
-                powerManager.isDraining = true;
-                powerManager.GainPower();
-                lossScreen.gameStateText.text = "You Win!";
-                cursor.EnableVirtualCursor();
-                lossScreen.continueButtonText.text = "Start Again? (1 Quarter)";
-                lossMenu.SetActive(true);
-                //_aiCore.enabled = false;
-                _playerMovement.enabled = false;
-                isVictory = true;
+                isPlaying = false;
 
+                player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                Debug.Log("games concluded");
 
-                GameManager.Instance.asterionGamesPlayed++;
-
-                foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+                if (isWin)
                 {
-                    bd.Death();
-                }
+                    timesWon++;
+                    powerManager.isDraining = true;
+                    powerManager.GainPower();
+                    lossScreen.gameStateText.text = "You Win!";
+                    cursor.EnableVirtualCursor();
+                    lossScreen.continueButtonText.text = "Start Again? (1 Quarter)";
+                    lossMenu.SetActive(true);
+                    //_aiCore.enabled = false;
+                    _playerMovement.enabled = false;
+                    isVictory = true;
 
-                foreach (Transform bullet in GameManager.Instance.asterionEnemyBullets)
+
+                    GameManager.Instance.asterionGamesPlayed++;
+
+                    foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+                    {
+                        bd.Death();
+                    }
+
+                    foreach (Transform bullet in GameManager.Instance.asterionEnemyBullets)
+                    {
+                        Destroy(bullet.gameObject);
+                    }
+
+                    isLost = false;
+
+
+
+                }
+                else
                 {
-                    Destroy(bullet.gameObject);
-                }
+                    GameManager.Instance.asterionGamesPlayed++;
 
-                isLost = false;
+                    powerManager.isDraining = true;
+                    powerManager.IncreaseRate();
+                    lossScreen.gameStateText.text = "You Lost!";
+                    cursor.EnableVirtualCursor();
+                    lossMenu.SetActive(true);
+                    lossScreen.continueButtonText.text = "Continue? (1 Quarter)";
+                    _playerMovement.enabled = false;
+                    StopAllCoroutines();
+                    //_aiCore.enabled = false;
+
+                    foreach (Enemy fighterMove in enemies.GetComponentsInChildren<Enemy>())
+                    {
+                        enemyQueue.Add(new Vector2(fighterMove.AIType, 3));
+                    }
+
+                    foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+                    {
+                        bd.Death();
+                    }
+
+                    foreach (Transform bullet in GameManager.Instance.asterionEnemyBullets)
+                    {
+                        Destroy(bullet.gameObject);
+                    }
+
+                    GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
+                    isLost = true;
+
+
+
+                }
             }
-            else
-            {
-                GameManager.Instance.asterionGamesPlayed++;
-                
-                powerManager.isDraining = true;
-                powerManager.IncreaseRate();
-                lossScreen.gameStateText.text = "You Lost!";
-                cursor.EnableVirtualCursor();
-                lossMenu.SetActive(true);
-                lossScreen.continueButtonText.text = "Continue? (1 Quarter)";
-                _playerMovement.enabled = false;
-                StopAllCoroutines();
-                //_aiCore.enabled = false;
+            
 
-                foreach (Enemy fighterMove in enemies.GetComponentsInChildren<Enemy>())
-                {
-                    enemyQueue.Add(new Vector2(fighterMove.AIType, 3));
-                }
-
-                foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
-                {
-                    bd.Death();
-                }
-
-                foreach (Transform bullet in GameManager.Instance.asterionEnemyBullets)
-                {
-                    Destroy(bullet.gameObject);
-                }
-
-                GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
-                isLost = true;
-            }
-
-            // Door Unlocking
-            asterionDoor.locked = false;
-            asterionDoor.openDoor();
-
-            if (GameManager.Instance.asterionGamesPlayed == 1)
-            {
-                StartCoroutine(GameManager.Instance.powerManager.asterionLighting.WarningLightsRoutine());
-
-            }
+            
         }
 
         //sets fighter stats to base + chosen upgrades
@@ -408,6 +426,12 @@ namespace AsterionArcade
             yield return null;
         }
 
+        public void ForceDoorOpen()
+        {
+            asterionDoor.locked = false;
+            asterionDoor.openDoor();
+        }
+
         //continue current round
         public void Continue()
         {
@@ -436,6 +460,7 @@ namespace AsterionArcade
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Asterion)
             {
                 _interactableManager.OnStopInteract.Invoke();
+                GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().LockPlayerAndSlideDoor();
             }
             
             //StopInteractAction();

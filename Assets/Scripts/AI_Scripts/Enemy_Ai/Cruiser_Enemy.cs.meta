@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/AI_Scripts/Enemy_Ai/Cruiser_Enemy.cs.meta
 guid: 27e222ae61f63304d84794b9284fac75
+========
+guid: 0f70bdc242c649b48af774fd63356484
+>>>>>>>> origin/sprint-6-monster-energy:Assets/Scripts/AI_Scripts/Enemy_Ai/Enemy.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

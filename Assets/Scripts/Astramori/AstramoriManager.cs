@@ -44,8 +44,9 @@ namespace AsterionArcade
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
-        [SerializeField] Door asterionDoor;
-        [SerializeField] Door astramoriDoor;
+        // Randy: Attempt at fixing Starfighter from leaving gray box, see ApplyBonusStats()
+        [SerializeField] GameObject PlacementZone;
+        public Vector3 zoneBaseSize;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
         [Header("Current Game State Info")]
@@ -55,6 +56,16 @@ namespace AsterionArcade
 
         [SerializeField] float sanityLoss;
 
+        [Header("SFX Emitters")]
+        [SerializeField] FMODUnity.EventReference coinDispenseManySFX;
+        private FMOD.Studio.EventInstance coinDispenseManySFX_instance;
+
+        void Start()
+        {
+            // SFX stuff
+            coinDispenseManySFX_instance = FMODUnity.RuntimeManager.CreateInstance(coinDispenseManySFX);
+
+        }
 
         public new void Construct(CameraManager cameraManager)
         {
@@ -216,6 +227,9 @@ namespace AsterionArcade
                 if (canReward)
                 {
                     GameManager.Instance.AlterCoins(quarters);
+
+                    // SFX
+                    coinDispenseManySFX_instance.start();
                 }
                 
                 canReward = false;
@@ -252,11 +266,6 @@ namespace AsterionArcade
                 GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                 isLost = true;
             }
-
-            // Door management stuff
-            astramoriDoor.locked = false;
-            asterionDoor.locked = false;
-            astramoriDoor.openDoor();
         }
 
         //sets fighter stats to base + chosen upgrades
@@ -267,6 +276,10 @@ namespace AsterionArcade
             player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage + GameManager.Instance.shipStats.attack;
             
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            // Randy: Scale Placement zone size to account for change in range upgrade applied to camera
+            PlacementZone.transform.localScale = zoneBaseSize + new Vector3((GameManager.Instance.shipStats.range * 2.56f),
+                                                                            (GameManager.Instance.shipStats.range * 2.56f),
+                                                                            (GameManager.Instance.shipStats.range * 2.56f));
             virtualCamera.m_Lens.OrthographicSize = 7 + (GameManager.Instance.shipStats.range / 2.3f);
         }
 

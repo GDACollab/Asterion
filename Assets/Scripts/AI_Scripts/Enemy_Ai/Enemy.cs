@@ -47,7 +47,7 @@ namespace AsterionArcade
         // Start is called before the first frame update
         void Start()
         {
-            player = FindClosestGameObjecctWithTag("Player");
+            player = FindClosestGameObjectWithTag("Player");
             knownPlayerPos = player.transform.position;
 
             rigidBody = GetComponent<Rigidbody2D>();
@@ -105,7 +105,7 @@ namespace AsterionArcade
         // Handle Enemy collisions
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            // Damage player and destory alien shit on collision with player
+            // Damage player and destory alien ship on collision with player
             if (collision.gameObject.tag == "Player")
             {
                 collision.gameObject.GetComponent<BasicDamageable>().TakeDamage(1);
@@ -137,7 +137,7 @@ namespace AsterionArcade
             knownPlayerPos = player.transform.position;
             StartCoroutine(updateFP(timeTillNextFP));
         }
-        private GameObject FindClosestGameObjecctWithTag(string tag)
+        private GameObject FindClosestGameObjectWithTag(string tag)
         {
             GameObject[] players = GameObject.FindGameObjectsWithTag(tag);
             float currentCloseDist = 10000000;

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/AI_Scripts/Enemy_Ai/Fighter_Enemy.cs.meta
 guid: 6df4484c6a8e4c0449bd74856717ed5d
+========
+guid: 57586e48fd7536943a07884b267e5e55
+>>>>>>>> origin/sprint-6-monster-energy:Assets/Scripts/AI_Scripts/Enemy_Ai/Frigate_Enemy.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
