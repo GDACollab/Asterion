@@ -29,7 +29,7 @@ public class Tutorial_Sequence : MonoBehaviour
 
     public void LockPlayerAndSlideDoor()
     {
-        StartCoroutine(EventOne());
+        //StartCoroutine(EventOne());
     }
 
     public void TonyBehindAstramori()
