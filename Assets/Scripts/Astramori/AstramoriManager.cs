@@ -42,7 +42,6 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI fpShipCountText;
         [SerializeField] TextMeshProUGUI tutorialText;
         [SerializeField] Door astramoriDoor;
-
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
@@ -61,8 +60,6 @@ namespace AsterionArcade
         [Header("SFX Emitters")]
         [SerializeField] FMODUnity.EventReference coinDispenseManySFX;
         private FMOD.Studio.EventInstance coinDispenseManySFX_instance;
-
-        private bool triggeredtutorial = false;
 
         void Start()
         {
@@ -356,12 +353,6 @@ namespace AsterionArcade
 
         }
 
-        public void ForceDoorOpen()
-        {
-            astramoriDoor.locked = false;
-            astramoriDoor.openDoor();
-        }
-
         //exit this arcade machine and return to first person view
         public void ExitMachine()
         {
@@ -369,16 +360,17 @@ namespace AsterionArcade
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Astramori)
             {
                 _interactableManager.OnStopInteract.Invoke();
-                if (triggeredtutorial == false)
-                {
-                    GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().UnlockAstramori();
-                    triggeredtutorial = true;
-                }
+                ForceDoorOpen();
             }
 
             //StopInteractAction();
         }
 
-
+        // Opens the Astramori Door
+        public void ForceDoorOpen()
+        {
+            astramoriDoor.locked = false;
+            astramoriDoor.openDoor();
+        }
     }
 }
