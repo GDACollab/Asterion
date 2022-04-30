@@ -41,6 +41,7 @@ namespace AsterionArcade
         [SerializeField] TextMeshProUGUI timeText;
         [SerializeField] TextMeshProUGUI fpShipCountText;
         [SerializeField] TextMeshProUGUI tutorialText;
+        [SerializeField] Door astramoriDoor;
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
@@ -359,11 +360,17 @@ namespace AsterionArcade
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Astramori)
             {
                 _interactableManager.OnStopInteract.Invoke();
+                ForceDoorOpen();
             }
 
             //StopInteractAction();
         }
 
-
+        // Opens the Astramori Door
+        public void ForceDoorOpen()
+        {
+            astramoriDoor.locked = false;
+            astramoriDoor.openDoor();
+        }
     }
 }
