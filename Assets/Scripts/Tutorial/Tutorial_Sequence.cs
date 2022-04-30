@@ -8,6 +8,7 @@ public class Tutorial_Sequence : MonoBehaviour
 {
     public static Tutorial_Sequence Instance;
     GameObject AsterionGame;
+    GameObject AstramoriGame;
     GameObject Player;
     MonsterManager _MonsterManager;
 
@@ -22,6 +23,8 @@ public class Tutorial_Sequence : MonoBehaviour
     void Start()
     {
         AsterionGame = GameObject.Find("AsterionGame");
+        AstramoriGame = GameObject.Find("AstramoriGame");
+
         Player = GameObject.Find("FirstPersonPlayer");
         _MonsterManager = GameObject.Find("MonsterManager").GetComponent<MonsterManager>();
         AsterionGame.GetComponent<AsterionManager>().InteractAction();
@@ -29,7 +32,53 @@ public class Tutorial_Sequence : MonoBehaviour
 
     public void LockPlayerAndSlideDoor()
     {
-        //StartCoroutine(EventOne());
+        StartCoroutine(EventOne());
+
+    }
+
+    public void UnlockAstramori()
+    {
+        StartCoroutine(EventThree());
+    }   
+
+    public void EndingMonsterEvent()
+    {
+        StartCoroutine(EventFourStart());
+    }
+
+    IEnumerator EventFourStart()
+    {
+        yield return new WaitForSeconds(1f);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
+        
+        GameObject.Find("Lights").GetComponent<LightingGroup>().currentBrightness = 0f;
+        GameObject.Find("Lights").GetComponent<LightingGroup>().SetAllLightsToCurrent();
+        GameObject.Find("Lights").GetComponent<LightingGroup>().enabled = false;
+
+    }
+
+    // Handles Event When Leaving Astramori
+    IEnumerator EventThree()
+    {
+        yield return new WaitForSeconds(1f);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
+        AstramoriGame.GetComponent<AstramoriManager>().ForceDoorOpen();
+
+        GameObject.Find("EmergencyLight (1)").GetComponent<Light>().color = Color.green;
+
+        StartCoroutine(EndEventThree());
+    }
+
+    IEnumerator EndEventThree()
+    {
+        // Delay Should Be Length of Sound
+        yield return new WaitForSeconds(2f);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
+
+        GameObject.Find("AsterionTutorialEndTrigger").GetComponent<BoxCollider>().enabled = true;
     }
 
     public void TonyBehindAstramori()

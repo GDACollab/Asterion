@@ -138,11 +138,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 821308901905008270}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.068, y: 1.532, z: 6.22}
   m_LocalScale: {x: 2, y: 3, z: 0.5}
   m_Children:
   - {fileID: 821308900998083648}
+  - {fileID: 5415829374564888112}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -192,4 +193,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openName: OpenTrigger
   closeName: CloseTrigger
+  isAsterion: 0
+  doorOpen: 0
   locked: 0
+  doorObject: {fileID: 0}
+  doorOpenSFX:
+    Guid:
+      Data1: -2002061844
+      Data2: 1308056678
+      Data3: 1894045614
+      Data4: 398983085
+    Path: event:/Misc SFX/Sliding Door Open
+  doorCloseSFX:
+    Guid:
+      Data1: 1272790453
+      Data2: 1074764384
+      Data3: 19285893
+      Data4: -1009190423
+    Path: event:/Misc SFX/Sliding Door Close
+--- !u!1 &5089183215514579564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5415829374564888112}
+  m_Layer: 0
+  m_Name: Tutorial_Handler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5415829374564888112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089183215514579564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 821308901905008271}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
