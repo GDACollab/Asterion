@@ -7,6 +7,7 @@ public class DoorLockTrigger : MonoBehaviour
 {
     // The Door to be shut and locked once
     public Door door;
+    private bool TriggeredTutorial = false;
 
     // Once the player enters the trigger, the door will close and lock, and the trigger will deactivate
     void OnTriggerEnter(Collider detection) {
@@ -14,6 +15,12 @@ public class DoorLockTrigger : MonoBehaviour
             door.closeDoor();
             door.locked = true;
             gameObject.SetActive(false);
+
+            if (TriggeredTutorial == false)
+            {
+                GameObject.Find("EmergencyLight (1)").GetComponent<Light>().intensity = 2.8f;
+                TriggeredTutorial = true;
+            }
         }
     }
 }

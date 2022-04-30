@@ -61,6 +61,8 @@ namespace AsterionArcade
         [SerializeField] FMODUnity.EventReference coinDispenseManySFX;
         private FMOD.Studio.EventInstance coinDispenseManySFX_instance;
 
+        private bool tutorialTrigger = false;
+
         void Start()
         {
             // SFX stuff
@@ -361,6 +363,12 @@ namespace AsterionArcade
             {
                 _interactableManager.OnStopInteract.Invoke();
                 ForceDoorOpen();
+                if (tutorialTrigger == false)
+                {
+                    tutorialTrigger = true;
+                    GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().StartCoroutine("EventThree");
+                }
+
             }
 
             //StopInteractAction();
