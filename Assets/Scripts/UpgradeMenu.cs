@@ -1,5 +1,5 @@
-//using System.Collections;
-//using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -19,7 +19,15 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI range;
 
+    [SerializeField] List<GameObject> upgradeButtons;
+
+
+
     public ShipStats stats;
+
+    public int upgradePoints;
+
+    
 
     void Start()
     {
@@ -41,7 +49,26 @@ public class UpgradeMenu : MonoBehaviour
         thruster.text = (stats.thruster + 1).ToString();
         range.text = (stats.range + 1).ToString();
 
+    }
 
+    
+
+    void UpdateButtonVisibility()
+    {
+        if(upgradePoints > 0)
+        {
+            foreach(GameObject g in upgradeButtons)
+            {
+                g.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject g in upgradeButtons)
+            {
+                g.SetActive(false);
+            }
+        }
     }
 
     public void UpgradeShield()
@@ -51,7 +78,9 @@ public class UpgradeMenu : MonoBehaviour
             stats.shield += 1;
         }
 
+        upgradePoints--;
         UpdateValues();
+
     }
 
     public void DowngradeShield()
@@ -70,7 +99,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             stats.attack += 1;
         }
-
+        upgradePoints--;
         UpdateValues();
     }
 
@@ -80,7 +109,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             stats.attack -= 1;
         }
- 
+        upgradePoints--;
         UpdateValues();
     }
 
@@ -90,7 +119,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             stats.thruster += 1;
         }
-
+        upgradePoints--;
         UpdateValues();
     }
 

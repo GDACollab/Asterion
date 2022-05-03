@@ -13,6 +13,11 @@ public class ShipStats : MonoBehaviour
     public int shield;
     public int range;
 
+    public int oldThrust;
+    public int oldAttack;
+    public int oldShield;
+    public int oldRange;
+
     // Start is called before the first frame update
     // keep start or awake?
     void Start()
@@ -23,6 +28,21 @@ public class ShipStats : MonoBehaviour
         range = 0;
     }
 
+    public void UpdateOld()
+    {
+        oldThrust = thruster;
+        oldAttack = attack;
+        oldShield = shield;
+        oldRange = range;
+    }
+
+    public void DowngradeOld()
+    {
+        thruster = oldThrust;
+        attack = oldAttack;
+        shield = oldShield;
+        range = oldRange;
+    }
 
     void Awake()
     {
