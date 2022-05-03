@@ -4,13 +4,19 @@ using UnityEngine;
 using FirstPersonPlayer;
 using AsterionArcade;
 
+
 public class Tutorial_Sequence : MonoBehaviour
 {
     public static Tutorial_Sequence Instance;
+  
+
     GameObject AsterionGame;
     GameObject AstramoriGame;
     GameObject Player;
     MonsterManager _MonsterManager;
+    GameObject _cameraManager;
+    
+
 
     public bool hasSeenTony = false;
 
@@ -24,7 +30,7 @@ public class Tutorial_Sequence : MonoBehaviour
     {
         AsterionGame = GameObject.Find("AsterionGame");
         AstramoriGame = GameObject.Find("AstramoriGame");
-
+            _cameraManager = GameObject.Find("Camera");
         Player = GameObject.Find("FirstPersonPlayer");
         _MonsterManager = GameObject.Find("MonsterManager").GetComponent<MonsterManager>();
         AsterionGame.GetComponent<AsterionManager>().InteractAction();
@@ -51,10 +57,15 @@ public class Tutorial_Sequence : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
-        
+        Debug.Log("FADELIGHT");
         GameObject.Find("Lights").GetComponent<LightingGroup>().currentBrightness = 0f;
-        GameObject.Find("Lights").GetComponent<LightingGroup>().SetAllLightsToCurrent();
-        GameObject.Find("Lights").GetComponent<LightingGroup>().enabled = false;
+
+
+        //_interactableManager.gameObject.SetActive(false);
+        _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
+                .Invoke(CameraManager.CameraState.TutorialCutscene);
+        //GameObject.Find("Lights").GetComponent<LightingGroup>().SetAllLightsToCurrent();
+        //GameObject.Find("Lights").GetComponent<LightingGroup>().enabled = false;
 
     }
 
