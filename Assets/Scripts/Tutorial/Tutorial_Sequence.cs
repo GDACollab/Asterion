@@ -8,17 +8,18 @@ using AsterionArcade;
 public class Tutorial_Sequence : MonoBehaviour
 {
     public static Tutorial_Sequence Instance;
-  
 
+    public GameObject Lights;
     GameObject AsterionGame;
     GameObject AstramoriGame;
     GameObject Player;
     MonsterManager _MonsterManager;
     GameObject _cameraManager;
+
     
 
 
-    public bool hasSeenTony = false;
+    public bool hasSeenTony = true;
 
     private void Awake()
     {
@@ -54,19 +55,51 @@ public class Tutorial_Sequence : MonoBehaviour
 
     IEnumerator EventFourStart()
     {
-        yield return new WaitForSeconds(1f);
+
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
-        Debug.Log("FADELIGHT");
-        GameObject.Find("Lights").GetComponent<LightingGroup>().currentBrightness = 0f;
 
+        yield return new WaitForSeconds(0.05f);
+        Lights.SetActive(false);
+        yield return new WaitForSeconds(0.05f);
+        Lights.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        Lights.SetActive(false);
 
-        //_interactableManager.gameObject.SetActive(false);
+        GameObject.Find("SpookyPlaneTutorial").GetComponent<SpriteRenderer>().enabled = true;
+        //GameObject.Find("SpookyPlane").transform.rotation = new Quaternion(81f, -90f, 90f, 0f);
+
+        yield return new WaitForSeconds(2f);
+        GameObject.Find("SpookyPlaneTutorial").GetComponent<SpriteRenderer>().enabled = false;
+        Lights.SetActive(true);
+
+        yield return new WaitForSeconds(0.05f);
+        Lights.SetActive(false);
+        yield return new WaitForSeconds(0.05f);
+        Lights.SetActive(true);
+        yield return new WaitForSeconds(1f);
+     
+       
+        
         _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
-                .Invoke(CameraManager.CameraState.TutorialCutscene);
-        //GameObject.Find("Lights").GetComponent<LightingGroup>().SetAllLightsToCurrent();
-        //GameObject.Find("Lights").GetComponent<LightingGroup>().enabled = false;
+          .Invoke(CameraManager.CameraState.TutorialCutscene);
 
+        yield return new WaitForSeconds(1f);
+
+        GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
+        yield return new WaitForSeconds(1f);
+        GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
+        yield return new WaitForSeconds(0.5f);
+
+        _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
+          .Invoke(CameraManager.CameraState.FirstPerson);
+
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
+
+        Destroy(gameObject);
     }
 
     // Handles Event When Leaving Astramori
@@ -97,7 +130,7 @@ public class Tutorial_Sequence : MonoBehaviour
         if (!hasSeenTony)
         {
             hasSeenTony = true;
-            StartCoroutine(EventTwo());
+            //StartCoroutine(EventTwo());
         }
        
     }

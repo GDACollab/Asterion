@@ -49,11 +49,6 @@ public class Door : MonoBehaviour
             doorOpen = true;
             FMODUnity.RuntimeManager.PlayOneShotAttached(doorOpenSFX.Guid, doorObject);
             doorAnimator.SetTrigger(openName);
-
-            if(GameManager.Instance.asterionGamesPlayed == 1 && !isAsterion)
-            {
-                Tutorial_Sequence.Instance.TonyBehindAstramori();
-            }
         }
     }
 
