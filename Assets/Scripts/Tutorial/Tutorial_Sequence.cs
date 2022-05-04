@@ -89,8 +89,6 @@ public class Tutorial_Sequence : MonoBehaviour
         GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
         yield return new WaitForSeconds(1f);
         GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
-        yield return new WaitForSeconds(1f);
-        GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
         yield return new WaitForSeconds(0.5f);
 
         _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
