@@ -21,7 +21,7 @@ public class UpgradeMenu : MonoBehaviour
 
     [SerializeField] List<GameObject> upgradeButtons;
 
-
+    [SerializeField] private TextMeshProUGUI upgradePointText;
 
     public ShipStats stats;
 
@@ -48,12 +48,13 @@ public class UpgradeMenu : MonoBehaviour
         attack.text = (stats.attack + 1).ToString();
         thruster.text = (stats.thruster + 1).ToString();
         range.text = (stats.range + 1).ToString();
-
+        upgradePointText.text = "Available Points: " + upgradePoints;
+        ShipStats.instance.UpdateUpgradeDisplayUI();
     }
 
     
 
-    void UpdateButtonVisibility()
+    public void UpdateButtonVisibility()
     {
         if(upgradePoints > 0)
         {
@@ -73,34 +74,45 @@ public class UpgradeMenu : MonoBehaviour
 
     public void UpgradeShield()
     {
-        if (stats.shield < 4)
+        
+        if (upgradePoints > 0)
         {
             stats.shield += 1;
+            upgradePoints--;
+            ShipStats.instance.modifiedStats[0]++;
+            UpdateValues();
+            UpdateButtonVisibility();
         }
 
-        upgradePoints--;
-        UpdateValues();
+        
 
     }
+
 
     public void DowngradeShield()
     {
         if (stats.shield > 0)
         {
             stats.shield -= 1;
+            upgradePoints++;
+            ShipStats.instance.modifiedStats[0]--;
+            UpdateValues();
+            UpdateButtonVisibility();
         }
- 
-        UpdateValues();
+        
     }
 
     public void UpgradeGuns()
     {
-        if (stats.attack < 4)
+        if (upgradePoints > 0)
         {
             stats.attack += 1;
+            upgradePoints--;
+            ShipStats.instance.modifiedStats[1]++;
+            UpdateValues();
+            UpdateButtonVisibility();
         }
-        upgradePoints--;
-        UpdateValues();
+        
     }
 
     public void DowngradeGuns()
@@ -108,19 +120,25 @@ public class UpgradeMenu : MonoBehaviour
         if (stats.attack > 0)
         {
             stats.attack -= 1;
+            upgradePoints++;
+            ShipStats.instance.modifiedStats[1]--;
+            UpdateValues();
+            UpdateButtonVisibility();
         }
-        upgradePoints--;
-        UpdateValues();
+        
     }
 
     public void UpgradeThrusters()
     {
-        if (stats.thruster < 4)
+        if (upgradePoints > 0)
         {
             stats.thruster += 1;
+            ShipStats.instance.modifiedStats[2]++;
+            upgradePoints--;
+            UpdateValues();
+            UpdateButtonVisibility();
         }
-        upgradePoints--;
-        UpdateValues();
+        
     }
 
     public void DowngradeThrusters()
@@ -128,19 +146,25 @@ public class UpgradeMenu : MonoBehaviour
         if (stats.thruster > 0)
         {
             stats.thruster -= 1;
+            upgradePoints++;
+            ShipStats.instance.modifiedStats[2]--;
+            UpdateValues();
+            UpdateButtonVisibility();
         }
-
-        UpdateValues();
+        
     }
 
     public void UpgradeRange()
     {
-        if (stats.range < 4)
+        if (stats.range < 4 && upgradePoints > 0)
         {
             stats.range += 1;
+            upgradePoints--;
+            ShipStats.instance.modifiedStats[3]++;
+            UpdateValues();
+            UpdateButtonVisibility();
         }
-
-        UpdateValues();
+        
     }
 
     public void DowngradeRange()
@@ -148,8 +172,11 @@ public class UpgradeMenu : MonoBehaviour
         if (stats.range > 0)
         {
             stats.range -= 1;
+            upgradePoints++;
+            ShipStats.instance.modifiedStats[3]--;
+            UpdateValues();
+            UpdateButtonVisibility();
         }
-
-        UpdateValues();
+        
     }
 }

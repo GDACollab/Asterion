@@ -18,29 +18,34 @@ namespace AsterionArcade
         
         //public GameObject player;
         [Header("Objects")]
-        [SerializeField] GameObject player;
+        public Transform enemies;
         private Starfighter starfighterAI;
+        [SerializeField] GameObject player;
         [SerializeField] Transform spawnPosition;
         [SerializeField] Transform cameraSpawnPosition;
         [SerializeField] GameObject gameBounds;
-        [SerializeField] GameObject astramoriCanvas;
-        [SerializeField] GameObject mainMenu;
-        [SerializeField] GameObject tutorialMenu;
-        [SerializeField] GameObject upgradeMenu;
-        [SerializeField] GameObject lossMenu;
-        public Transform enemies;
-        [SerializeField] AstramoriLossScreen lossScreen;
         [SerializeField] VirtualCanvasCursor cursor;
+        [SerializeField] GameObject astramoriCanvas;
         [SerializeField] AstramoriStarfighterHealth astramoriStarfighterHealth;
         [SerializeField] Timer timer;
         [SerializeField] Spawning spawningSystem;
         [SerializeField] CinemachineVirtualCamera virtualCamera;
+        [Header("UI")]
+        [SerializeField] GameObject mainMenu;
+        [SerializeField] GameObject tutorialMenu;
+        [SerializeField] GameObject tutorialNextButton;
+        [SerializeField] GameObject upgradeMenu;
+        [SerializeField] GameObject lossMenu;
+        [SerializeField] AstramoriLossScreen lossScreen;
         [SerializeField] UpgradeDisplay upgradeDisplay;
+        [Header("Text")]
         [SerializeField] TextMeshProUGUI shipStatusText;
         [SerializeField] List<TextMeshProUGUI> pretexts;
         [SerializeField] TextMeshProUGUI timeText;
         [SerializeField] TextMeshProUGUI fpShipCountText;
         [SerializeField] TextMeshProUGUI tutorialText;
+        [SerializeField] GameObject fundsText;
+        [Header("Status")]
         bool canReward;
         public int shipsDeployed;
         //public GameObject astramoriCanvas;
@@ -107,6 +112,7 @@ namespace AsterionArcade
 
             GameManager.Instance.isPlayingArcade = true;
             GameManager.Instance.CheckPlayerIsPlayingArcadeStatus();
+            fundsText.SetActive(false);
 
             StartFreshGame();
 
@@ -119,8 +125,8 @@ namespace AsterionArcade
             cursor.DisableVirtualCursor();
             //_aiCore.enabled = false;
             currentGameState = GameState.Disabled;
-            
-            
+            fundsText.SetActive(false);
+
             mainMenu.SetActive(true);
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
@@ -135,10 +141,18 @@ namespace AsterionArcade
 
         public void CloseMainMenu()
         {
-            mainMenu.SetActive(false);
-            upgradeMenu.SetActive(true);
-            Debug.Log("closing main menu on astramori");
-            currentGameState = GameState.Upgrades;
+            if(GameManager.Instance.coinCount <= 0)
+            {
+                mainMenu.SetActive(false);
+                upgradeMenu.SetActive(true);
+                Debug.Log("closing main menu on astramori");
+                currentGameState = GameState.Upgrades;
+            }
+            else
+            {
+                fundsText.SetActive(true);
+            }
+            
         }
 
         public void CloseUpgradeScreen()
@@ -196,12 +210,14 @@ namespace AsterionArcade
         {
             mainMenu.SetActive(false);
             tutorialMenu.SetActive(true);
+            tutorialNextButton.SetActive(true);
             tutorialText.text = "Select enemies to send against the starship\n\nSelect area outside border to spawn enemies\n\nContinue sending enemies until the starship is destroyed\n\nDestroying ships before time runs out earns quarters";
         }
 
         public void TutorialNext()
         {
             tutorialText.text = "Fighter: The fastest, smallest, and weakest of all enemy types.\n\nMissile Frigate: If the player is in range, they fire three heat-seeking missiles in sequence.\n\nCruiser: These capital ships are very slow, require five hits to destroy, and have three cannons";
+            tutorialNextButton.SetActive(false);
         }
 
         public void CloseTutorial()

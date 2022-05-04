@@ -18,6 +18,8 @@ public class ShipStats : MonoBehaviour
     public int oldShield;
     public int oldRange;
 
+    public int[] modifiedStats = new int[4];
+
     // Start is called before the first frame update
     // keep start or awake?
     void Start()
@@ -44,6 +46,18 @@ public class ShipStats : MonoBehaviour
         range = oldRange;
     }
 
+    public void ResetModified()
+    {
+        modifiedStats[0] = modifiedStats[1] = modifiedStats[2] = modifiedStats[3] = 0;
+    }
+
+    public void RefundContinue()
+    {
+        shield += modifiedStats[0];
+        attack += modifiedStats[1];
+        thruster += modifiedStats[2];
+        range += modifiedStats[3];
+    }
     void Awake()
     {
         if (instance == null)
@@ -61,17 +75,17 @@ public class ShipStats : MonoBehaviour
 
     private void FixedUpdate()
     {
-        UpdateUpgradeDisplayUI();
+        
     }
 
-    void UpdateUpgradeDisplayUI()
+    public void UpdateUpgradeDisplayUI()
     {
         foreach(UpgradeDisplay upgradeDisplay in upgradeDisplays)
         {
-            upgradeDisplay.upgradeTicks[0].SetTicks(shield);
-            upgradeDisplay.upgradeTicks[1].SetTicks(attack);
-            upgradeDisplay.upgradeTicks[2].SetTicks(thruster);
-            upgradeDisplay.upgradeTicks[3].SetTicks(range);
+            upgradeDisplay.upgradeTicks[0].SetText(shield+1+"");
+            upgradeDisplay.upgradeTicks[1].SetText(attack + 1 + "");
+            upgradeDisplay.upgradeTicks[2].SetText(thruster + 1 + "");
+            upgradeDisplay.upgradeTicks[3].SetText(range + 1 + "");
         }
     }
 

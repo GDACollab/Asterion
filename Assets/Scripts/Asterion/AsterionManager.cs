@@ -153,9 +153,12 @@ namespace AsterionArcade
                 coinInsertSFX_instance.start();
                 
                 upgradeMenu.SetActive(true);
+                ShipStats.instance.UpdateOld();
+                upgradeMenu.GetComponent<UpgradeMenu>().upgradePoints = 1;
+                upgradeMenu.GetComponent<UpgradeMenu>().UpdateButtonVisibility();
                 currentGameState = GameState.Upgrades;
                 insufficientFundsText.enabled = false;
-                GameManager.Instance.shipStats.ResetAllStats();
+                //GameManager.Instance.shipStats.ResetAllStats();
                 if (firstTime)
                 {
                     CloseUpgradeScreen();
@@ -191,6 +194,7 @@ namespace AsterionArcade
 
         public void StartFreshGame()
         {
+            
             mainMenu.SetActive(true);
             isLost = false;
             isVictory = false;
@@ -202,6 +206,7 @@ namespace AsterionArcade
             currentGameState = GameState.MainMenu;
             
             upgradeMenu.SetActive(false);
+            ShipStats.instance.ResetModified();
             lossMenu.SetActive(false);
             insufficientFundsText.enabled = false;
 
@@ -265,7 +270,7 @@ namespace AsterionArcade
                     //_aiCore.enabled = false;
                     _playerMovement.enabled = false;
                     isVictory = true;
-
+                    ShipStats.instance.UpdateOld();
 
                     GameManager.Instance.asterionGamesPlayed++;
 
@@ -281,6 +286,8 @@ namespace AsterionArcade
 
                     isLost = false;
 
+                    ShipStats.instance.ResetModified();
+
 
 
                 }
@@ -295,7 +302,9 @@ namespace AsterionArcade
                     lossMenu.SetActive(true);
                     lossScreen.continueButtonText.text = "Continue? (1 Quarter)";
                     _playerMovement.enabled = false;
+                    ShipStats.instance.DowngradeOld();
                     StopAllCoroutines();
+                    
                     //_aiCore.enabled = false;
 
                     foreach (Enemy fighterMove in enemies.GetComponentsInChildren<Enemy>())
@@ -375,9 +384,6 @@ namespace AsterionArcade
 
             _playerMovement.enabled = true;
 
-
-
-
             yield return new WaitForSeconds(1);
 
             powerManager.isDraining = false;
@@ -440,6 +446,8 @@ namespace AsterionArcade
                 if (isLost)
                 {
                     ContinueCurrentGame();
+                    ShipStats.instance.RefundContinue();
+                    
                 }
                 else
                 {

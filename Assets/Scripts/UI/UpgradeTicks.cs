@@ -1,24 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UpgradeTicks : MonoBehaviour
 {
-    public List<GameObject> ticks;
+    [SerializeField] private TextMeshProUGUI indicatorText;
 
-    public void SetTicks(int numTicks)
+
+    public void SetText(string text)
     {
-        for(int i = 0; i < 4; i++)
-        {
-            if(i < numTicks)
-            {
-                ticks[i].SetActive(true);
-            }
-            else
-            {
-                ticks[i].SetActive(false);
-            }
-        }
+        indicatorText.text = text;
     }
 
 }
