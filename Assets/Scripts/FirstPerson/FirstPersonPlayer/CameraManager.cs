@@ -34,7 +34,8 @@ namespace FirstPersonPlayer
         {
             FirstPerson,
             Asterion,
-            Astramori
+            Astramori,
+            TutorialCutscene
         }
 
         public CameraState currentCameraState;
@@ -136,6 +137,9 @@ namespace FirstPersonPlayer
                 case CameraState.Astramori:
                     StartCoroutine(SetAstramoriVC());
                     break;
+                case CameraState.TutorialCutscene:
+                    StartCoroutine(SetTutorialCutscene());
+                    break;
             }
         }
 
@@ -182,6 +186,20 @@ namespace FirstPersonPlayer
             yield return new WaitForSeconds(duration);
 
             currentCameraState = CameraState.Astramori;
+            //ToggleOrthographic(true);
+        }
+
+        private IEnumerator SetTutorialCutscene()
+        {
+            ToggleCursorLock(false);
+            _playerLook._rotateEnabled = false;
+            _cameraStateAnimator.Play("TutorialCutscene");
+            float duration = _cameraStateAnimator
+                .GetCurrentAnimatorStateInfo(0).length;
+
+            yield return new WaitForSeconds(duration);
+
+            currentCameraState = CameraState.TutorialCutscene;
             //ToggleOrthographic(true);
         }
 

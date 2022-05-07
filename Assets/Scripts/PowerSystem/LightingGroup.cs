@@ -12,15 +12,15 @@ public class LightingGroup : MonoBehaviour
     public float maxBrightness;
     public float minBrightness;
     public float flickerInterval;
+    private float test;
     public bool flickering;
     [SerializeField] private float updateTime;
-    
-
 
     public void SetAllLightsToDefault()
     {
+
         currentBrightness = maxBrightness;
-        SetAllLightsToCurrent();
+
     }
 
     public void SetAllLightsToCurrent()
@@ -29,10 +29,12 @@ public class LightingGroup : MonoBehaviour
         {
             l.intensity = currentBrightness;
         }
+
     }
 
     public IEnumerator WarningLightsRoutine()
     {
+
         while (tiedDoor.doorOpen)
         {
             LeanTween.value(gameObject, 0, 15, 0.4f).setOnUpdate((float val) =>
@@ -50,18 +52,21 @@ public class LightingGroup : MonoBehaviour
 
             yield return new WaitForSeconds(0.2f);
         }
-        
 
-        
+
+
+
 
     }
 
     public void UpdateLights(float powerPercentage)
     {
+
         if (flickering)
         {
             return;
         }
+
         float newBrightness = ((maxBrightness - minBrightness) * (powerPercentage)) + minBrightness;
 
         LeanTween.value(gameObject, currentBrightness, newBrightness, updateTime).setOnUpdate((float val) =>
@@ -72,11 +77,11 @@ public class LightingGroup : MonoBehaviour
                 l.intensity = val;
 
             }
-            
+
         });
 
         currentBrightness = newBrightness;
-        
+
 
 
     }
@@ -146,7 +151,9 @@ public class LightingGroup : MonoBehaviour
             flickering = false;
         }
 
-        
+
     }
+
+   
 
 }
