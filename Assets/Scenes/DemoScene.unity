@@ -20,11 +20,11 @@ RenderSettings:
   m_FogDensity: 0.24
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.003921569, g: 0.003921569, b: 0.003921569, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 0
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 9dfa526557a268643a5545b026880297, type: 2}
   m_HaloStrength: 0.5
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 8721d97d3a2b0cc4a909cc0bf922b7fa, type: 2}
   m_LightingSettings: {fileID: 1988188941}
 --- !u!196 &4
 NavMeshSettings:
@@ -1768,7 +1768,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.95477146, g: 0.990566, b: 0.83637416, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 7
   m_SpotAngle: 148.70107
   m_InnerSpotAngle: 64.46579
@@ -3256,7 +3256,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &143408385
 Transform:
@@ -8888,7 +8888,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.95477146, g: 0.990566, b: 0.83637416, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 7
   m_SpotAngle: 148.70107
   m_InnerSpotAngle: 64.46579
@@ -9764,7 +9764,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.95477146, g: 0.990566, b: 0.83637416, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 7
   m_SpotAngle: 148.70107
   m_InnerSpotAngle: 64.46579
@@ -16611,7 +16611,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.95477146, g: 0.990566, b: 0.83637416, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 7
   m_SpotAngle: 148.70107
   m_InnerSpotAngle: 64.46579
@@ -16848,7 +16848,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &572262241
 Transform:
@@ -23516,7 +23516,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 0.95477146, g: 0.990566, b: 0.83637416, a: 1}
-  m_Intensity: 6
+  m_Intensity: 3
   m_Range: 7
   m_SpotAngle: 148.70107
   m_InnerSpotAngle: 64.46579
@@ -45326,7 +45326,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1965063216
 Transform:
@@ -46014,7 +46014,7 @@ LightingSettings:
   m_AlbedoBoost: 1
   m_IndirectOutputScale: 1
   m_UsingShadowmask: 1
-  m_BakeBackend: 1
+  m_BakeBackend: 2
   m_LightmapMaxSize: 1024
   m_BakeResolution: 40
   m_Padding: 2
@@ -47127,8 +47127,8 @@ MonoBehaviour:
   - {fileID: 568964989}
   emergencyLight: {fileID: 1331347561}
   tiedDoor: {fileID: 1498907324}
-  currentBrightness: 6
-  maxBrightness: 6
+  currentBrightness: 3
+  maxBrightness: 3
   minBrightness: 2
   flickerInterval: 0.1
   flickering: 0
@@ -48107,7 +48107,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!64 &2098190741
 MeshCollider:
