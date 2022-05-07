@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
     public string openName = "OpenTrigger";
     public string closeName = "CloseTrigger";
     public bool isAsterion;
+    public Doorframe frame;
 
     // Animator that handles the door's animations
     Animator doorAnimator;
@@ -59,4 +60,6 @@ public class Door : MonoBehaviour
             doorAnimator.SetTrigger(closeName);
         }
     }
+
+    
 }

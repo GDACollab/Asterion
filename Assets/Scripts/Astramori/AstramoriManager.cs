@@ -30,6 +30,7 @@ namespace AsterionArcade
         [SerializeField] Timer timer;
         [SerializeField] Spawning spawningSystem;
         [SerializeField] CinemachineVirtualCamera virtualCamera;
+        [SerializeField] Door astramoriDoor;
         [Header("UI")]
         [SerializeField] GameObject mainMenu;
         [SerializeField] GameObject tutorialMenu;
@@ -52,6 +53,7 @@ namespace AsterionArcade
         // Randy: Attempt at fixing Starfighter from leaving gray box, see ApplyBonusStats()
         [SerializeField] GameObject PlacementZone;
         public Vector3 zoneBaseSize;
+        private bool tutorialTrigger = false;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
         [Header("Current Game State Info")]
@@ -375,9 +377,22 @@ namespace AsterionArcade
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Astramori)
             {
                 _interactableManager.OnStopInteract.Invoke();
+                ForceDoorOpen();
+                if (tutorialTrigger == false)
+                {
+                    tutorialTrigger = true;
+                    GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().StartCoroutine("EventThree");
+                }
             }
 
             //StopInteractAction();
+        }
+
+        // Opens the Astramori Door
+        public void ForceDoorOpen()
+        {
+            astramoriDoor.locked = false;
+            astramoriDoor.openDoor();
         }
 
 

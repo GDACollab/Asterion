@@ -468,7 +468,11 @@ namespace AsterionArcade
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Asterion)
             {
                 _interactableManager.OnStopInteract.Invoke();
-                GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().LockPlayerAndSlideDoor();
+                if(GameManager.Instance.asterionGamesPlayed == 1)
+                {
+                    GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().LockPlayerAndSlideDoor();
+                }
+                
             }
             
             //StopInteractAction();
