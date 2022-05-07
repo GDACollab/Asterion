@@ -29577,7 +29577,11 @@ MonoBehaviour:
   attack: {fileID: 933226647}
   thruster: {fileID: 1022616721}
   range: {fileID: 1662327003}
-  upgradeButtons: []
+  upgradeButtons:
+  - {fileID: 1958555499}
+  - {fileID: 1230341769}
+  - {fileID: 1530719590}
+  - {fileID: 878002265}
   upgradePointText: {fileID: 840398323}
   stats: {fileID: 0}
   upgradePoints: 0
@@ -50021,8 +50025,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
-  m_LocalPosition: {x: 0, y: 0.32000005, z: 0.67700016}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.29999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}
