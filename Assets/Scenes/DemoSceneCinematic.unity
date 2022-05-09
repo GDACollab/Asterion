@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1932121279}
-  m_IndirectSpecularColor: {r: 0.17596942, g: 0.21030098, b: 0.26123416, a: 1}
+  m_IndirectSpecularColor: {r: 0.16953036, g: 0.20531297, b: 0.2576804, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -177,11 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 767367313}
-  - {fileID: 995790237}
-  - {fileID: 1106317284}
-  - {fileID: 1353849336}
+  indicatorText: {fileID: 0}
 --- !u!114 &7844960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -721,11 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1020246685}
-  - {fileID: 553152252}
-  - {fileID: 1624566923}
-  - {fileID: 1079103317}
+  indicatorText: {fileID: 0}
 --- !u!1 &20341524
 GameObject:
   m_ObjectHideFlags: 0
@@ -4868,11 +4860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 162512846}
-  - {fileID: 1437138722}
-  - {fileID: 175126488}
-  - {fileID: 1933948944}
+  indicatorText: {fileID: 0}
 --- !u!114 &169154750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5455,11 +5443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1135284735}
-  - {fileID: 150323394}
-  - {fileID: 1095214982}
-  - {fileID: 1745570516}
+  indicatorText: {fileID: 0}
 --- !u!114 &201865335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6526,7 +6510,7 @@ MonoBehaviour:
       Data2: 1089316096
       Data3: -1884266870
       Data4: -1945093820
-    Path: event:/Music/Demo Astramori Music
+    Path: event:/Music/Demos/Demo Astramori Music
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -7147,11 +7131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 916007350}
-  - {fileID: 567689308}
-  - {fileID: 2080787059}
-  - {fileID: 74126097}
+  indicatorText: {fileID: 0}
 --- !u!114 &287893189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8996,11 +8976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1253445551}
-  - {fileID: 1679416348}
-  - {fileID: 1516541614}
-  - {fileID: 50667572}
+  indicatorText: {fileID: 0}
 --- !u!114 &346900940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15442,11 +15418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 727267151}
-  - {fileID: 2065019976}
-  - {fileID: 335056297}
-  - {fileID: 1598815677}
+  indicatorText: {fileID: 0}
 --- !u!114 &514631602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21752,11 +21724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1868553017}
-  - {fileID: 1561051764}
-  - {fileID: 1842700299}
-  - {fileID: 1655572164}
+  indicatorText: {fileID: 0}
 --- !u!114 &682247700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24228,11 +24196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1485141396}
-  - {fileID: 1057687900}
-  - {fileID: 846427418}
-  - {fileID: 2111514814}
+  indicatorText: {fileID: 0}
 --- !u!114 &786509932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28648,11 +28612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 468207952}
-  - {fileID: 328362973}
-  - {fileID: 694555415}
-  - {fileID: 1601164752}
+  indicatorText: {fileID: 0}
 --- !u!114 &1052500469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29217,22 +29177,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactableManager: {fileID: 178686041}
   maxCoinRewardBonus: 5
+  enemies: {fileID: 202290968}
   player: {fileID: 42027141}
   spawnPosition: {fileID: 554119171}
   cameraSpawnPosition: {fileID: 1175236426}
   gameBounds: {fileID: 1436335109}
-  astramoriCanvas: {fileID: 1900838324}
-  mainMenu: {fileID: 1958860439}
-  tutorialMenu: {fileID: 1119208306}
-  upgradeMenu: {fileID: 1740787426}
-  lossMenu: {fileID: 1829986939}
-  enemies: {fileID: 202290968}
-  lossScreen: {fileID: 1829986942}
   cursor: {fileID: 1900838329}
+  astramoriCanvas: {fileID: 1900838324}
   astramoriStarfighterHealth: {fileID: 42027148}
   timer: {fileID: 226638549}
   spawningSystem: {fileID: 1854180382}
   virtualCamera: {fileID: 1455084547}
+  astramoriDoor: {fileID: 1561925215}
+  mainMenu: {fileID: 1958860439}
+  tutorialMenu: {fileID: 1119208306}
+  tutorialNextButton: {fileID: 0}
+  upgradeMenu: {fileID: 1740787426}
+  lossMenu: {fileID: 1829986939}
+  lossScreen: {fileID: 1829986942}
   upgradeDisplay: {fileID: 0}
   shipStatusText: {fileID: 1530199609}
   pretexts:
@@ -29241,7 +29203,7 @@ MonoBehaviour:
   timeText: {fileID: 570971113}
   fpShipCountText: {fileID: 992740350}
   tutorialText: {fileID: 604119414}
-  astramoriDoor: {fileID: 1561925215}
+  fundsText: {fileID: 0}
   shipsDeployed: 0
   PlacementZone: {fileID: 1693478478}
   zoneBaseSize: {x: 32.39028, y: 32.39028, z: 32.39028}
@@ -29260,7 +29222,7 @@ MonoBehaviour:
       Data2: 1158757744
       Data3: -1449002603
       Data4: -1678603587
-    Path: event:/Misc SFX/Coin Dispense Many
+    Path: event:/Misc SFX/Coin Dispense
 --- !u!1 &1074676103
 GameObject:
   m_ObjectHideFlags: 0
@@ -31239,11 +31201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1414904112}
-  - {fileID: 306373336}
-  - {fileID: 1517726148}
-  - {fileID: 622717853}
+  indicatorText: {fileID: 0}
 --- !u!114 &1140985337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31346,7 +31304,10 @@ MonoBehaviour:
   attack: {fileID: 933226647}
   thruster: {fileID: 1022616721}
   range: {fileID: 1662327003}
+  upgradeButtons: []
+  upgradePointText: {fileID: 0}
   stats: {fileID: 0}
+  upgradePoints: 0
 --- !u!1 &1168640605
 GameObject:
   m_ObjectHideFlags: 0
@@ -40283,7 +40244,7 @@ MonoBehaviour:
       Data2: 1262880839
       Data3: -309666430
       Data4: 1675459651
-    Path: event:/Music/Demo Asterion Music
+    Path: event:/Music/Demos/Demo Asterion Music
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -41210,6 +41171,11 @@ MonoBehaviour:
   attack: 0
   shield: 0
   range: 0
+  oldThrust: 0
+  oldAttack: 0
+  oldShield: 0
+  oldRange: 0
+  modifiedStats: 00000000000000000000000000000000
 --- !u!114 &1669733570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50839,11 +50805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 880402585}
-  - {fileID: 1938554594}
-  - {fileID: 1256381644}
-  - {fileID: 868823225}
+  indicatorText: {fileID: 0}
 --- !u!114 &2074862621
 MonoBehaviour:
   m_ObjectHideFlags: 0

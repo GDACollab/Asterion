@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 948421173}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -254,11 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1020246685}
-  - {fileID: 553152252}
-  - {fileID: 1624566923}
-  - {fileID: 1079103317}
+  indicatorText: {fileID: 0}
 --- !u!1 &20341524
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +674,13 @@ MonoBehaviour:
   angleExpBase: 2
   distanceFactor: 1
   distanceExpBase: 2
+  spaceshipShootSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!212 &42027146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2565,11 +2568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1135284735}
-  - {fileID: 150323394}
-  - {fileID: 1095214982}
-  - {fileID: 1745570516}
+  indicatorText: {fileID: 0}
 --- !u!114 &201865335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3362,7 +3361,7 @@ MonoBehaviour:
       Data2: 1089316096
       Data3: -1884266870
       Data4: -1945093820
-    Path: event:/Music/Demo Astramori Music
+    Path: event:/Music/Demos/Demo Astramori Music
   Event: 
   PlayEvent: 1
   StopEvent: 0
@@ -3505,6 +3504,9 @@ MonoBehaviour:
   insufficientFundsText: {fileID: 1047232297}
   continueButtonText: {fileID: 452688536}
   gameStateText: {fileID: 685581661}
+  resetButton: {fileID: 0}
+  exitButton: {fileID: 0}
+  buttonDelay: 0
 --- !u!1 &278368572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3987,11 +3989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 916007350}
-  - {fileID: 567689308}
-  - {fileID: 2080787059}
-  - {fileID: 74126097}
+  indicatorText: {fileID: 0}
 --- !u!114 &287893189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5557,10 +5555,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryIndicator: {fileID: 639027775}
   initialRate: 4
+  INSANEMode: 0
   rateMultiplier: 1.5
   winRate: 10
+  currentRate: 0
   powerLevel: 0
   isDraining: 1
+  tempMonster: {fileID: 0}
   batteryStatusColors:
   - {r: 0, g: 1, b: 0.009580135, a: 0}
   - {r: 0.9827336, g: 1, b: 0, a: 0}
@@ -5570,6 +5571,17 @@ MonoBehaviour:
   - 50
   - 20
   sanityManager: {fileID: 1669733570}
+  batteryFPUIText: {fileID: 0}
+  asterionLighting: {fileID: 0}
+  astramoriLighting: {fileID: 0}
+  batteryChargeSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  batteryCube: {fileID: 0}
 --- !u!1 &354437707
 GameObject:
   m_ObjectHideFlags: 0
@@ -8241,11 +8253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 727267151}
-  - {fileID: 2065019976}
-  - {fileID: 335056297}
-  - {fileID: 1598815677}
+  indicatorText: {fileID: 0}
 --- !u!114 &514631602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12012,11 +12020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1868553017}
-  - {fileID: 1561051764}
-  - {fileID: 1842700299}
-  - {fileID: 1655572164}
+  indicatorText: {fileID: 0}
 --- !u!114 &682247700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12365,6 +12369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   playerBulletPrefab: {fileID: 2610094112412468131, guid: b58012a21a7db134bbb6f64ff5c94ab6, type: 3}
+  asterionFakeCursor: {fileID: 0}
   playerBarrel: {fileID: 680688230}
   baseSpeed: 10
   baseMaxSpeed: 5
@@ -12377,6 +12382,13 @@ MonoBehaviour:
   playerVelocity: {x: 0, y: 0}
   mousePos: {x: 0, y: 0, z: 0}
   inputEnabled: 0
+  spaceshipShootSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!212 &690837008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13534,11 +13546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1485141396}
-  - {fileID: 1057687900}
-  - {fileID: 846427418}
-  - {fileID: 2111514814}
+  indicatorText: {fileID: 0}
 --- !u!114 &786509932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15850,17 +15858,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 976633145}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &993408980 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1466075362977472427, guid: fa81a7885c84fc5489cf6b741e8d9f65, type: 3}
-  m_PrefabInstance: {fileID: 1538251932}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3886b02c330b4844b3787ee825412ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &998513361
 GameObject:
   m_ObjectHideFlags: 0
@@ -16145,6 +16142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnim: {fileID: 0}
+  doorOpen: 0
 --- !u!65 &1016208303
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16983,11 +16981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 468207952}
-  - {fileID: 328362973}
-  - {fileID: 694555415}
-  - {fileID: 1601164752}
+  indicatorText: {fileID: 0}
 --- !u!114 &1052500469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17345,22 +17339,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interactableManager: {fileID: 178686041}
   maxCoinRewardBonus: 3
-  _aiCore: {fileID: 993408980}
+  enemies: {fileID: 202290968}
   player: {fileID: 42027141}
   spawnPosition: {fileID: 554119171}
+  cameraSpawnPosition: {fileID: 0}
   gameBounds: {fileID: 1436335109}
-  astramoriCanvas: {fileID: 1900838324}
-  mainMenu: {fileID: 1958860439}
-  upgradeMenu: {fileID: 1740787426}
-  lossMenu: {fileID: 1829986939}
-  enemies: {fileID: 202290968}
-  lossScreen: {fileID: 1829986942}
   cursor: {fileID: 1900838329}
+  astramoriCanvas: {fileID: 1900838324}
   astramoriStarfighterHealth: {fileID: 42027148}
   timer: {fileID: 226638549}
   spawningSystem: {fileID: 1854180382}
   virtualCamera: {fileID: 1455084547}
+  astramoriDoor: {fileID: 0}
+  mainMenu: {fileID: 1958860439}
+  tutorialMenu: {fileID: 0}
+  tutorialNextButton: {fileID: 0}
+  upgradeMenu: {fileID: 1740787426}
+  lossMenu: {fileID: 1829986939}
+  lossScreen: {fileID: 1829986942}
   upgradeDisplay: {fileID: 0}
+  shipStatusText: {fileID: 0}
+  pretexts: []
+  timeText: {fileID: 0}
+  fpShipCountText: {fileID: 0}
+  tutorialText: {fileID: 0}
+  fundsText: {fileID: 0}
+  shipsDeployed: 0
+  PlacementZone: {fileID: 0}
+  zoneBaseSize: {x: 0, y: 0, z: 0}
   isLost: 0
   enemyQueue:
   - {x: 1, y: 3}
@@ -17370,6 +17376,13 @@ MonoBehaviour:
   - {x: 1, y: 3}
   - {x: 1, y: 3}
   sanityLoss: 5
+  coinDispenseManySFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1074676103
 GameObject:
   m_ObjectHideFlags: 0
@@ -18824,11 +18837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ed0643f0ccf1e54dadf1d01a3ff67a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ticks:
-  - {fileID: 1414904112}
-  - {fileID: 306373336}
-  - {fileID: 1517726148}
-  - {fileID: 622717853}
+  indicatorText: {fileID: 0}
 --- !u!114 &1140985337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19027,7 +19036,10 @@ MonoBehaviour:
   attack: {fileID: 933226647}
   thruster: {fileID: 1022616721}
   range: {fileID: 1662327003}
+  upgradeButtons: []
+  upgradePointText: {fileID: 0}
   stats: {fileID: 0}
+  upgradePoints: 0
 --- !u!1 &1168640605
 GameObject:
   m_ObjectHideFlags: 0
@@ -26837,7 +26849,7 @@ MonoBehaviour:
       Data2: 1262880839
       Data3: -309666430
       Data4: 1675459651
-    Path: event:/Music/Demo Asterion Music
+    Path: event:/Music/Demos/Demo Asterion Music
   Event: 
   PlayEvent: 1
   StopEvent: 0
@@ -27471,19 +27483,28 @@ MonoBehaviour:
   - {fileID: 419958047552857102, guid: bc0a4865ce7fe44e392a805bca5dc57a, type: 3}
   - {fileID: 5012098618912345058, guid: 2fca9c3026799e844900d77a0ca3200d, type: 3}
   coinText: {fileID: 1118877086}
+  timeText: {fileID: 0}
   postProcessingVolume: {fileID: 261537445608738552}
   vignette: {fileID: 0}
+  FPDisplay: []
+  tempLoseAnim: {fileID: 0}
   pauseUI: {fileID: 1037477743}
   astramoriEnemyBullets: {fileID: 296298064}
+  asterionEnemyBullets: {fileID: 0}
   asterionManager: {fileID: 1868742463}
   astramoriManager: {fileID: 1067671938}
   sanityManager: {fileID: 1669733570}
+  powerManager: {fileID: 0}
   playerMovement: {fileID: 6138369527994491219}
   playerLook: {fileID: 5849499323536188101}
   shipStats: {fileID: 1669733569}
   isPaused: 0
   isPlayingArcade: 0
+  gameLost: 0
   coinCount: 1
+  gameTime: 0
+  asterionGamesPlayed: 0
+  astramoriGamesPlayed: 0
 --- !u!114 &1669733569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27503,6 +27524,11 @@ MonoBehaviour:
   attack: 0
   shield: 0
   range: 0
+  oldThrust: 0
+  oldAttack: 0
+  oldShield: 0
+  oldRange: 0
+  modifiedStats: 00000000000000000000000000000000
 --- !u!114 &1669733570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28246,7 +28272,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 546691090}
+  boxcollider: {fileID: 0}
+  cursor: {fileID: 0}
   isContact: 0
+  shouldntMove: 0
 --- !u!61 &1693478484
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29176,7 +29205,10 @@ MonoBehaviour:
   attack: {fileID: 1486493868}
   thruster: {fileID: 1563810036}
   range: {fileID: 163027615}
+  upgradeButtons: []
+  upgradePointText: {fileID: 0}
   stats: {fileID: 0}
+  upgradePoints: 0
 --- !u!1 &1745570516
 GameObject:
   m_ObjectHideFlags: 0
@@ -31677,6 +31709,9 @@ MonoBehaviour:
   insufficientFundsText: {fileID: 1724939991}
   continueButtonText: {fileID: 296876389}
   gameStateText: {fileID: 20341526}
+  resetButton: {fileID: 0}
+  exitButton: {fileID: 0}
+  buttonDelay: 0
 --- !u!114 &1829986942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31692,6 +31727,9 @@ MonoBehaviour:
   fundsRewardedText: {fileID: 1724939991}
   continueButtonText: {fileID: 296876389}
   gameStateText: {fileID: 20341526}
+  resetButton: {fileID: 0}
+  exitButton: {fileID: 0}
+  buttonDelay: 0
 --- !u!1 &1841553137
 GameObject:
   m_ObjectHideFlags: 0
@@ -31996,6 +32034,8 @@ MonoBehaviour:
   astramoriCamera: {fileID: 546691096}
   astramoriManager: {fileID: 1067671938}
   pz: {fileID: 1693478483}
+  outerBoundry: {fileID: 0}
+  invalidPlacementZones: []
   spawnCooldowns:
   - 0.2
   - 1
@@ -32410,12 +32450,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactableManager: {fileID: 560468288}
-  _aiCore: {fileID: 993408980}
   player: {fileID: 690837003}
+  cameraSpawnPosition: {fileID: 0}
   spawnPosition: {fileID: 1770788276}
   gameBounds: {fileID: 2099303917}
   asterionCanvas: {fileID: 1274144963}
   mainMenu: {fileID: 1807618850}
+  tutorialMenu: {fileID: 0}
   upgradeMenu: {fileID: 1165492949}
   lossMenu: {fileID: 271141715}
   lossScreen: {fileID: 271141717}
@@ -32423,7 +32464,13 @@ MonoBehaviour:
   enemies: {fileID: 736331832}
   virtualCamera: {fileID: 157001602}
   powerManager: {fileID: 351536479}
+  insufficientFundsText: {fileID: 0}
+  shipStatusText: {fileID: 0}
+  pretexts: []
+  asterionDoor: {fileID: 0}
   isLost: 0
+  isVictory: 0
+  isPlaying: 0
   baseEnemyQueue:
   - {x: 1, y: 3}
   - {x: 1, y: 3}
@@ -32438,10 +32485,18 @@ MonoBehaviour:
   - {x: 1, y: 3}
   - {x: 1, y: 3}
   - {x: 1, y: 3}
+  timesWon: 0
   spawnRate: 3
   minSpawnRange: 7
   maxSpawnRange: 9
   sanityLoss: 5
+  coinInsertSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1899838665
 GameObject:
   m_ObjectHideFlags: 0
@@ -36649,8 +36704,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
+  m_LocalPosition: {x: 0, y: 0.32000005, z: 2.528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}
@@ -37242,6 +37297,22 @@ MonoBehaviour:
   stopSpeed: 0.01
   gravity: 5
   _movementEnabled: 0
+  canRotate: 1
+  carpetFootstepsSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  catwalkFootstepsSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  timeBetweenSteps: 0.5
 --- !u!114 &6583653702185318053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37261,6 +37332,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _interactRange: 3
+  sensSlider: {fileID: 0}
   currentCameraState: 0
   OnChangeCameraState:
     m_PersistentCalls:

@@ -6352,7 +6352,7 @@ MonoBehaviour:
       Data2: 1089316096
       Data3: -1884266870
       Data4: -1945093820
-    Path: event:/Music/Demo Astramori Music
+    Path: event:/Music/Demos/Demo Astramori Music
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -27891,7 +27891,7 @@ MonoBehaviour:
       Data2: 1158757744
       Data3: -1449002603
       Data4: -1678603587
-    Path: event:/Misc SFX/Coin Dispense Many
+    Path: event:/Misc SFX/Coin Dispense
 --- !u!1 &1074676103
 GameObject:
   m_ObjectHideFlags: 0
@@ -37588,7 +37588,7 @@ MonoBehaviour:
       Data2: 1262880839
       Data3: -309666430
       Data4: 1675459651
-    Path: event:/Music/Demo Asterion Music
+    Path: event:/Music/Demos/Demo Asterion Music
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -50025,8 +50025,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.29999995, z: 0}
+  m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
+  m_LocalPosition: {x: 0, y: 0.32000005, z: 0.67700016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}
