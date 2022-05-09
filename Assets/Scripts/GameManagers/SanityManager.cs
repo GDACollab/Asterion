@@ -37,6 +37,8 @@ public class SanityManager : MonoBehaviour
         {
 
             sanity -= (sanityRate * ((100 - powerManager.powerLevel)/100));
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Sanity", sanity);
+
         }
         
         if(sanity < sanityStage1Sanity && sanityStage == 0)

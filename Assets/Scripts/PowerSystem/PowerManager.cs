@@ -54,7 +54,7 @@ public class PowerManager : MonoBehaviour
         powerLevel = maxPowerLevel;
         if (INSANEMode == true)
             {
-            initialRate = 500.0f;
+            initialRate = initialRate * 20;
             }
         currentRate = initialRate;
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
@@ -66,7 +66,7 @@ public class PowerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //sanityManager.sanity = powerLevel
 
         if (isDraining)
         {

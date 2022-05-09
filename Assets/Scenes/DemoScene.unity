@@ -6371,7 +6371,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 250182380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
@@ -6386,7 +6386,7 @@ MonoBehaviour:
     Path: event:/Music/Demos/Demo Astramori Music
   Event: 
   PlayEvent: 1
-  StopEvent: 2
+  StopEvent: 0
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -7548,7 +7548,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh200498
+  m_Name: pb_Mesh137424
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19012,7 +19012,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh200292
+  m_Name: pb_Mesh137218
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19176,7 +19176,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh200564
+  m_Name: pb_Mesh137490
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19964,7 +19964,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh202606
+  m_Name: pb_Mesh139532
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25596,7 +25596,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh200384
+  m_Name: pb_Mesh137310
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26115,7 +26115,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh202168
+  m_Name: pb_Mesh139094
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27828,6 +27828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1067671937}
   - component: {fileID: 1067671938}
+  - component: {fileID: 1067671939}
   m_Layer: 0
   m_Name: AstramoriGame
   m_TagString: Untagged
@@ -27916,13 +27917,34 @@ MonoBehaviour:
   - {x: 1, y: 3}
   - {x: 1, y: 3}
   sanityLoss: 5
-  coinDispenseManySFX:
+  coinDispenseSFX:
     Guid:
       Data1: 1278580376
       Data2: 1158757744
       Data3: -1449002603
       Data4: -1678603587
     Path: event:/Misc SFX/Coin Dispense
+--- !u!114 &1067671939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067671936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bfd60e359ae7649b3c4de6ee903ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  astramoriCabinet: {fileID: 250182380}
+  sanityManager: {fileID: 1669733570}
+  astramoriMusic:
+    Guid:
+      Data1: -1647227852
+      Data2: 1085784032
+      Data3: 180960673
+      Data4: 1762831407
+    Path: event:/Music/Astramori/Astramori Music Main
 --- !u!1 &1074676103
 GameObject:
   m_ObjectHideFlags: 0

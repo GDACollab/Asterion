@@ -247,7 +247,6 @@ namespace AsterionArcade
                     GameManager.Instance.AlterCoins(quarters);
 
                     // SFX
-                    print(quarters);
                     coinDispenseSFX_instance.setParameterByName("Number of Coins", quarters);
                     coinDispenseSFX_instance.start();
                 }
