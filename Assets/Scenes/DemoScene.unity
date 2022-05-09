@@ -8680,6 +8680,13 @@ MonoBehaviour:
       Data3: -852008052
       Data4: -476626137
     Path: event:/Misc SFX/Battery Charge Increase
+  batteryDrainSFX:
+    Guid:
+      Data1: 2116332767
+      Data2: 1204156800
+      Data3: -901219185
+      Data4: 2175939
+    Path: event:/Misc SFX/Battery Drain
   batteryCube: {fileID: 136171081}
 --- !u!1 &354437707
 GameObject:
@@ -50109,8 +50116,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
-  m_LocalPosition: {x: 0, y: 0.32000005, z: 0.67700016}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.29999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}

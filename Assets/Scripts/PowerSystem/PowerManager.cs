@@ -46,6 +46,7 @@ public class PowerManager : MonoBehaviour
 
     [Header("SFX References")]
     [SerializeField] FMODUnity.EventReference batteryChargeSFX;
+    [SerializeField] FMODUnity.EventReference batteryDrainSFX;
     [SerializeField] GameObject batteryCube;
 
     // Start is called before the first frame update
@@ -61,6 +62,7 @@ public class PowerManager : MonoBehaviour
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
         StartCoroutine(DimRoutine());
+        StartCoroutine(BatteryDrainSFXRoutine());
     }
 
     // Update is called once per frame
@@ -103,6 +105,20 @@ public class PowerManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
 
+        }
+        
+    }
+
+    private IEnumerator BatteryDrainSFXRoutine()
+    {
+        for (int i = 9; i >= 1; i--)
+        {
+            float threshold = ((i*10) + 0.5f);
+            while (powerLevel > threshold)
+            {
+                yield return null;
+            }
+            FMODUnity.RuntimeManager.PlayOneShotAttached(batteryDrainSFX.Guid, batteryCube);
         }
         
     }
