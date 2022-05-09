@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{733cbf9e-5b9b-4eca-96e4-32d99775e60b}">
 		<property name="assetPath">
-			<value>Arcade Game SFX/coinDispenseConcept_SophieMartin.mp3</value>
+			<value>Arcade Game SFX/Coin Dispense/coinDispenseConcept_SophieMartin.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

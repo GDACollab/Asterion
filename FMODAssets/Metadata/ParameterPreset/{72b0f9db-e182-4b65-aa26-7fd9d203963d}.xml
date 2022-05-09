@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{72b0f9db-e182-4b65-aa26-7fd9d203963d}">
+		<property name="name">
+			<value>Sanity</value>
+		</property>
+		<relationship name="folder">
+			<destination>{df57b1e3-a143-4748-80a8-b27bf6191661}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{977963ea-3cb2-4814-aaee-1b16c498aef7}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{977963ea-3cb2-4814-aaee-1b16c498aef7}">
+		<property name="maximum">
+			<value>100</value>
+		</property>
+		<property name="isGlobal">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>100</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>
