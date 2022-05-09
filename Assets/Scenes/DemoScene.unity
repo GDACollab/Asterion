@@ -8688,6 +8688,15 @@ MonoBehaviour:
       Data4: 2175939
     Path: event:/Misc SFX/Battery Drain
   batteryCube: {fileID: 136171081}
+  lightsOffSFX:
+    Guid:
+      Data1: -451111587
+      Data2: 1195376416
+      Data3: 1562006401
+      Data4: 284316203
+    Path: event:/Misc SFX/Lights Off
+  asterionSpotlightSpeaker: {fileID: 431574522}
+  astramoriSpotlightSpeaker: {fileID: 1568266858}
 --- !u!1 &354437707
 GameObject:
   m_ObjectHideFlags: 0
@@ -9770,7 +9779,7 @@ GameObject:
   - component: {fileID: 431574523}
   - component: {fileID: 431574524}
   m_Layer: 0
-  m_Name: Spot Light (2)
+  m_Name: Asterion Light/Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36628,7 +36637,7 @@ GameObject:
   - component: {fileID: 1568266859}
   - component: {fileID: 1568266860}
   m_Layer: 0
-  m_Name: Spot Light (2)
+  m_Name: Astramori Light/Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50116,8 +50125,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.29999995, z: 0}
+  m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
+  m_LocalPosition: {x: 0, y: 0.32000005, z: 0.67700016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}

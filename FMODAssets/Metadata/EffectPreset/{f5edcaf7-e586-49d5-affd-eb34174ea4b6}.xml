@@ -143,10 +143,10 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>100</value>
+			<value>90</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.544304729</value>
+			<value>-1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{bc9b139b-e4bb-452f-891b-d27e26979de4}">

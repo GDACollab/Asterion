@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour
     public int asterionGamesPlayed;
     public int astramoriGamesPlayed;
 
+    [Header("SFX Events")]
+    [SerializeField] FMODUnity.EventReference jumpscareSFX;
+    private FMOD.Studio.EventInstance jumpscareSFX_instance;
+    [SerializeField] FMODUnity.EventReference preJumpscareSFX;
+    private FMOD.Studio.EventInstance preJumpscareSFX_instance;
+
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
 
@@ -65,6 +71,10 @@ public class GameManager : MonoBehaviour
     {
         coinText.text = "" + coinCount;
         gameTime = 0;
+        
+        // SFX stuff
+        jumpscareSFX_instance = FMODUnity.RuntimeManager.CreateInstance(jumpscareSFX);
+        preJumpscareSFX_instance = FMODUnity.RuntimeManager.CreateInstance(preJumpscareSFX);
 
     }
 
@@ -107,6 +117,10 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator LoseRoutine()
     {
+        //preJumpscareSFX_instance.start();
+        yield return new WaitForSeconds(8);
+        jumpscareSFX_instance.start();
+
         gameLost = true;
         tempLoseAnim.Play("tempLoseAnim");
         Time.timeScale = 0;

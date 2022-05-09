@@ -48,6 +48,10 @@ public class PowerManager : MonoBehaviour
     [SerializeField] FMODUnity.EventReference batteryChargeSFX;
     [SerializeField] FMODUnity.EventReference batteryDrainSFX;
     [SerializeField] GameObject batteryCube;
+    [SerializeField] FMODUnity.EventReference lightsOffSFX;
+    [SerializeField] GameObject asterionSpotlightSpeaker;
+    [SerializeField] GameObject astramoriSpotlightSpeaker;
+    private bool playedLightsOffSFX;
 
     // Start is called before the first frame update
     void Awake()
@@ -61,6 +65,7 @@ public class PowerManager : MonoBehaviour
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
+        playedLightsOffSFX = false;
         StartCoroutine(DimRoutine());
         StartCoroutine(BatteryDrainSFXRoutine());
     }
@@ -83,6 +88,14 @@ public class PowerManager : MonoBehaviour
             isDraining = false;
             powerLevel = 0;
             sanityManager.sanity = 0;
+
+            if (!playedLightsOffSFX)
+            {
+                FMODUnity.RuntimeManager.PlayOneShotAttached(lightsOffSFX.Guid, asterionSpotlightSpeaker);
+                FMODUnity.RuntimeManager.PlayOneShotAttached(lightsOffSFX.Guid, astramoriSpotlightSpeaker);
+                playedLightsOffSFX = true;
+            }
+
             StartCoroutine(GameManager.Instance.LoseRoutine());
         }
     }
