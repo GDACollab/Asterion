@@ -8654,7 +8654,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryIndicator: {fileID: 639027775}
   initialRate: 6
-  INSANEMode: 0
+  INSANEMode: 1
   rateMultiplier: 2.5
   winRate: 10
   currentRate: 0
@@ -38414,6 +38414,20 @@ MonoBehaviour:
   gameTime: 0
   asterionGamesPlayed: 0
   astramoriGamesPlayed: 0
+  jumpscareSFX:
+    Guid:
+      Data1: -1127494048
+      Data2: 1301025740
+      Data3: 718108826
+      Data4: -1594552196
+    Path: event:/Misc SFX/Jumpscare
+  preJumpscareSFX:
+    Guid:
+      Data1: -117047514
+      Data2: 1338019699
+      Data3: -1320312167
+      Data4: 1308119484
+    Path: event:/Misc SFX/Pre-Jumpscare
 --- !u!114 &1669733569
 MonoBehaviour:
   m_ObjectHideFlags: 0
