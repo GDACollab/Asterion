@@ -48,6 +48,10 @@ public class PowerManager : MonoBehaviour
     [SerializeField] FMODUnity.EventReference batteryChargeSFX;
     [SerializeField] GameObject batteryCube;
 
+    private IEnumerator dimRoutine;
+    private IEnumerator asterionFlicker;
+    private IEnumerator astramoriFlicker;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -60,7 +64,8 @@ public class PowerManager : MonoBehaviour
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
-        StartCoroutine(DimRoutine());
+        dimRoutine = DimRoutine();
+        StartCoroutine(dimRoutine);
     }
 
     // Update is called once per frame
@@ -76,12 +81,15 @@ public class PowerManager : MonoBehaviour
         
         BatteryIndicator(powerLevel);
         SetMonsterPosition();
-        if(powerLevel <= 0)
+        if(powerLevel <= 0 && isDraining)
         {
             isDraining = false;
             powerLevel = 0;
             sanityManager.sanity = 0;
             StartCoroutine(GameManager.Instance.LoseRoutine());
+            StopCoroutine(dimRoutine);
+            StopCoroutine(asterionFlicker);
+            StopCoroutine(astramoriFlicker);
         }
     }
 
@@ -89,15 +97,21 @@ public class PowerManager : MonoBehaviour
     {
         while (true)
         {
-            asterionLighting.UpdateLights(powerLevel / 100);
-            astramoriLighting.UpdateLights(powerLevel / 100);
+            if (powerLevel > 0)
+            {
+                asterionLighting.UpdateLights(powerLevel / 100);
+                astramoriLighting.UpdateLights(powerLevel / 100);
+            }
 
             yield return new WaitForSeconds(2f);
 
-            if (powerLevel < 50 && Random.Range(0, 6 * (powerLevel/50)) < 1)
+            if (powerLevel < 50 && powerLevel > 0 && Random.Range(0, 6 * (powerLevel/50)) < 1)
             {
-                StartCoroutine(asterionLighting.FlickerRoutine());
-                StartCoroutine(astramoriLighting.FlickerRoutine());
+                Debug.Log("flickering");
+                asterionFlicker = asterionLighting.FlickerRoutine();
+                astramoriFlicker = astramoriLighting.FlickerRoutine();
+                StartCoroutine(asterionFlicker);
+                StartCoroutine(astramoriFlicker);
             }
 
             yield return new WaitForSeconds(1f);

@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 178686041}
   m_Layer: 6
   m_Name: 'Interaction '
-  m_TagString: Untagged
+  m_TagString: interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4941,6 +4941,7 @@ MonoBehaviour:
   OnShowText:
     m_PersistentCalls:
       m_Calls: []
+  gameEnding: 0
 --- !u!65 &178686042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4988,7 +4989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1949}
+  m_AnchoredPosition: {x: 0, y: -1963}
   m_SizeDelta: {x: 1024, y: 2048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &181922987
@@ -6270,6 +6271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arcadeMachine (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
 --- !u!4 &248014887 stripped
@@ -7517,7 +7522,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh200498
+  m_Name: pb_Mesh29702
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8119,6 +8124,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
       propertyPath: m_Name
       value: arcadeMachine (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
@@ -14517,6 +14526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arcadeMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
 --- !u!4 &492381132 stripped
@@ -16513,7 +16526,7 @@ GameObject:
   - component: {fileID: 560468288}
   m_Layer: 6
   m_Name: 'Interaction '
-  m_TagString: Untagged
+  m_TagString: interactables
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16555,6 +16568,7 @@ MonoBehaviour:
   OnShowText:
     m_PersistentCalls:
       m_Calls: []
+  gameEnding: 0
 --- !u!65 &560468289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18981,7 +18995,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh200292
+  m_Name: pb_Mesh29496
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19145,7 +19159,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh200564
+  m_Name: pb_Mesh29768
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19933,7 +19947,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh202606
+  m_Name: pb_Mesh31810
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -22321,7 +22335,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh199858
+  m_Name: pb_Mesh29062
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25565,7 +25579,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh200384
+  m_Name: pb_Mesh29588
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26084,7 +26098,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh202168
+  m_Name: pb_Mesh31372
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28544,6 +28558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arcadeMachine (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
 --- !u!4 &1095090552 stripped
@@ -29205,6 +29223,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
       propertyPath: m_Name
       value: arcadeMachine (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
@@ -31222,7 +31244,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh202708
+  m_Name: pb_Mesh31912
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -32164,6 +32186,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -6067185528594298527, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6067185528594298527, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 079ff5e6419933f449ccb44fd159f02e, type: 2}
@@ -32540,6 +32566,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
       propertyPath: m_Name
       value: arcadeMachine (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
@@ -34159,7 +34189,7 @@ GameObject:
   - component: {fileID: 1407238923}
   m_Layer: 0
   m_Name: Lights
-  m_TagString: Untagged
+  m_TagString: Lights
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36998,6 +37028,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
       propertyPath: m_Name
       value: arcadeMachine (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
@@ -47081,7 +47115,7 @@ GameObject:
   - component: {fileID: 2031556056}
   m_Layer: 0
   m_Name: Lights
-  m_TagString: Untagged
+  m_TagString: Lights
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47270,6 +47304,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
       propertyPath: m_Name
       value: arcadeMachine (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
@@ -49053,6 +49091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arcadeMachine (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
 --- !u!4 &2101271139 stripped
@@ -49658,6 +49700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: arcadeMachine (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
+      propertyPath: m_TagString
+      value: voidArcadeMachines
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77d0ae31790b3b14891ab8704b759eb2, type: 3}
 --- !u!4 &2142511668 stripped
@@ -50025,8 +50071,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.29999995, z: 0}
+  m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
+  m_LocalPosition: {x: 0, y: 0.32000005, z: 0.67700016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}

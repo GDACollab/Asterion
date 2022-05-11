@@ -7,6 +7,7 @@ using UnityEngine.Rendering.Universal;
 using TMPro;
 using AsterionArcade;
 using FirstPersonPlayer;
+using Interactable;
 
 
 public class GameManager : MonoBehaviour
@@ -39,7 +40,12 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public int asterionGamesPlayed;
     public int astramoriGamesPlayed;
-
+    private GameObject[] lights;
+    private GameObject[] arcadeMachines;
+    private GameObject gameDoorsAsterion;
+    private GameObject gameDoorsAstramori;
+    private GameObject SpookyPlane;
+    private GameObject[] interactables;
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
 
@@ -58,6 +64,13 @@ public class GameManager : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        lights = GameObject.FindGameObjectsWithTag("Lights");
+        arcadeMachines = GameObject.FindGameObjectsWithTag("voidArcadeMachines");
+        gameDoorsAstramori = GameObject.Find("AstramoriDoor");
+        gameDoorsAsterion = GameObject.Find("AsterionDoor");
+        SpookyPlane = GameObject.Find("SpookyPlane");
+        interactables = GameObject.FindGameObjectsWithTag("interactables");
     }
 
     // Start is called before the first frame update
@@ -105,7 +118,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator LoseRoutine()
+    public IEnumerator NewLoseRoutine()
     {
         gameLost = true;
         tempLoseAnim.Play("tempLoseAnim");
@@ -118,6 +131,80 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
         yield return new WaitForSeconds(1);
     }
+
+    private void disableLights(bool state)
+    {
+        for (int i = 0; i < lights.Length; i++)
+        {
+            lights[i].SetActive(state);
+        }
+        
+        for (int i = 0; i < arcadeMachines.Length; i++)
+        {
+            if (state) { arcadeMachines[i].transform.GetComponentInChildren<Renderer>().material.EnableKeyword("_EMISSION"); }
+            else
+            {
+                arcadeMachines[i].transform.GetComponentInChildren<Renderer>().material.DisableKeyword("_EMISSION");
+            }
+        }
+    }
+
+    public IEnumerator LoseRoutine()
+    {
+        gameLost = true;
+
+        // Flicker Lights and floating cabinets
+        yield return new WaitForSeconds(0.1f);
+        disableLights(false);
+        yield return new WaitForSeconds(0.1f);
+        disableLights(true);
+        yield return new WaitForSeconds(0.1f);
+        disableLights(false);
+
+        // Pause Sounds
+        FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+        foreach (FMODUnity.StudioEventEmitter a in sounds)
+        {
+            a.EventInstance.setPaused(true);
+        }
+
+        // Hide Tony
+        SpookyPlane.GetComponent<MeshRenderer>().enabled = false;
+
+        // Lock Doors
+        gameDoorsAstramori.GetComponent<Door>().locked = true;
+        gameDoorsAstramori.GetComponent<Door>().closeDoor();
+
+        gameDoorsAsterion.GetComponent<Door>().locked = true;
+        gameDoorsAsterion.GetComponent<Door>().closeDoor();
+
+
+        // Boot Player from Cabinets and turn off games
+        for(int i = 0; i < interactables.Length; i++)
+        {
+            interactables[i].SetActive(false);
+            interactables[i].GetComponent<InteractableManager>().gameEnding = true;
+        }
+
+        asterionManager.ExitMachine();
+        astramoriManager.ExitMachine();
+
+        // Dramatic Pause
+        yield return new WaitForSeconds(4);
+
+        // --  Play Tappings  --
+        Debug.Log("TAPTAPTAPTAPTAP");
+
+        yield return new WaitForSeconds(4);
+
+        // Lock Player
+        Cursor.lockState = CursorLockMode.Confined;
+        Time.timeScale = 0;
+
+        // JUMP SCARE ANIMATION!
+        tempLoseAnim.Play("tempLoseAnim");
+    }
+
 
     public void UpdateTimeDisplay()
     {

@@ -24,6 +24,9 @@ namespace Interactable
         public UnityEvent OnStopInteract;
         public UnityEvent<bool> OnShowText;
 
+        [HideInInspector]
+        public bool gameEnding = false;
+
         public void Construct(CameraManager cameraManager, InteractableBehaviour interactable)
         {
             _cameraManager = cameraManager;

@@ -14,6 +14,9 @@ TagManager:
   - AstramoriRoom
   - AsterionRoom
   - Walkway
+  - Lights
+  - voidArcadeMachines
+  - interactables
   layers:
   - Default
   - TransparentFX
