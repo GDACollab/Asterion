@@ -8,6 +8,7 @@ using TMPro;
 using AsterionArcade;
 using FirstPersonPlayer;
 using Interactable;
+using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
     private GameObject gameDoorsAstramori;
     private GameObject SpookyPlane;
     private GameObject[] interactables;
+    private GameObject uiFadeImage;
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
 
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
         gameDoorsAsterion = GameObject.Find("AsterionDoor");
         SpookyPlane = GameObject.Find("SpookyPlane");
         interactables = GameObject.FindGameObjectsWithTag("interactables");
+        uiFadeImage = GameObject.Find("endingFadeImage");
     }
 
     // Start is called before the first frame update
@@ -199,10 +202,13 @@ public class GameManager : MonoBehaviour
 
         // Lock Player
         Cursor.lockState = CursorLockMode.Confined;
-        Time.timeScale = 0;
 
         // JUMP SCARE ANIMATION!
         tempLoseAnim.Play("tempLoseAnim");
+
+        yield return new WaitForSeconds(3);
+
+
     }
 
 
