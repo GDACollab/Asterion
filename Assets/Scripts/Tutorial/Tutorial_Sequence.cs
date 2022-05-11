@@ -97,7 +97,7 @@ public class Tutorial_Sequence : MonoBehaviour
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
 
-        Destroy(gameObject);
+        this.enabled = false;
     }
 
     // Handles Event When Leaving Astramori
@@ -108,7 +108,7 @@ public class Tutorial_Sequence : MonoBehaviour
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
         AstramoriGame.GetComponent<AstramoriManager>().ForceDoorOpen();
 
-        GameObject.Find("EmergencyLight (1)").GetComponent<Light>().color = Color.green;
+        //GameObject.Find("EmergencyLight (1)").GetComponent<Light>().color = Color.green;
 
         StartCoroutine(EndEventThree());
     }
