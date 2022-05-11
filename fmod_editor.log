@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000028788B61548 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000020D1226C998 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -19,99 +19,6 @@
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] SoundI::release                          :  (0000028788A23558)
-[LOG] SoundI::release                          :     slidingDoorOpenConcept2_SophieMartin (0000028817114248)
-[LOG] SoundI::release                          :  (00000287857A0A48)
-[LOG] SoundI::release                          :     batteryDrainConcept2_SophieMartin (000002885DFFDD28)
-[LOG] SoundI::release                          :  (000002878579F1D8)
-[LOG] SoundI::release                          :     slidingDoorCloseConcept_SophieMartin (0000028789C3B0E8)
-[LOG] SoundI::release                          :  (00000285F9B6D428)
-[LOG] SoundI::release                          :     lightOffConcept2_SophieMartin (0000028789C3B428)
-[LOG] SoundI::release                          :  (000002875BA5AFC8)
-[LOG] SoundI::release                          :     coinDispenseSingleConcept_SophieMartin (0000028810A155D8)
-[LOG] SoundI::release                          :  (0000028788BEDDD8)
-[LOG] SoundI::release                          :     coinDispenseConcept_SophieMartin (00000285E42234B8)
-[LOG] SoundI::release                          : GeneratorAmbienceV3.2_DylanMahler (0000028785A6DEA8)
-[LOG] SoundI::release                          :     GeneratorAmbienceV3.2_DylanMahler (000002885DFFBB08)
-[LOG] SoundI::release                          :     GeneratorAmbienceV3.2_DylanMahler (0000028785A6D488)
-[LOG] SoundI::release                          : MainAmbienceV2(wider)_DylanMahler (00000288669ED198)
-[LOG] SoundI::release                          :     MainAmbienceV2(wider)_DylanMahler (00000285E4344208)
-[LOG] SoundI::release                          :     MainAmbienceV2(wider)_DylanMahler (00000288669EDBB8)
-[LOG] SoundI::release                          : Synth Brass – Astramori Soundtrack (00000288669ED348)
-[LOG] SoundI::release                          :     Synth Brass – Astramori Soundtrack (00000285E4344F08)
-[LOG] SoundI::release                          :     Synth Brass – Astramori Soundtrack (00000288669ED6A8)
-[LOG] SoundI::release                          : Synth Bass – Astramori Soundtrack (00000288669ECFE8)
-[LOG] SoundI::release                          :     Synth Bass – Astramori Soundtrack (00000285E43446E8)
-[LOG] SoundI::release                          :     Synth Bass – Astramori Soundtrack (00000288669EC418)
-[LOG] SoundI::release                          : Electric Organ – Astramori Soundtrack (00000288669EC0B8)
-[LOG] SoundI::release                          :     Electric Organ – Astramori Soundtrack (00000285E4344A28)
-[LOG] SoundI::release                          :     Electric Organ – Astramori Soundtrack (00000288669ECC88)
-[LOG] SoundI::release                          : Lead 2 – Astramori Soundtrack (00000288669ECAD8)
-[LOG] SoundI::release                          :     Lead 2 – Astramori Soundtrack (00000285E43443A8)
-[LOG] SoundI::release                          :     Lead 2 – Astramori Soundtrack (00000288669EDD68)
-[LOG] SoundI::release                          : neonGlowConcept2_SophieMartin (00000288669EC268)
-[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (00000288670C8088)
-[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (000002875B13E198)
-[LOG] SoundI::release                          : neonGlowConcept2_SophieMartin (00000288669EDA08)
-[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (00000288670C8568)
-[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (00000288669ECE38)
-[LOG] SoundI::release                          : Concept7-abridged_LoganKirkland (00000288669ED4F8)
-[LOG] SoundI::release                          :     Concept7-abridged_LoganKirkland (00000285E43453E8)
-[LOG] SoundI::release                          :     Concept7-abridged_LoganKirkland (00000288669EC5C8)
-[LOG] SoundI::release                          :  (000002875BA5BB48)
-[LOG] SoundI::release                          :     SpaceshipShootAsterion_LoganKirkland (00000285E40F9918)
-[LOG] SoundI::release                          :  (000002875BA5AB78)
-[LOG] SoundI::release                          :     SpaceshipShootAstramori_JeremyHahn (00000285E40F9C58)
-[LOG] SoundI::release                          :  (000002875BA59E88)
-[LOG] SoundI::release                          :     jumpScareConcept_SophieMartin (00000285E40F9F98)
-[LOG] SoundI::release                          :  (000002878930E718)
-[LOG] SoundI::release                          :     sfx_coinInsert (00000285E4222FD8)
-[LOG] SoundI::release                          :  (0000028788BEE0B8)
-[LOG] SoundI::release                          :     carpetStep1Concept_SophieMartin (00000285E4222E38)
-[LOG] SoundI::release                          :  (000002878930E9F8)
-[LOG] SoundI::release                          :     carpetStep2Concept_SophieMartin (0000028816F2F9D8)
-[LOG] SoundI::release                          :  (0000028788BED0E8)
-[LOG] SoundI::release                          :     carpetStep3Concept_SophieMartin (0000028810A15AB8)
-[LOG] SoundI::release                          :  (0000028788BEDF48)
-[LOG] SoundI::release                          :     carpetStep4Concept_SophieMartin (00000285E4223658)
-[LOG] SoundI::release                          :  (0000028788BEDC68)
-[LOG] SoundI::release                          :     carpetStep5Concept_SophieMartin (0000028810A15918)
-[LOG] SoundI::release                          :  (0000028788BECF78)
-[LOG] SoundI::release                          :     catwalkStep1Concept2_SophieMartin (0000028810A15438)
-[LOG] SoundI::release                          :  (000002878930E888)
-[LOG] SoundI::release                          :     catwalkStep2Concept2_SophieMartin (0000028816F2F4F8)
-[LOG] SoundI::release                          :  (000002878930ECD8)
-[LOG] SoundI::release                          :     catwalkStep3Concept2_SophieMartin (0000028816F2FD18)
-[LOG] SoundI::release                          :  (000002875BA59D18)
-[LOG] SoundI::release                          :     catwalkStep4Concept2_SophieMartin (00000285E40FA2D8)
-[LOG] SoundI::release                          : preJumpScareConcept_SophieMartin.mp3 (000002885DFFAE08)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] ProfileClient::markForDead               : Closing client connection
-[LOG] FMOD_OS_Net_Read                         : Interrupted.[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] ProfileClient::recvThreadLoopFunction    : Socket disconnected
-[LOG] Thread::callback                         : FMOD profiler thread (recv) finished.
-[LOG] Thread::callback                         : FMOD profiler thread (send) finished.
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::initThread                       : Init FMOD profiler thread (recv). Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
-[LOG] Thread::initThread                       : Init FMOD profiler thread (send). Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 131072, Semaphore: No, Sleep Time: 0, Looping: No.
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] ProfileClient::markForDead               : Closing client connection
-[LOG] FMOD_OS_Net_Read                         : Interrupted.[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD profiler thread (send) finished.
-[LOG] ProfileClient::recvThreadLoopFunction    : Socket disconnected
-[LOG] Thread::callback                         : FMOD profiler thread (recv) finished.
-[LOG] SystemI::close                           : Closed.
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
@@ -123,5 +30,3 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.

@@ -1001,11 +1001,11 @@ MonoBehaviour:
   distanceExpBase: 2
   spaceshipShootSFX:
     Guid:
-      Data1: 2116770158
-      Data2: 1268464151
-      Data3: 1726854833
-      Data4: 492768375
-    Path: event:/Astramori SFX/Spaceship Shoot
+      Data1: 285031853
+      Data2: 1182023603
+      Data3: 183882167
+      Data4: -2005841259
+    Path: event:/Cabinet SFX/Spaceship Shoot
 --- !u!212 &42027146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21600,11 +21600,11 @@ MonoBehaviour:
   inputEnabled: 0
   spaceshipShootSFX:
     Guid:
-      Data1: 1442095557
-      Data2: 1281697345
-      Data3: 883294603
-      Data4: -1250039907
-    Path: event:/Asterion SFX/Spaceship Shoot
+      Data1: 285031853
+      Data2: 1182023603
+      Data3: 183882167
+      Data4: -2005841259
+    Path: event:/Cabinet SFX/Spaceship Shoot
 --- !u!212 &690837008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -50139,8 +50139,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.29999995, z: 0}
+  m_LocalRotation: {x: 0.1564345, y: -0, z: -0, w: 0.98768836}
+  m_LocalPosition: {x: 0, y: 0.32000005, z: 0.67700016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}
