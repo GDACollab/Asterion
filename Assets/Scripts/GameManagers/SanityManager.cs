@@ -8,6 +8,7 @@ public class SanityManager : MonoBehaviour
 {
     public float sanity;
     public int sanityStage;
+    public float sanityBoost;
     [SerializeField] float sanityRate;
     [SerializeField] int sanityStage1Sanity;
     [SerializeField] int sanityStage2Sanity;
@@ -62,6 +63,11 @@ public class SanityManager : MonoBehaviour
         }
     }
 
+
+    public void BoostSanity()
+    {
+        sanity += sanityBoost;
+    }
 
 
     IEnumerator SanityStage1()
