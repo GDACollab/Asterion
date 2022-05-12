@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3472095937016577195}
   - component: {fileID: 6118345354699944974}
   - component: {fileID: 6918451382155327689}
-  - component: {fileID: 7907595459618418981}
   - component: {fileID: 4902838623317178008}
   - component: {fileID: 6900319957064285874}
   m_Layer: 7
@@ -126,22 +125,6 @@ MonoBehaviour:
   weaponRange: 7
   isAstramori: 0
   lookingForPlayer: 0
---- !u!114 &7907595459618418981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419958047552857102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3876c2551ac52c54ba0ce325e89d000c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  baseHealth: 0
-  isAlien: 0
-  rb: {fileID: 0}
 --- !u!50 &4902838623317178008
 Rigidbody2D:
   serializedVersion: 4
