@@ -6338,7 +6338,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 250182381}
-  - component: {fileID: 250182382}
   - component: {fileID: 250182383}
   m_Layer: 0
   m_Name: AstramoriArcadeMachine
@@ -6364,36 +6363,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &250182382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250182380}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -169841482
-      Data2: 1089316096
-      Data3: -1884266870
-      Data4: -1945093820
-    Path: event:/Music/Demos/Demo Astramori Music
-  Event: 
-  PlayEvent: 1
-  StopEvent: 0
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 15
 --- !u!65 &250182383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16288,7 +16257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546691090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -66.6, y: 14.598801, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 131170314}
@@ -16419,7 +16388,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

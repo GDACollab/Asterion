@@ -26,7 +26,7 @@ public class AstramoriMusicManager : MonoBehaviour
     void Update()
     {
         astramoriMusic_instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(astramoriCabinet));
-        //astramoriMusic_instance.setParameterByName("Sanity", sanityManager.sanity);
-        //print(sanityManager.sanity);
+        
+        // NOTE: The assignment of the FMOD parameter "Sanity" to the Unity variable takes place in SanityManager.
     }
 }
