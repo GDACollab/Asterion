@@ -126,6 +126,7 @@ MonoBehaviour:
   weaponRange: 7
   isAstramori: 0
   lookingForPlayer: 0
+  bulletSpread: 1.55
 --- !u!114 &7907595459618418981
 MonoBehaviour:
   m_ObjectHideFlags: 0
