@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3876c2551ac52c54ba0ce325e89d000c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  baseHealth: 3
+  health: 6
+  baseHealth: 6
   isAlien: 1
   rb: {fileID: 0}
 --- !u!212 &3586597810674997914

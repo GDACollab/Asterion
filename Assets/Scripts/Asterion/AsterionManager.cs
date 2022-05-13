@@ -267,6 +267,7 @@ namespace AsterionArcade
                     timesWon++;
                     powerManager.isDraining = true;
                     powerManager.GainPower();
+                    GameManager.Instance.sanityManager.BoostSanity();
                     lossScreen.gameStateText.text = "You Win!";
                     cursor.EnableVirtualCursor();
                     lossScreen.continueButtonText.text = "Start Again? (1 Quarter)";
