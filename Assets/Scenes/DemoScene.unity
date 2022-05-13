@@ -1001,11 +1001,11 @@ MonoBehaviour:
   distanceExpBase: 2
   spaceshipShootSFX:
     Guid:
-      Data1: 2116770158
-      Data2: 1268464151
-      Data3: 1726854833
-      Data4: 492768375
-    Path: event:/Astramori SFX/Spaceship Shoot
+      Data1: 285031853
+      Data2: 1182023603
+      Data3: 183882167
+      Data4: -2005841259
+    Path: event:/Cabinet SFX/Spaceship Shoot
 --- !u!212 &42027146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3348,6 +3348,7 @@ GameObject:
   - component: {fileID: 148864698}
   - component: {fileID: 148864697}
   - component: {fileID: 148864702}
+  - component: {fileID: 148864703}
   m_Layer: 0
   m_Name: ArcadeOutline
   m_TagString: Untagged
@@ -4142,6 +4143,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mat: {fileID: 2100000, guid: 074fd690a795fcc479270a9131478c52, type: 2}
   baseColor: {r: 5.992157, g: 0.09411765, b: 1.7882353, a: 1}
+--- !u!114 &148864703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148864696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -50641923
+      Data2: 1210936361
+      Data3: -1284909180
+      Data4: 1772652278
+    Path: event:/Ambience/Neon Door Ambience
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &153393838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6312,7 +6343,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 250182381}
-  - component: {fileID: 250182382}
   - component: {fileID: 250182383}
   m_Layer: 0
   m_Name: AstramoriArcadeMachine
@@ -6338,36 +6368,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &250182382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 250182380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -169841482
-      Data2: 1089316096
-      Data3: -1884266870
-      Data4: -1945093820
-    Path: event:/Music/Demo Astramori Music
-  Event: 
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 15
 --- !u!65 &250182383
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7522,7 +7522,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: pb_Mesh29702
+=======
+  m_Name: pb_Mesh137424
+>>>>>>> origin/slugcon-demo-build
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8658,7 +8662,23 @@ MonoBehaviour:
       Data3: -852008052
       Data4: -476626137
     Path: event:/Misc SFX/Battery Charge Increase
+  batteryDrainSFX:
+    Guid:
+      Data1: 2116332767
+      Data2: 1204156800
+      Data3: -901219185
+      Data4: 2175939
+    Path: event:/Misc SFX/Battery Drain
   batteryCube: {fileID: 136171081}
+  lightsOffSFX:
+    Guid:
+      Data1: -451111587
+      Data2: 1195376416
+      Data3: 1562006401
+      Data4: 284316203
+    Path: event:/Misc SFX/Lights Off
+  asterionSpotlightSpeaker: {fileID: 431574522}
+  astramoriSpotlightSpeaker: {fileID: 1568266858}
 --- !u!1 &354437707
 GameObject:
   m_ObjectHideFlags: 0
@@ -9741,7 +9761,7 @@ GameObject:
   - component: {fileID: 431574523}
   - component: {fileID: 431574524}
   m_Layer: 0
-  m_Name: Spot Light (2)
+  m_Name: Asterion Light/Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16254,7 +16274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546691090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -66.6, y: 14.598801, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 131170314}
@@ -16385,7 +16405,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -18995,7 +19015,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: pb_Mesh29496
+=======
+  m_Name: pb_Mesh137218
+>>>>>>> origin/slugcon-demo-build
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19159,7 +19183,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: pb_Mesh29768
+=======
+  m_Name: pb_Mesh137490
+>>>>>>> origin/slugcon-demo-build
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19947,7 +19975,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: pb_Mesh31810
+=======
+  m_Name: pb_Mesh139532
+>>>>>>> origin/slugcon-demo-build
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21567,11 +21599,11 @@ MonoBehaviour:
   inputEnabled: 0
   spaceshipShootSFX:
     Guid:
-      Data1: 1442095557
-      Data2: 1281697345
-      Data3: 883294603
-      Data4: -1250039907
-    Path: event:/Asterion SFX/Spaceship Shoot
+      Data1: 285031853
+      Data2: 1182023603
+      Data3: 183882167
+      Data4: -2005841259
+    Path: event:/Cabinet SFX/Spaceship Shoot
 --- !u!212 &690837008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22335,7 +22367,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: pb_Mesh29062
+=======
+  m_Name: pb_Mesh136784
+>>>>>>> origin/slugcon-demo-build
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -25579,7 +25615,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: pb_Mesh29588
+=======
+  m_Name: pb_Mesh137310
+>>>>>>> origin/slugcon-demo-build
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -26098,7 +26138,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: pb_Mesh31372
+=======
+  m_Name: pb_Mesh139094
+>>>>>>> origin/slugcon-demo-build
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -27811,6 +27855,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1067671937}
   - component: {fileID: 1067671938}
+  - component: {fileID: 1067671939}
   m_Layer: 0
   m_Name: AstramoriGame
   m_TagString: Untagged
@@ -27899,13 +27944,34 @@ MonoBehaviour:
   - {x: 1, y: 3}
   - {x: 1, y: 3}
   sanityLoss: 5
-  coinDispenseManySFX:
+  coinDispenseSFX:
     Guid:
       Data1: 1278580376
       Data2: 1158757744
       Data3: -1449002603
       Data4: -1678603587
-    Path: event:/Misc SFX/Coin Dispense Many
+    Path: event:/Misc SFX/Coin Dispense
+--- !u!114 &1067671939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067671936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45bfd60e359ae7649b3c4de6ee903ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  astramoriCabinet: {fileID: 250182380}
+  sanityManager: {fileID: 1669733570}
+  astramoriMusic:
+    Guid:
+      Data1: -1647227852
+      Data2: 1085784032
+      Data3: 180960673
+      Data4: 1762831407
+    Path: event:/Music/Astramori/Astramori Music Main
 --- !u!1 &1074676103
 GameObject:
   m_ObjectHideFlags: 0
@@ -31244,7 +31310,11 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: pb_Mesh31912
+=======
+  m_Name: pb_Mesh139634
+>>>>>>> origin/slugcon-demo-build
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -36598,7 +36668,7 @@ GameObject:
   - component: {fileID: 1568266859}
   - component: {fileID: 1568266860}
   m_Layer: 0
-  m_Name: Spot Light (2)
+  m_Name: Astramori Light/Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37694,7 +37764,7 @@ MonoBehaviour:
       Data2: 1262880839
       Data3: -309666430
       Data4: 1675459651
-    Path: event:/Music/Demo Asterion Music
+    Path: event:/Music/Demos/Demo Asterion Music
   Event: 
   PlayEvent: 1
   StopEvent: 2
@@ -38451,6 +38521,20 @@ MonoBehaviour:
   gameTime: 0
   asterionGamesPlayed: 0
   astramoriGamesPlayed: 0
+  jumpscareSFX:
+    Guid:
+      Data1: -1127494048
+      Data2: 1301025740
+      Data3: 718108826
+      Data4: -1594552196
+    Path: event:/Misc SFX/Jumpscare
+  preJumpscareSFX:
+    Guid:
+      Data1: -117047514
+      Data2: 1338019699
+      Data3: -1320312167
+      Data4: 1308119484
+    Path: event:/Misc SFX/Pre-Jumpscare
 --- !u!114 &1669733569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48213,6 +48297,7 @@ GameObject:
   - component: {fileID: 2098190742}
   - component: {fileID: 2098190741}
   - component: {fileID: 2098190746}
+  - component: {fileID: 2098190747}
   m_Layer: 0
   m_Name: ArcadeOutline2
   m_TagString: Untagged
@@ -49007,6 +49092,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mat: {fileID: 2100000, guid: c7673f3e1c9bf6041a0e572b33c621be, type: 2}
   baseColor: {r: 7.999999, g: 0.670157, b: 0.46073294, a: 1}
+--- !u!114 &2098190747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098190740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -50641923
+      Data2: 1210936361
+      Data3: -1284909180
+      Data4: 1772652278
+    Path: event:/Ambience/Neon Door Ambience
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2099303917
 GameObject:
   m_ObjectHideFlags: 0

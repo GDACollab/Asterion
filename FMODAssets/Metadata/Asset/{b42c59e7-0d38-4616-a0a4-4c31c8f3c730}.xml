@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{b42c59e7-0d38-4616-a0a4-4c31c8f3c730}">
+		<property name="assetPath">
+			<value>Music/Astramori/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0abe2706-d6dc-4527-a18c-bad740285241}</destination>
+		</relationship>
+	</object>
+</objects>

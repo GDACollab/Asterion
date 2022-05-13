@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EventFolder" id="{d83548b5-25cc-4c9d-a345-5504e876709a}">
+		<property name="name">
+			<value>Asterion</value>
+		</property>
+		<relationship name="folder">
+			<destination>{95d8ca42-6f17-4658-85ff-70acd5e10b56}</destination>
+		</relationship>
+	</object>
+</objects>

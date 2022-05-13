@@ -46,7 +46,12 @@ public class PowerManager : MonoBehaviour
 
     [Header("SFX References")]
     [SerializeField] FMODUnity.EventReference batteryChargeSFX;
+    [SerializeField] FMODUnity.EventReference batteryDrainSFX;
     [SerializeField] GameObject batteryCube;
+    [SerializeField] FMODUnity.EventReference lightsOffSFX;
+    [SerializeField] GameObject asterionSpotlightSpeaker;
+    [SerializeField] GameObject astramoriSpotlightSpeaker;
+    private bool playedLightsOffSFX;
 
     private IEnumerator dimRoutine;
     private IEnumerator asterionFlicker;
@@ -58,20 +63,26 @@ public class PowerManager : MonoBehaviour
         powerLevel = maxPowerLevel;
         if (INSANEMode == true)
             {
-            initialRate = 500.0f;
+            initialRate = initialRate * 20;
             }
         currentRate = initialRate;
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
+<<<<<<< HEAD
         dimRoutine = DimRoutine();
         StartCoroutine(dimRoutine);
+=======
+        playedLightsOffSFX = false;
+        StartCoroutine(DimRoutine());
+        StartCoroutine(BatteryDrainSFXRoutine());
+>>>>>>> origin/slugcon-demo-build
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //sanityManager.sanity = powerLevel
 
         if (isDraining)
         {
@@ -86,6 +97,14 @@ public class PowerManager : MonoBehaviour
             isDraining = false;
             powerLevel = 0;
             sanityManager.sanity = 0;
+
+            if (!playedLightsOffSFX)
+            {
+                FMODUnity.RuntimeManager.PlayOneShotAttached(lightsOffSFX.Guid, asterionSpotlightSpeaker);
+                FMODUnity.RuntimeManager.PlayOneShotAttached(lightsOffSFX.Guid, astramoriSpotlightSpeaker);
+                playedLightsOffSFX = true;
+            }
+
             StartCoroutine(GameManager.Instance.LoseRoutine());
             StopCoroutine(dimRoutine);
             StopCoroutine(asterionFlicker);
@@ -117,6 +136,20 @@ public class PowerManager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
 
+        }
+        
+    }
+
+    private IEnumerator BatteryDrainSFXRoutine()
+    {
+        for (int i = 9; i >= 1; i--)
+        {
+            float threshold = ((i*10) + 0.5f);
+            while (powerLevel > threshold)
+            {
+                yield return null;
+            }
+            FMODUnity.RuntimeManager.PlayOneShotAttached(batteryDrainSFX.Guid, batteryCube);
         }
         
     }
