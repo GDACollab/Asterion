@@ -7,6 +7,7 @@ using UnityEngine;
  * Missile heat seeking movement.
  *
  * Developer: Jonah Ryan
+ * SFX Implementation: Dylan Mahler
  */
 
 
@@ -21,6 +22,9 @@ public class scr_missile_move : MonoBehaviour
     private bool StartCountdown = false;
     private bool flashA = false;
 
+    [Header("SFX References")]
+    [SerializeField] FMODUnity.EventReference missileDestroyedSFX;
+
     private void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
@@ -31,6 +35,9 @@ public class scr_missile_move : MonoBehaviour
     {
         if (collision.tag == "StarshipBullet")
         {
+            // Play the SFX that plays when the missile is shot down
+            FMODUnity.RuntimeManager.PlayOneShot(missileDestroyedSFX.Guid);
+
             Destroy(gameObject);
         }
     }

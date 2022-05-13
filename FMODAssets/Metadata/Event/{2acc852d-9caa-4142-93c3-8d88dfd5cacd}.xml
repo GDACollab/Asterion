@@ -32,7 +32,8 @@
 			<destination>{1c9ee6e4-ea4a-4c2e-ab6e-66b45b77cee2}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{506bda26-d9f0-4b7b-a711-4add69515ecd}</destination>
+			<destination>{b3899a1b-a561-4c39-a737-bd191be89217}</destination>
+			<destination>{82afe3ec-f6cf-4f61-bda8-d1166394efc6}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{34876909-caf3-46df-93e2-b20e694587a5}">
@@ -56,7 +57,14 @@
 			<destination>{45112322-9063-422f-94e0-69e965d788a1}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{0846e58c-bac5-4314-bdf9-83fff7bdd3ce}" />
+	<object class="EventAutomatableProperties" id="{0846e58c-bac5-4314-bdf9-83fff7bdd3ce}">
+		<property name="maxVoices">
+			<value>1</value>
+		</property>
+		<property name="triggerCooldown">
+			<value>40</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{83db493d-0756-491a-9b7d-0b212d437f2a}" />
 	<object class="GroupTrack" id="{eb0ee56f-396c-4448-b971-fc528746410d}">
 		<relationship name="modules">
@@ -72,6 +80,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{62eea199-61b1-411c-8951-63f267d44b23}">
+		<property name="volume">
+			<value>-2.5</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{bae990fb-5f6a-4784-a9fb-35fd3ee0aa38}</destination>
 		</relationship>

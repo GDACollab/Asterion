@@ -16257,7 +16257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546691090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -66.6, y: 14.598801, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 131170314}
@@ -16388,7 +16388,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -27909,6 +27909,13 @@ MonoBehaviour:
       Data3: -1449002603
       Data4: -1678603587
     Path: event:/Misc SFX/Coin Dispense
+  starfighterDiesSFX:
+    Guid:
+      Data1: -905747544
+      Data2: 1210722990
+      Data3: -720777581
+      Data4: -642401343
+    Path: event:/Cabinet SFX/Spaceship Explode
 --- !u!114 &1067671939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43365,6 +43372,13 @@ MonoBehaviour:
       Data3: -1946709830
       Data4: -1446064737
     Path: event:/Misc SFX/Coin Insert
+  playerDiesSFX:
+    Guid:
+      Data1: -905747544
+      Data2: 1210722990
+      Data3: -720777581
+      Data4: -642401343
+    Path: event:/Cabinet SFX/Spaceship Explode
 --- !u!1 &1875788153
 GameObject:
   m_ObjectHideFlags: 0
