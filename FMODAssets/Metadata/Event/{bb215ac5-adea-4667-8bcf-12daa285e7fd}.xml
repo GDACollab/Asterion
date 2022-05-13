@@ -140,6 +140,9 @@
 		<property name="length">
 			<value>18</value>
 		</property>
+		<property name="timelockedOffset">
+			<value>2</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{c2e887d0-d1de-407b-8fac-8262e1714b91}</destination>
 		</relationship>

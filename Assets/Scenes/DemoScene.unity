@@ -39232,7 +39232,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623424158}
-  - component: {fileID: 1623424159}
   - component: {fileID: 1623424160}
   m_Layer: 0
   m_Name: AsterionArcadeMachine
@@ -39259,36 +39258,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1623424159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623424157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -796493211
-      Data2: 1262880839
-      Data3: -309666430
-      Data4: 1675459651
-    Path: event:/Music/Demos/Demo Asterion Music
-  Event: 
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!65 &1623424160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40049,6 +40018,8 @@ MonoBehaviour:
       Data3: -1320312167
       Data4: 1308119484
     Path: event:/Misc SFX/Pre-Jumpscare
+  asterionMusicManager: {fileID: 1868742464}
+  astramoriMusicManager: {fileID: 1067671939}
 --- !u!114 &1669733569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40089,7 +40060,7 @@ MonoBehaviour:
   sanity: 68
   sanityStage: 0
   sanityBoost: 0
-  sanityRate: 0.005
+  sanityRate: 5.005
   sanityStage1Sanity: 65
   sanityStage2Sanity: 40
   volume: {fileID: 261537445608738552}
@@ -45161,6 +45132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1868742462}
   - component: {fileID: 1868742463}
+  - component: {fileID: 1868742464}
   m_Layer: 0
   m_Name: AsterionGame
   m_TagString: Untagged
@@ -45216,6 +45188,7 @@ MonoBehaviour:
   tutorialMenu: {fileID: 451960942}
   upgradeMenu: {fileID: 1165492949}
   lossMenu: {fileID: 271141715}
+  asterionCabinet: {fileID: 1623424157}
   lossScreen: {fileID: 271141717}
   cursor: {fileID: 1274144968}
   enemies: {fileID: 736331832}
@@ -45256,6 +45229,14 @@ MonoBehaviour:
       Data3: -1946709830
       Data4: -1446064737
     Path: event:/Misc SFX/Coin Insert
+  victoryFanfareSFX:
+    Guid:
+      Data1: -1355662382
+      Data2: 1165177690
+      Data3: -1042651248
+      Data4: -803498712
+    Path: event:/Music/Asterion/ASTerion Victory Fanfare
+  asterionMusicManager: {fileID: 1868742464}
   pretextFirst:
   - Another wave incoming!
   - The enemies are on all sides.
@@ -45270,6 +45251,41 @@ MonoBehaviour:
   - Where are they coming from?
   - "Don\u2019t give up!"
   - This is going to be close.
+--- !u!114 &1868742464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868742461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1f38d3bd197af46838941156d2f57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asterionCabinet: {fileID: 1623424157}
+  sanityManager: {fileID: 1669733570}
+  asterionIdleMusic:
+    Guid:
+      Data1: 1947303096
+      Data2: 1199611354
+      Data3: 412497815
+      Data4: 1040617361
+    Path: event:/Music/Asterion/ASTN IDLE- MELODYLESS
+  asterionMenuMusic:
+    Guid:
+      Data1: -1155441979
+      Data2: 1181199850
+      Data3: -636301429
+      Data4: -35158622
+    Path: event:/Music/Asterion/ASTerion Music Upgrade Menu
+  asterionMainMusic:
+    Guid:
+      Data1: 2122792335
+      Data2: 1289059934
+      Data3: 527669638
+      Data4: 2006985897
+    Path: event:/Music/Asterion/ASTerion Music Main
 --- !u!1 &1875788153
 GameObject:
   m_ObjectHideFlags: 0
@@ -52405,8 +52421,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.29999995, z: 0}
+  m_LocalRotation: {x: 0.031353697, y: -0, z: -0, w: 0.9995084}
+  m_LocalPosition: {x: 0, y: 0.40999997, z: 0.35399997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5785947153219967854}

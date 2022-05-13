@@ -51,11 +51,13 @@ public class GameManager : MonoBehaviour
     private GameObject uiFadeImage;
 
 
-    [Header("SFX Events")]
+    [Header("SFX Events & Music")]
     [SerializeField] FMODUnity.EventReference jumpscareSFX;
     private FMOD.Studio.EventInstance jumpscareSFX_instance;
     [SerializeField] FMODUnity.EventReference preJumpscareSFX;
     private FMOD.Studio.EventInstance preJumpscareSFX_instance;
+    [SerializeField] AsterionMusicManager asterionMusicManager;
+    [SerializeField] AstramoriMusicManager astramoriMusicManager;
 
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
@@ -187,6 +189,10 @@ public class GameManager : MonoBehaviour
         {
             a.EventInstance.setPaused(true);
         }
+        // Stop music!
+        asterionMusicManager.PlayMusic("stop all");
+        astramoriMusicManager.StopMusic();
+
 
         preJumpscareSFX_instance.start();
 

@@ -5,7 +5,7 @@
 			<value>Enemy Missile Destroyed</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{0ef8ac4d-9706-4d17-8d5c-6892312ec081}</destination>
@@ -115,6 +115,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{a2101d43-0cc3-4b04-8d28-ee560fc70171}">
 		<relationship name="effects">
+			<destination>{2144ef5f-65a7-4a6b-ab53-a85e77523df5}</destination>
 			<destination>{829c60b7-bad4-4308-b029-fb9f26efc0c3}</destination>
 		</relationship>
 	</object>
@@ -126,6 +127,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8a2b5c59-e84e-415b-9702-ae1f6a0eb934}" />
+	<object class="ProxyEffect" id="{2144ef5f-65a7-4a6b-ab53-a85e77523df5}">
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="preset">
+			<destination>{f5edcaf7-e586-49d5-affd-eb34174ea4b6}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{829c60b7-bad4-4308-b029-fb9f26efc0c3}" />
 	<object class="MixerBusFader" id="{4e52362e-e369-4c0a-82f6-920923ea0970}" />
 </objects>

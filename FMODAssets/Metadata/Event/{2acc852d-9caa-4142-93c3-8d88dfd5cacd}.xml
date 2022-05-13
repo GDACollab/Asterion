@@ -5,7 +5,7 @@
 			<value>Small Enemy Explosion</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{0ef8ac4d-9706-4d17-8d5c-6892312ec081}</destination>
@@ -115,6 +115,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{bae990fb-5f6a-4784-a9fb-35fd3ee0aa38}">
 		<relationship name="effects">
+			<destination>{931853d5-e3cf-4f0a-9ccb-e92475749270}</destination>
 			<destination>{ebf0e1ad-1b93-4831-bc6b-ba586ad94f9a}</destination>
 		</relationship>
 	</object>
@@ -126,6 +127,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b485e215-4cf8-4b5e-b147-3257c74a05d1}" />
+	<object class="ProxyEffect" id="{931853d5-e3cf-4f0a-9ccb-e92475749270}">
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="preset">
+			<destination>{f5edcaf7-e586-49d5-affd-eb34174ea4b6}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{ebf0e1ad-1b93-4831-bc6b-ba586ad94f9a}" />
 	<object class="MixerBusFader" id="{654e43e6-f7a4-4590-a5f5-5f4ab73f2ed2}" />
 </objects>
