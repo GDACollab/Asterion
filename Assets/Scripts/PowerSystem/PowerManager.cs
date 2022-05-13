@@ -74,6 +74,8 @@ public class PowerManager : MonoBehaviour
         dimRoutine = DimRoutine();
         StartCoroutine(dimRoutine);
         StartCoroutine(BatteryDrainSFXRoutine());
+        asterionFlicker = asterionLighting.FlickerRoutine();
+        astramoriFlicker = astramoriLighting.FlickerRoutine();
     }
 
     // Update is called once per frame
