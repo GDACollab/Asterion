@@ -49,8 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3876c2551ac52c54ba0ce325e89d000c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  baseHealth: 5
+  health: 7
+  baseHealth: 7
   isAlien: 1
   rb: {fileID: 0}
 --- !u!212 &6118345354699944974
@@ -94,7 +94,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3ac053dfa9a11649902112e93e742dd, type: 3}
-  m_Color: {r: 0.011263847, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
