@@ -131,7 +131,7 @@ namespace AsterionArcade
             readyToShoot = true;
         }
 
-        protected IEnumerator updateFP(float time)
+        protected virtual IEnumerator updateFP(float time)
         {
             yield return new WaitForSeconds(time);
             knownPlayerPos = player.transform.position;
