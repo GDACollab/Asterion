@@ -134,7 +134,11 @@ namespace AsterionArcade
            
             _cameraManager.OnChangeCameraState
                 .Invoke(CameraManager.CameraState.FirstPerson);
-            _interactableManager.gameObject.SetActive(true);
+
+            if (_interactableManager.gameEnding == false)
+            {
+                _interactableManager.gameObject.SetActive(true);
+            }
             
             lossMenu.SetActive(false);
             cursor.DisableVirtualCursor();
