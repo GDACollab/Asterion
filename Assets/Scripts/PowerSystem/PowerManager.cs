@@ -69,14 +69,11 @@ public class PowerManager : MonoBehaviour
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
-<<<<<<< HEAD
+
+        playedLightsOffSFX = false;
         dimRoutine = DimRoutine();
         StartCoroutine(dimRoutine);
-=======
-        playedLightsOffSFX = false;
-        StartCoroutine(DimRoutine());
         StartCoroutine(BatteryDrainSFXRoutine());
->>>>>>> origin/slugcon-demo-build
     }
 
     // Update is called once per frame

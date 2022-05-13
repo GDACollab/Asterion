@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public float gameTime;
     public int asterionGamesPlayed;
     public int astramoriGamesPlayed;
-<<<<<<< HEAD
+
     private GameObject[] lights;
     private GameObject[] arcadeMachines;
     private GameObject gameDoorsAsterion;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     private GameObject SpookyPlane;
     private GameObject[] interactables;
     private GameObject uiFadeImage;
-=======
+
 
     [Header("SFX Events")]
     [SerializeField] FMODUnity.EventReference jumpscareSFX;
@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] FMODUnity.EventReference preJumpscareSFX;
     private FMOD.Studio.EventInstance preJumpscareSFX_instance;
 
->>>>>>> origin/slugcon-demo-build
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
 
@@ -189,6 +188,9 @@ public class GameManager : MonoBehaviour
             a.EventInstance.setPaused(true);
         }
 
+        preJumpscareSFX_instance.start();
+
+
         // Hide Tony
         SpookyPlane.GetComponent<MeshRenderer>().enabled = false;
 
@@ -222,6 +224,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
         // JUMP SCARE ANIMATION!
+        jumpscareSFX_instance.start();
         tempLoseAnim.Play("tempLoseAnim");
 
         yield return new WaitForSeconds(3);
