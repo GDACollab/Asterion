@@ -4870,6 +4870,7 @@ MonoBehaviour:
   OnShowText:
     m_PersistentCalls:
       m_Calls: []
+  gameEnding: 0
 --- !u!65 &178686042
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8673,7 +8674,23 @@ MonoBehaviour:
       Data3: -852008052
       Data4: -476626137
     Path: event:/Misc SFX/Battery Charge Increase
+  batteryDrainSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
   batteryCube: {fileID: 136171081}
+  lightsOffSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  asterionSpotlightSpeaker: {fileID: 0}
+  astramoriSpotlightSpeaker: {fileID: 0}
 --- !u!1 &354437707
 GameObject:
   m_ObjectHideFlags: 0
@@ -16653,6 +16670,7 @@ MonoBehaviour:
   OnShowText:
     m_PersistentCalls:
       m_Calls: []
+  gameEnding: 0
 --- !u!65 &560468289
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25742,7 +25760,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22788
+  m_Name: pb_Mesh128026
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28137,13 +28155,13 @@ MonoBehaviour:
   - {x: 1, y: 3}
   - {x: 1, y: 3}
   sanityLoss: 5
-  coinDispenseManySFX:
+  coinDispenseSFX:
     Guid:
-      Data1: 1278580376
-      Data2: 1158757744
-      Data3: -1449002603
-      Data4: -1678603587
-    Path: event:/Misc SFX/Coin Dispense Many
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1074676103
 GameObject:
   m_ObjectHideFlags: 0
@@ -38695,6 +38713,20 @@ MonoBehaviour:
   gameTime: 0
   asterionGamesPlayed: 0
   astramoriGamesPlayed: 0
+  jumpscareSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  preJumpscareSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &1669733569
 MonoBehaviour:
   m_ObjectHideFlags: 0

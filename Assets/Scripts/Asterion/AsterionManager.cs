@@ -43,7 +43,9 @@ namespace AsterionArcade
         public List<Vector2> baseEnemyQueue;
         public List<Vector2> enemyQueue;
         public int timesWon;
- 
+        //Added Variable to skip Upgrades on first play
+        private bool firstTime = true;
+
 
         [Header("Asterion Spawning Rate/Range")]
         public float spawnRate;
@@ -57,8 +59,11 @@ namespace AsterionArcade
         private FMOD.Studio.EventInstance coinInsertSFX_instance;
         //[SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
 
-        //Added Variable to skip Upgrades on first play
-        private bool firstTime = true;
+        
+        [Header("Pretext")]
+        [SerializeField] List<string> pretextFirst;
+        [SerializeField] List<string> pretextSecond;
+  
 
 
         void Start()
@@ -91,7 +96,7 @@ namespace AsterionArcade
             // should have input that effect it
             if (_cameraManager.currentCameraState
                 == CameraManager.CameraState.Asterion
-                && Input.GetKeyDown(KeyCode.Escape) && currentGameState == GameState.MainMenu)
+                && Input.GetKeyDown(KeyCode.Escape) && currentGameState == GameState.MainMenu && firstTime == false)
             {
                 _interactableManager.OnStopInteract.Invoke();
             }
@@ -265,7 +270,6 @@ namespace AsterionArcade
                 if (isWin)
                 {
                     timesWon++;
-                    powerManager.isDraining = true;
                     powerManager.GainPower();
                     GameManager.Instance.sanityManager.BoostSanity();
                     lossScreen.gameStateText.text = "You Win!";
@@ -300,7 +304,6 @@ namespace AsterionArcade
                 {
                     GameManager.Instance.asterionGamesPlayed++;
 
-                    powerManager.isDraining = true;
                     powerManager.IncreaseRate();
                     lossScreen.gameStateText.text = "You Lost!";
                     cursor.EnableVirtualCursor();
@@ -374,7 +377,14 @@ namespace AsterionArcade
             }
             else
             {
-                pretexts[0].text = "This is the enemy wave you made.";
+                int id = Random.Range(0, pretextFirst.Count-1);
+                if(powerManager.powerLevel <= 25)
+                {
+                    id = pretextFirst.Count - 1;
+                }
+                pretexts[0].text = pretextFirst[id];
+                pretexts[1].text = pretextSecond[id];
+
             }
             pretexts[0].enabled = true;
 
@@ -390,8 +400,6 @@ namespace AsterionArcade
             _playerMovement.enabled = true;
 
             yield return new WaitForSeconds(1);
-
-            powerManager.isDraining = false;
 
             int numFighters = 3;
 

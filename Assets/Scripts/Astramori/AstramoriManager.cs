@@ -215,7 +215,6 @@ namespace AsterionArcade
         {
             mainMenu.SetActive(false);
             tutorialMenu.SetActive(true);
-            tutorialNextButton.SetActive(true);
             tutorialText.text = "Select enemies to send against the starship\n\nSelect area outside border to spawn enemies\n\nContinue sending enemies until the starship is destroyed\n\nDestroying ships before time runs out earns quarters";
         }
 

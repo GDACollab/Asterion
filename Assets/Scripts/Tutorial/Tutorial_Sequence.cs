@@ -96,6 +96,7 @@ public class Tutorial_Sequence : MonoBehaviour
 
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
+        GameManager.Instance.powerManager.isDraining = true;
 
         this.enabled = false;
     }
