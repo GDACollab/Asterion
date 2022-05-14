@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 // Manager for the power system used in the game
 public class PowerManager : MonoBehaviour
@@ -39,6 +41,9 @@ public class PowerManager : MonoBehaviour
     [SerializeField] SanityManager sanityManager;
     private RawImage[] batteryCells;
     [SerializeField] TextMeshProUGUI batteryFPUIText;
+    [SerializeField] Volume v;
+    
+    ChromaticAberration ca;
 
     [Header("Tied Lighting Systems")]
     [SerializeField] public LightingGroup asterionLighting;
@@ -76,6 +81,13 @@ public class PowerManager : MonoBehaviour
         StartCoroutine(BatteryDrainSFXRoutine());
         asterionFlicker = asterionLighting.FlickerRoutine();
         astramoriFlicker = astramoriLighting.FlickerRoutine();
+        if (v.sharedProfile.TryGet<ChromaticAberration>(out var cab))
+        {
+            ca = cab;
+            ca.intensity.overrideState = true;
+            ca.intensity.Override(0);
+        }
+        StartCoroutine(UpdatePostProcessingFX());
     }
 
     // Update is called once per frame
@@ -109,6 +121,27 @@ public class PowerManager : MonoBehaviour
             StopCoroutine(asterionFlicker);
             StopCoroutine(astramoriFlicker);
         }
+    }
+
+    public IEnumerator UpdatePostProcessingFX()
+    {
+        while (true)
+        {
+            if (powerLevel < 30)
+            {
+                ca.intensity.overrideState = true;
+                ca.intensity.Override(.25f);
+            }
+            else
+            {
+                ca.intensity.overrideState = true;
+                ca.intensity.Override(0f);
+            }
+
+            yield return new WaitForSeconds(1);
+        }
+
+
     }
 
     private IEnumerator DimRoutine()

@@ -275,20 +275,30 @@ public class GameManager : MonoBehaviour
     {
         if (isPaused)
         {
-            isPaused = false;
-            pauseUI.SetActive(false);
-            playerMovement._movementEnabled = true;
-            playerLook._rotateEnabled = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            // Time resume
-            Time.timeScale = 1;
-
-            FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
-            foreach (FMODUnity.StudioEventEmitter a in sounds)
+            if (isSettings)
             {
-                a.EventInstance.setPaused(false);
+                settingsUI.SetActive(false);
+                isSettings = false;
+            }
+            else
+            {
+                isPaused = false;
+                pauseUI.SetActive(false);
+                playerMovement._movementEnabled = true;
+                playerLook._rotateEnabled = true;
+                Cursor.lockState = CursorLockMode.Locked;
+                // Time resume
+                Time.timeScale = 1;
+
+                FMODUnity.StudioEventEmitter[] sounds = FindObjectsOfType<FMODUnity.StudioEventEmitter>();
+                foreach (FMODUnity.StudioEventEmitter a in sounds)
+                {
+                    a.EventInstance.setPaused(false);
+                }
             }
         }
+
+            
         else
         {
             isPaused = true;
@@ -311,7 +321,7 @@ public class GameManager : MonoBehaviour
     public void ReloadLevel()
     {
         Time.timeScale = 1;
-        
+        StopAllCoroutines();
         SceneManager.LoadScene(0);
     }
 
