@@ -52,6 +52,13 @@ MonoBehaviour:
   baseHealth: 2
   isAlien: 1
   rb: {fileID: 0}
+  alienDeathSFX:
+    Guid:
+      Data1: 496135638
+      Data2: 1264906840
+      Data3: -1621307766
+      Data4: 1490331941
+    Path: event:/Cabinet SFX/Giant Enemy Explosion
 --- !u!212 &6464250943118150757
 SpriteRenderer:
   m_ObjectHideFlags: 0

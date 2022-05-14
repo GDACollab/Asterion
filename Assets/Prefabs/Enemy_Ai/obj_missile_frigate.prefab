@@ -52,6 +52,13 @@ MonoBehaviour:
   baseHealth: 6
   isAlien: 1
   rb: {fileID: 0}
+  alienDeathSFX:
+    Guid:
+      Data1: -1285409906
+      Data2: 1108346445
+      Data3: -197564543
+      Data4: 1540196358
+    Path: event:/Cabinet SFX/Medium Enemy Explosion
 --- !u!212 &3586597810674997914
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,6 +169,13 @@ MonoBehaviour:
   weaponRange: 18
   isAstramori: 0
   lookingForPlayer: 0
+  missileShootSFX:
+    Guid:
+      Data1: 616892831
+      Data2: 1083981584
+      Data3: 154514313
+      Data4: 1119331548
+    Path: event:/Cabinet SFX/Enemy Missile Shoot
 --- !u!1 &3712908921700394441
 GameObject:
   m_ObjectHideFlags: 0

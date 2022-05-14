@@ -11,6 +11,8 @@ BUGS:
 
 Created by:
 - SalilPT
+
+SFX implementation by Dylan Mahler
 */
 
 namespace AsterionArcade
@@ -26,6 +28,9 @@ namespace AsterionArcade
         // Used to determine whether or not this object was destroyed because it was close enough to the player
         private bool inRangeOfPlayer = false;
 
+        [Header("SFX References")]
+        [SerializeField] FMODUnity.EventReference carrierExplodeSFX;
+
         // Update is called every frame
         void Update()
         {
@@ -35,6 +40,10 @@ namespace AsterionArcade
             if (Vector2.Distance(myPos, player.transform.position) <= explodeDist)
             {
                 inRangeOfPlayer = true;
+
+                // Play the SFX that plays when the carrier ship fucking explodes
+                FMODUnity.RuntimeManager.PlayOneShot(carrierExplodeSFX.Guid);
+
                 Destroy(this.gameObject);
             }
         }

@@ -52,6 +52,13 @@ MonoBehaviour:
   baseHealth: 1
   isAlien: 1
   rb: {fileID: 0}
+  alienDeathSFX:
+    Guid:
+      Data1: 718046509
+      Data2: 1094884522
+      Data3: -2003975277
+      Data4: -842344993
+    Path: event:/Cabinet SFX/Small Enemy Explosion
 --- !u!212 &3713004275483948175
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -162,6 +169,13 @@ MonoBehaviour:
   weaponRange: 3
   isAstramori: 0
   lookingForPlayer: 0
+  laserShootSFX:
+    Guid:
+      Data1: 679613178
+      Data2: 1286628600
+      Data3: 262289285
+      Data4: -713282029
+    Path: event:/Cabinet SFX/Enemy Laser Shoot
 --- !u!1 &6154606040526553850
 GameObject:
   m_ObjectHideFlags: 0

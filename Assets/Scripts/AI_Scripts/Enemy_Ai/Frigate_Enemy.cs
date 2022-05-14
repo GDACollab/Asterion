@@ -6,6 +6,7 @@ using UnityEngine;
  * Missile Frigate enemy class.
  *
  * Developer: Jonah Ryan
+ * SFX Iplementation: Dylan Mahler
  */
 
 namespace AsterionArcade
@@ -15,8 +16,14 @@ namespace AsterionArcade
 
         private int numOfMissiles = 3;
 
+        [Header("SFX References")]
+        [SerializeField] FMODUnity.EventReference missileShootSFX;
+
         public override void enemyShoot()
         {
+            // Play the funky sound effect :O
+            FMODUnity.RuntimeManager.PlayOneShot(missileShootSFX.Guid);
+
             numOfMissiles = 3;
             Vector2 playerPos = knownPlayerPos;
             StartCoroutine(shot(playerPos));

@@ -165,3 +165,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPos: {x: 0, y: 0, z: 0}
   bulletSpeed: 8
+  player: {fileID: 0}
+  missileDestroyedSFX:
+    Guid:
+      Data1: 1019857275
+      Data2: 1123919037
+      Data3: -288133461
+      Data4: -207654628
+    Path: event:/Cabinet SFX/Enemy Missile Destroyed

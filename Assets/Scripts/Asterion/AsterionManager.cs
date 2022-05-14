@@ -54,10 +54,10 @@ namespace AsterionArcade
         [SerializeField] float sanityLoss;
 
 
-        [Header("SFX Emitters")]
+        [Header("SFX References")]
         [SerializeField] FMODUnity.EventReference coinInsertSFX;
         private FMOD.Studio.EventInstance coinInsertSFX_instance;
-        //[SerializeField] FMODUnity.StudioEventEmitter spaceshipExplodeSFXEmitter; // For the player ship in Asterion and the enemy spaceship in Astramori
+        [SerializeField] FMODUnity.EventReference playerDiesSFX;
 
         
         [Header("Pretext")]
@@ -302,6 +302,10 @@ namespace AsterionArcade
                 }
                 else
                 {
+                    
+                    // Play the SFX that plays when the alien ship fucking explodes
+                    FMODUnity.RuntimeManager.PlayOneShot(playerDiesSFX.Guid);
+                    
                     GameManager.Instance.asterionGamesPlayed++;
 
                     powerManager.IncreaseRate();
