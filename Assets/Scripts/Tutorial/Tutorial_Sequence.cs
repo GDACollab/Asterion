@@ -17,6 +17,7 @@ public class Tutorial_Sequence : MonoBehaviour
     GameObject _cameraManager;
     public GameObject AsterionEndTrigger;
     public GameObject TonyModelSpooky;
+    
 
     
 

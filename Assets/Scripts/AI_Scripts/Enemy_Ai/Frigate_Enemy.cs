@@ -21,9 +21,6 @@ namespace AsterionArcade
 
         public override void enemyShoot()
         {
-            // Play the funky sound effect :O
-            FMODUnity.RuntimeManager.PlayOneShot(missileShootSFX.Guid);
-
             numOfMissiles = 3;
             Vector2 playerPos = knownPlayerPos;
             StartCoroutine(shot(playerPos));
@@ -37,6 +34,10 @@ namespace AsterionArcade
 
             if (numOfMissiles > 0)
             {
+
+                // Play the funky sound effect :O
+                FMODUnity.RuntimeManager.PlayOneShot(missileShootSFX.Guid);
+
                 GameObject bulletCreated;
 
                 bulletCreated = GameObject.Instantiate(bulletPrefab, transform.position, transform.rotation);

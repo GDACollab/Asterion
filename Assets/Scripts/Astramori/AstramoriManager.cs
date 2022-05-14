@@ -69,6 +69,10 @@ namespace AsterionArcade
         private FMOD.Studio.EventInstance coinDispenseSFX_instance;
         [SerializeField] FMODUnity.EventReference starfighterDiesSFX;
 
+        [Header("Pretext")]
+        [SerializeField] List<string> pretextFirst;
+        [SerializeField] List<string> pretextSecond;
+
         void Start()
         {
             // SFX stuff
@@ -344,6 +348,29 @@ namespace AsterionArcade
             virtualCamera.transform.position = spawnPosition.position;
             shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
             hasEnded = false;
+
+
+            if (GameManager.Instance.astramoriGamesPlayed == 0)
+            {
+                pretexts[0].text = "This is the starfighter you made.";
+                pretexts[1].text = "Destroy it.";
+            }
+            else
+            {
+                int id = Random.Range(0, pretextFirst.Count - 1);
+                /*
+                if (powerManager.powerLevel <= 25)
+                {
+                    id = pretextFirst.Count - 1;
+                }
+                */
+
+                pretexts[0].text = pretextFirst[id];
+                pretexts[1].text = pretextSecond[id];
+
+            }
+
+
             yield return new WaitForSeconds(1f);
             pretexts[0].enabled = true;
 
@@ -381,18 +408,7 @@ namespace AsterionArcade
         //continue current round
         public void Continue()
         {
-            if (GameManager.Instance.coinCount > 0)
-            {
-                if (isLost)
-                {
-                    ContinueCurrentGame();
-                }
-                else
-                {
-                    StartFreshGame();
-                }
-            }
-
+            StartFreshGame();
 
         }
 

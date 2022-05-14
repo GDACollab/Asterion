@@ -14,6 +14,12 @@ public class LightingGroup : MonoBehaviour
     public float flickerInterval;
     private float test;
     public bool flickering;
+    public Doorframe tiedDoorframe;
+    [ColorUsageAttribute(true, true)]
+    public Color ogColor;
+    [ColorUsageAttribute(true, true)]
+    public Color flashColor;
+
     [SerializeField] private float updateTime;
 
     public void SetAllLightsToDefault()
@@ -40,18 +46,22 @@ public class LightingGroup : MonoBehaviour
             LeanTween.value(gameObject, 0, 15, 0.4f).setOnUpdate((float val) =>
             {
                 emergencyLight.intensity = val;
+                tiedDoorframe.UpdateColor(flashColor);
 
             });
             yield return new WaitForSeconds(0.4f);
             LeanTween.value(gameObject, 15, 0, 0.4f).setOnUpdate((float val) =>
             {
                 emergencyLight.intensity = val;
+                tiedDoorframe.UpdateColor(ogColor);
 
             });
             yield return new WaitForSeconds(0.4f);
 
             yield return new WaitForSeconds(0.2f);
         }
+
+        tiedDoorframe.UpdateColor(ogColor);
 
 
 

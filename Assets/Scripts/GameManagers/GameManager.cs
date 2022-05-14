@@ -22,7 +22,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] Vignette vignette;
     [SerializeField] private List<GameObject> FPDisplay;
     [SerializeField] private Animator tempLoseAnim;
+    [SerializeField] private GameObject fpUI;
+    [SerializeField] private GameObject hallwayTony3D;
+    public Animator playerScareAnim;
     public GameObject pauseUI;
+    public GameObject settingsUI;
     public Transform astramoriEnemyBullets;
     public Transform asterionEnemyBullets;
     public AsterionManager asterionManager;
@@ -35,6 +39,7 @@ public class GameManager : MonoBehaviour
     [Header("Game State")]
     public ShipStats shipStats;
     public bool isPaused;
+    public bool isSettings;
     public bool isPlayingArcade;
     public bool gameLost;
     public int coinCount;
@@ -154,6 +159,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
     }
 
+
     private void disableLights(bool state)
     {
         for (int i = 0; i < lights.Length; i++)
@@ -189,9 +195,10 @@ public class GameManager : MonoBehaviour
         {
             a.EventInstance.setPaused(true);
         }
-        // Stop music!
-        asterionMusicManager.PlayMusic("stop all");
-        astramoriMusicManager.StopMusic();
+
+        fpUI.SetActive(false);
+        
+        
 
 
         preJumpscareSFX_instance.start();
@@ -218,6 +225,11 @@ public class GameManager : MonoBehaviour
         asterionManager.ExitMachine();
         astramoriManager.ExitMachine();
 
+        // Stop music!
+        asterionMusicManager.PlayMusic("stop all");
+        astramoriMusicManager.StopMusic();
+        hallwayTony3D.SetActive(false);
+
         // Dramatic Pause
         yield return new WaitForSeconds(4);
 
@@ -230,8 +242,12 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
 
         // JUMP SCARE ANIMATION!
+        playerMovement.SetMovementEnabled(false);
+        playerMovement.SetTurningEnabled(false);
+
         jumpscareSFX_instance.start();
         tempLoseAnim.Play("tempLoseAnim");
+        playerScareAnim.Play("jumpscare3D");
 
         yield return new WaitForSeconds(3);
 
@@ -302,6 +318,19 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void OpenSettings()
+    {
+        isSettings = true;
+        settingsUI.SetActive(true);
+
+    }
+
+    public void CloseSettings()
+    {
+        isSettings = false;
+        settingsUI.SetActive(false);
     }
 
     public void AlterCoins(int diff)
