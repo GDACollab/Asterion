@@ -24,6 +24,7 @@ namespace AsterionArcade
         [SerializeField] GameObject tutorialMenu;
         [SerializeField] GameObject upgradeMenu;
         [SerializeField] GameObject lossMenu;
+        [SerializeField] GameObject asterionCabinet;
         [SerializeField] AsterionLossScreen lossScreen;
         [SerializeField] VirtualCanvasCursor cursor;
         [SerializeField] Transform enemies;
@@ -58,8 +59,10 @@ namespace AsterionArcade
         [SerializeField] FMODUnity.EventReference coinInsertSFX;
         private FMOD.Studio.EventInstance coinInsertSFX_instance;
         [SerializeField] FMODUnity.EventReference playerDiesSFX;
+        [SerializeField] FMODUnity.EventReference victoryFanfareSFX;
+        [SerializeField] AsterionMusicManager asterionMusicManager;
 
-        
+
         [Header("Pretext")]
         [SerializeField] List<string> pretextFirst;
         [SerializeField] List<string> pretextSecond;
@@ -121,6 +124,10 @@ namespace AsterionArcade
         
         public override void StopInteractAction()
         {
+
+            // Music
+            asterionMusicManager.PlayMusic("idle");
+
             _playerMovement.enabled = false;
             
 
@@ -160,7 +167,8 @@ namespace AsterionArcade
                 
                 // SFX
                 coinInsertSFX_instance.start();
-                
+                asterionMusicManager.PlayMusic("menu");
+
                 upgradeMenu.SetActive(true);
                 ShipStats.instance.UpdateOld();
                 upgradeMenu.GetComponent<UpgradeMenu>().upgradePoints = 1;
@@ -197,6 +205,7 @@ namespace AsterionArcade
             Debug.Log("closing upgrade screen for asterion, starting game!");
             StartCoroutine(CombatRoutine());
             upgradeMenu.SetActive(false);
+            asterionMusicManager.PlayMusic("main");
 
             //GameManager.Instance.AlterCoins(-1);
         }
@@ -207,7 +216,8 @@ namespace AsterionArcade
             mainMenu.SetActive(true);
             isLost = false;
             isVictory = false;
-            
+            asterionMusicManager.PlayMusic("idle");
+
             enemyQueue = new List<Vector2>(baseEnemyQueue);
             cursor.EnableVirtualCursor();
             //_aiCore.enabled = true;
@@ -244,7 +254,8 @@ namespace AsterionArcade
 
             // SFX
             coinInsertSFX_instance.start();
-            
+            asterionMusicManager.PlayMusic("main");
+
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
             lossScreen.insufficientFundsText.enabled = false;
@@ -267,8 +278,14 @@ namespace AsterionArcade
                 player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 Debug.Log("games concluded");
 
+                asterionMusicManager.PlayMusic("stop all");
+
                 if (isWin)
                 {
+
+                    // Music
+                    FMODUnity.RuntimeManager.PlayOneShotAttached(victoryFanfareSFX.Guid, asterionCabinet);
+
                     timesWon++;
                     powerManager.GainPower();
                     GameManager.Instance.sanityManager.BoostSanity();

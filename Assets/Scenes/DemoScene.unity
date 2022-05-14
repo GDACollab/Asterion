@@ -3388,9 +3388,9 @@ RectTransform:
   m_Father: {fileID: 1134115100}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 410, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &129825601
@@ -11469,9 +11469,9 @@ RectTransform:
   m_Father: {fileID: 1134115100}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 170, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404713989
@@ -26715,9 +26715,9 @@ RectTransform:
   m_Father: {fileID: 1134115100}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1090236855
@@ -27984,7 +27984,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -14, y: 36}
-  m_SizeDelta: {x: 460, y: 100}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1134115101
 MonoBehaviour:
@@ -40506,9 +40506,9 @@ RectTransform:
   m_Father: {fileID: 1134115100}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1569172883
@@ -41607,7 +41607,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623424158}
-  - component: {fileID: 1623424159}
   - component: {fileID: 1623424160}
   m_Layer: 0
   m_Name: AsterionArcadeMachine
@@ -41634,36 +41633,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &1623424159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623424157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -796493211
-      Data2: 1262880839
-      Data3: -309666430
-      Data4: 1675459651
-    Path: event:/Music/Demos/Demo Asterion Music
-  Event: 
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!65 &1623424160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42424,6 +42393,8 @@ MonoBehaviour:
       Data3: -1320312167
       Data4: 1308119484
     Path: event:/Misc SFX/Pre-Jumpscare
+  asterionMusicManager: {fileID: 0}
+  astramoriMusicManager: {fileID: 0}
 --- !u!114 &1669733569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42463,7 +42434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sanity: 68
   sanityStage: 0
-  sanityBoost: 0
+  sanityBoost: 10
   sanityRate: 0.005
   sanityStage1Sanity: 65
   sanityStage2Sanity: 40
@@ -46559,7 +46530,7 @@ MonoBehaviour:
 
     back when funds depleted'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d46720b83dffa604abb73bca612efa99, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 47f41e739a403544ab8111a5336d9ef1, type: 2}
   m_sharedMaterial: {fileID: 8244350526274916515, guid: d46720b83dffa604abb73bca612efa99, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -46623,7 +46594,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1807792553
@@ -47794,6 +47765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1868742462}
   - component: {fileID: 1868742463}
+  - component: {fileID: 1868742464}
   m_Layer: 0
   m_Name: AsterionGame
   m_TagString: Untagged
@@ -47849,6 +47821,7 @@ MonoBehaviour:
   tutorialMenu: {fileID: 451960942}
   upgradeMenu: {fileID: 1165492949}
   lossMenu: {fileID: 271141715}
+  asterionCabinet: {fileID: 1623424157}
   lossScreen: {fileID: 271141717}
   cursor: {fileID: 1274144968}
   enemies: {fileID: 736331832}
@@ -47896,6 +47869,14 @@ MonoBehaviour:
       Data3: -720777581
       Data4: -642401343
     Path: event:/Cabinet SFX/Spaceship Explode
+  victoryFanfareSFX:
+    Guid:
+      Data1: -1355662382
+      Data2: 1165177690
+      Data3: -1042651248
+      Data4: -803498712
+    Path: event:/Music/Asterion/ASTerion Victory Fanfare
+  asterionMusicManager: {fileID: 1868742464}
   pretextFirst:
   - Another wave incoming!
   - The enemies are on all sides.
@@ -47910,6 +47891,41 @@ MonoBehaviour:
   - Where are they coming from?
   - "Don\u2019t give up!"
   - This is going to be close.
+--- !u!114 &1868742464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868742461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc1f38d3bd197af46838941156d2f57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asterionCabinet: {fileID: 1623424157}
+  sanityManager: {fileID: 1669733570}
+  asterionIdleMusic:
+    Guid:
+      Data1: 1947303096
+      Data2: 1199611354
+      Data3: 412497815
+      Data4: 1040617361
+    Path: event:/Music/Asterion/ASTN IDLE- MELODYLESS
+  asterionMenuMusic:
+    Guid:
+      Data1: -1155441979
+      Data2: 1181199850
+      Data3: -636301429
+      Data4: -35158622
+    Path: event:/Music/Asterion/ASTerion Music Upgrade Menu
+  asterionMainMusic:
+    Guid:
+      Data1: 2122792335
+      Data2: 1289059934
+      Data3: 527669638
+      Data4: 2006985897
+    Path: event:/Music/Asterion/ASTerion Music Main
 --- !u!1 &1875788153
 GameObject:
   m_ObjectHideFlags: 0
@@ -48138,7 +48154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1900838325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55833,19 +55849,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994558437704339962, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558437704339962, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558437704339962, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558437704339962, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558437704339963, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -55861,19 +55877,19 @@ PrefabInstance:
       objectReference: {fileID: 3895380791434030320, guid: 47f41e739a403544ab8111a5336d9ef1, type: 2}
     - target: {fileID: 2994558438788786960, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558438788786960, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558438788786960, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 460
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558438788786960, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558438788786961, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -55893,19 +55909,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439292050356, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439292050356, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439292050356, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 640
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439292050356, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439292050357, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -55933,19 +55949,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439559107629, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439559107629, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439559107629, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 280
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439559107629, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2994558439559107630, guid: fba30494387e9c242992777f45246669, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
