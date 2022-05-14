@@ -5,7 +5,7 @@
 			<value>Spaceship Explode</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{0ef8ac4d-9706-4d17-8d5c-6892312ec081}</destination>
@@ -46,6 +46,9 @@
 		</relationship>
 	</object>
 	<object class="MasterTrack" id="{d7597d0a-173e-438b-9ebd-dbc0366ae4f8}">
+		<relationship name="automationTracks">
+			<destination>{74a1b29c-6b1d-4549-8f9f-8edf4978126c}</destination>
+		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{b600e151-b775-4e7b-b8f1-e6488db7807b}</destination>
 		</relationship>
@@ -112,6 +115,11 @@
 		</relationship>
 		<relationship name="mixer">
 			<destination>{178903fe-ae57-4e38-8ecf-5f8a50eb02ae}</destination>
+		</relationship>
+	</object>
+	<object class="AutomationTrack" id="{74a1b29c-6b1d-4549-8f9f-8edf4978126c}">
+		<relationship name="automator">
+			<destination>{619b8083-f779-4133-907d-76a219362bdc}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{1b04c692-ba90-4d75-a800-a4110ef07f37}">
@@ -191,6 +199,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{7533551f-5be4-45d2-8b12-9901fa37e59d}">
 		<relationship name="effects">
+			<destination>{6f7c0073-dda9-46cd-8291-4d16a36ef1bf}</destination>
 			<destination>{f43215ba-4471-4f71-9cd4-475d305b867f}</destination>
 		</relationship>
 	</object>
@@ -225,6 +234,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ffeb5984-d283-4ddb-832d-9b77cc38f222}" />
+	<object class="ProxyEffect" id="{6f7c0073-dda9-46cd-8291-4d16a36ef1bf}">
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="preset">
+			<destination>{f5edcaf7-e586-49d5-affd-eb34174ea4b6}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{f43215ba-4471-4f71-9cd4-475d305b867f}" />
 	<object class="AutomationCurve" id="{04721dd8-8c2c-4417-baa1-c0b3d22185dc}">
 		<relationship name="parameter">

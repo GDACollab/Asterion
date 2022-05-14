@@ -5,7 +5,7 @@
 			<value>Spaceship Shoot</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{0ef8ac4d-9706-4d17-8d5c-6892312ec081}</destination>
@@ -185,6 +185,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{43727221-8139-4638-90aa-7ddd253c753f}">
 		<relationship name="effects">
+			<destination>{3cc7d739-42b7-4dec-8d03-7d4a04e872ff}</destination>
 			<destination>{1fe7e957-fd6f-4d55-bd52-045a54e71612}</destination>
 		</relationship>
 	</object>
@@ -218,6 +219,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{0dbaab4e-58e2-417c-8a64-95e67a7eb908}" />
+	<object class="ProxyEffect" id="{3cc7d739-42b7-4dec-8d03-7d4a04e872ff}">
+		<property name="inputFormat">
+			<value>1</value>
+		</property>
+		<relationship name="preset">
+			<destination>{f5edcaf7-e586-49d5-affd-eb34174ea4b6}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{1fe7e957-fd6f-4d55-bd52-045a54e71612}" />
 	<object class="AutomationCurve" id="{b2ddd754-f93b-472c-9499-752f6fa85a03}">
 		<relationship name="parameter">

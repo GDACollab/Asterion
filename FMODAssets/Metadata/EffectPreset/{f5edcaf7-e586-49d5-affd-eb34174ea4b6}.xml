@@ -17,6 +17,7 @@
 			<destination>{3a1833df-86cd-4530-a7bc-f40decb2fe25}</destination>
 			<destination>{2a9be9a7-4ad4-453e-bd84-38d59b41d5a5}</destination>
 			<destination>{d0931186-61df-433a-bfec-8e5e5fc93b35}</destination>
+			<destination>{db0adf86-54ef-4910-9fed-9c24028fbe7c}</destination>
 		</relationship>
 	</object>
 	<object class="PitchShifterEffect" id="{466fbb0c-c838-4d84-a618-bb40cb9c812d}">
@@ -50,6 +51,11 @@
 		<relationship name="automators">
 			<destination>{619b8083-f779-4133-907d-76a219362bdc}</destination>
 		</relationship>
+	</object>
+	<object class="PannerEffect" id="{db0adf86-54ef-4910-9fed-9c24028fbe7c}">
+		<property name="overridingOutputFormat">
+			<value>0</value>
+		</property>
 	</object>
 	<object class="Automator" id="{26ad21b5-adc6-4c81-9fc4-710e373c1762}">
 		<property name="nameOfPropertyBeingAutomated">
@@ -189,7 +195,7 @@
 			<value>0</value>
 		</property>
 		<property name="value">
-			<value>-19</value>
+			<value>-15</value>
 		</property>
 		<property name="curveShape">
 			<value>0.452664286</value>
