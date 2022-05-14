@@ -16,8 +16,13 @@ namespace AsterionArcade
         private bool feuxFlag;
         protected static int feuxWait;
 
+        [Header("SFX References")]
+        [SerializeField] FMODUnity.EventReference laserShoot3_SFX;
+
         public override void enemyShoot()
         {
+            FMODUnity.RuntimeManager.PlayOneShot(laserShoot3_SFX.Guid);
+
             Vector2 playerPosFrig = feuxFrigateEnemyPos;
 
             // Finds KnownPlayerPos of Frigate, if none, defaults to current player position

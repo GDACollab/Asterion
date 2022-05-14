@@ -14,11 +14,11 @@ public class PlacementZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(CheckBoundsRoutine());
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (!shouldntMove)
         {
@@ -26,22 +26,39 @@ public class PlacementZone : MonoBehaviour
             
         }
 
-        if (boxcollider.bounds.Contains(cursor.transform.position) )
-        {
-            isContact = true;
-        }
-        else
-        {
-            isContact = false;
-        }
+        
+        
+        
 
         
 
     }
 
+
+    public IEnumerator CheckBoundsRoutine()
+    {
+        while (true)
+        {
+            if (boxcollider.bounds.Contains(cursor.transform.position))
+            {
+                isContact = true;
+            }
+            else
+            {
+                isContact = false;
+            }
+
+            yield return new WaitForSeconds(0.05f);
+        }
+        
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (collision.tag == "AstramoriPlacementZone")
+        {
+            //isContact = true;
+        }
     }
 
 

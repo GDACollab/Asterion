@@ -54,6 +54,7 @@ namespace AsterionArcade
         [SerializeField] GameObject PlacementZone;
         public Vector3 zoneBaseSize;
         private bool tutorialTrigger = false;
+        public bool hasEnded;
 
         public enum GameState { Disabled, MainMenu, Upgrades, Gameplay, Invalid };
         [Header("Current Game State Info")]
@@ -134,6 +135,12 @@ namespace AsterionArcade
             upgradeMenu.SetActive(false);
             lossMenu.SetActive(false);
             StopCoroutine(CombatRoutine());
+            
+            if(GameManager.Instance.astramoriGamesPlayed <= 1)
+            {
+                print("nope");
+                GameManager.Instance.GetComponent<Tutorial_Sequence>().StartCoroutine(GameManager.Instance.GetComponent<Tutorial_Sequence>().EventThree());
+            }
 
             _cameraManager.OnChangeCameraState
                 .Invoke(CameraManager.CameraState.FirstPerson);
@@ -232,69 +239,76 @@ namespace AsterionArcade
         }
         public void GameConcluded(bool isWin)
         {
-            player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            timer.StopTimer();
-            starfighterAI.Deactivate();
-            spawningSystem.isActive = false;
-
-            if (isWin)
+            if (!hasEnded)
             {
+                player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                timer.StopTimer();
+                starfighterAI.Deactivate();
+                spawningSystem.isActive = false;
+                
 
-                // Play the SFX that plays when the starfighter fucking explodes
-                FMOD.Studio.EventInstance starfighterDiesSFX_instance = FMODUnity.RuntimeManager.CreateInstance(starfighterDiesSFX);
-                starfighterDiesSFX_instance.setParameterByName("AstramoriMix", Random.Range(69,96));
-                starfighterDiesSFX_instance.start();
-                starfighterDiesSFX_instance.release();
-
-                lossScreen.gameStateText.text = "Victory";
-                cursor.EnableVirtualCursor();
-                int quarters = ((int)(((timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
-                lossScreen.fundsRewardedText.text = "Quarters Recieved: " + quarters;
-                timeText.enabled = true;
-                timeText.text = "Time Remaining:\n" + (int)(timer.time) + "s";
-                if (canReward)
+                if (isWin)
                 {
-                    GameManager.Instance.AlterCoins(quarters);
 
-                    // SFX
-                    coinDispenseSFX_instance.setParameterByName("Number of Coins", quarters);
-                    coinDispenseSFX_instance.start();
+                    // Play the SFX that plays when the starfighter fucking explodes
+                    FMOD.Studio.EventInstance starfighterDiesSFX_instance = FMODUnity.RuntimeManager.CreateInstance(starfighterDiesSFX);
+                    starfighterDiesSFX_instance.setParameterByName("AstramoriMix", Random.Range(69, 96));
+                    starfighterDiesSFX_instance.start();
+                    starfighterDiesSFX_instance.release();
+
+                    lossScreen.gameStateText.text = "Victory";
+                    cursor.EnableVirtualCursor();
+                    int quarters = ((int)(((timer.time / timer.startingTime)) * maxCoinRewardBonus) + 1);
+                    lossScreen.fundsRewardedText.text = "Quarters Recieved: " + quarters;
+                    timeText.enabled = true;
+                    timeText.text = "Time Remaining:\n" + (int)(timer.time) + "s";
+                    if (canReward)
+                    {
+                        GameManager.Instance.AlterCoins(quarters);
+
+                        // SFX
+                        coinDispenseSFX_instance.setParameterByName("Number of Coins", quarters);
+                        coinDispenseSFX_instance.start();
+                    }
+
+                    canReward = false;
+                    lossScreen.fundsRewardedText.enabled = true;
+                    lossMenu.SetActive(true);
+                    GameManager.Instance.astramoriGamesPlayed++;
+                    //_aiCore.enabled = false;
+                    _playerMovement.enabled = false;
+                    foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+                    {
+                        bd.Death();
+                    }
+                    isLost = false;
+                    GameManager.Instance.asterionManager.baseEnemyQueue = new List<Vector2>(enemyQueue);
+                    fpShipCountText.text = "Ships: " + shipsDeployed;
+
+
                 }
-                
-                canReward = false;
-                lossScreen.fundsRewardedText.enabled = true;
-                lossMenu.SetActive(true);
-                GameManager.Instance.astramoriGamesPlayed++;
-                //_aiCore.enabled = false;
-                _playerMovement.enabled = false;
-                foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+                else
                 {
-                    bd.Death();
+                    lossScreen.gameStateText.text = "Game Over";
+                    cursor.EnableVirtualCursor();
+                    lossMenu.SetActive(true);
+                    lossScreen.fundsRewardedText.enabled = false;
+                    timeText.enabled = false;
+                    _playerMovement.enabled = false;
+                    GameManager.Instance.astramoriGamesPlayed++;
+                    StopAllCoroutines();
+                    // _aiCore.enabled = false;
+                    foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
+                    {
+                        bd.Death();
+                    }
+                    GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
+                    isLost = true;
                 }
-                isLost = false;
-                GameManager.Instance.asterionManager.baseEnemyQueue = new List<Vector2>(enemyQueue);
-                fpShipCountText.text = "Ships: " + shipsDeployed;
-                
-                
+
+                hasEnded = true;
             }
-            else
-            {
-                lossScreen.gameStateText.text = "Game Over";
-                cursor.EnableVirtualCursor();
-                lossMenu.SetActive(true);
-                lossScreen.fundsRewardedText.enabled = false;
-                timeText.enabled = false;
-                _playerMovement.enabled = false;
-                GameManager.Instance.astramoriGamesPlayed++;
-                StopAllCoroutines();
-               // _aiCore.enabled = false;
-                foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
-                {
-                    bd.Death();
-                }
-                GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
-                isLost = true;
-            }
+            
         }
 
         //sets fighter stats to base + chosen upgrades
@@ -329,6 +343,7 @@ namespace AsterionArcade
             player.transform.position = spawnPosition.position;
             virtualCamera.transform.position = spawnPosition.position;
             shipStatusText.text = "Ship Count: (" + enemies.childCount + "/" + shipsDeployed + ")";
+            hasEnded = false;
             yield return new WaitForSeconds(1f);
             pretexts[0].enabled = true;
 
@@ -392,7 +407,7 @@ namespace AsterionArcade
                 if (tutorialTrigger == false)
                 {
                     tutorialTrigger = true;
-                    GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().StartCoroutine("EventThree");
+                    //GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().StartCoroutine("EventThree");
                 }
             }
 

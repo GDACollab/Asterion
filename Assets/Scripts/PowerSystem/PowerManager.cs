@@ -155,6 +155,7 @@ public class PowerManager : MonoBehaviour
 
     public void SetMonsterPosition()
     {
+        
         tempMonster.transform.position = baseMonsterPos - new Vector3(0, 0, ((100 -powerLevel) / 100) * 7);
     }
 

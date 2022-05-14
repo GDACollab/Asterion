@@ -15,6 +15,8 @@ public class Tutorial_Sequence : MonoBehaviour
     GameObject Player;
     MonsterManager _MonsterManager;
     GameObject _cameraManager;
+    public GameObject AsterionEndTrigger;
+    public GameObject TonyModelSpooky;
 
     
 
@@ -66,11 +68,11 @@ public class Tutorial_Sequence : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         Lights.SetActive(false);
 
-        GameObject.Find("SpookyPlaneTutorial").GetComponent<SpriteRenderer>().enabled = true;
+        TonyModelSpooky.SetActive(true);
         //GameObject.Find("SpookyPlane").transform.rotation = new Quaternion(81f, -90f, 90f, 0f);
 
         yield return new WaitForSeconds(2f);
-        GameObject.Find("SpookyPlaneTutorial").GetComponent<SpriteRenderer>().enabled = false;
+        TonyModelSpooky.SetActive(false);
         Lights.SetActive(true);
 
         yield return new WaitForSeconds(0.05f);
@@ -102,7 +104,7 @@ public class Tutorial_Sequence : MonoBehaviour
     }
 
     // Handles Event When Leaving Astramori
-    IEnumerator EventThree()
+    public IEnumerator EventThree()
     {
         yield return new WaitForSeconds(1f);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
@@ -117,11 +119,11 @@ public class Tutorial_Sequence : MonoBehaviour
     IEnumerator EndEventThree()
     {
         // Delay Should Be Length of Sound
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
 
-        GameObject.Find("AsterionTutorialEndTrigger").GetComponent<BoxCollider>().enabled = true;
+        AsterionEndTrigger.transform.GetComponent<BoxCollider>().enabled = true;
     }
 
     public void TonyBehindAstramori()

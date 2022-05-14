@@ -134,6 +134,13 @@ MonoBehaviour:
   lookingForPlayer: 0
   explodeDist: 4
   numFightersToSpawn: 5
+  carrierExplodeSFX:
+    Guid:
+      Data1: 496135638
+      Data2: 1264906840
+      Data3: -1621307766
+      Data4: 1490331941
+    Path: event:/Cabinet SFX/Giant Enemy Explosion
 --- !u!50 &-4008170801932874079
 Rigidbody2D:
   serializedVersion: 4

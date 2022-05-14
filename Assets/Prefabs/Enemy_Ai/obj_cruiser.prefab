@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3472095937016577195}
   - component: {fileID: 6118345354699944974}
   - component: {fileID: 6918451382155327689}
-  - component: {fileID: 7907595459618418981}
   - component: {fileID: 4902838623317178008}
   - component: {fileID: 6900319957064285874}
   m_Layer: 7
@@ -53,6 +52,13 @@ MonoBehaviour:
   baseHealth: 7
   isAlien: 1
   rb: {fileID: 0}
+  alienDeathSFX:
+    Guid:
+      Data1: -1285409906
+      Data2: 1108346445
+      Data3: -197564543
+      Data4: 1540196358
+    Path: event:/Cabinet SFX/Medium Enemy Explosion
 --- !u!212 &6118345354699944974
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -127,22 +133,13 @@ MonoBehaviour:
   isAstramori: 0
   lookingForPlayer: 0
   bulletSpread: 1.55
---- !u!114 &7907595459618418981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 419958047552857102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3876c2551ac52c54ba0ce325e89d000c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  baseHealth: 0
-  isAlien: 0
-  rb: {fileID: 0}
+  laserShoot3_SFX:
+    Guid:
+      Data1: -1888529215
+      Data2: 1174942735
+      Data3: 2076657817
+      Data4: 1252711699
+    Path: event:/Cabinet SFX/Enemy Laser Shoot 3
 --- !u!50 &4902838623317178008
 Rigidbody2D:
   serializedVersion: 4
