@@ -49,6 +49,10 @@ namespace AsterionArcade
             }
 
             bodyCollider.enabled = false;
+            if(GetComponent<Enemy>() != null)
+            {
+                GetComponent<Enemy>().enabled = false;
+            }
             base.Death();
             Destroy(this.gameObject,1);
         }
