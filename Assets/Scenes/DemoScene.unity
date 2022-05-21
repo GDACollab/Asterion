@@ -44019,6 +44019,7 @@ GameObject:
   - component: {fileID: 1669733569}
   - component: {fileID: 1669733570}
   - component: {fileID: 1669733571}
+  - component: {fileID: 1669733572}
   m_Layer: 0
   m_Name: GameManagerObject
   m_TagString: Untagged
@@ -44191,6 +44192,42 @@ MonoBehaviour:
   AsterionEndTrigger: {fileID: 1750122808}
   TonyModelSpooky: {fileID: 117176951}
   hasSeenTony: 0
+--- !u!114 &1669733572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669733564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88556a50dc90e554a9b3ac6147b7d389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightPops:
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  - Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  single_paperRustling: []
+  cabinetThunk: []
+  cabinetClick: []
+  single_TonyBreathing: []
+  scraping: []
+  gurgles: []
+  buglikeVox: []
+  deerlikeVox: []
+  single_miscClunk: []
+  single_TonySteps: []
+  sanityManager: {fileID: 0}
 --- !u!1 &1680238050
 GameObject:
   m_ObjectHideFlags: 0
