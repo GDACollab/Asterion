@@ -205,6 +205,19 @@ public class PowerManager : MonoBehaviour
         currentRate = initialRate;
     }
 
+    public void GainPowerIncrement(float amount)
+    {
+
+        powerLevel += amount;
+        FMODUnity.RuntimeManager.PlayOneShotAttached(batteryChargeSFX.Guid, batteryCube);
+
+        if (powerLevel > 100)
+        {
+            powerLevel = 100;
+        }
+        currentRate = initialRate;
+    }
+
     public void IncreaseRate()
     {
         currentRate *= rateMultiplier;

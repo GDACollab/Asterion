@@ -5,7 +5,7 @@ namespace AsterionArcade
 {
     public class fighter_enemy_health : BasicDamageable
     {
-
+        public float batteryAmount;
         [SerializeField] DissolveEffect dissolveFX;
         [SerializeField] Color dissolveColor;
         Collider2D bodyCollider;
@@ -53,6 +53,12 @@ namespace AsterionArcade
             {
                 GetComponent<Enemy>().enabled = false;
             }
+
+            if (isAlien)
+            {
+                GameManager.Instance.asterionManager.batteryEarned += batteryAmount;
+            }
+
             base.Death();
             Destroy(this.gameObject,1);
         }

@@ -43,6 +43,7 @@ namespace AsterionArcade
         public bool isPlaying;
         public List<Vector2> baseEnemyQueue;
         public List<Vector2> enemyQueue;
+        public float batteryEarned;
         public int timesWon;
         //Added Variable to skip Upgrades on first play
         private bool firstTime = true;
@@ -206,6 +207,7 @@ namespace AsterionArcade
             StartCoroutine(CombatRoutine());
             upgradeMenu.SetActive(false);
             asterionMusicManager.PlayMusic("main");
+            batteryEarned = 0;
 
             //GameManager.Instance.AlterCoins(-1);
         }
@@ -285,9 +287,9 @@ namespace AsterionArcade
 
                     // Music
                     FMODUnity.RuntimeManager.PlayOneShotAttached(victoryFanfareSFX.Guid, asterionCabinet);
-
                     timesWon++;
-                    powerManager.GainPower();
+                    powerManager.GainPowerIncrement(batteryEarned);
+                    batteryEarned = 0;
                     GameManager.Instance.sanityManager.BoostSanity();
                     lossScreen.gameStateText.text = "You Win!";
                     cursor.EnableVirtualCursor();

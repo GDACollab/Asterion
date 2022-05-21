@@ -53,6 +53,7 @@ MonoBehaviour:
   baseHealth: 2
   isAlien: 1
   rb: {fileID: 0}
+  batteryAmount: 2
   dissolveFX: {fileID: 0}
   dissolveColor: {r: 0, g: 1, b: 0.9083636, a: 0}
   alienDeathSFX:
