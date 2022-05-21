@@ -1186,7 +1186,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: e0cb200f8641c4304b428a5f77596cbb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3771447bc929f4610a5fe2e1f5b4b6ef, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6863d6d4805344b4bb750093a93f6885, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1404,12 +1404,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aeea9f0e6d139b4c91c81ba0f7686e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveUI: {fileID: 322552466}
-  fadeImagePrefab: {fileID: 3389422604864246109, guid: c08a2a85e00714e4e9bf66cf80990dfc, type: 3}
-  fadeInOnAwake: 1
-  onFadeComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1588106825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1422,7 +1416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543bde127939809499f185e9287410dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeManager: {fileID: 1588106824}
 --- !u!4 &1588106826
 Transform:
   m_ObjectHideFlags: 0
