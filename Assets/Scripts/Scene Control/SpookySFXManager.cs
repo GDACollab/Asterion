@@ -6,7 +6,7 @@ public class SpookySFXManager : MonoBehaviour
 {
     [Tooltip("Base delay, in seconds, between instances of a spooky SFX playing.")]
     public float baseDelay = 20.0f;
-    [Tooltip("Variance in delay between spooky SFX, V. We add a random number from -V to V to our base delay to get the final delay.")]
+    [Tooltip("Variance in delay between spooky SFX. We add a random number in the range (-variance, variance) to our base delay to get the final delay.")]
     public float delayVariance = 5f;
     private float time;
 
@@ -18,16 +18,18 @@ public class SpookySFXManager : MonoBehaviour
 
     [Header("Alien SFX")]
     public List<FMODUnity.EventReference> alienSFX;
+    List<FMODUnity.EventReference> soundbankToPlay;
+    private FMODUnity.EventReference soundToPlay;
 
 
     public SanityManager sanityManager;
-    private ((int,int), (int,int), (int,int))[] batteryStageProbabilities =
+    private int[,,] sanityStageProbabilities = new int[8,3,2]
     {
         // So let's explain what the fuck is going on here:
-        // For the sake of playing spooky SFX, battery drain is quantized
+        // For the sake of playing spooky SFX, sanity drain is quantized
         // into 8 stages, separated into 7 intervals of 100%/7 and 1 at 0%.
         
-        // For each battery stage, there are ranges for three categories:
+        // For each sanity stage, there are ranges for three categories:
         // one for Environmental SFX, one for Mechanical SFX, and one for Alien SFX.
 
         // Ultimately, to play a random SFX we'll be randomly generating a number
@@ -35,7 +37,7 @@ public class SpookySFXManager : MonoBehaviour
         // falls into.
 
         // For example:
-        //      The battery is between 6/7 * 100 and 5/7 * 100.
+        //      The sanity is between 6/7 * 100 and 5/7 * 100.
         //      If the RNG lands between 0 and 66, we play an environmental sound.
         //      If the RNG lands between 67 and 100, we play a mechanical sound.
         // etc!
@@ -43,14 +45,14 @@ public class SpookySFXManager : MonoBehaviour
         // A range of (-1,-1) means that category will never be chosen at that stage.
 
         //  env.        mech.       alien       // Range:
-        (   (0,100),    (-1,-1),    (-1,-1)),   // Battery is [100      , 6/7*100)
-        (   (0,66),     (67,100),   (-1,-1)),   // Battery is [6/7*100  , 5/7*100)
-        (   (0,33),     (34,100),   (-1,-1)),   // Battery is [5/7*100  , 4/7*100)
-        (   (-1,-1),    (0,100),    (-1,-1)),   // Battery is [4/7*100  , 3/7*100)
-        (   (-1,-1),    (0,66),     (67,100)),  // Battery is [3/7*100  , 2/7*100)
-        (   (-1,-1),    (0,33),     (34,100)),  // Battery is [2/7*100  , 1/7*100)
-        (   (-1,-1),    (-1,-1),    (0,100)),   // Battery is [1/7*100  , 0)
-        (   (-1,-1),    (-1,-1),    (-1,-1)),   // Battery is 0
+        {   {0,99},     {-1,-1},    {-1,-1}},   // Sanity is [100      , 6/7*100)
+        {   {0,66},     {67,99},    {-1,-1}},   // Sanity is [6/7*100  , 5/7*100)
+        {   {0,33},     {34,99},    {-1,-1}},   // Sanity is [5/7*100  , 4/7*100)
+        {   {-1,-1},    {0,99},     {-1,-1}},   // Sanity is [4/7*100  , 3/7*100)
+        {   {-1,-1},    {0,66},     {67,99}},   // Sanity is [3/7*100  , 2/7*100)
+        {   {-1,-1},    {0,33},     {34,99}},   // Sanity is [2/7*100  , 1/7*100)
+        {   {-1,-1},    {-1,-1},    {0,99}},    // Sanity is [1/7*100  , 0)
+        {   {-1,-1},    {-1,-1},    {-1,-1}}   // Sanity is 0
     };
 
     void Awake()
@@ -58,7 +60,7 @@ public class SpookySFXManager : MonoBehaviour
         sanityManager = GetComponent<SanityManager>();
         StartCoroutine(PlaySoundsCoroutine());
     }
-
+    
     protected IEnumerator PlaySoundsCoroutine()
     {
         while (true)
@@ -72,14 +74,48 @@ public class SpookySFXManager : MonoBehaviour
 
     void PlaySpookySFX()
     {
-        //print("Deez fucking nuts;");
+                                        // Get the probability ranges based of the sanity stage.
+        int probabilityStage = calculateStageFromSanity(sanityManager.sanity);
+        int RNG = Random.Range(0,100);  // Generate a random int between 0 and 99.
+
+                                        // For each of our three soundbanks...
+        for (int i = 0; i <= 2; i = i + 1)
+        {
+                                        // If our RNG is within the soundbank's range:
+            if (sanityStageProbabilities[probabilityStage,i,0] <= RNG
+                & RNG <= sanityStageProbabilities[probabilityStage,i,1])
+            {
+                
+                switch (i)              
+                {                       // Set soundbankToPlay to the appropriate bank,
+                    case 0:
+                        soundbankToPlay = environmentalSFX;
+                        break;
+                    case 1:
+                        soundbankToPlay = mechanicalSFX;
+                        break;
+                    case 2:
+                        soundbankToPlay = alienSFX;
+                        break;
+                }
+
+                                        // And play a random sound effect from that bank.
+                RNG = Random.Range(0,soundbankToPlay.Count);
+                FMODUnity.RuntimeManager.PlayOneShot(soundbankToPlay[RNG]);
+
+                break;
+
+            }
+        }
+
+        
     }
 
-    int calculateStageFromBattery(float battery)
+    int calculateStageFromSanity(float sanity)
     {
         // HELPER FUNCTION FOR READABILITY
 
-        //  Battery percent         Stage
+        // Sanity percent           Stage
         // [100      , 6/7*100)     0
         // [6/7*100  , 5/7*100)     1
         // [5/7*100  , 4/7*100)     2
@@ -89,6 +125,6 @@ public class SpookySFXManager : MonoBehaviour
         // [1/7*100  , 0)           6
         // 0                        7
 
-        return (7 - (int)Mathf.Ceil(battery * 7f/100f));
+        return (7 - (int)Mathf.Ceil(sanity * 7f/100f));
     }
 }
