@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class SpookySFXManager : MonoBehaviour
 {
+    [Tooltip("Base delay, in seconds, between instances of a spooky SFX playing.")]
+    public float baseDelay = 20.0f;
+    [Tooltip("Variance in delay between spooky SFX, V. We add a random number from -V to V to our base delay to get the final delay.")]
+    public float delayVariance = 5f;
+    private float time;
+
     [Header("Environmental SFX")]
     public List<FMODUnity.EventReference> environmentalSFX;
 
@@ -47,21 +53,26 @@ public class SpookySFXManager : MonoBehaviour
         (   (-1,-1),    (-1,-1),    (-1,-1)),   // Battery is 0
     };
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         sanityManager = GetComponent<SanityManager>();
+        StartCoroutine(PlaySoundsCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    protected IEnumerator PlaySoundsCoroutine()
     {
-        //print(calculateStageFromBattery(sanityManager.sanity));
+        while (true)
+        {
+            time = baseDelay + Random.Range(-delayVariance, delayVariance);
+            yield return new WaitForSeconds(time);
+            PlaySpookySFX();
+        }
+
     }
 
     void PlaySpookySFX()
     {
-
+        //print("Deez fucking nuts;");
     }
 
     int calculateStageFromBattery(float battery)
