@@ -83,9 +83,30 @@ namespace FirstPersonPlayer
             }
         }
 
+        private void Start()
+        {
+            StartCoroutine(FPcameraBob());
+        }
+
         private void Update()
         {
             MouseInteract();
+        }
+
+        public IEnumerator FPcameraBob()
+        {
+            while (true)
+            {
+                LeanTween.value(gameObject, 0.3f, 0.315f, 5f).setOnUpdate((float val) => {
+                    _firstPersonVC.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = new Vector3(0,val,0);
+                });
+                yield return new WaitForSeconds(7f);
+                LeanTween.value(gameObject, 0.315f, 0.3f, 5f).setOnUpdate((float val) => {
+                    _firstPersonVC.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = new Vector3(0, val, 0);
+                });
+                yield return new WaitForSeconds(7f);
+            }
+            
         }
 
         private void MouseInteract()

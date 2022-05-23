@@ -180,6 +180,7 @@ namespace AsterionArcade
                 if (firstTime)
                 {
                     CloseUpgradeScreen();
+                    
                     firstTime = false;
                 }
                 else
@@ -506,6 +507,7 @@ namespace AsterionArcade
                 _interactableManager.OnStopInteract.Invoke();
                 if(GameManager.Instance.asterionGamesPlayed == 1)
                 {
+                    GameManager.Instance.introUI.Reveal();
                     GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().LockPlayerAndSlideDoor();
                 }
                 

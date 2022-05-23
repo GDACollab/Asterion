@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator tempLoseAnim;
     [SerializeField] private GameObject fpUI;
     [SerializeField] private GameObject hallwayTony3D;
+    public IntroUI introUI;
     public Animator playerScareAnim;
     public GameObject pauseUI;
     public GameObject settingsUI;
@@ -69,6 +70,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 61;
+
         if (Instance == null)
         {
             Instance = this;

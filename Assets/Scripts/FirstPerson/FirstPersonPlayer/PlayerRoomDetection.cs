@@ -33,9 +33,10 @@ public class PlayerRoomDetection : MonoBehaviour
         else if (other.tag == "Walkway")
         {
             playerLocation = Location.Walkway;
+            monsterManager.UpdatedPlayerPos();
         }
 
-        monsterManager.UpdatedPlayerPos();
+        
 
 
     }

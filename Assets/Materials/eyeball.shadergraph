@@ -1192,7 +1192,7 @@
     },
     "m_Name": "BackgroundColor",
     "m_DefaultReferenceName": "Color_7199ffc5ae1b44f1aa8118cb84b8959c",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_backColor",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
