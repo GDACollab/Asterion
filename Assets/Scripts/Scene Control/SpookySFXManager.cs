@@ -73,6 +73,8 @@ public class SpookySFXManager : MonoBehaviour
     {
         while (true)
         {
+            // STRETCH GOAL: HAVE EITHER baseDelay or delayVariance change with sanity, so that sounds happen more often
+            // closer towards 0 sanity.
             time = baseDelay + Random.Range(-delayVariance, delayVariance);
             yield return new WaitForSeconds(time);
             PlaySpookySFX();
