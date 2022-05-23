@@ -28,8 +28,6 @@ public class SpookySFXManager : MonoBehaviour
     [SerializeField] List<GameObject> catwalkRoomCabinetSpeakers;   // Used as locations to play SFX; 4 arbitrary arcade cabinets.
     private GameObject currentSpeaker;
     
-
-
     public SanityManager sanityManager;
     private int[,,] sanityStageProbabilities = new int[8,3,2]
     {
@@ -62,6 +60,8 @@ public class SpookySFXManager : MonoBehaviour
         {   {-1,-1},    {-1,-1},    {0,99}},    // Sanity is [1/7*100  , 0)
         {   {-1,-1},    {0,49},     {50,99}}    // Sanity is 0
     };
+    private int probabilityStage;
+    private int RNG;
 
     void Awake()
     {
@@ -85,9 +85,9 @@ public class SpookySFXManager : MonoBehaviour
     void PlaySpookySFX()
     {
                                         // Get the probability ranges based of the sanity stage.
-        int probabilityStage = calculateStageFromSanity(sanityManager.sanity);
+        probabilityStage = calculateStageFromSanity(sanityManager.sanity);
 
-        int RNG = Random.Range(0,100);  // Generate a random int between 0 and 99.
+        RNG = Random.Range(0,100);  // Generate a random int between 0 and 99.
 
                                         // For each of our three soundbanks...
         for (int i=0; i<=2; i++)
