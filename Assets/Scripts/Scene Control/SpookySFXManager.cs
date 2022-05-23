@@ -111,14 +111,16 @@ public class SpookySFXManager : MonoBehaviour
                 }
 
             }
-                
+            
+            //print(playerRoomDetection.playerLocation);
+
                                         // Pick a location to play the sound...
             switch (playerRoomDetection.playerLocation)
             {
                 case PlayerRoomDetection.Location.AsterionRoom:
                     RNG = Random.Range(0, asterionRoomLightSpeakers.Count);
                     currentSpeaker = asterionRoomLightSpeakers[RNG];
-                    print("Player in Asterion");
+                    //print("Player in Asterion");
                     break;
 
 
@@ -133,21 +135,21 @@ public class SpookySFXManager : MonoBehaviour
                     }
                     RNG = Random.Range(0, catwalkRoomCabinetSpeakers.Count);
                     currentSpeaker = catwalkRoomCabinetSpeakers[RNG];
-                    print("Player on catwalk");
+                    //print("Player on catwalk");
                     break;
 
 
                 case PlayerRoomDetection.Location.AstramoriRoom:
                     RNG = Random.Range(0, astramoriRoomLightSpeakers.Count);
                     currentSpeaker = astramoriRoomLightSpeakers[RNG];
-                    print("Player in Astramori");
+                    //print("Player in Astramori");
                     break;
             }
 
                                         // And play a random sound effect from that bank at the location.
             RNG = Random.Range(0,soundbankToPlay.Count);
             FMODUnity.RuntimeManager.PlayOneShotAttached(soundbankToPlay[RNG].Guid, currentSpeaker);
-            print(soundbankToPlay[RNG]);
+            print(soundbankToPlay[RNG] + "\nplayed at " + playerRoomDetection.playerLocation);
 
             break;
 

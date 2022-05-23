@@ -3203,7 +3203,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh22312
+  m_Name: pb_Mesh21132
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11386,7 +11386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryIndicator: {fileID: 639027775}
   initialRate: 6
-  INSANEMode: 1
+  INSANEMode: 0
   rateMultiplier: 1.9
   winRate: 10
   currentRate: 0
@@ -14984,6 +14984,7 @@ Transform:
   - {fileID: 1798638156}
   - {fileID: 1620831955}
   - {fileID: 1269496650}
+  - {fileID: 1669364178}
   m_Father: {fileID: 358930549}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43202,8 +43203,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.82, z: -14.77}
   m_LocalScale: {x: 3.705767, y: 4.922903, z: 17.4}
-  m_Children:
-  - {fileID: 1669364178}
+  m_Children: []
   m_Father: {fileID: 571357501}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44016,7 +44016,7 @@ GameObject:
   - component: {fileID: 1669364178}
   - component: {fileID: 1669364179}
   m_Layer: 0
-  m_Name: Walkway Ambience Speaker
+  m_Name: Catwalk Ambience Speaker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44029,12 +44029,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1669364177}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.82, z: -14.77}
+  m_LocalScale: {x: 3.705767, y: 4.922903, z: 17.4}
   m_Children: []
-  m_Father: {fileID: 1620831955}
-  m_RootOrder: 0
+  m_Father: {fileID: 571357501}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1669364179
 MonoBehaviour:
