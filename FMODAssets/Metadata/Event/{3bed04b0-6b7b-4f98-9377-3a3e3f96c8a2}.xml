@@ -32,7 +32,7 @@
 			<destination>{1ab0d650-e93f-4232-8f47-af8e3cd17dad}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{b803b30f-fae8-40cc-87b2-136e3fdf7fbc}</destination>
+			<destination>{314163af-efa0-40e7-ba17-5cdfe9be46ed}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{3d81dadc-46a7-40e4-9cb8-146b88c3448e}">
@@ -53,7 +53,7 @@
 			<destination>{58b9c277-1115-40cf-a213-b68d342875e0}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{45112322-9063-422f-94e0-69e965d788a1}</destination>
+			<destination>{828a1bc4-e2d0-46c2-af04-e2fb4047caa4}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{b3a37cbe-6451-43af-ac79-12061970e962}" />
@@ -125,6 +125,10 @@
 	</object>
 	<object class="MixerBusPanner" id="{8d604cdd-abce-4f8f-8e6f-5ed61c99b5b6}" />
 	<object class="MixerBusFader" id="{26fd985b-93d2-485e-95f0-c5077ea35854}" />
-	<object class="SpatialiserEffect" id="{0808e2e9-b9a9-4988-8819-65839efcb484}" />
+	<object class="SpatialiserEffect" id="{0808e2e9-b9a9-4988-8819-65839efcb484}">
+		<property name="distanceRolloffType">
+			<value>2</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{0c53e1e0-7936-4a0c-85cc-7f103a2cf4f5}" />
 </objects>

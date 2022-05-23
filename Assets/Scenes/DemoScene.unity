@@ -44353,7 +44353,23 @@ MonoBehaviour:
       Data3: 1728615091
       Data4: 229917046
     Path: event:/Spooky SFX/Alien/Clunk Hiss
-  sanityManager: {fileID: 0}
+  playerRoomDetection: {fileID: 3857979980980965739}
+  asterionRoomLightSpeakers:
+  - {fileID: 431574522}
+  - {fileID: 822609015}
+  - {fileID: 568964987}
+  - {fileID: 1331347559}
+  astramoriRoomLightSpeakers:
+  - {fileID: 1568266858}
+  - {fileID: 1250071507}
+  - {fileID: 1124355796}
+  - {fileID: 1358959269}
+  catwalkRoomCabinetSpeakers:
+  - {fileID: 492381133}
+  - {fileID: 1590496742}
+  - {fileID: 2101271140}
+  - {fileID: 1324577656}
+  sanityManager: {fileID: 1669733570}
 --- !u!1 &1680238050
 GameObject:
   m_ObjectHideFlags: 0

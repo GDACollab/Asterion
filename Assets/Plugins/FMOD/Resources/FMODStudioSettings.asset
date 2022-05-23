@@ -366,6 +366,7 @@ MonoBehaviour:
   - Astramori SFX
   - Misc SFX
   - Music
+  - Spooky SFX
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0

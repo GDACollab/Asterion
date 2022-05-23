@@ -19,7 +19,15 @@ public class SpookySFXManager : MonoBehaviour
     [Header("Alien SFX")]
     public List<FMODUnity.EventReference> alienSFX;
     List<FMODUnity.EventReference> soundbankToPlay;
-    private FMODUnity.EventReference soundToPlay;
+
+    [Header("Speakers")]
+    [SerializeField] PlayerRoomDetection playerRoomDetection;
+    [SerializeField] List<GameObject> asterionRoomLightSpeakers;    // Used as locations to play SFX; the light source "speaker", two other lights,
+                                                                    // and the emergency light.
+    [SerializeField] List<GameObject> astramoriRoomLightSpeakers;   // Used as locations to play SFX. Same deal as above, different room.
+    [SerializeField] List<GameObject> catwalkRoomCabinetSpeakers;   // Used as locations to play SFX; 4 arbitrary arcade cabinets.
+    private GameObject currentSpeaker;
+    
 
 
     public SanityManager sanityManager;
@@ -52,7 +60,7 @@ public class SpookySFXManager : MonoBehaviour
         {   {-1,-1},    {0,66},     {67,99}},   // Sanity is [3/7*100  , 2/7*100)
         {   {-1,-1},    {0,33},     {34,99}},   // Sanity is [2/7*100  , 1/7*100)
         {   {-1,-1},    {-1,-1},    {0,99}},    // Sanity is [1/7*100  , 0)
-        {   {-1,-1},    {-1,-1},    {-1,-1}}   // Sanity is 0
+        {   {-1,-1},    {0,49},     {50,99}}    // Sanity is 0
     };
 
     void Awake()
@@ -76,10 +84,11 @@ public class SpookySFXManager : MonoBehaviour
     {
                                         // Get the probability ranges based of the sanity stage.
         int probabilityStage = calculateStageFromSanity(sanityManager.sanity);
+
         int RNG = Random.Range(0,100);  // Generate a random int between 0 and 99.
 
                                         // For each of our three soundbanks...
-        for (int i = 0; i <= 2; i = i + 1)
+        for (int i=0; i<=2; i++)
         {
                                         // If our RNG is within the soundbank's range:
             if (sanityStageProbabilities[probabilityStage,i,0] <= RNG
@@ -87,7 +96,7 @@ public class SpookySFXManager : MonoBehaviour
             {
                 
                 switch (i)              
-                {                       // Set soundbankToPlay to the appropriate bank,
+                {                       // Set soundbankToPlay to the appropriate bank...
                     case 0:
                         soundbankToPlay = environmentalSFX;
                         break;
@@ -99,13 +108,47 @@ public class SpookySFXManager : MonoBehaviour
                         break;
                 }
 
-                                        // And play a random sound effect from that bank.
-                RNG = Random.Range(0,soundbankToPlay.Count);
-                FMODUnity.RuntimeManager.PlayOneShot(soundbankToPlay[RNG]);
-
-                break;
-
             }
+                
+                                        // Pick a location to play the sound...
+            switch (playerRoomDetection.playerLocation)
+            {
+                case PlayerRoomDetection.Location.AsterionRoom:
+                    RNG = Random.Range(0, asterionRoomLightSpeakers.Count);
+                    currentSpeaker = asterionRoomLightSpeakers[RNG];
+                    print("Player in Asterion");
+                    break;
+
+
+                case PlayerRoomDetection.Location.Walkway:
+                                        // We shouldn't play environmentalSFX in the catwalk.
+                                        // Play an mechanical one instead, if we're at or above stage 4,
+                                        // or play an alien one if we're below.
+                    if (soundbankToPlay == environmentalSFX)
+                    {
+                        if (probabilityStage <= 4){ soundbankToPlay = mechanicalSFX; }
+                        else { soundbankToPlay = alienSFX; }
+                    }
+                    RNG = Random.Range(0, catwalkRoomCabinetSpeakers.Count);
+                    currentSpeaker = catwalkRoomCabinetSpeakers[RNG];
+                    print("Player on catwalk");
+                    break;
+
+
+                case PlayerRoomDetection.Location.AstramoriRoom:
+                    RNG = Random.Range(0, astramoriRoomLightSpeakers.Count);
+                    currentSpeaker = astramoriRoomLightSpeakers[RNG];
+                    print("Player in Astramori");
+                    break;
+            }
+
+                                        // And play a random sound effect from that bank at the location.
+            RNG = Random.Range(0,soundbankToPlay.Count);
+            FMODUnity.RuntimeManager.PlayOneShotAttached(soundbankToPlay[RNG].Guid, currentSpeaker);
+            print(soundbankToPlay[RNG]);
+
+            break;
+
         }
 
         
