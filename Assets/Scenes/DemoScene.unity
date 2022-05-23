@@ -49900,11 +49900,11 @@ MonoBehaviour:
   sanityManager: {fileID: 1669733570}
   asterionIdleMusic:
     Guid:
-      Data1: 1947303096
-      Data2: 1199611354
-      Data3: 412497815
-      Data4: 1040617361
-    Path: event:/Music/Asterion/ASTN IDLE- MELODYLESS
+      Data1: 1521234764
+      Data2: 1081816568
+      Data3: 178502539
+      Data4: 507994833
+    Path: event:/Music/Asterion/ASTN IDLE- MENU LOOP
   asterionMenuMusic:
     Guid:
       Data1: -1155441979
