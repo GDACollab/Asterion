@@ -1168,6 +1168,13 @@ MonoBehaviour:
       Data3: 183882167
       Data4: -2005841259
     Path: event:/Cabinet SFX/Spaceship Shoot
+  spaceshipEngineSFX:
+    Guid:
+      Data1: -1065619210
+      Data2: 1217113077
+      Data3: 1678137741
+      Data4: -1568201364
+    Path: event:/Cabinet SFX/Ship Engine SFX
 --- !u!212 &42027146
 SpriteRenderer:
   m_ObjectHideFlags: 0

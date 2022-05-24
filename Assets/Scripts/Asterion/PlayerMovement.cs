@@ -83,7 +83,7 @@ namespace AsterionArcade
             FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Ship Speed", Mathf.Clamp(playerVelocity.magnitude, 0f, 20f));
             spaceshipEngineSFX_instance.start();
         }
-        public void StopEngineSFX(){ // StopEngineSFX is called above in OnDisable()
+        public void StopEngineSFX(){
             //print("engine stopping");
             spaceshipEngineSFX_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }

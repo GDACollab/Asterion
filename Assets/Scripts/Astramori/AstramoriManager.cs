@@ -96,6 +96,8 @@ namespace AsterionArcade
             }
 
             _playerMovement.enabled = false;
+            starfighterAI.StopEngineSFX();
+            
         }
 
         private void Update()
@@ -129,6 +131,7 @@ namespace AsterionArcade
         public override void StopInteractAction()
         {
             _playerMovement.enabled = false;
+            starfighterAI.StopEngineSFX();
             
             cursor.DisableVirtualCursor();
             //_aiCore.enabled = false;
@@ -183,6 +186,7 @@ namespace AsterionArcade
             upgradeMenu.SetActive(false);
             currentGameState = GameState.Gameplay;
             _playerMovement.enabled = true;
+            starfighterAI.StartEngineSFX();
 
             StartCoroutine(CombatRoutine());
 
@@ -218,6 +222,7 @@ namespace AsterionArcade
             ApplyBonusStats();
             currentGameState = GameState.Gameplay;
             _playerMovement.enabled = true;
+            starfighterAI.StartEngineSFX();
 
             StartCoroutine(CombatRoutine());
 
@@ -281,6 +286,7 @@ namespace AsterionArcade
                     GameManager.Instance.astramoriGamesPlayed++;
                     //_aiCore.enabled = false;
                     _playerMovement.enabled = false;
+                    starfighterAI.StopEngineSFX();
                     foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                     {
                         bd.Death();
@@ -299,6 +305,7 @@ namespace AsterionArcade
                     lossScreen.fundsRewardedText.enabled = false;
                     timeText.enabled = false;
                     _playerMovement.enabled = false;
+                    starfighterAI.StopEngineSFX();
                     GameManager.Instance.astramoriGamesPlayed++;
                     StopAllCoroutines();
                     // _aiCore.enabled = false;
