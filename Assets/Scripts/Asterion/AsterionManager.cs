@@ -325,8 +325,8 @@ namespace AsterionArcade
                 else
                 {
                     
-                    // Play the SFX that plays when the alien ship fucking explodes
-                    FMODUnity.RuntimeManager.PlayOneShot(playerDiesSFX.Guid);
+                    // Play the SFX that plays when the alien ship explodes IF we haven't lost the whole game by battery hitting 0%.
+                    if (!GameManager.Instance.gameLost){  FMODUnity.RuntimeManager.PlayOneShot(playerDiesSFX.Guid); }
                     
                     GameManager.Instance.asterionGamesPlayed++;
 

@@ -198,12 +198,14 @@ public class GameManager : MonoBehaviour
             a.EventInstance.setPaused(true);
         }
 
+        spookySFXManager.Mute();
+
+        // Start pre-jumpscare
+        preJumpscareSFX_instance.start();
+
         fpUI.SetActive(false);
         
         
-        spookySFXManager.Mute();
-
-        preJumpscareSFX_instance.start();
 
 
         // Hide Tony

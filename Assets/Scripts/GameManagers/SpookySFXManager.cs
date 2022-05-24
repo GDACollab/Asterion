@@ -20,7 +20,6 @@ public class SpookySFXManager : MonoBehaviour
     public List<FMODUnity.EventReference> alienSFX;
     List<FMODUnity.EventReference> soundbankToPlay;
     FMOD.Studio.EventInstance soundToPlay;
-    bool muted;
 
     [Header("Speakers")]
     [SerializeField] PlayerRoomDetection playerRoomDetection;
@@ -68,7 +67,6 @@ public class SpookySFXManager : MonoBehaviour
     void Awake()
     {
         sanityManager = GetComponent<SanityManager>();
-        muted = false;
         StartCoroutine(PlaySoundsCoroutine());
     }
     
@@ -80,7 +78,7 @@ public class SpookySFXManager : MonoBehaviour
             // closer towards 0 sanity.
             time = baseDelay + Random.Range(-delayVariance, delayVariance);
             yield return new WaitForSeconds(time);
-            if (!muted) { PlaySpookySFX(); }
+            if (!GameManager.Instance.gameLost){ PlaySpookySFX(); }
         }
 
     }
@@ -168,7 +166,6 @@ public class SpookySFXManager : MonoBehaviour
 
     public void Mute()
     {
-        muted = true;
         soundToPlay.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
