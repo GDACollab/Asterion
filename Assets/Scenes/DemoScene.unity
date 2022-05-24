@@ -20298,6 +20298,13 @@ MonoBehaviour:
       Data3: 183882167
       Data4: -2005841259
     Path: event:/Cabinet SFX/Spaceship Shoot
+  spaceshipEngineSFX:
+    Guid:
+      Data1: -1065619210
+      Data2: 1217113077
+      Data3: 1678137741
+      Data4: -1568201364
+    Path: event:/Cabinet SFX/Ship Engine SFX
 --- !u!212 &690837008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -44263,7 +44270,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1669733564}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88556a50dc90e554a9b3ac6147b7d389, type: 3}
+  m_Script: {fileID: 11500000, guid: d59b23dbc50d0464aac42e2ba89a4aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseDelay: 20

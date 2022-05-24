@@ -91,6 +91,7 @@ namespace AsterionArcade
             }
 
             _playerMovement.enabled = false;
+            _playerMovement.StopEngineSFX();
         }
 
         private void Update()
@@ -129,6 +130,7 @@ namespace AsterionArcade
             asterionMusicManager.PlayMusic("idle");
 
             _playerMovement.enabled = false;
+            _playerMovement.StopEngineSFX();
             
 
             
@@ -206,6 +208,7 @@ namespace AsterionArcade
             StartCoroutine(CombatRoutine());
             upgradeMenu.SetActive(false);
             asterionMusicManager.PlayMusic("main");
+            _playerMovement.StartEngineSFX();
 
             //GameManager.Instance.AlterCoins(-1);
         }
@@ -263,6 +266,7 @@ namespace AsterionArcade
             ApplyBonusStats();
             currentGameState = GameState.Gameplay;
             _playerMovement.enabled = true;
+            _playerMovement.StartEngineSFX();
             GameManager.Instance.AlterCoins(-1);
             mainMenu.SetActive(false);
             StartCoroutine(CombatRoutine());
@@ -295,6 +299,7 @@ namespace AsterionArcade
                     lossMenu.SetActive(true);
                     //_aiCore.enabled = false;
                     _playerMovement.enabled = false;
+                    _playerMovement.StopEngineSFX();
                     isVictory = true;
                     ShipStats.instance.UpdateOld();
 
@@ -331,6 +336,7 @@ namespace AsterionArcade
                     lossMenu.SetActive(true);
                     lossScreen.continueButtonText.text = "Continue? (1 Quarter)";
                     _playerMovement.enabled = false;
+                    _playerMovement.StopEngineSFX();
                     ShipStats.instance.DowngradeOld();
                     StopAllCoroutines();
                     
