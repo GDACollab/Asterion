@@ -11393,7 +11393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   batteryIndicator: {fileID: 639027775}
   initialRate: 6
-  INSANEMode: 0
+  INSANEMode: 1
   rateMultiplier: 1.9
   winRate: 10
   currentRate: 0

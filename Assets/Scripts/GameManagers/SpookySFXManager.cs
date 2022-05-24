@@ -19,6 +19,8 @@ public class SpookySFXManager : MonoBehaviour
     [Header("Alien SFX")]
     public List<FMODUnity.EventReference> alienSFX;
     List<FMODUnity.EventReference> soundbankToPlay;
+    FMOD.Studio.EventInstance soundToPlay;
+    bool muted;
 
     [Header("Speakers")]
     [SerializeField] PlayerRoomDetection playerRoomDetection;
@@ -66,6 +68,7 @@ public class SpookySFXManager : MonoBehaviour
     void Awake()
     {
         sanityManager = GetComponent<SanityManager>();
+        muted = false;
         StartCoroutine(PlaySoundsCoroutine());
     }
     
@@ -77,7 +80,7 @@ public class SpookySFXManager : MonoBehaviour
             // closer towards 0 sanity.
             time = baseDelay + Random.Range(-delayVariance, delayVariance);
             yield return new WaitForSeconds(time);
-            PlaySpookySFX();
+            if (!muted) { PlaySpookySFX(); }
         }
 
     }
@@ -148,14 +151,25 @@ public class SpookySFXManager : MonoBehaviour
 
                                         // And play a random sound effect from that bank at the location.
             RNG = Random.Range(0,soundbankToPlay.Count);
-            FMODUnity.RuntimeManager.PlayOneShotAttached(soundbankToPlay[RNG].Guid, currentSpeaker);
+            soundToPlay = FMODUnity.RuntimeManager.CreateInstance(soundbankToPlay[RNG]);
+            soundToPlay.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(currentSpeaker));
+            soundToPlay.start();
+
             print(soundbankToPlay[RNG] + "\nplayed at " + playerRoomDetection.playerLocation);
+
+            soundToPlay.release();
 
             break;
 
         }
 
         
+    }
+
+    public void Mute()
+    {
+        muted = true;
+        soundToPlay.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
     int calculateStageFromSanity(float sanity)
