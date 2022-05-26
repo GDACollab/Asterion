@@ -24,8 +24,8 @@ public class Tutorial_Sequence : MonoBehaviour
     [SerializeField] FMODUnity.EventReference lightFlicker2;
     [SerializeField] FMODUnity.EventReference tonySound;
     [SerializeField] GameObject lightSpeaker;
-    // We play lightFlicker1 and 2 from lightSpeaker, and tonySound from TonyModelSpooky
-
+    // We play lightFlicker1 and 2 from lightSpeaker; tonySound is played directly to the listener
+    
     private void Awake()
     {
         Instance = this;
