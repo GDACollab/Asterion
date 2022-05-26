@@ -44268,6 +44268,28 @@ MonoBehaviour:
   AsterionEndTrigger: {fileID: 1750122808}
   TonyModelSpooky: {fileID: 117176951}
   hasSeenTony: 0
+  lightFlicker1:
+    Guid:
+      Data1: 1933752629
+      Data2: 1297272741
+      Data3: 143689141
+      Data4: 1059927850
+    Path: event:/Spooky SFX/Environmental/Light Flicker A
+  lightFlicker2:
+    Guid:
+      Data1: 1131039783
+      Data2: 1148979424
+      Data3: -575845470
+      Data4: -2050357995
+    Path: event:/Spooky SFX/Environmental/Light Flicker B
+  tonySound:
+    Guid:
+      Data1: -1838739503
+      Data2: 1160743493
+      Data3: -703539015
+      Data4: 207793625
+    Path: event:/Spooky SFX/Tutorial Gurgle B
+  lightSpeaker: {fileID: 431574522}
 --- !u!114 &1669733572
 MonoBehaviour:
   m_ObjectHideFlags: 0

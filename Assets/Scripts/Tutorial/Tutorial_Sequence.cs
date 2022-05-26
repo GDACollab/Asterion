@@ -17,12 +17,14 @@ public class Tutorial_Sequence : MonoBehaviour
     GameObject _cameraManager;
     public GameObject AsterionEndTrigger;
     public GameObject TonyModelSpooky;
-    
-
-    
-
-
     public bool hasSeenTony = true;
+
+    [Header("SFX References & Speakers")]
+    [SerializeField] FMODUnity.EventReference lightFlicker1;
+    [SerializeField] FMODUnity.EventReference lightFlicker2;
+    [SerializeField] FMODUnity.EventReference tonySound;
+    [SerializeField] GameObject lightSpeaker;
+    // We play lightFlicker1 and 2 from lightSpeaker, and tonySound from TonyModelSpooky
 
     private void Awake()
     {
@@ -62,6 +64,8 @@ public class Tutorial_Sequence : MonoBehaviour
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
 
+        // lights flicker
+        FMODUnity.RuntimeManager.PlayOneShotAttached(lightFlicker1.Guid, lightSpeaker);
         yield return new WaitForSeconds(0.05f);
         Lights.SetActive(false);
         yield return new WaitForSeconds(0.05f);
@@ -69,13 +73,19 @@ public class Tutorial_Sequence : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         Lights.SetActive(false);
 
+        // tony appear
         TonyModelSpooky.SetActive(true);
+        FMODUnity.RuntimeManager.PlayOneShot(tonySound.Guid);
         //GameObject.Find("SpookyPlane").transform.rotation = new Quaternion(81f, -90f, 90f, 0f);
 
+        
         yield return new WaitForSeconds(2f);
+        // tony disappear
         TonyModelSpooky.SetActive(false);
         Lights.SetActive(true);
 
+        // lights flicker again
+        FMODUnity.RuntimeManager.PlayOneShotAttached(lightFlicker2.Guid, lightSpeaker);
         yield return new WaitForSeconds(0.05f);
         Lights.SetActive(false);
         yield return new WaitForSeconds(0.05f);

@@ -7,7 +7,7 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 0000025D33A132C8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 0000018B8883F028 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
@@ -19,11 +19,115 @@
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] PlaybackSystem::acquireMasterBus         : Setting master channel group format to 6
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
+[LOG] SoundI::release                          :  (0000018AFA90A098)
+[LOG] SoundI::release                          :     PlayerExplosionAstramori_JeremyHahn (0000018B20069118)
+[LOG] SoundI::release                          :  (0000018AFA90A4E8)
+[LOG] SoundI::release                          :     esfx-CabinetthunkC_DylanMahler (0000018B200654F8)
+[LOG] SoundI::release                          :  (0000018AFF66E6A8)
+[LOG] SoundI::release                          :     slidingDoorOpenConcept2_SophieMartin (0000018B20067A58)
+[LOG] SoundI::release                          :  (0000018AFF66E988)
+[LOG] SoundI::release                          :     esfx-LightflickerA_DylanMahler (0000018B20067238)
+[LOG] SoundI::release                          :  (0000018ACE30F888)
+[LOG] SoundI::release                          :     slidingDoorCloseConcept_SophieMartin (0000018B20067718)
+[LOG] SoundI::release                          :  (0000018B20116E18)
+[LOG] SoundI::release                          :     esfx-GurgleB_DylanMahler (0000018B20068DD8)
+[LOG] SoundI::release                          :  (0000018AFA909518)
+[LOG] SoundI::release                          :     esfx-LightflickerB_DylanMahler (0000018B20068418)
+[LOG] SoundI::release                          :  (0000018B201170F8)
+[LOG] SoundI::release                          :     batteryDrainConcept2_SophieMartin (0000018B200678B8)
+[LOG] SoundI::release                          :  (0000018AFA429238)
+[LOG] SoundI::release                          :     coinDispenseSingleConcept_SophieMartin (0000018B2005E198)
+[LOG] SoundI::release                          :  (0000018B88C48A48)
+[LOG] SoundI::release                          :     coinDispenseConcept_SophieMartin (0000018B20062298)
+[LOG] SoundI::release                          :  (0000018AFA428998)
+[LOG] SoundI::release                          :     Player_Engine_Hold_LoganKirkland (0000018B20057CD8)
+[LOG] SoundI::release                          :  (0000018AFA428B08)
+[LOG] SoundI::release                          :     Boot_Up (0000018B2005FD38)
+[LOG] SoundI::release                          :  (0000018AFA4290C8)
+[LOG] SoundI::release                          :     jumpScareConcept_SophieMartin (0000018B20061F58)
+[LOG] SoundI::release                          :  (0000018AFA429DB8)
+[LOG] SoundI::release                          :     catwalkStep1Concept2_SophieMartin (0000018B20061598)
+[LOG] SoundI::release                          :  (0000018B88C47348)
+[LOG] SoundI::release                          :     catwalkStep2Concept2_SophieMartin (0000018B20062918)
+[LOG] SoundI::release                          :  (0000018B88C47EC8)
+[LOG] SoundI::release                          :     catwalkStep3Concept2_SophieMartin (0000018B2005E818)
+[LOG] SoundI::release                          :  (0000018AFA428F58)
+[LOG] SoundI::release                          :     catwalkStep4Concept2_SophieMartin (0000018B20061DB8)
+[LOG] SoundI::release                          :  (0000018AFA428C78)
+[LOG] SoundI::release                          :     Menu_Ambiance (0000018B20061C18)
+[LOG] SoundI::release                          :  (0000018AFA429968)
+[LOG] SoundI::release                          :     preJumpScareConcept_SophieMartin (0000018B20063618)
+[LOG] SoundI::release                          :  (0000018B88C471D8)
+[LOG] SoundI::release                          :     sfx_coinInsert (0000018B2005DB18)
+[LOG] SoundI::release                          :  (0000018B88C48E98)
+[LOG] SoundI::release                          :     carpetStep1Concept_SophieMartin (0000018B20062438)
+[LOG] SoundI::release                          :  (0000018B88C47BE8)
+[LOG] SoundI::release                          :     carpetStep2Concept_SophieMartin (0000018B200625D8)
+[LOG] SoundI::release                          :  (0000018AFA429688)
+[LOG] SoundI::release                          :     carpetStep3Concept_SophieMartin (0000018B2005E4D8)
+[LOG] SoundI::release                          :  (0000018B88C48D28)
+[LOG] SoundI::release                          :     carpetStep4Concept_SophieMartin (0000018B20063C98)
+[LOG] SoundI::release                          :  (0000018AFA429C48)
+[LOG] SoundI::release                          :     carpetStep5Concept_SophieMartin (0000018B20060F18)
+[LOG] SoundI::release                          :  (0000018AFA4280F8)
+[LOG] SoundI::release                          :     SpaceshipShootAstramori_JeremyHahn (0000018B200574B8)
+[LOG] SoundI::release                          :  (0000018AFA4297F8)
+[LOG] SoundI::release                          :     SpaceshipShootAsterion_LoganKirkland (0000018B2005CE18)
+[LOG] SoundI::release                          :  (0000018AFA428548)
+[LOG] SoundI::release                          :     Blinky_Bits (0000018B20059D58)
+[LOG] SoundI::release                          :  (0000018AFA428828)
+[LOG] SoundI::release                          :     Countermelody (0000018B20061738)
+[LOG] SoundI::release                          :  (0000018AFA4283D8)
+[LOG] SoundI::release                          :     Bass (0000018B2005E678)
+[LOG] SoundI::release                          :  (0000018AFA427F88)
+[LOG] SoundI::release                          :     Melody (0000018B20058B78)
+[LOG] SoundI::release                          : GeneratorAmbienceV3.2_DylanMahler (0000018AFAF5E048)
+[LOG] SoundI::release                          :     GeneratorAmbienceV3.2_DylanMahler (0000018B200673D8)
+[LOG] SoundI::release                          :     GeneratorAmbienceV3.2_DylanMahler (0000018AFAF5E1F8)
+[LOG] SoundI::release                          : GeneratorAmbienceV3.2_DylanMahler (0000018AFAF5E8B8)
+[LOG] SoundI::release                          :     GeneratorAmbienceV3.2_DylanMahler (0000018B200692B8)
+[LOG] SoundI::release                          :     GeneratorAmbienceV3.2_DylanMahler (0000018AFAF5F7E8)
+[LOG] SoundI::release                          : Synth Brass – Astramori Soundtrack (0000018AFAF5F2D8)
+[LOG] SoundI::release                          :     Synth Brass – Astramori Soundtrack (0000018B20069938)
+[LOG] SoundI::release                          :     Synth Brass – Astramori Soundtrack (0000018AFAD45918)
+[LOG] SoundI::release                          : Synth Bass – Astramori Soundtrack (0000018AFAF5EF78)
+[LOG] SoundI::release                          :     Synth Bass – Astramori Soundtrack (0000018B20065838)
+[LOG] SoundI::release                          :     Synth Bass – Astramori Soundtrack (0000018AFAD45258)
+[LOG] SoundI::release                          : Electric Organ – Astramori Soundtrack (0000018AFAF5EDC8)
+[LOG] SoundI::release                          :     Electric Organ – Astramori Soundtrack (0000018B200688F8)
+[LOG] SoundI::release                          :     Electric Organ – Astramori Soundtrack (0000018B2020E9C8)
+[LOG] SoundI::release                          : Lead 2 – Astramori Soundtrack (0000018AFAF5E708)
+[LOG] SoundI::release                          :     Lead 2 – Astramori Soundtrack (0000018B20067D98)
+[LOG] SoundI::release                          :     Lead 2 – Astramori Soundtrack (0000018B2063F368)
+[LOG] SoundI::release                          : generalDrone_DavidCarroll (0000018B88C493D8)
+[LOG] SoundI::release                          :     generalDrone_DavidCarroll (0000018B20058EB8)
+[LOG] SoundI::release                          :     generalDrone_DavidCarroll (0000018B88C4A158)
+[LOG] SoundI::release                          : MainAmbienceV2(wider)_DylanMahler (0000018B88C49DF8)
+[LOG] SoundI::release                          :     MainAmbienceV2(wider)_DylanMahler (0000018B20059A18)
+[LOG] SoundI::release                          :     MainAmbienceV2(wider)_DylanMahler (0000018B2063F1B8)
+[LOG] SoundI::release                          : neonGlowConcept2_SophieMartin (0000018AFAF5E3A8)
+[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (0000018B20066878)
+[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (0000018AFAF5DE98)
+[LOG] SoundI::release                          : neonGlowConcept2_SophieMartin (0000018AFAF5DB38)
+[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (0000018B200644B8)
+[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (0000018AFAF5F488)
+[LOG] SoundI::release                          :  (0000018AFA428268)
+[LOG] SoundI::release                          :     Game_Start (0000018B20058358)
+[LOG] SoundI::release                          :  (0000018AFA4286B8)
+[LOG] SoundI::release                          :     Noise (0000018B2005F858)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
 [LOG] Thread::callback                         : FMOD Studio bank load thread finished.
 [LOG] Thread::callback                         : FMOD Studio sample load thread finished.
 [LOG] LiveUpdate::release                      : 
@@ -31,3 +135,5 @@
 [LOG] Thread::callback                         : FMOD stream thread finished.
 [LOG] Thread::callback                         : FMOD mixer thread finished.
 [LOG] SystemI::close                           : Closed.
+[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
+[LOG] Thread::callback                         : FMOD file thread finished.
