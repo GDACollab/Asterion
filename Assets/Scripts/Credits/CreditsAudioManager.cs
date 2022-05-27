@@ -19,6 +19,6 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
         creditsMusic_instance.start();
-        currentlyPlaying("credits");
+        currentlyPlaying = "credits";
     }
 }
