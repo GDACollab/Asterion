@@ -15,13 +15,20 @@ namespace AsterionArcade
         {
             base.Start();
             isAlien = false;
+            UpdateHealthBar();
         }
 
         public override void TakeDamage(int damage)
         {
             base.TakeDamage(damage);
-            astramoriHealthBarFill.transform.localScale = new Vector3(0.9f * (health / baseHealth), 0.9f, 0.9f);
+            
         }
+
+        public void UpdateHealthBar()
+        {
+            astramoriHealthBarFill.GetComponent<RectTransform>().localScale = new Vector3(0.9f * ((health + 0.0f) / (baseHealth + ShipStats.instance.shield)), 0.9f, 0.9f);
+        }
+
         public override void Death()
         {
             astramoriManager.GameConcluded(true);

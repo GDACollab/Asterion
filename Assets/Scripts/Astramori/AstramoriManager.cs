@@ -330,6 +330,7 @@ namespace AsterionArcade
             player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage + GameManager.Instance.shipStats.attack;
             
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            player.GetComponent<AstramoriStarfighterHealth>().UpdateHealthBar();
             // Randy: Scale Placement zone size to account for change in range upgrade applied to camera
             PlacementZone.transform.localScale = zoneBaseSize + new Vector3((GameManager.Instance.shipStats.range * 2.56f),
                                                                             (GameManager.Instance.shipStats.range * 2.56f),

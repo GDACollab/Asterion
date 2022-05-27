@@ -92,6 +92,7 @@ namespace AsterionArcade
             }
 
             _playerMovement.enabled = false;
+            _playerMovement.StopEngineSFX();
         }
 
         private void Update()
@@ -136,8 +137,10 @@ namespace AsterionArcade
 
             // Music
             asterionMusicManager.PlayMusic("idle");
+            batteryEarned = 0;
 
             _playerMovement.enabled = false;
+            _playerMovement.StopEngineSFX();
 
 
 
@@ -216,6 +219,7 @@ namespace AsterionArcade
             StartCoroutine(CombatRoutine());
             upgradeMenu.SetActive(false);
             asterionMusicManager.PlayMusic("main");
+            _playerMovement.StartEngineSFX();
             batteryEarned = 0;
 
             //GameManager.Instance.AlterCoins(-1);
@@ -274,6 +278,7 @@ namespace AsterionArcade
             ApplyBonusStats();
             currentGameState = GameState.Gameplay;
             _playerMovement.enabled = true;
+            _playerMovement.StartEngineSFX();
             GameManager.Instance.AlterCoins(-1);
             mainMenu.SetActive(false);
             StartCoroutine(CombatRoutine());
@@ -306,6 +311,7 @@ namespace AsterionArcade
                     lossMenu.SetActive(true);
                     //_aiCore.enabled = false;
                     _playerMovement.enabled = false;
+                    _playerMovement.StopEngineSFX();
                     isVictory = true;
                     ShipStats.instance.UpdateOld();
 
@@ -331,10 +337,10 @@ namespace AsterionArcade
                 else
                 {
 
-                    // Play the SFX that plays when the alien ship fucking explodes
-                    FMODUnity.RuntimeManager.PlayOneShot(playerDiesSFX.Guid);
+                    // Play the SFX that plays when the alien ship explodes IF we haven't lost the whole game by battery hitting 0%.
+                    if (!GameManager.Instance.gameLost) { FMODUnity.RuntimeManager.PlayOneShot(playerDiesSFX.Guid); }
 
-                    if(GameManager.Instance.asterionGamesPlayed != 0)
+                    if (GameManager.Instance.asterionGamesPlayed != 0)
                     {
                         powerManager.IncreaseRate();
                     }
@@ -345,6 +351,7 @@ namespace AsterionArcade
                     lossMenu.SetActive(true);
                     lossScreen.continueButtonText.text = "Continue? (1 Quarter)";
                     _playerMovement.enabled = false;
+                    _playerMovement.StopEngineSFX();
                     ShipStats.instance.DowngradeOld();
                     StopAllCoroutines();
 
@@ -384,6 +391,7 @@ namespace AsterionArcade
             player.GetComponent<PlayerMovement>().maxSpeed = player.GetComponent<PlayerMovement>().baseMaxSpeed + GameManager.Instance.shipStats.thruster;
             player.GetComponent<PlayerMovement>().damage = player.GetComponent<PlayerMovement>().baseDamage + GameManager.Instance.shipStats.attack;
             player.GetComponent<AsterionStarfighterHealth>().health = player.GetComponent<AsterionStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            player.GetComponent<AsterionStarfighterHealth>().UpdateHealthbar();
             virtualCamera.m_Lens.OrthographicSize = 6 + (GameManager.Instance.shipStats.range / 2.3f);
         }
 
@@ -516,6 +524,7 @@ namespace AsterionArcade
             if (_cameraManager.currentCameraState == CameraManager.CameraState.Asterion)
             {
                 _interactableManager.OnStopInteract.Invoke();
+                
                 if (GameManager.Instance.asterionGamesPlayed == 1)
                 {
                     GameManager.Instance.introUI.Reveal();

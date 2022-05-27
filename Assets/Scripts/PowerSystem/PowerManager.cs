@@ -104,7 +104,7 @@ public class PowerManager : MonoBehaviour
         if (isDraining)
         {
             powerLevel -= Time.deltaTime / 60f * currentRate;
-            batteryFPUIText.text = (int)powerLevel + "%";
+            
         }
         
         
@@ -133,6 +133,7 @@ public class PowerManager : MonoBehaviour
     {
         BatteryIndicator(powerLevel);
         BatteryIndicatorMachine(GameManager.Instance.asterionManager.batteryEarned);
+        batteryFPUIText.text = (int)powerLevel + "%";
     }
 
 

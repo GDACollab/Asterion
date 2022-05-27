@@ -15,7 +15,7 @@ namespace AsterionArcade
         {
             base.Start();
             isAlien = false;
-            asterionHealthBarFill.transform.localScale = new Vector3(0.9f * (health / baseHealth), 0.9f, 0.9f);
+            UpdateHealthbar();
         }
         public override void TakeDamage(int damage)
         {
@@ -23,10 +23,16 @@ namespace AsterionArcade
             {
                 Debug.Log("asterion ship take damage");
                 base.TakeDamage(damage);
-                asterionHealthBarFill.transform.localScale = new Vector3(0.9f * (health/baseHealth),0.9f,0.9f);
+                UpdateHealthbar();
             }
 
 
+        }
+
+        public void UpdateHealthbar()
+        {
+            //Debug.Log(((health+ 0.0f) / (ShipStats.instance.shield + baseHealth)));
+            asterionHealthBarFill.GetComponent<RectTransform>().localScale = new Vector3(0.9f * ((health + 0.0f) / (ShipStats.instance.shield + baseHealth)), 0.9f, 0.9f);
         }
         public override void Death()
         {

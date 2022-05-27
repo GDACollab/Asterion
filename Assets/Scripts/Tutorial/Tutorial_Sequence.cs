@@ -69,6 +69,7 @@ public class Tutorial_Sequence : MonoBehaviour
 
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
+        GameManager.Instance.canPause = false;
 
         // lights flicker
         FMODUnity.RuntimeManager.PlayOneShotAttached(lightFlicker1.Guid, lightSpeaker);
@@ -127,8 +128,10 @@ public class Tutorial_Sequence : MonoBehaviour
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
         GameManager.Instance.powerManager.isDraining = true;
+        GameManager.Instance.canPause = true;
 
         this.enabled = false;
+
     }
 
     // Handles Event When Leaving Astramori
