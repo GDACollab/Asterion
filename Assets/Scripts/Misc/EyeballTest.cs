@@ -16,6 +16,9 @@ public class EyeballTest : MonoBehaviour
     public Color defaultColor;
     [ColorUsageAttribute(true, true)]
     public Color offColor;
+    public GameObject fakeCamPlane;
+    public bool isCamera = false;
+
 
     // Start is called before the first frame update
     void Awake()
@@ -24,6 +27,13 @@ public class EyeballTest : MonoBehaviour
         {
             arcadeText = planeMat.transform.GetChild(0).GetComponent<TextMeshPro>();
         }
+
+        if(fakeCamPlane == null)
+        {
+            fakeCamPlane = planeMat.transform.GetChild(1).gameObject;
+        }
+
+        fakeCamPlane.SetActive(false);
     }
 
     public void ToggleEye(bool setting)
@@ -37,6 +47,20 @@ public class EyeballTest : MonoBehaviour
         else
         {
             planeMat.material.SetColor("_backColor", offColor);
+        }
+    }
+
+    public void ToggleCamera(bool setting)
+    {
+        isCamera = setting;
+
+        if (setting)
+        {
+            fakeCamPlane.SetActive(true);
+        }
+        else
+        {
+            fakeCamPlane.SetActive(false);
         }
     }
 

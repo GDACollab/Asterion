@@ -12,7 +12,9 @@ public class PowerManager : MonoBehaviour
     // Paramaters for the in-game power meter
     [Header("Power Meter")]
     public Transform batteryIndicator;
+    public Transform batteryIndicatorMachine;
     private int numSegments = 10;
+    private int numSegmentsMachine = 10;
 
     // Paramaters to control power depletion
     [Header("Depletion Stats")]
@@ -40,6 +42,7 @@ public class PowerManager : MonoBehaviour
     [SerializeField] float[] batteryStatus; // Can't think of a better name :(
     [SerializeField] SanityManager sanityManager;
     private RawImage[] batteryCells;
+    private RawImage[] batteryCellMachine;
     [SerializeField] TextMeshProUGUI batteryFPUIText;
     [SerializeField] Volume v;
     
@@ -72,6 +75,7 @@ public class PowerManager : MonoBehaviour
             }
         currentRate = initialRate;
         batteryCells = batteryIndicator.GetComponentsInChildren<RawImage>();
+        batteryCellMachine = batteryIndicatorMachine.GetComponentsInChildren<RawImage>();
         numSegments = batteryCells.Length;
         baseMonsterPos = tempMonster.transform.position;
 
@@ -101,7 +105,7 @@ public class PowerManager : MonoBehaviour
             batteryFPUIText.text = (int)powerLevel + "%";
         }
         
-        BatteryIndicator(powerLevel);
+        
         SetMonsterPosition();
         if(powerLevel <= 0 && isDraining)
         {
@@ -122,6 +126,14 @@ public class PowerManager : MonoBehaviour
             StopCoroutine(astramoriFlicker);
         }
     }
+
+    private void FixedUpdate()
+    {
+        BatteryIndicator(powerLevel);
+        BatteryIndicatorMachine(GameManager.Instance.asterionManager.batteryEarned);
+    }
+
+
 
     public IEnumerator UpdatePostProcessingFX()
     {
@@ -243,6 +255,17 @@ public class PowerManager : MonoBehaviour
         {
             float alpha = (power - (maxPowerLevel / numSegments) * i) / 10;
             batteryCells[i].color = new Color(batteryColor.r, batteryColor.g, batteryColor.b, alpha);
+        }
+    }
+
+    private void BatteryIndicatorMachine(float power)
+    {
+        Color batteryColor = batteryStatusColors[0];
+
+        for (int i = 0; i < numSegmentsMachine; i++)
+        {
+            float alpha = (power - (maxPowerLevel / numSegmentsMachine) * i) / 10;
+            batteryCellMachine[i].color = new Color(batteryColor.r, batteryColor.g, batteryColor.b, alpha);
         }
     }
 }

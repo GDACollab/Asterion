@@ -101,7 +101,7 @@ namespace FirstPersonPlayer
                     _firstPersonVC.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = new Vector3(0,val,0);
                 });
                 yield return new WaitForSeconds(7f);
-                LeanTween.value(gameObject, 0.315f, 0.3f, 5f).setOnUpdate((float val) => {
+                LeanTween.value(gameObject, 0.325f, 0.3f, 5f).setOnUpdate((float val) => {
                     _firstPersonVC.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = new Vector3(0, val, 0);
                 });
                 yield return new WaitForSeconds(7f);

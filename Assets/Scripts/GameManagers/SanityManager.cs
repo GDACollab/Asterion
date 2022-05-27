@@ -70,6 +70,10 @@ public class SanityManager : MonoBehaviour
     public void BoostSanity()
     {
         sanity += sanityBoost;
+        if(sanity > 100)
+        {
+            sanity = 100;
+        }
     }
 
 

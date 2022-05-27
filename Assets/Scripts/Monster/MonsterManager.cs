@@ -58,9 +58,18 @@ public class MonsterManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         arcadeTextEyeball.SetAllSize(13f);
-        arcadeTextEyeball.SetAllText(possibleArcadeMachineMessages[Random.Range(0, possibleArcadeMachineMessages.Count)]);
+        if (Random.Range(1,10) == 1)
+        {
+            arcadeTextEyeball.ToggleCameras(true);
+        }
+        else
+        {
+            arcadeTextEyeball.SetAllText(possibleArcadeMachineMessages[Random.Range(0, possibleArcadeMachineMessages.Count)]);
+        }
+        
 
         yield return new WaitForSeconds(3f);
+        arcadeTextEyeball.ToggleCameras(false);
         arcadeTextEyeball.SetAllSize(25f);
         arcadeTextEyeball.SetAllText("...");
 

@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BatteryIndicatorRTMat
+  m_Name: BatteryIndicatorRTMatMachine
   m_Shader: {fileID: -6465566751694194690, guid: 6f06c4a0c6341c548a68ef87980fc87d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_6b66612c6dec42a4b0a3219268fd1310:
-        m_Texture: {fileID: 8400000, guid: 40cf94b0a44ccfe4bb74cc53da7888cf, type: 2}
+        m_Texture: {fileID: 8400000, guid: dba990d4e1a3db443885fb3a17fd3468, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:

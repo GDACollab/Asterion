@@ -39,6 +39,14 @@ public class ArcadeTextEyeball : MonoBehaviour
         }
     }
 
+    public void ToggleCameras(bool setting)
+    {
+        foreach (EyeballTest e in allEyeballs)
+        {
+            e.ToggleCamera(setting);
+        }
+    }
+
     public void SetAllText(string s)
     {
         foreach (EyeballTest e in allEyeballs)

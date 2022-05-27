@@ -327,7 +327,7 @@ namespace AsterionArcade
             PlacementZone.transform.localScale = zoneBaseSize + new Vector3((GameManager.Instance.shipStats.range * 2.56f),
                                                                             (GameManager.Instance.shipStats.range * 2.56f),
                                                                             (GameManager.Instance.shipStats.range * 2.56f));
-            virtualCamera.m_Lens.OrthographicSize = 7 + (GameManager.Instance.shipStats.range / 2.3f);
+            virtualCamera.m_Lens.OrthographicSize = 7.5f + (GameManager.Instance.shipStats.range / 2.3f);
         }
 
         //sets fighter stats to default
@@ -336,7 +336,7 @@ namespace AsterionArcade
             
             player.GetComponent<Starfighter>().speed = player.GetComponent<Starfighter>().baseSpeed;
             player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage;
-            virtualCamera.m_Lens.OrthographicSize = 7;
+            virtualCamera.m_Lens.OrthographicSize = 7.5f;
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth;
 
         }

@@ -16,10 +16,11 @@ public class Tutorial_Sequence : MonoBehaviour
     MonsterManager _MonsterManager;
     GameObject _cameraManager;
     public GameObject AsterionEndTrigger;
-    public GameObject TonyModelSpooky;
-    
+    public List<GameObject> TonyModelSpooky;
+    public GameObject TonyModelSpookyWalking;
 
-    
+
+
 
 
     public bool hasSeenTony = true;
@@ -69,11 +70,23 @@ public class Tutorial_Sequence : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         Lights.SetActive(false);
 
-        TonyModelSpooky.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        TonyModelSpookyWalking.SetActive(false);
+        TonyModelSpooky[1].SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        TonyModelSpooky[1].SetActive(false);
+
+        TonyModelSpooky[2].SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        TonyModelSpooky[2].SetActive(false);
+
+        yield return new WaitForSeconds(0.2f);
+        TonyModelSpooky[0].SetActive(true);
         //GameObject.Find("SpookyPlane").transform.rotation = new Quaternion(81f, -90f, 90f, 0f);
 
         yield return new WaitForSeconds(2f);
-        TonyModelSpooky.SetActive(false);
+        TonyModelSpooky[0].SetActive(false);
+        TonyModelSpookyWalking.SetActive(true);
         Lights.SetActive(true);
 
         yield return new WaitForSeconds(0.05f);
@@ -92,7 +105,7 @@ public class Tutorial_Sequence : MonoBehaviour
         GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
         yield return new WaitForSeconds(1f);
         GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
           .Invoke(CameraManager.CameraState.FirstPerson);
@@ -124,7 +137,7 @@ public class Tutorial_Sequence : MonoBehaviour
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
 
-        AsterionEndTrigger.transform.GetComponent<BoxCollider>().enabled = true;
+        //AsterionEndTrigger.transform.GetComponent<BoxCollider>().enabled = true;
     }
 
     public void TonyBehindAstramori()
@@ -158,9 +171,12 @@ public class Tutorial_Sequence : MonoBehaviour
     IEnumerator EndEventOne()
     {
         // Delay Should Be Length of Sound
-        yield return new WaitForSeconds(2f); 
-        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
-        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
+        yield return new WaitForSeconds(2f);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
+        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
+        yield return new WaitForSeconds(0f);
+        GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().EndingMonsterEvent();
+        //Destroy(gameObject);
     }
 
     IEnumerator EventTwo()
