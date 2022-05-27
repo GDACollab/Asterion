@@ -44,10 +44,17 @@ namespace AsterionArcade
         [Header("SFX Events")]
         [SerializeField] FMODUnity.EventReference spaceshipShootSFX;    // SFX reference for shooting bullets
         private FMOD.Studio.EventInstance spaceshipShootSFX_instance;   // SFX instance of the above event
+        [SerializeField] FMODUnity.EventReference spaceshipEngineSFX;   // SFX reference for the ship engine
+        private FMOD.Studio.EventInstance spaceshipEngineSFX_instance;  // SFX instance of the above event
 
 
         float time;
         bool active;
+
+        void Awake()
+        {
+            spaceshipEngineSFX_instance = FMODUnity.RuntimeManager.CreateInstance(spaceshipEngineSFX);
+        }
 
         void Start()
         {
@@ -85,9 +92,24 @@ namespace AsterionArcade
                 {
                     reloadTime -= Time.deltaTime;
                 }
+
+                //print(rb.velocity + " ----- magnitude: " + rb.velocity.magnitude);
+
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Ship Speed", Mathf.Clamp(rb.velocity.magnitude, 0f, 20f));
             }
             else rb.velocity = Vector2.zero;
         }
+
+        public void StartEngineSFX(){
+            //print("engine starting");
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Ship Speed", Mathf.Clamp(rb.velocity.magnitude, 0f, 20f));
+            spaceshipEngineSFX_instance.start();
+        }
+        public void StopEngineSFX(){
+            //print("engine stopping");
+            spaceshipEngineSFX_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        }
+
 
         void ShootClosestEnemy()
         {

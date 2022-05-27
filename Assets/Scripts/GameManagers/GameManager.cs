@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     private FMOD.Studio.EventInstance preJumpscareSFX_instance;
     [SerializeField] AsterionMusicManager asterionMusicManager;
     [SerializeField] AstramoriMusicManager astramoriMusicManager;
+    private SpookySFXManager spookySFXManager;
 
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
@@ -104,6 +105,7 @@ public class GameManager : MonoBehaviour
         // SFX stuff
         jumpscareSFX_instance = FMODUnity.RuntimeManager.CreateInstance(jumpscareSFX);
         preJumpscareSFX_instance = FMODUnity.RuntimeManager.CreateInstance(preJumpscareSFX);
+        spookySFXManager = GetComponent<SpookySFXManager>();
 
     }
 
@@ -199,12 +201,14 @@ public class GameManager : MonoBehaviour
             a.EventInstance.setPaused(true);
         }
 
+        spookySFXManager.Mute();
+
+        // Start pre-jumpscare
+        preJumpscareSFX_instance.start();
+
         fpUI.SetActive(false);
         
         
-
-
-        preJumpscareSFX_instance.start();
 
 
         // Hide Tony

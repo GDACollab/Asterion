@@ -32,6 +32,8 @@ namespace AsterionArcade
         [Header("SFX Events")]
         [SerializeField] FMODUnity.EventReference spaceshipShootSFX;    // SFX reference for shooting bullets
         private FMOD.Studio.EventInstance spaceshipShootSFX_instance;   // SFX instance of the above event
+        [SerializeField] FMODUnity.EventReference spaceshipEngineSFX;    // SFX reference for the ship engine
+        private FMOD.Studio.EventInstance spaceshipEngineSFX_instance;   // SFX instance of the above event
 
 
 
@@ -47,6 +49,11 @@ namespace AsterionArcade
             inputEnabled = false;
         }
 
+        void Awake()
+        {
+            spaceshipEngineSFX_instance = FMODUnity.RuntimeManager.CreateInstance(spaceshipEngineSFX);
+        }
+
         // Start is called before the first frame update
         void Start()
         {
@@ -57,7 +64,6 @@ namespace AsterionArcade
 
             // SFX stuff
             spaceshipShootSFX_instance = FMODUnity.RuntimeManager.CreateInstance(spaceshipShootSFX);
-
         }
 
         // Update is called once per frame
@@ -67,7 +73,19 @@ namespace AsterionArcade
             {
                 MovementCheck();
                 ShootCheck();
+
+                FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Ship Speed", Mathf.Clamp(playerVelocity.magnitude, 0f, 20f));
             }
+        }
+
+        public void StartEngineSFX(){
+            //print("engine starting");
+            FMODUnity.RuntimeManager.StudioSystem.setParameterByName("Ship Speed", Mathf.Clamp(playerVelocity.magnitude, 0f, 20f));
+            spaceshipEngineSFX_instance.start();
+        }
+        public void StopEngineSFX(){
+            //print("engine stopping");
+            spaceshipEngineSFX_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
         void ShootCheck()

@@ -38,8 +38,8 @@ namespace AsterionArcade
 
         public override void Death()
         {
-            // Play the SFX that plays when the alien ship fucking explodes
-            FMODUnity.RuntimeManager.PlayOneShot(alienDeathSFX.Guid);
+            // Play the SFX that plays when the alien ship explodes IF we haven't lost the whole game by battery hitting 0%.
+            if (!GameManager.Instance.gameLost){ FMODUnity.RuntimeManager.PlayOneShot(alienDeathSFX.Guid); }
 
             
 

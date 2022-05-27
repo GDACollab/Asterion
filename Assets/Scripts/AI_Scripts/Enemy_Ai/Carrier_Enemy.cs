@@ -41,8 +41,8 @@ namespace AsterionArcade
             {
                 inRangeOfPlayer = true;
 
-                // Play the SFX that plays when the carrier ship fucking explodes
-                FMODUnity.RuntimeManager.PlayOneShot(carrierExplodeSFX.Guid);
+                // Play the SFX that plays when the carrier ship explodes IF we haven't lost the whole game by battery hitting 0%.
+                if (!GameManager.Instance.gameLost){ FMODUnity.RuntimeManager.PlayOneShot(carrierExplodeSFX.Guid); }
 
                 Destroy(this.gameObject);
             }
