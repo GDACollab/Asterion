@@ -7,110 +7,13 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFB, Stack Size: 98304, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Affinity: 0x4000000000000001, Priority: 0xFFFF7FFA, Stack Size: 81920, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000001E54822B158 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000001E5482265F8 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Affinity: 0x4000000000000003, Priority: 0xFFFF7FFD, Stack Size: 98304, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001E544D9E748
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001E544D9E748
-[LOG] AsyncThread::threadFunc                  : Starting Asynchronous operation on sound 000001E544D9E598
-[LOG] AsyncThread::threadFunc                  : Finished Asynchronous operation on sound 000001E544D9E598
-[LOG] SoundI::release                          :  (000001E54530A798)
-[LOG] SoundI::release                          :     coinDispenseSingleConcept_SophieMartin (000001E54BD0B9D8)
-[LOG] SoundI::release                          :  (000001E54530BA48)
-[LOG] SoundI::release                          :     coinDispenseConcept_SophieMartin (000001E54BD0A4B8)
-[LOG] SoundI::release                          :  (000001E5453087F8)
-[LOG] SoundI::release                          :     Player_Engine_Hold_LoganKirkland (000001E54BD40D58)
-[LOG] SoundI::release                          :  (000001E5453097C8)
-[LOG] SoundI::release                          :     Boot_Up (000001E54BD3F9D8)
-[LOG] SoundI::release                          :  (000001E54530AA78)
-[LOG] SoundI::release                          :     jumpScareConcept_SophieMartin (000001E54BD0E0D8)
-[LOG] SoundI::release                          :  (000001E545308968)
-[LOG] SoundI::release                          :     catwalkStep1Concept2_SophieMartin (000001E54BD0AE78)
-[LOG] SoundI::release                          :  (000001E545309AA8)
-[LOG] SoundI::release                          :     catwalkStep2Concept2_SophieMartin (000001E54BD0ACD8)
-[LOG] SoundI::release                          :  (000001E54530B8D8)
-[LOG] SoundI::release                          :     catwalkStep3Concept2_SophieMartin (000001E54BD09138)
-[LOG] SoundI::release                          :  (000001E5453094E8)
-[LOG] SoundI::release                          :     catwalkStep4Concept2_SophieMartin (000001E54BD0B358)
-[LOG] SoundI::release                          :  (000001E54530C008)
-[LOG] SoundI::release                          :     Menu_Ambiance (000001E54BD02E18)
-[LOG] SoundI::release                          :  (000001E54530A068)
-[LOG] SoundI::release                          :     esfx-LightflickerA_DylanMahler (000001E54BD0AB38)
-[LOG] SoundI::release                          :  (000001E545309C18)
-[LOG] SoundI::release                          :     preJumpScareConcept_SophieMartin (000001E54BD0A318)
-[LOG] SoundI::release                          :  (000001E545308F28)
-[LOG] SoundI::release                          :     esfx-LightflickerB_DylanMahler (000001E54BD0C398)
-[LOG] SoundI::release                          :  (000001E54530ABE8)
-[LOG] SoundI::release                          :     esfx-PaperrustleD_DylanMahler (000001E54BD09618)
-[LOG] SoundI::release                          :  (000001E54530B038)
-[LOG] SoundI::release                          :     sfx_coinInsert (000001E54BD0E418)
-[LOG] SoundI::release                          :  (000001E545309938)
-[LOG] SoundI::release                          :     carpetStep1Concept_SophieMartin (000001E54BD0D238)
-[LOG] SoundI::release                          :  (000001E545308688)
-[LOG] SoundI::release                          :     carpetStep2Concept_SophieMartin (000001E54BD0C1F8)
-[LOG] SoundI::release                          :  (000001E54530B5F8)
-[LOG] SoundI::release                          :     carpetStep3Concept_SophieMartin (000001E54BD0E278)
-[LOG] SoundI::release                          :  (000001E54530B768)
-[LOG] SoundI::release                          :     carpetStep4Concept_SophieMartin (000001E54BD0A658)
-[LOG] SoundI::release                          :  (000001E545309D88)
-[LOG] SoundI::release                          :     carpetStep5Concept_SophieMartin (000001E54BD08C58)
-[LOG] SoundI::release                          :  (000001E545308AD8)
-[LOG] SoundI::release                          :     SpaceshipShootAstramori_JeremyHahn (000001E54BD428F8)
-[LOG] SoundI::release                          :  (000001E54530BE98)
-[LOG] SoundI::release                          :     SpaceshipShootAsterion_LoganKirkland (000001E54BD42278)
-[LOG] SoundI::release                          :  (000001E545309658)
-[LOG] SoundI::release                          :     Blinky_Bits (000001E54BD42758)
-[LOG] SoundI::release                          :  (000001E54530A628)
-[LOG] SoundI::release                          :     Countermelody (000001E54BD02458)
-[LOG] SoundI::release                          :  (000001E54530BBB8)
-[LOG] SoundI::release                          :     Bass (000001E54BD3EE78)
-[LOG] SoundI::release                          :  (000001E54530B488)
-[LOG] SoundI::release                          :     Melody (000001E54BD42418)
-[LOG] SoundI::release                          : GeneratorAmbienceV3.2_DylanMahler (000001E5451DB788)
-[LOG] SoundI::release                          :     GeneratorAmbienceV3.2_DylanMahler (000001E54BD09E38)
-[LOG] SoundI::release                          :     GeneratorAmbienceV3.2_DylanMahler (000001E544D9E598)
-[LOG] SoundI::release                          : Synth Brass – Astramori Soundtrack (000001E5489B7568)
-[LOG] SoundI::release                          :     Synth Brass – Astramori Soundtrack (000001E54BD02AD8)
-[LOG] SoundI::release                          :     Synth Brass – Astramori Soundtrack (000001E544D9EE08)
-[LOG] SoundI::release                          : Synth Bass – Astramori Soundtrack (000001E5489B73B8)
-[LOG] SoundI::release                          :     Synth Bass – Astramori Soundtrack (000001E54BD3CDF8)
-[LOG] SoundI::release                          :     Synth Bass – Astramori Soundtrack (000001E544D9E088)
-[LOG] SoundI::release                          : Electric Organ – Astramori Soundtrack (000001E5489B7208)
-[LOG] SoundI::release                          :     Electric Organ – Astramori Soundtrack (000001E54BD3CC58)
-[LOG] SoundI::release                          :     Electric Organ – Astramori Soundtrack (000001E544D9EC58)
-[LOG] SoundI::release                          : Lead 2 – Astramori Soundtrack (000001E5489B6128)
-[LOG] SoundI::release                          :     Lead 2 – Astramori Soundtrack (000001E54BD3ECD8)
-[LOG] SoundI::release                          :     Lead 2 – Astramori Soundtrack (000001E544D9E8F8)
-[LOG] SoundI::release                          : generalDrone_DavidCarroll (000001E5489B6638)
-[LOG] SoundI::release                          :     generalDrone_DavidCarroll (000001E54BD3F4F8)
-[LOG] SoundI::release                          :     generalDrone_DavidCarroll (000001E54B1C0688)
-[LOG] SoundI::release                          : MainAmbienceV2(wider)_DylanMahler (000001E5489B62D8)
-[LOG] SoundI::release                          :     MainAmbienceV2(wider)_DylanMahler (000001E54BD3DFD8)
-[LOG] SoundI::release                          :     MainAmbienceV2(wider)_DylanMahler (000001E544D9E748)
-[LOG] SoundI::release                          : neonGlowConcept2_SophieMartin (000001E780FFCC98)
-[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (000001E54BD09478)
-[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (000001E5451DB5D8)
-[LOG] SoundI::release                          : neonGlowConcept2_SophieMartin (000001E780FFC428)
-[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (000001E54BD092D8)
-[LOG] SoundI::release                          :     neonGlowConcept2_SophieMartin (000001E780FFCAE8)
-[LOG] SoundI::release                          :  (000001E54530A348)
-[LOG] SoundI::release                          :     Game_Start (000001E54BD3E998)
-[LOG] SoundI::release                          :  (000001E545309208)
-[LOG] SoundI::release                          :     Noise (000001E54BD3F698)
-[LOG] Thread::callback                         : FMOD Studio update thread finished.
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
-[LOG] SystemI::close                           : Closed.
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
@@ -121,12 +24,3 @@
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
 [LOG] Manager::readBank                        : fileversion = 141, compatVersion = 140 (oldest = 44, newest = 141)
-[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
-[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
-[LOG] LiveUpdate::release                      : 
-[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
-[LOG] Thread::callback                         : FMOD stream thread finished.
-[LOG] Thread::callback                         : FMOD mixer thread finished.
-[LOG] SystemI::close                           : Closed.
-[LOG] Thread::callback                         : FMOD nonblocking thread (0) finished.
-[LOG] Thread::callback                         : FMOD file thread finished.
