@@ -46,7 +46,7 @@ namespace AsterionArcade
         public float batteryEarned;
         public int timesWon;
         //Added Variable to skip Upgrades on first play
-        private bool firstTime = true;
+        public bool firstTime = true;
 
 
         [Header("Asterion Spawning Rate/Range")]

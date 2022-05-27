@@ -106,8 +106,11 @@ public class PowerManager : MonoBehaviour
             powerLevel -= Time.deltaTime / 60f * currentRate;
             
         }
-        
-        
+
+        BatteryIndicator(powerLevel);
+        BatteryIndicatorMachine(GameManager.Instance.asterionManager.batteryEarned);
+        batteryFPUIText.text = (int)powerLevel + "%";
+
         SetMonsterPosition();
         if(powerLevel <= 0 && isDraining)
         {
@@ -129,12 +132,7 @@ public class PowerManager : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        BatteryIndicator(powerLevel);
-        BatteryIndicatorMachine(GameManager.Instance.asterionManager.batteryEarned);
-        batteryFPUIText.text = (int)powerLevel + "%";
-    }
+ 
 
 
 

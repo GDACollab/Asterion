@@ -60,10 +60,7 @@ public class ShipStats : MonoBehaviour
     }
     void Awake()
     {
-        if (instance == null)
-        {
-            instance = this; 
-        }
+        instance = this;
 
         Debug.Log(instance);
 

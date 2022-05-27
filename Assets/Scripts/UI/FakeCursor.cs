@@ -29,10 +29,7 @@ public class FakeCursor : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
-    {
-        
-    }
+
 
 
 }

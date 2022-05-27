@@ -25,6 +25,7 @@ public class VirtualCanvasCursor : MonoBehaviour
 
     public void EnableVirtualCursor()
     {
+        Debug.Log("virtual ASTERION cursor is on");
         cursorEnabled = true;
         fc.enabled = true;
         sr.enabled = true;
@@ -43,13 +44,14 @@ public class VirtualCanvasCursor : MonoBehaviour
         if (cursorEnabled)
         {
             RaycastHit hit;
+            Debug.Log("raycasting");
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100))
             {
                 if (hit.transform.tag == "RenderTexturePlane")
                 {
-                    //Debug.Log(hit.textureCoord);
+                    Debug.Log(hit.textureCoord + " - coord : - canvas size -> : " + canvasSize);
 
 
                     Vector2 hitPos = hit.textureCoord * canvasSize;
