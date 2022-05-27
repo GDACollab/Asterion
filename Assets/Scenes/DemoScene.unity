@@ -1250,6 +1250,13 @@ MonoBehaviour:
       Data3: 183882167
       Data4: -2005841259
     Path: event:/Cabinet SFX/Spaceship Shoot
+  spaceshipEngineSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!212 &42027146
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12490,6 +12497,7 @@ MonoBehaviour:
     Path: event:/Misc SFX/Lights Off
   asterionSpotlightSpeaker: {fileID: 431574522}
   astramoriSpotlightSpeaker: {fileID: 1568266858}
+  lightFlickerSFX: []
 --- !u!1 &354437707
 GameObject:
   m_ObjectHideFlags: 0
@@ -26575,6 +26583,13 @@ MonoBehaviour:
       Data3: 183882167
       Data4: -2005841259
     Path: event:/Cabinet SFX/Spaceship Shoot
+  spaceshipEngineSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!212 &690837008
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -65088,6 +65103,7 @@ GameObject:
   - component: {fileID: 1669733569}
   - component: {fileID: 1669733570}
   - component: {fileID: 1669733571}
+  - component: {fileID: 1669733572}
   m_Layer: 0
   m_Name: GameManagerObject
   m_TagString: Untagged
@@ -65263,6 +65279,248 @@ MonoBehaviour:
   - {fileID: 1045621051}
   TonyModelSpookyWalking: {fileID: 839680698}
   hasSeenTony: 0
+  lightFlicker1:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  lightFlicker2:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  tonySound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  lightSpeaker: {fileID: 0}
+--- !u!114 &1669733572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669733564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59b23dbc50d0464aac42e2ba89a4aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDelay: 20
+  delayVariance: 5
+  environmentalSFX:
+  - Guid:
+      Data1: 1933752629
+      Data2: 1297272741
+      Data3: 143689141
+      Data4: 1059927850
+    Path: event:/Spooky SFX/Environmental/Light Flicker A
+  - Guid:
+      Data1: 1131039783
+      Data2: 1148979424
+      Data3: -575845470
+      Data4: -2050357995
+    Path: event:/Spooky SFX/Environmental/Light Flicker B
+  - Guid:
+      Data1: 249321252
+      Data2: 1101017867
+      Data3: -1847886970
+      Data4: 1167173595
+    Path: event:/Spooky SFX/Environmental/Paper Rustling (D)
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  mechanicalSFX:
+  - Guid:
+      Data1: -1780171892
+      Data2: 1315874614
+      Data3: 311312562
+      Data4: -1742037298
+    Path: event:/Spooky SFX/Mechanical/Cabinet Thunk A
+  - Guid:
+      Data1: -1638548056
+      Data2: 1299151859
+      Data3: -1811496015
+      Data4: 28058525
+    Path: event:/Spooky SFX/Mechanical/Cabinet Thunk B
+  - Guid:
+      Data1: -1200213397
+      Data2: 1224662800
+      Data3: 1145019546
+      Data4: 1923753566
+    Path: event:/Spooky SFX/Mechanical/Cabinet Thunk C
+  - Guid:
+      Data1: 303080550
+      Data2: 1222771131
+      Data3: 1912204430
+      Data4: -326910987
+    Path: event:/Spooky SFX/Mechanical/Cabinet Thunk D
+  - Guid:
+      Data1: 1383944552
+      Data2: 1087936454
+      Data3: -1301301108
+      Data4: -546355552
+    Path: event:/Spooky SFX/Mechanical/Cabinet Thunk E
+  - Guid:
+      Data1: -1110093821
+      Data2: 1214054854
+      Data3: 590779824
+      Data4: -539352918
+    Path: event:/Spooky SFX/Mechanical/Cabinet Thunk F
+  - Guid:
+      Data1: -1575339320
+      Data2: 1256593651
+      Data3: 1402749839
+      Data4: -562181066
+    Path: event:/Spooky SFX/Mechanical/Cabinet Click A
+  - Guid:
+      Data1: 62176840
+      Data2: 1217267625
+      Data3: -2014436934
+      Data4: 925348541
+    Path: event:/Spooky SFX/Mechanical/Cabinet Click B
+  - Guid:
+      Data1: 79739969
+      Data2: 1197994300
+      Data3: 1087127707
+      Data4: 944967839
+    Path: event:/Spooky SFX/Mechanical/Cabinet Click C
+  alienSFX:
+  - Guid:
+      Data1: 1886180158
+      Data2: 1320509686
+      Data3: 648536462
+      Data4: -1414391232
+    Path: event:/Spooky SFX/Alien/Tony Breathing
+  - Guid:
+      Data1: 1196122444
+      Data2: 1340749560
+      Data3: -1004000839
+      Data4: -263842683
+    Path: event:/Spooky SFX/Alien/Scraping A
+  - Guid:
+      Data1: 638340843
+      Data2: 1089910116
+      Data3: -729393231
+      Data4: 13142654
+    Path: event:/Spooky SFX/Alien/Scraping B
+  - Guid:
+      Data1: -493858182
+      Data2: 1249350880
+      Data3: -991663954
+      Data4: -308011818
+    Path: event:/Spooky SFX/Alien/Gurgle B
+  - Guid:
+      Data1: -1293377494
+      Data2: 1306614165
+      Data3: 1503137719
+      Data4: 151671426
+    Path: event:/Spooky SFX/Alien/Gurgle C
+  - Guid:
+      Data1: -1940336983
+      Data2: 1264080208
+      Data3: -1981016676
+      Data4: 889757573
+    Path: event:/Spooky SFX/Alien/Buglike Vox A
+  - Guid:
+      Data1: -1101515043
+      Data2: 1092190366
+      Data3: -960489294
+      Data4: 800582810
+    Path: event:/Spooky SFX/Alien/Buglike Vox B
+  - Guid:
+      Data1: -1928552219
+      Data2: 1300146957
+      Data3: -908484688
+      Data4: 1063464471
+    Path: event:/Spooky SFX/Alien/Buglike Vox C
+  - Guid:
+      Data1: 758552332
+      Data2: 1235302817
+      Data3: -775330645
+      Data4: 1682415208
+    Path: event:/Spooky SFX/Alien/Deerlike Vox A
+  - Guid:
+      Data1: -787266144
+      Data2: 1327406110
+      Data3: -975171669
+      Data4: -539388603
+    Path: event:/Spooky SFX/Alien/Deerlike Vox B
+  - Guid:
+      Data1: -304145473
+      Data2: 1093122977
+      Data3: 1728615091
+      Data4: 229917046
+    Path: event:/Spooky SFX/Alien/Clunk Hiss
+  - Guid:
+      Data1: -304145473
+      Data2: 1093122977
+      Data3: 1728615091
+      Data4: 229917046
+    Path: event:/Spooky SFX/Alien/Clunk Hiss
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  playerRoomDetection: {fileID: 3857979980980965739}
+  asterionRoomLightSpeakers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  astramoriRoomLightSpeakers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  catwalkRoomCabinetSpeakers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  sanityManager: {fileID: 0}
 --- !u!1 &1680238050
 GameObject:
   m_ObjectHideFlags: 0
