@@ -11437,6 +11437,19 @@ MonoBehaviour:
     Path: event:/Misc SFX/Lights Off
   asterionSpotlightSpeaker: {fileID: 431574522}
   astramoriSpotlightSpeaker: {fileID: 1568266858}
+  lightFlickerSFX:
+  - Guid:
+      Data1: 1933752629
+      Data2: 1297272741
+      Data3: 143689141
+      Data4: 1059927850
+    Path: event:/Spooky SFX/Environmental/Light Flicker A
+  - Guid:
+      Data1: 1131039783
+      Data2: 1148979424
+      Data3: -575845470
+      Data4: -2050357995
+    Path: event:/Spooky SFX/Environmental/Light Flicker B
 --- !u!1 &354437707
 GameObject:
   m_ObjectHideFlags: 0
@@ -44323,6 +44336,24 @@ MonoBehaviour:
       Data3: -1847886970
       Data4: 1167173595
     Path: event:/Spooky SFX/Environmental/Paper Rustling (D)
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
   mechanicalSFX:
   - Guid:
       Data1: -1780171892
@@ -44451,6 +44482,30 @@ MonoBehaviour:
       Data3: 1728615091
       Data4: 229917046
     Path: event:/Spooky SFX/Alien/Clunk Hiss
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
+  - Guid:
+      Data1: 925917212
+      Data2: 1310526163
+      Data3: 785830820
+      Data4: -463141094
+    Path: event:/Null Event
   playerRoomDetection: {fileID: 3857979980980965739}
   asterionRoomLightSpeakers:
   - {fileID: 431574522}
@@ -57724,8 +57779,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261537445608738550}
-  m_LocalRotation: {x: 0.031353697, y: -0, z: -0, w: 0.9995084}
-  m_LocalPosition: {x: 0, y: 0.40999997, z: 0.35399997}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.29999995, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 223271564}

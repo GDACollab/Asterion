@@ -57,6 +57,8 @@ public class PowerManager : MonoBehaviour
     [SerializeField] GameObject asterionSpotlightSpeaker;
     [SerializeField] GameObject astramoriSpotlightSpeaker;
     private bool playedLightsOffSFX;
+    public List<FMODUnity.EventReference> lightFlickerSFX;
+    private int flickerSFXToPlayIndex;
 
     private IEnumerator dimRoutine;
     private IEnumerator asterionFlicker;
@@ -159,6 +161,16 @@ public class PowerManager : MonoBehaviour
             if (powerLevel < 50 && powerLevel > 0 && Random.Range(0, 6 * (powerLevel/50)) < 1)
             {
                 Debug.Log("flickering");
+
+                // Play SFX
+                if (Random.Range(0,3) == 0)
+                {
+                    flickerSFXToPlayIndex = 1 - flickerSFXToPlayIndex;  // This will oscillate between 1 and 0.
+                    FMODUnity.EventReference soundToPlay = lightFlickerSFX[flickerSFXToPlayIndex];
+                    FMODUnity.RuntimeManager.PlayOneShotAttached(soundToPlay.Guid, asterionSpotlightSpeaker);
+                    FMODUnity.RuntimeManager.PlayOneShotAttached(soundToPlay.Guid, astramoriSpotlightSpeaker);
+                }
+
                 asterionFlicker = asterionLighting.FlickerRoutine();
                 astramoriFlicker = astramoriLighting.FlickerRoutine();
                 StartCoroutine(asterionFlicker);
