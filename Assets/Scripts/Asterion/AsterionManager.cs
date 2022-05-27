@@ -183,6 +183,7 @@ namespace AsterionArcade
 
                 upgradeMenu.SetActive(true);
                 ShipStats.instance.UpdateOld();
+              
                 upgradeMenu.GetComponent<UpgradeMenu>().upgradePoints = 1;
                 upgradeMenu.GetComponent<UpgradeMenu>().UpdateButtonVisibility();
                 currentGameState = GameState.Upgrades;

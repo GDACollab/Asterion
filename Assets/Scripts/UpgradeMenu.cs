@@ -20,6 +20,7 @@ public class UpgradeMenu : MonoBehaviour
     private TextMeshProUGUI range;
 
     [SerializeField] List<GameObject> upgradeButtons;
+    [SerializeField] GameObject closeUpgradesButton;
 
     [SerializeField] private TextMeshProUGUI upgradePointText;
 
@@ -62,6 +63,7 @@ public class UpgradeMenu : MonoBehaviour
             {
                 g.SetActive(true);
             }
+            closeUpgradesButton.SetActive(false);
         }
         else
         {
@@ -69,6 +71,8 @@ public class UpgradeMenu : MonoBehaviour
             {
                 g.SetActive(false);
             }
+
+            closeUpgradesButton.SetActive(true);
         }
     }
 

@@ -58,7 +58,7 @@ public class MonsterManager : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         arcadeTextEyeball.SetAllSize(13f);
-        if (Random.Range(1,10) == 1)
+        if (Random.Range(1,10) <= 2)
         {
             arcadeTextEyeball.ToggleCameras(true);
         }

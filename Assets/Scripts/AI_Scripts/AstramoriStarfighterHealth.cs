@@ -21,7 +21,7 @@ namespace AsterionArcade
         public override void TakeDamage(int damage)
         {
             base.TakeDamage(damage);
-            
+            UpdateHealthBar();
         }
 
         public void UpdateHealthBar()

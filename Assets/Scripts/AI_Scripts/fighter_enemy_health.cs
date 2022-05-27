@@ -8,6 +8,7 @@ namespace AsterionArcade
         public float batteryAmount;
         [SerializeField] DissolveEffect dissolveFX;
         [SerializeField] Color dissolveColor;
+        bool doBattery = true;
         Collider2D bodyCollider;
 
         [Header("SFX References")]
@@ -32,6 +33,18 @@ namespace AsterionArcade
                 
                 dissolveFX.SetEmpty();
                 dissolveFX.StopDissolve(2f, dissolveColor);
+            }
+
+            if(GetComponent<Enemy>() != null)
+            {
+                if (!GetComponent<Enemy>().isAstramori)
+                {
+                    doBattery = true;
+                }
+                else
+                {
+                    doBattery = false;
+                }
             }
             
         }
