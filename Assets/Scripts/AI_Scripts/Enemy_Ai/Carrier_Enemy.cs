@@ -6,9 +6,6 @@ using UnityEngine;
 Edit this object in the Unity UI at Assets/Prefabs/Enemy_Ai/obj_carrier.prefab
 Note: Might want to add a death animation in the future
 
-BUGS:
-- Spawned fighters' bullets may persist after Astramori finishes. This is a problem with AstramoriManager.cs where enemy bullets aren't cleared at the end of the game.
-
 Created by:
 - SalilPT
 
