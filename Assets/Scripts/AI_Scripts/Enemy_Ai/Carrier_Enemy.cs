@@ -4,7 +4,6 @@ using UnityEngine;
 
 /*
 Edit this object in the Unity UI at Assets/Prefabs/Enemy_Ai/obj_carrier.prefab
-Note: Might want to add a death animation in the future
 
 Created by:
 - SalilPT
