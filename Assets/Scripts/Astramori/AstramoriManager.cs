@@ -291,6 +291,11 @@ namespace AsterionArcade
                     {
                         bd.Death();
                     }
+
+                    foreach (Transform bullet in GameManager.Instance.astramoriEnemyBullets)
+                    {
+                        Destroy(bullet.gameObject);
+                    }
                     isLost = false;
                     GameManager.Instance.asterionManager.baseEnemyQueue = new List<Vector2>(enemyQueue);
                     fpShipCountText.text = "Ships: " + shipsDeployed;
@@ -312,6 +317,11 @@ namespace AsterionArcade
                     foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                     {
                         bd.Death();
+                    }
+
+                    foreach (Transform bullet in GameManager.Instance.astramoriEnemyBullets)
+                    {
+                        Destroy(bullet.gameObject);
                     }
                     GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                     isLost = true;
