@@ -21,7 +21,8 @@ namespace AsterionArcade
 
         public override void enemyShoot()
         {
-            FMODUnity.RuntimeManager.PlayOneShot(laserShoot3_SFX.Guid);
+            // Play the shooting SFX IF the game hasn't been lost.
+            if (!GameManager.Instance.gameLost){ FMODUnity.RuntimeManager.PlayOneShot(laserShoot3_SFX.Guid); }
 
             Vector2 playerPosFrig = feuxFrigateEnemyPos;
 

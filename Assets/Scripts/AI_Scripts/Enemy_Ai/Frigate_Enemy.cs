@@ -35,8 +35,8 @@ namespace AsterionArcade
             if (numOfMissiles > 0)
             {
 
-                // Play the funky sound effect :O
-                FMODUnity.RuntimeManager.PlayOneShot(missileShootSFX.Guid);
+                // Play the funky sound effect IF the game hasn't been lost :O
+                if (!GameManager.Instance.gameLost){ FMODUnity.RuntimeManager.PlayOneShot(missileShootSFX.Guid); }
 
                 GameObject bulletCreated;
 

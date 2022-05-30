@@ -259,11 +259,14 @@ namespace AsterionArcade
                 if (isWin)
                 {
 
-                    // Play the SFX that plays when the starfighter fucking explodes
-                    FMOD.Studio.EventInstance starfighterDiesSFX_instance = FMODUnity.RuntimeManager.CreateInstance(starfighterDiesSFX);
-                    starfighterDiesSFX_instance.setParameterByName("AstramoriMix", Random.Range(69, 96));
-                    starfighterDiesSFX_instance.start();
-                    starfighterDiesSFX_instance.release();
+                    // Play the SFX that plays when the starfighter fucking explodes IF the game hasn't been lost
+                    if (!GameManager.Instance.gameLost)
+                    {
+                        FMOD.Studio.EventInstance starfighterDiesSFX_instance = FMODUnity.RuntimeManager.CreateInstance(starfighterDiesSFX);
+                        starfighterDiesSFX_instance.setParameterByName("AstramoriMix", Random.Range(69, 96));
+                        starfighterDiesSFX_instance.start();
+                        starfighterDiesSFX_instance.release();
+                    }
 
                     lossScreen.gameStateText.text = "Victory";
                     cursor.EnableVirtualCursor();

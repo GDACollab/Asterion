@@ -135,8 +135,12 @@ namespace AsterionArcade
                 firedBullet.GetComponent<BasicBullet>().damage = damage;
                 Debug.Log(firedBullet.transform.position);
 
-                spaceshipShootSFX_instance.setParameterByName("AstramoriMix", Random.Range(69,96));
-                spaceshipShootSFX_instance.start();
+                // Play the funky shoot effect IF the game hasn't been lost :O
+                if (!GameManager.Instance.gameLost)
+                {
+                    spaceshipShootSFX_instance.setParameterByName("AstramoriMix", Random.Range(69,96));
+                    spaceshipShootSFX_instance.start();
+                }
 
             }
         }

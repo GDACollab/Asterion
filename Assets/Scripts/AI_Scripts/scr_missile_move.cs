@@ -35,8 +35,8 @@ public class scr_missile_move : MonoBehaviour
     {
         if (collision.tag == "StarshipBullet")
         {
-            // Play the SFX that plays when the missile is shot down
-            FMODUnity.RuntimeManager.PlayOneShot(missileDestroyedSFX.Guid);
+            // Play the SFX that plays when the missile is shot down IF the game hasn't ended
+            if (!GameManager.Instance.gameLost){ FMODUnity.RuntimeManager.PlayOneShot(missileDestroyedSFX.Guid); }
 
             Destroy(gameObject);
         }

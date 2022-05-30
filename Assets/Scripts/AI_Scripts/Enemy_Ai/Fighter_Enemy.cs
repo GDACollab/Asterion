@@ -28,8 +28,8 @@ namespace AsterionArcade
             bulletCreated.GetComponent<Rigidbody2D>().velocity = (playerPos - (Vector2)transform.position).normalized * bulletSpeed;
             Destroy(bulletCreated, 5f);
 
-            // Play the funky sound effect :O
-            FMODUnity.RuntimeManager.PlayOneShot(laserShootSFX.Guid);
+            // Play the funky sound effect IF the game hasn't been lost :O
+            if (!GameManager.Instance.gameLost){ FMODUnity.RuntimeManager.PlayOneShot(laserShootSFX.Guid); }
 
             if (isAstramori)
             {
