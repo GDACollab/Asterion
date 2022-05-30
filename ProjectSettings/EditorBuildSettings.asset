@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DemoScene.unity
     guid: f0975272c58ad924396f5e7738e1d4a8
+  - enabled: 0
+    path: Assets/Scenes/! trailer builds/TrailerBuild-WithoutCutscene.unity
+    guid: bb63bc9c53655f547994afa974192f6c
+  - enabled: 1
+    path: Assets/Scenes/! trailer builds/TrailerBuild-WithCutscene.unity
+    guid: d97990cf19b78974586c15a3c63f3640
   m_configObjects: {}

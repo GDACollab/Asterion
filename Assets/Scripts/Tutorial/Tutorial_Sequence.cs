@@ -19,8 +19,7 @@ public class Tutorial_Sequence : MonoBehaviour
     public List<GameObject> TonyModelSpooky;
     public GameObject TonyModelSpookyWalking;
 
-
-
+    [SerializeField] private bool skipIntroCutscene;
 
 
     public bool hasSeenTony = true;
@@ -66,64 +65,67 @@ public class Tutorial_Sequence : MonoBehaviour
 
     IEnumerator EventFourStart()
     {
+        if (!skipIntroCutscene)
+        {
+            Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
+            Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
+            GameManager.Instance.canPause = false;
 
-        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
-        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
-        GameManager.Instance.canPause = false;
+            // lights flicker
+            FMODUnity.RuntimeManager.PlayOneShotAttached(lightFlicker1.Guid, lightSpeaker);
+            yield return new WaitForSeconds(0.05f);
+            Lights.SetActive(false);
+            yield return new WaitForSeconds(0.05f);
+            Lights.SetActive(true);
+            yield return new WaitForSeconds(0.05f);
+            Lights.SetActive(false);
 
-        // lights flicker
-        FMODUnity.RuntimeManager.PlayOneShotAttached(lightFlicker1.Guid, lightSpeaker);
-        yield return new WaitForSeconds(0.05f);
-        Lights.SetActive(false);
-        yield return new WaitForSeconds(0.05f);
-        Lights.SetActive(true);
-        yield return new WaitForSeconds(0.05f);
-        Lights.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            TonyModelSpookyWalking.SetActive(false);
+            TonyModelSpooky[1].SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            TonyModelSpooky[1].SetActive(false);
 
-        yield return new WaitForSeconds(0.2f);
-        TonyModelSpookyWalking.SetActive(false);
-        TonyModelSpooky[1].SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        TonyModelSpooky[1].SetActive(false);
+            TonyModelSpooky[2].SetActive(true);
+            yield return new WaitForSeconds(0.2f);
+            TonyModelSpooky[2].SetActive(false);
 
-        TonyModelSpooky[2].SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        TonyModelSpooky[2].SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            TonyModelSpooky[0].SetActive(true);
+            FMODUnity.RuntimeManager.PlayOneShot(tonySound.Guid);
+            //GameObject.Find("SpookyPlane").transform.rotation = new Quaternion(81f, -90f, 90f, 0f);
 
-        yield return new WaitForSeconds(0.2f);
-        TonyModelSpooky[0].SetActive(true);
-        FMODUnity.RuntimeManager.PlayOneShot(tonySound.Guid);
-        //GameObject.Find("SpookyPlane").transform.rotation = new Quaternion(81f, -90f, 90f, 0f);
+            yield return new WaitForSeconds(2f);
+            TonyModelSpooky[0].SetActive(false);
+            TonyModelSpookyWalking.SetActive(true);
+            Lights.SetActive(true);
 
-        yield return new WaitForSeconds(2f);
-        TonyModelSpooky[0].SetActive(false);
-        TonyModelSpookyWalking.SetActive(true);
-        Lights.SetActive(true);
+            // lights flicker again
+            FMODUnity.RuntimeManager.PlayOneShotAttached(lightFlicker2.Guid, lightSpeaker);
 
-        // lights flicker again
-        FMODUnity.RuntimeManager.PlayOneShotAttached(lightFlicker2.Guid, lightSpeaker);
+            yield return new WaitForSeconds(0.05f);
 
-        yield return new WaitForSeconds(0.05f);
-
-        Lights.SetActive(false);
-        yield return new WaitForSeconds(0.05f);
-        Lights.SetActive(true);
-        yield return new WaitForSeconds(1f);
-     
+            Lights.SetActive(false);
+            yield return new WaitForSeconds(0.05f);
+            Lights.SetActive(true);
+            yield return new WaitForSeconds(1f);
        
-        
-        _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
-          .Invoke(CameraManager.CameraState.TutorialCutscene);
+            _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
+              .Invoke(CameraManager.CameraState.TutorialCutscene);
 
-        yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f);
+        }
 
         GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
         yield return new WaitForSeconds(1f);
         GameObject.Find("POWER MANAGER").GetComponent<PowerManager>().powerLevel -= 10;
         yield return new WaitForSeconds(1f);
 
-        _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
-          .Invoke(CameraManager.CameraState.FirstPerson);
+        if (!skipIntroCutscene)
+        {
+            _cameraManager.GetComponent<CameraManager>().OnChangeCameraState
+              .Invoke(CameraManager.CameraState.FirstPerson);
+        }
 
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(true);
         Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(true);
@@ -170,10 +172,14 @@ public class Tutorial_Sequence : MonoBehaviour
     //  Work Around as something else renables player movement
     IEnumerator EventOne()
     {
-        yield return new WaitForSeconds(1f);
-        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
-        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
-        AsterionGame.GetComponent<AsterionArcade.AsterionManager>().ForceDoorOpen();
+        if (!skipIntroCutscene)
+        {
+            yield return new WaitForSeconds(1f);
+            Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
+            Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
+        }
+        
+            AsterionGame.GetComponent<AsterionArcade.AsterionManager>().ForceDoorOpen();
 
         if (GameManager.Instance.asterionGamesPlayed == 1)
         {
@@ -187,13 +193,17 @@ public class Tutorial_Sequence : MonoBehaviour
 
     IEnumerator EndEventOne()
     {
-        // Delay Should Be Length of Sound
-        yield return new WaitForSeconds(2f);
-        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
-        Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
-        yield return new WaitForSeconds(0f);
-        GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().EndingMonsterEvent();
-        //Destroy(gameObject);
+        if (!skipIntroCutscene)
+        {
+            // Delay Should Be Length of Sound
+            yield return new WaitForSeconds(2f);
+            Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetMovementEnabled(false);
+            Player.GetComponent<FirstPersonPlayer.PlayerMovement>().SetTurningEnabled(false);
+            yield return new WaitForSeconds(0f);
+        }
+        
+            GameObject.Find("GameManagerObject").GetComponent<Tutorial_Sequence>().EndingMonsterEvent();
+            //Destroy(gameObject);
     }
 
     IEnumerator EventTwo()
