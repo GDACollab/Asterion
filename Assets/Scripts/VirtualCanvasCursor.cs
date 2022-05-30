@@ -44,14 +44,14 @@ public class VirtualCanvasCursor : MonoBehaviour
         if (cursorEnabled)
         {
             RaycastHit hit;
-            Debug.Log("raycasting");
+            //Debug.Log("raycasting");
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100))
             {
                 if (hit.transform.tag == "RenderTexturePlane")
                 {
-                    Debug.Log(hit.textureCoord + " - coord : - canvas size -> : " + canvasSize);
+                    //Debug.Log(hit.textureCoord + " - coord : - canvas size -> : " + canvasSize);
 
 
                     Vector2 hitPos = hit.textureCoord * canvasSize;

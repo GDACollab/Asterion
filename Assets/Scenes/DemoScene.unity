@@ -3779,6 +3779,11 @@ MonoBehaviour:
   OverrideAttenuation: 0
   OverrideMinDistance: 1
   OverrideMaxDistance: 20
+--- !u!1 &137724983 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 506063759643265074, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
+  m_PrefabInstance: {fileID: 153393838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &140575056
 GameObject:
   m_ObjectHideFlags: 0
@@ -34568,6 +34573,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1017131145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 821308901905008270, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
+  m_PrefabInstance: {fileID: 1561925213}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1022488861
 GameObject:
   m_ObjectHideFlags: 0
@@ -62312,7 +62322,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 506063759643265079, guid: 1b4d225eb3d2abe49816a476874a0bba, type: 3}
   m_PrefabInstance: {fileID: 153393838}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 137724983}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f26b0ea0949114c0c96ab586e34365ae, type: 3}
@@ -63504,7 +63514,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 821308901905008257, guid: 198344d4061514d4da7e61d2a98fbe2a, type: 3}
   m_PrefabInstance: {fileID: 1561925213}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1017131145}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f26b0ea0949114c0c96ab586e34365ae, type: 3}
@@ -66014,6 +66024,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseDelay: 20
   delayVariance: 5
+  doorOpenPercentage: 0.03
+  doorOpenSound:
+    Guid:
+      Data1: -2002061844
+      Data2: 1308056678
+      Data3: 1894045614
+      Data4: 398983085
+    Path: event:/Misc SFX/Sliding Door Open
+  asterionDoor: {fileID: 137724983}
+  astramoriDoor: {fileID: 1017131145}
   environmentalSFX:
   - Guid:
       Data1: 1933752629

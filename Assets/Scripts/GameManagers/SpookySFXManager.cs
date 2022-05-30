@@ -10,6 +10,14 @@ public class SpookySFXManager : MonoBehaviour
     public float delayVariance = 5f;
     private float time;
 
+    [Header("Fakeout Door Opening SFX")]
+    public float doorOpenPercentage = 0.04f;                        // The probability that- instead of a standard spooky SFX playing, the
+                                                                    // sound of a door opening plays behind you while playing one of the
+                                                                    // cabinets.
+    [SerializeField] FMODUnity.EventReference doorOpenSound;        // The sound of a door opening.
+    [SerializeField] GameObject asterionDoor;                       // The door to the Asterion room.
+    [SerializeField] GameObject astramoriDoor;                      // The door to the Astramori room.
+
     [Header("Environmental SFX")]
     public List<FMODUnity.EventReference> environmentalSFX;
 
@@ -86,6 +94,32 @@ public class SpookySFXManager : MonoBehaviour
 
     void PlaySpookySFX()
     {
+        // Before we get into regular operation, here's something fun!
+                                        // If we're playing an arcade cabinet,
+        if (GameManager.Instance.isPlayingArcade)
+        {                               // And an RNG puts us at or below our
+                                        // door-opening probability threshold,
+            if(Random.Range(0f,100f) / 100f <= doorOpenPercentage)
+            {      
+                                        // Play the door opening sound!
+                soundToPlay = FMODUnity.RuntimeManager.CreateInstance(doorOpenSound);
+
+                if (playerRoomDetection.playerLocation == PlayerRoomDetection.Location.AsterionRoom){
+                    currentSpeaker = asterionDoor; }
+                else if (playerRoomDetection.playerLocation == PlayerRoomDetection.Location.AstramoriRoom){
+                    currentSpeaker = astramoriDoor; }
+
+                soundToPlay.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(currentSpeaker));
+                soundToPlay.start();
+
+                print(doorOpenSound + "\nplayed at " + playerRoomDetection.playerLocation);
+
+                soundToPlay.release();
+                return;
+            }
+        }
+
+        // Onto normal operation.
                                         // Get the probability ranges based of the sanity stage.
         probabilityStage = calculateStageFromSanity(sanityManager.sanity);
 
