@@ -175,6 +175,11 @@ public class SpookySFXManager : MonoBehaviour
         soundToPlay.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 
+    public void setPaused(bool paused)
+    {
+        soundToPlay.setPaused(paused);
+    }
+
     int calculateStageFromSanity(float sanity)
     {
         // HELPER FUNCTION FOR READABILITY

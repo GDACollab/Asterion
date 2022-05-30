@@ -312,6 +312,8 @@ public class GameManager : MonoBehaviour
                 {
                     a.EventInstance.setPaused(false);
                 }
+                spookySFXManager.setPaused(false);
+                asterionMusicManager.setPaused(false);
             }
         }
 
@@ -330,6 +332,8 @@ public class GameManager : MonoBehaviour
             {
                 a.EventInstance.setPaused(true);
             }
+            spookySFXManager.setPaused(true);
+            asterionMusicManager.setPaused(true);
 
         }
     }

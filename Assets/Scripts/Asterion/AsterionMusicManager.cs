@@ -37,6 +37,34 @@ public class AsterionMusicManager : MonoBehaviour
         currentlyPlaying = "idle";
     }
 
+
+    public void setPaused(bool paused)
+    {
+        switch (currentlyPlaying)
+        {
+            case "idle":
+                asterionIdleMusic_instance.setPaused(paused);
+                break;
+
+            case "menu":
+                asterionMenuMusic_instance.setPaused(paused);
+                break;
+
+            case "main":
+                asterionMainMusic_instance.setPaused(paused);
+                break;
+
+            case "none":
+                break;
+
+            default:
+                //By default, do nothing.
+                print("====================================================\nIMPROPER USE OF setPaused() in AsterionMusicManager!\n====================================================");
+                break;
+        }
+    }
+
+
     public void PlayMusic(string music)
     {
         switch (music.ToLower())
@@ -52,6 +80,7 @@ public class AsterionMusicManager : MonoBehaviour
                 }
                 break;
 
+
             case "menu":
                 if (currentlyPlaying != "menu")
                 {
@@ -62,6 +91,7 @@ public class AsterionMusicManager : MonoBehaviour
                     currentlyPlaying = "menu";
                 }
                 break;
+
 
             case "main":
                 if (currentlyPlaying != "main")
@@ -74,12 +104,14 @@ public class AsterionMusicManager : MonoBehaviour
                 }
                 break;
 
+
             case "stop all":
                 asterionIdleMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 asterionMenuMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 asterionMainMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
                 currentlyPlaying = "none";
                 break;
+
 
             default:
                 //By default, play the idle music.
