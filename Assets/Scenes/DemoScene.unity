@@ -36552,6 +36552,7 @@ MonoBehaviour:
   spawningSystem: {fileID: 1854180382}
   virtualCamera: {fileID: 1455084547}
   astramoriDoor: {fileID: 1561925215}
+  astramoriCabinet: {fileID: 250182380}
   mainMenu: {fileID: 1958860439}
   tutorialMenu: {fileID: 1119208306}
   tutorialNextButton: {fileID: 0}
@@ -36594,6 +36595,14 @@ MonoBehaviour:
       Data3: -720777581
       Data4: -642401343
     Path: event:/Cabinet SFX/Spaceship Explode
+  victoryFanfareSFX:
+    Guid:
+      Data1: -237623083
+      Data2: 1110714441
+      Data3: 1474804355
+      Data4: 206830439
+    Path: event:/Music/Astramori/Astramori Victory Fanfare
+  astramoriMusicManager: {fileID: 1067671939}
   pretextFirst:
   - The void is merciless.
   - This is inevitable.
@@ -36622,7 +36631,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   astramoriCabinet: {fileID: 250182380}
   sanityManager: {fileID: 1669733570}
-  astramoriMusic:
+  astramoriIdleMusic:
+    Guid:
+      Data1: -1350127759
+      Data2: 1115031917
+      Data3: 499335827
+      Data4: 660360405
+    Path: event:/Music/Astramori/Astramori Music Idle
+  astramoriMainMusic:
     Guid:
       Data1: -1647227852
       Data2: 1085784032
@@ -65987,6 +66003,7 @@ MonoBehaviour:
   - {fileID: 992519163}
   - {fileID: 1045621051}
   TonyModelSpookyWalking: {fileID: 839680698}
+  skipIntroCutscene: 0
   hasSeenTony: 0
   lightFlicker1:
     Guid:

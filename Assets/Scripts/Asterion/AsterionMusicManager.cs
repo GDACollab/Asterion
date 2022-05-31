@@ -10,10 +10,11 @@ public class AsterionMusicManager : MonoBehaviour
 
     [Header("Music References")]
     [SerializeField] FMODUnity.EventReference asterionIdleMusic;
-    private FMOD.Studio.EventInstance asterionIdleMusic_instance;
     [SerializeField] FMODUnity.EventReference asterionMenuMusic;
-    private FMOD.Studio.EventInstance asterionMenuMusic_instance;
     [SerializeField] FMODUnity.EventReference asterionMainMusic;
+
+    private FMOD.Studio.EventInstance asterionIdleMusic_instance;
+    private FMOD.Studio.EventInstance asterionMenuMusic_instance;
     private FMOD.Studio.EventInstance asterionMainMusic_instance;
 
     private string currentlyPlaying;

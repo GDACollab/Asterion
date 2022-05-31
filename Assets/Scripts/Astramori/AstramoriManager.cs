@@ -31,6 +31,7 @@ namespace AsterionArcade
         [SerializeField] Spawning spawningSystem;
         [SerializeField] CinemachineVirtualCamera virtualCamera;
         [SerializeField] Door astramoriDoor;
+        [SerializeField] GameObject astramoriCabinet;
         [Header("UI")]
         [SerializeField] GameObject mainMenu;
         [SerializeField] GameObject tutorialMenu;
@@ -68,6 +69,8 @@ namespace AsterionArcade
         [SerializeField] FMODUnity.EventReference coinDispenseSFX;
         private FMOD.Studio.EventInstance coinDispenseSFX_instance;
         [SerializeField] FMODUnity.EventReference starfighterDiesSFX;
+        [SerializeField] FMODUnity.EventReference victoryFanfareSFX;
+        [SerializeField] AstramoriMusicManager astramoriMusicManager;
 
         [Header("Pretext")]
         [SerializeField] List<string> pretextFirst;
@@ -172,6 +175,8 @@ namespace AsterionArcade
             {
                 fundsText.SetActive(true);
             }
+
+            //astramoriMusicManager.PlayMusic("main");
             
         }
 
@@ -189,6 +194,7 @@ namespace AsterionArcade
             starfighterAI.StartEngineSFX();
 
             StartCoroutine(CombatRoutine());
+            astramoriMusicManager.PlayMusic("main");
 
             //GameManager.Instance.AlterCoins(-1);
         }
@@ -225,6 +231,7 @@ namespace AsterionArcade
             starfighterAI.StartEngineSFX();
 
             StartCoroutine(CombatRoutine());
+            astramoriMusicManager.PlayMusic("main");
 
         }
 
@@ -255,6 +262,7 @@ namespace AsterionArcade
                 starfighterAI.Deactivate();
                 spawningSystem.isActive = false;
                 
+                astramoriMusicManager.PlayMusic("idle");
 
                 if (isWin)
                 {
@@ -266,6 +274,8 @@ namespace AsterionArcade
                         starfighterDiesSFX_instance.setParameterByName("AstramoriMix", Random.Range(69, 96));
                         starfighterDiesSFX_instance.start();
                         starfighterDiesSFX_instance.release();
+
+                        FMODUnity.RuntimeManager.PlayOneShotAttached(victoryFanfareSFX.Guid, astramoriCabinet);
                     }
 
                     lossScreen.gameStateText.text = "Victory";

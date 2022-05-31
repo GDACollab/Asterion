@@ -4,35 +4,103 @@ using UnityEngine;
 
 public class AstramoriMusicManager : MonoBehaviour
 {
+
     public GameObject astramoriCabinet;
     [SerializeField] SanityManager sanityManager;
 
     [Header("Music References")]
-    [SerializeField] FMODUnity.EventReference astramoriMusic;
-    private FMOD.Studio.EventInstance astramoriMusic_instance;
+    [SerializeField] FMODUnity.EventReference astramoriIdleMusic;
+    [SerializeField] FMODUnity.EventReference astramoriMainMusic;
+
+    private FMOD.Studio.EventInstance astramoriIdleMusic_instance;
+    private FMOD.Studio.EventInstance astramoriMainMusic_instance;
+
+    private string currentlyPlaying;
 
     void Awake()
     {
-        astramoriMusic_instance = FMODUnity.RuntimeManager.CreateInstance(astramoriMusic);
+        astramoriIdleMusic_instance = FMODUnity.RuntimeManager.CreateInstance(astramoriIdleMusic);
+        astramoriMainMusic_instance = FMODUnity.RuntimeManager.CreateInstance(astramoriMainMusic);
 
-        astramoriMusic_instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(astramoriCabinet));
+        astramoriIdleMusic_instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(astramoriCabinet));
+        astramoriMainMusic_instance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(astramoriCabinet));
         
         // NOTE: The assignment of the FMOD parameter "Sanity" to the Unity variable takes place in SanityManager.
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        StartMusic();
+        astramoriIdleMusic_instance.start();      
+        currentlyPlaying = "idle";
     }
 
-    public void StartMusic()
+    
+    public void setPaused(bool paused)
     {
-        astramoriMusic_instance.start();
+        switch (currentlyPlaying)
+        {
+            case "idle":
+                astramoriIdleMusic_instance.setPaused(paused);
+                break;
+
+            case "main":
+                astramoriMainMusic_instance.setPaused(paused);
+                break;
+
+            case "none":
+                break;
+
+            default:
+                //By default, do nothing.
+                print("=====================================================\nIMPROPER USE OF setPaused() in AstramoriMusicManager!\n=====================================================");
+                break;
+        }
     }
 
-    public void StopMusic()
+
+    public void PlayMusic(string music)
     {
-        astramoriMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        switch (music.ToLower())
+        {
+            case "idle":
+                if (currentlyPlaying != "idle")
+                {
+                    astramoriMainMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+                    astramoriIdleMusic_instance.start();
+                    currentlyPlaying = "idle";
+                }
+                break;
+
+
+            case "main":
+                if (currentlyPlaying != "main")
+                {
+                    astramoriIdleMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+                    astramoriMainMusic_instance.start();
+                    currentlyPlaying = "main";
+                }
+                break;
+
+
+            case "stop all":
+                astramoriIdleMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                astramoriMainMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                currentlyPlaying = "none";
+                break;
+
+
+            default:
+                //By default, play the idle music.
+                if (currentlyPlaying != "idle")
+                {
+                    astramoriMainMusic_instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+                    astramoriIdleMusic_instance.start();
+                    currentlyPlaying = "idle";
+                }
+                break;
+        }
     }
 }

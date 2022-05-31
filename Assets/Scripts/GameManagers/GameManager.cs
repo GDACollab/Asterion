@@ -242,7 +242,7 @@ public class GameManager : MonoBehaviour
 
         // Stop music!
         asterionMusicManager.PlayMusic("stop all");
-        astramoriMusicManager.StopMusic();
+        astramoriMusicManager.PlayMusic("stop all");
         hallwayTony3D.SetActive(false);
 
         // Dramatic Pause
@@ -314,6 +314,7 @@ public class GameManager : MonoBehaviour
                 }
                 spookySFXManager.setPaused(false);
                 asterionMusicManager.setPaused(false);
+                astramoriMusicManager.setPaused(false);
             }
         }
 
@@ -334,6 +335,7 @@ public class GameManager : MonoBehaviour
             }
             spookySFXManager.setPaused(true);
             asterionMusicManager.setPaused(true);
+            astramoriMusicManager.setPaused(true);
 
         }
     }
