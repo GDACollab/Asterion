@@ -116,6 +116,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _backColor: {r: 785404, g: 785404, b: 785404, a: 0.12156863}
     - _vectorOffset: {r: 0, g: 0, b: 0, a: 0}
     - _vectorOffset_1: {r: 0, g: 0.31, b: 0, a: 0}
     - _vectorOffset_2: {r: 0, g: 0.31, b: 0, a: 0}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{7070bf8d-e7ad-4f1b-84d1-855063e46d12}">
+		<property name="assetPath">
+			<value>Spooky SFX/mechanical/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{0abe2706-d6dc-4527-a18c-bad740285241}</destination>
+		</relationship>
+	</object>
+</objects>

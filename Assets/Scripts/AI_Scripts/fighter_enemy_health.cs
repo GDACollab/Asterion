@@ -5,9 +5,10 @@ namespace AsterionArcade
 {
     public class fighter_enemy_health : BasicDamageable
     {
-
+        public float batteryAmount;
         [SerializeField] DissolveEffect dissolveFX;
         [SerializeField] Color dissolveColor;
+        bool doBattery = true;
         Collider2D bodyCollider;
 
         [Header("SFX References")]
@@ -33,13 +34,25 @@ namespace AsterionArcade
                 dissolveFX.SetEmpty();
                 dissolveFX.StopDissolve(2f, dissolveColor);
             }
+
+            if(GetComponent<Enemy>() != null)
+            {
+                if (!GetComponent<Enemy>().isAstramori)
+                {
+                    doBattery = true;
+                }
+                else
+                {
+                    doBattery = false;
+                }
+            }
             
         }
 
         public override void Death()
         {
-            // Play the SFX that plays when the alien ship fucking explodes
-            FMODUnity.RuntimeManager.PlayOneShot(alienDeathSFX.Guid);
+            // Play the SFX that plays when the alien ship explodes IF we haven't lost the whole game by battery hitting 0%.
+            if (!GameManager.Instance.gameLost){ FMODUnity.RuntimeManager.PlayOneShot(alienDeathSFX.Guid); }
 
             
 
@@ -53,6 +66,12 @@ namespace AsterionArcade
             {
                 GetComponent<Enemy>().enabled = false;
             }
+
+            if (isAlien)
+            {
+                GameManager.Instance.asterionManager.batteryEarned += batteryAmount;
+            }
+
             base.Death();
             Destroy(this.gameObject,1);
         }

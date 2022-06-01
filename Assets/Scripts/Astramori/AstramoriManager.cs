@@ -96,6 +96,8 @@ namespace AsterionArcade
             }
 
             _playerMovement.enabled = false;
+            starfighterAI.StopEngineSFX();
+            
         }
 
         private void Update()
@@ -129,6 +131,7 @@ namespace AsterionArcade
         public override void StopInteractAction()
         {
             _playerMovement.enabled = false;
+            starfighterAI.StopEngineSFX();
             
             cursor.DisableVirtualCursor();
             //_aiCore.enabled = false;
@@ -183,6 +186,7 @@ namespace AsterionArcade
             upgradeMenu.SetActive(false);
             currentGameState = GameState.Gameplay;
             _playerMovement.enabled = true;
+            starfighterAI.StartEngineSFX();
 
             StartCoroutine(CombatRoutine());
 
@@ -218,6 +222,7 @@ namespace AsterionArcade
             ApplyBonusStats();
             currentGameState = GameState.Gameplay;
             _playerMovement.enabled = true;
+            starfighterAI.StartEngineSFX();
 
             StartCoroutine(CombatRoutine());
 
@@ -281,9 +286,15 @@ namespace AsterionArcade
                     GameManager.Instance.astramoriGamesPlayed++;
                     //_aiCore.enabled = false;
                     _playerMovement.enabled = false;
+                    starfighterAI.StopEngineSFX();
                     foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                     {
                         bd.Death();
+                    }
+
+                    foreach (Transform bullet in GameManager.Instance.astramoriEnemyBullets)
+                    {
+                        Destroy(bullet.gameObject);
                     }
                     isLost = false;
                     GameManager.Instance.asterionManager.baseEnemyQueue = new List<Vector2>(enemyQueue);
@@ -299,12 +310,18 @@ namespace AsterionArcade
                     lossScreen.fundsRewardedText.enabled = false;
                     timeText.enabled = false;
                     _playerMovement.enabled = false;
+                    starfighterAI.StopEngineSFX();
                     GameManager.Instance.astramoriGamesPlayed++;
                     StopAllCoroutines();
                     // _aiCore.enabled = false;
                     foreach (BasicDamageable bd in enemies.GetComponentsInChildren<BasicDamageable>())
                     {
                         bd.Death();
+                    }
+
+                    foreach (Transform bullet in GameManager.Instance.astramoriEnemyBullets)
+                    {
+                        Destroy(bullet.gameObject);
                     }
                     GameManager.Instance.sanityManager.UpdateSanity(-sanityLoss);
                     isLost = true;
@@ -323,11 +340,12 @@ namespace AsterionArcade
             player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage + GameManager.Instance.shipStats.attack;
             
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth + GameManager.Instance.shipStats.shield;
+            player.GetComponent<AstramoriStarfighterHealth>().UpdateHealthBar();
             // Randy: Scale Placement zone size to account for change in range upgrade applied to camera
             PlacementZone.transform.localScale = zoneBaseSize + new Vector3((GameManager.Instance.shipStats.range * 2.56f),
                                                                             (GameManager.Instance.shipStats.range * 2.56f),
                                                                             (GameManager.Instance.shipStats.range * 2.56f));
-            virtualCamera.m_Lens.OrthographicSize = 7 + (GameManager.Instance.shipStats.range / 2.3f);
+            virtualCamera.m_Lens.OrthographicSize = 7.5f + (GameManager.Instance.shipStats.range / 2.3f);
         }
 
         //sets fighter stats to default
@@ -336,7 +354,7 @@ namespace AsterionArcade
             
             player.GetComponent<Starfighter>().speed = player.GetComponent<Starfighter>().baseSpeed;
             player.GetComponent<Starfighter>().damage = player.GetComponent<Starfighter>().baseDamage;
-            virtualCamera.m_Lens.OrthographicSize = 7;
+            virtualCamera.m_Lens.OrthographicSize = 7.5f;
             player.GetComponent<AstramoriStarfighterHealth>().health = player.GetComponent<AstramoriStarfighterHealth>().baseHealth;
 
         }

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Animator tempLoseAnim;
     [SerializeField] private GameObject fpUI;
     [SerializeField] private GameObject hallwayTony3D;
+    public IntroUI introUI;
     public Animator playerScareAnim;
     public GameObject pauseUI;
     public GameObject settingsUI;
@@ -35,9 +36,12 @@ public class GameManager : MonoBehaviour
     public PowerManager powerManager;
     public FirstPersonPlayer.PlayerMovement playerMovement;
     [SerializeField] PlayerLook playerLook;
+    [SerializeField] Animator finalScareAnim;
+    [SerializeField] public GameObject finalScareCore;
 
     [Header("Game State")]
     public ShipStats shipStats;
+    public bool canPause;
     public bool isPaused;
     public bool isSettings;
     public bool isPlayingArcade;
@@ -63,12 +67,15 @@ public class GameManager : MonoBehaviour
     private FMOD.Studio.EventInstance preJumpscareSFX_instance;
     [SerializeField] AsterionMusicManager asterionMusicManager;
     [SerializeField] AstramoriMusicManager astramoriMusicManager;
+    private SpookySFXManager spookySFXManager;
 
 
     //acts as a singleton which can be easily referenced with GameManager.Instance
 
     void Awake()
     {
+        Application.targetFrameRate = 61;
+
         if (Instance == null)
         {
             Instance = this;
@@ -101,13 +108,14 @@ public class GameManager : MonoBehaviour
         // SFX stuff
         jumpscareSFX_instance = FMODUnity.RuntimeManager.CreateInstance(jumpscareSFX);
         preJumpscareSFX_instance = FMODUnity.RuntimeManager.CreateInstance(preJumpscareSFX);
+        spookySFXManager = GetComponent<SpookySFXManager>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isPlayingArcade && Input.GetKeyDown(KeyCode.Escape))
+        if (canPause && !isPlayingArcade && Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
         }
@@ -121,8 +129,11 @@ public class GameManager : MonoBehaviour
     {
         
         
-
-        UpdateTimeDisplay();
+        if(asterionGamesPlayed >= 1)
+        {
+            UpdateTimeDisplay();
+        }
+        
 
 
     }
@@ -180,6 +191,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator LoseRoutine()
     {
         gameLost = true;
+        canPause = false;
+        
 
         // Flicker Lights and floating cabinets
         yield return new WaitForSeconds(0.1f);
@@ -196,12 +209,14 @@ public class GameManager : MonoBehaviour
             a.EventInstance.setPaused(true);
         }
 
+        spookySFXManager.Mute();
+
+        // Start pre-jumpscare
+        preJumpscareSFX_instance.start();
+
         fpUI.SetActive(false);
         
         
-
-
-        preJumpscareSFX_instance.start();
 
 
         // Hide Tony
@@ -247,7 +262,8 @@ public class GameManager : MonoBehaviour
 
         jumpscareSFX_instance.start();
         tempLoseAnim.Play("tempLoseAnim");
-        playerScareAnim.Play("jumpscare3D");
+        finalScareCore.SetActive(true);
+        finalScareAnim.Play("jumpscare");
 
         yield return new WaitForSeconds(3);
 
@@ -257,6 +273,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateTimeDisplay()
     {
+
         int minutes = (int)(gameTime / 60);
         int seconds = (int)(gameTime % 60);
 

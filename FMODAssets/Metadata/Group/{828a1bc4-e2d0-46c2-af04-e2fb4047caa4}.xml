@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{828a1bc4-e2d0-46c2-af04-e2fb4047caa4}">
+		<property name="volume">
+			<value>-7.5</value>
+		</property>
+		<property name="name">
+			<value>Spooky SFX</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{b6170177-4740-4168-8947-53ae869b61ba}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{1bf052e1-752f-4bb4-966d-2eb8e2ad0022}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{43b7f25e-deed-462f-9ca0-39619407bfab}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{b6170177-4740-4168-8947-53ae869b61ba}">
+		<relationship name="effects">
+			<destination>{6c99e622-c621-43bf-96c1-0ec4e68af571}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{1bf052e1-752f-4bb4-966d-2eb8e2ad0022}" />
+	<object class="MixerBusFader" id="{6c99e622-c621-43bf-96c1-0ec4e68af571}" />
+</objects>
