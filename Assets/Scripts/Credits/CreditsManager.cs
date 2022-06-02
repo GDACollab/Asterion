@@ -17,9 +17,11 @@ public class CreditsManager : MonoBehaviour
     // The speed that the scene will fade out at
     public float transitionSpeed = 0.5f;
 
-    [Header("Audio")]
+    [Header("Music References")]
     // The component that plays and gets parameters from the playing music
-    private AudioSource audioSource;
+    [SerializeField] FMODUnity.EventReference creditsMusic;
+    private FMOD.Studio.EventInstance creditsMusic_instance;
+    private FMOD.Studio.EventDescription creditsMusic_description;
 
     [Header("General Parameters")]
     // The CSV file inputted as credits.
@@ -37,7 +39,7 @@ public class CreditsManager : MonoBehaviour
 
     // Time it will take for the credits to scroll all the way through, in seconds
     // Set by the duration of the audio
-    private float time;
+    private int time;
 
     [Header("UI Text")]
     // Distance set between the text boxes, both vertically and horizontally
@@ -60,8 +62,10 @@ public class CreditsManager : MonoBehaviour
     // Initializes the starting position, parses the CSV file into the Dictionary creditsMap, and writes the credits into text boxes based on the template
     void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        time = audioSource.clip.length;
+        creditsMusic_instance = FMODUnity.RuntimeManager.CreateInstance(creditsMusic);
+        creditsMusic_description = FMODUnity.RuntimeManager.GetEventDescription(creditsMusic);
+        creditsMusic_description.getLength(out time);
+        Debug.Log($"Time: {time}");
         
         startingPosition = new Vector2(Screen.width/2, startingY);
         //startingPosition = new Vector2(Screen.width/2, Screen.height);
@@ -224,7 +228,7 @@ public class CreditsManager : MonoBehaviour
             position.y -= change + (textBoxMargin * 2);
         }
 
-        audioSource.Play();
+        creditsMusic_instance.start();
     }
 
     // Calculates the total height of the credits
@@ -257,14 +261,14 @@ public class CreditsManager : MonoBehaviour
         }
 
         // Calculates the units the credits will move on this refresh cycle
-        float creditsSpeed = ((getCreditsHeight() + Screen.height) / time) * Time.deltaTime;
+        float creditsSpeed = ((getCreditsHeight() + Screen.height) / time) * (Time.deltaTime * 1000);
         
         // Translates the header up
         foreach(TextMeshProUGUI headerTextBox in headerCanvas.GetComponentsInChildren<TextMeshProUGUI>())
         {
             headerTextBox.transform.position = new Vector2(headerTextBox.transform.position.x, headerTextBox.transform.position.y + creditsSpeed);
         }
-        Debug.Log(headerCanvas.GetComponentsInChildren<TextMeshProUGUI>()[0].transform.position.y - headerCanvas.GetComponentsInChildren<TextMeshProUGUI>()[1].transform.position.y);
+        //Debug.Log(headerCanvas.GetComponentsInChildren<TextMeshProUGUI>()[0].transform.position.y - headerCanvas.GetComponentsInChildren<TextMeshProUGUI>()[1].transform.position.y);
 
         // Translates the credit sections up
         foreach(KeyValuePair<string, CreditsSection> section in credits)
