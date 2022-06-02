@@ -7,6 +7,9 @@ public class IntroUI : MonoBehaviour
 {
 
     public List<Image> blinders;
+    public RawImage rt;
+
+    public float fadeTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,9 +26,13 @@ public class IntroUI : MonoBehaviour
     {
         foreach (Image i in blinders)
         {
-            LeanTween.value(gameObject, 1f, 0f, 0.8f).setOnUpdate((float val) => {
+            LeanTween.value(gameObject, 1f, 0f, fadeTime).setOnUpdate((float val) => {
                 i.color = new Color(0,0,0,val);
             });
         }
+
+        LeanTween.value(gameObject, 1f, 0f, fadeTime).setOnUpdate((float val) => {
+            rt.color = new Color(0, 0, 0, val);
+        });
     }
 }

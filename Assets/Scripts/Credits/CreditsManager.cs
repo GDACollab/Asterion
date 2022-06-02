@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 // Manages the content and movement of the credits based on the input CSV file
@@ -74,9 +75,13 @@ public class CreditsManager : MonoBehaviour
 
         creditsMap = new Dictionary<string, Dictionary<string, string>>();
         parseCSV();
+
         
         credits = new Dictionary<string, CreditsSection>();
         writeCredits();
+
+        
+        
     }
 
     // Sets the initial position the text box templates
@@ -229,6 +234,8 @@ public class CreditsManager : MonoBehaviour
         }
 
         creditsMusic_instance.start();
+
+        
     }
 
     // Calculates the total height of the credits
@@ -257,11 +264,14 @@ public class CreditsManager : MonoBehaviour
         if(headerCanvas.GetComponentsInChildren<TextMeshProUGUI>()[0].transform.position.y > getCreditsHeight() + Screen.height)
         {
             //sceneLoader.FadeOutLoad(nextScene, transitionSpeed);
+            Debug.Log("reached end of credits");
+            GameManager.Instance.canPause = true;
+            SceneManager.UnloadSceneAsync(1);
             return;
         }
 
         // Calculates the units the credits will move on this refresh cycle
-        float creditsSpeed = ((getCreditsHeight() + Screen.height) / time) * (Time.deltaTime * 1000);
+        float creditsSpeed = ((getCreditsHeight() + Screen.height) / time) * (Time.unscaledDeltaTime * 1000);
         
         // Translates the header up
         foreach(TextMeshProUGUI headerTextBox in headerCanvas.GetComponentsInChildren<TextMeshProUGUI>())

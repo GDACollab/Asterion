@@ -138,6 +138,12 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void LoadCreditsScene()
+    {
+        GameManager.Instance.canPause = false;
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+    }
+
     public void CheckPlayerIsPlayingArcadeStatus()
     {
         if (!isPlayingArcade)

@@ -415,6 +415,8 @@ namespace AsterionArcade
             shipStatusText.text = "Ships Remaining\nto be deployed: (" + totalShips + "/" + totalShips + ")";
             yield return new WaitForSeconds(1f);
 
+            
+
             if (timesWon == 0)
             {
                 pretexts[0].text = "This is the enemy wave.";
@@ -446,6 +448,7 @@ namespace AsterionArcade
             yield return new WaitForSeconds(1);
 
             int numFighters = 3;
+            
 
             while (enemyQueue.Count > 0)
             {
