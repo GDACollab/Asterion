@@ -18,6 +18,7 @@ public class CreditsManager : MonoBehaviour
     // The speed that the scene will fade out at
     public float transitionSpeed = 0.5f;
 
+    public float creditsSpeedMod = 1;
     [Header("Music References")]
     // The component that plays and gets parameters from the playing music
     [SerializeField] FMODUnity.EventReference creditsMusic;
@@ -270,8 +271,19 @@ public class CreditsManager : MonoBehaviour
             return;
         }
 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            creditsSpeedMod = 15;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            creditsSpeedMod = 1;
+        }
+
+
         // Calculates the units the credits will move on this refresh cycle
-        float creditsSpeed = ((getCreditsHeight() + Screen.height) / time) * (Time.unscaledDeltaTime * 1000);
+        float creditsSpeed = ((getCreditsHeight() + Screen.height) / time) * (Time.unscaledDeltaTime * 1000) * creditsSpeedMod;
         
         // Translates the header up
         foreach(TextMeshProUGUI headerTextBox in headerCanvas.GetComponentsInChildren<TextMeshProUGUI>())
@@ -285,5 +297,6 @@ public class CreditsManager : MonoBehaviour
         {
             section.Value.translateVertical(creditsSpeed);
         }
+
     }
 }
